@@ -1,0 +1,102 @@
+{
+    "relations": [
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Visual Genome Connecting Language and Vision Using Crowdsourced Dense Image Annotations",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "image classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "visual question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "part models learning",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "image search",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "image understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "attribute classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "relationship classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "dense image captioning",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "MS-COCO",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "YFCC100M",
+            "tail_type": "Dataset"
+        }
+    ]
+}

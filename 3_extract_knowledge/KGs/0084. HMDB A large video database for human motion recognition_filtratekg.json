@@ -1,0 +1,317 @@
+{
+    "entities": [
+        {
+            "id": "20250319034844P1",
+            "name": "HMDB: A Large Video Database for Human Motion Recognition",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "H. Kuehne",
+                    "H. Jhuang",
+                    "E. Garrote",
+                    "T. Poggio",
+                    "T. Serre"
+                ],
+                "institutions": [
+                    "Karlsruhe Institute of Technology",
+                    "Massachusetts Institute of Technology",
+                    "Brown University"
+                ]
+            }
+        },
+        {
+            "id": "20250319034844D1",
+            "name": "HMDB51",
+            "type": "Dataset",
+            "attributes": {
+                "number of action categories": 51,
+                "number of clips": "6,766",
+                "sources": [
+                    "movies",
+                    "YouTube"
+                ],
+                "annotations": [
+                    "camera motion",
+                    "viewpoint",
+                    "video quality",
+                    "number of people"
+                ],
+                "normalization": "scaled to 240p, 30fps",
+                "stabilization": "performed using image stitching techniques"
+            }
+        },
+        {
+            "id": "20250319034844D2",
+            "name": "KTH",
+            "type": "Dataset",
+            "attributes": {
+                "number of action categories": 6,
+                "clips per category": 100
+            }
+        },
+        {
+            "id": "20250319034844D3",
+            "name": "Weizmann",
+            "type": "Dataset",
+            "attributes": {
+                "number of action categories": 9,
+                "clips per category": 9
+            }
+        },
+        {
+            "id": "20250319034844D4",
+            "name": "IXMAS",
+            "type": "Dataset",
+            "attributes": {
+                "number of action categories": 11,
+                "clips per category": 33
+            }
+        },
+        {
+            "id": "20250319034844D5",
+            "name": "Hollywood",
+            "type": "Dataset",
+            "attributes": {
+                "number of action categories": 8,
+                "clips per category": "30-129"
+            }
+        },
+        {
+            "id": "20250319034844D6",
+            "name": "Hollywood2",
+            "type": "Dataset",
+            "attributes": {
+                "number of action categories": 12,
+                "clips per category": "61-278"
+            }
+        },
+        {
+            "id": "20250319034844D7",
+            "name": "UCFSports",
+            "type": "Dataset",
+            "attributes": {
+                "number of action categories": 9,
+                "clips per category": "14-35"
+            }
+        },
+        {
+            "id": "20250319034844D8",
+            "name": "UCFYouTube",
+            "type": "Dataset",
+            "attributes": {
+                "number of action categories": 11,
+                "clips per category": 100
+            }
+        },
+        {
+            "id": "20250319034844D9",
+            "name": "UCF50",
+            "type": "Dataset",
+            "attributes": {
+                "number of action categories": 50,
+                "min clips per category": 100
+            }
+        },
+        {
+            "id": "20250319034844D10",
+            "name": "Olympic Sports dataset",
+            "type": "Dataset",
+            "attributes": {
+                "number of action categories": 16,
+                "clips per category": 50
+            }
+        },
+        {
+            "id": "20250319034844D11",
+            "name": "LabelMe",
+            "type": "Dataset",
+            "attributes": {
+                "number of categories": 200,
+                "size": "30,000 images",
+                "segmented images": "yes"
+            }
+        },
+        {
+            "id": "20250319034844D12",
+            "name": "Lotus Hill dataset",
+            "type": "Dataset",
+            "attributes": {
+                "size": "50,000 images",
+                "segmented images": "yes",
+                "availability": "purchase required"
+            }
+        },
+        {
+            "id": "20250319034844D13",
+            "name": "Caltech101",
+            "type": "Dataset",
+            "attributes": {
+                "number of categories": 101
+            }
+        },
+        {
+            "id": "20250319034844D14",
+            "name": "Caltech256",
+            "type": "Dataset",
+            "attributes": {
+                "number of categories": 256
+            }
+        },
+        {
+            "id": "20250319034844D15",
+            "name": "MSRC",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844D16",
+            "name": "PASCAL",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844R1",
+            "name": "http://serre-lab.clps.brown.edu/resources/HMDB/",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844T1",
+            "name": "action recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844T2",
+            "name": "human motion recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844T3",
+            "name": "video classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844T4",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844T5",
+            "name": "object recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844T6",
+            "name": "scene understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844T7",
+            "name": "training object detection algorithms",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844T8",
+            "name": "activity classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844T9",
+            "name": "image annotation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844T10",
+            "name": "object detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844T11",
+            "name": "part models learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034844T12",
+            "name": "biological motion perception",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319034844D1",
+            "head": "HMDB51",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319034844R1",
+            "tail": "http://serre-lab.clps.brown.edu/resources/HMDB/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319034844D1",
+            "head": "HMDB51",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319034844P1",
+            "tail": "HMDB: A Large Video Database for Human Motion Recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319034844D1",
+            "head": "HMDB51",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034844T1",
+            "tail": "action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034844D1",
+            "head": "HMDB51",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034844T2",
+            "tail": "human motion recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034844D1",
+            "head": "HMDB51",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034844T3",
+            "tail": "video classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034844D1",
+            "head": "HMDB51",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034844T4",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034844D9",
+            "head": "UCF50",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319034844D8",
+            "tail": "UCFYouTube",
+            "tail_type": "Dataset"
+        }
+    ],
+    "has_been_merged": false
+}

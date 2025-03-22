@@ -1,0 +1,330 @@
+ActivityNet: A Large-Scale Video Benchmark for Human Activity Understanding Fabian Caba Heilbron1,2, Victor Escorcia1,2, Bernard Ghanem2 and Juan Carlos Niebles1
+
+1Universidad del Norte, Colombia 2King Abdullah University of Science and Technology (KAUST), Saudi Arabia
+
+Abstract
+
+In spite of many dataset efforts for human action recognition, current computer vision algorithms are still severely limited in terms of the variability and complexity of the actions that they can recognize. This is in part due to the simplicity of current benchmarks, which mostly focus on simple actions and movements occurring on manually trimmed videos. In this paper we introduce ActivityNet, a new largescale video benchmark for human activity understanding. Our benchmark aims at covering a wide range of complex human activities that are of interest to people in their daily living. In its current version, ActivityNet provides samples from 203 activity classes with an average of 137 untrimmed videos per class and 1.41 activity instances per video, for a total of 849 video hours. We illustrate three scenarios in which ActivityNet can be used to compare algorithms for human activity understanding: untrimmed video classiﬁcation, trimmed activity classiﬁcation and activity detection.
+
+1. Introduction
+
+With the growth of online media, surveillance and mobile cameras, the amount and size of video databases are increasing at an incredible pace. For example, YouTube reported that over 300 hours of video are uploaded every minute to their servers [43]. Arguably, people are the most important and interesting subjects of such videos. The computer vision community has embraced this observation to validate the crucial role that human activity/action recognition plays in building smarter surveillance systems, semantically aware video indexes, and more natural humancomputer interfaces. However, despite the explosion of video data, the ability to automatically recognize and understand human activities is still rather limited. This is primarily due to impeding challenges inherent to the task, namely the large variability in execution styles, complexity of the visual stimuli in terms of camera motion, background clutter and viewpoint changes, as well as, the level of detail and number of activities that can be recognized. An important limitation that hinders the performance of current
+
+techniques is the state of existing video datasets and benchmarks available to action/activity recognition researchers.
+
+For example, note that the range of activities performed by one person in a day varies from making the bed after waking up to brushing teeth before going to sleep. Between these moments, he/she performs many activities relevant to his/her daily life. The American Time Use Survey reports that Americans spent an average 1.7 hours in household activities against only 18 minutes participating in sports, exercise or recreation per day [37]. In spite of this fact, most computer vision algorithms for human activity understanding are benchmarked on datasets that cover a limited number of activity types. In fact, existing databases tend to be speciﬁc and focus on certain types of activities i.e. sports, cooking or simple actions. Typically, these datasets have a small number of categories (around 100), a small number of samples (short clips) per category (around 100), and limited category diversity.
+
+In this paper, we address these dataset limitations by using a ﬂexible framework that allows continuous acquisition, crowdsourced annotation, and segmentation of online videos, thus, culminating in a large-scale (large in the number of categories and number of samples per category), rich (diverse taxonomy), and easy-to-use (annotations, baseline classiﬁcation models will be available online) activity dataset, known as ActivityNet. One of the most important aspects of ActivityNet is that it is structured around a semantic ontology which organizes activities according to social interactions and where they usually take place. It provides a rich activity hierarchy with at least four levels of depth. For example, the activity Filing nails falls under the third tier category Washing, dressing and grooming, which belongs to the second tier Grooming and ﬁnally the major category Personal care. Figure 1 illustrates other examples of this organization. To the best of our knowledge, ActivityNet is the ﬁrst database for human activity recognition organized under a rich semantic taxonomy.
+
+We organize the paper as follows: we ﬁrst review and summarize existing benchmarks for human activity understanding. Then, we present the details of our dataset collection and annotation framework and provide a summary of the properties of ActivityNet. We illustrate three
+
+Cleaning windowsInterior cleaningHouseworkHousehold activitiesBrushing teethGrooming oneselfGroomingPersonal careTop levelSecond tierThird tierActivityFigure1.ActivityNetorganizesalargenumberofdiversevideosthatcontainhumanactivitiesintoasemantictaxonomy.Top-rowshowstheroot-leafpathfortheactivityCleaningwindows.Bottom-rowshowstheroot-leafpathfortheactivityBrushingteeth.Eachboxillustratesexamplevideosthatliewithinthecorrespondingtaxonomynode.Greenintervalsindicatethetemporalextentoftheactivity.Allﬁguresarebestviewedincolor.benchmarkingscenariosforevaluatingtheperformanceofstate-of-the-artalgorithms:untrimmedvideoclassiﬁcation,trimmedactivityclassiﬁcationandactivitydetection.2.RelatedWorkThechallengesofbuildingsystemsthatunderstandandrecognizecomplexactivitiesinrealenvironmentsandcon-ditions,haspromptedtheconstructionofstandardizeddatasetsforalgorithmtrainingandevaluation.However,currentbenchmarksareratherlimitedinatleastoneoftheseaspects:numberofcategories,samplespercategory,tem-porallengthofeachsample,diversityofvideocapturingconditionsorenvironments,andthediversityofcategorytaxonomy.Furthermore,extendingmostofthesedatasetsinvolvesextremelycostlymanuallabor.Webrieﬂyreviewsomeofthemostinﬂuentialactiondatasetsavailable.TheHollywooddataset[20]containsvideostakenfromHollywoodmovies.Twelveactioncat-egoriesareperformedbyprofessionalactors,whichresultsinmorenaturalscenesthanearliersimpleactiondatasets[33,9].Similarly,otherdatasetsalsorelaxtheenviron-mentassumptionsleadingtochallengingrecognitiontaskswithdifﬁcultbackgroundandcameraangles.Forexample,UCFSports[30]andOlympicSports[24]increasetheac-tioncomplexitybyfocusingonhighlyarticulatedsportingactivities.However,thesmallnumberofcategorieskeepsthescopeoftheactivitiesnarrow,andcannotbeconsideredarepresentativesampleofactivitiesinthereal-world.An-otherdimensionofcomplexityisaddressedbydatasetsthatfocusoncomposable[21]andconcurrent[41]activities,buttheseareconstrainedwithrespecttothesceneandenviron-mentassumptions.NextintermsofsamplesizearetheUCF101[17]-Thumos’14[35]andtheHMDB51[19]datasets,compiledfromYouTubevideosandwithmorethan50actioncate-gories.Theresultingvideosamplesareshortandonlycon-veysimplisticshort-termactionsorevents.Thesevideoswerecollectedthroughamanualandcostlyprocess,whichisdifﬁculttoscaleifthesizeofthedatasetistobeextended.Intermsofsemanticorganization,HMDB51groupsactivi-tiesinto5majortypes:general-facial,facialwithobjectma-nipulation,generalbodymovement,bodymovementswithobjectinteractionandbodymovementsforhumaninterac-tion.Ontheotherhand,UCF101groupscategoriesinto5types:human-objectinteraction,bodymotiononly,playingmusicalinstruments,sports.Unfortunately,thesearesim-pletaxonomieswithonlytwolevelsofresolution,anddonotprovideadetailedorganizationofactivities.TheMPIIHumanPoseDataset[2]focusesonhumanposeestimation,andwasrecentlyappliedtoactionrecog-nition[29].Itprovidesshortclips(41framesorlonger)thatdepicthumanactions.Unfortunately,thedistributionofvideosamplespercategoryisnon-uniformandbiasedtowardssomeactioncategories.Currently,thelargestvideodatasetavailableistheSports-1Mdataset[16],withabout500sports-relatedcat-egories,annotatedbyanautomatictaggingalgorithm.De-spiteitssheersize,thisdatasetisstructuredusingasome-whatlimitedactivitytaxonomy,asitonlyfocusesonsportsactions.Furthermore,theautomaticcollectionprocessin-troducesanundisclosedamountoflabelnoise.Alsorelatedtoourworkaretheeffortstoconstructlarge-scalebenchmarksforobjectrecognitioninstaticimages.ImagebenchmarkssuchasImageNet[5],SUN[42]andTinyImages[36]havespawnedsigniﬁcantadvancesforcom-putervisionalgorithmsintherelatedtasks.AnexampleistheLargeScaleVisualRecognitionChallenge(ILSVRC)[32],fromwhichtheAlexNetarchitecture[18]gainsitspop-ularityduetoanoutstandingperformanceinthechallenge.ActivityNetattemptstoﬁllthegapinthefollowingas-pects:alarge-scaledatasetthatcoversactivitiesthataremostrelevanttohowhumansspendtheirtimeintheirdailyliving;aqualitativejumpintermsofnumberandlengthof each video (instead of short clips), diversity of activity taxonomy and number of classes; a human-in-the-loop annotation process that can provide higher label accuracy as compared to fully automatic annotation algorithms; and a framework for continuous dataset expansion at low cost.
+
+3. Building ActivityNet
+
+ActivityNet aims at providing a semantic organization In this section, we of videos depicting human activities. introduce the activity lexicon and hierarchy that serves as a backbone for ActivityNet. Another important goal is to provide a large set of diverse video samples for each activity In this section, we also describe our scalable of interest. data collection and video annotation scheme. Finally, we summarize some interesting properties of ActivityNet.
+
+3.1. Deﬁning the Activity lexicon
+
+Our goal is to build ActivityNet upon a rich semantic taxonomy. In contrast to the object domain, it is difﬁ- cult to deﬁne an explicit semantic organization of activities. Beyond the shallow hierarchies that organize current benchmarks, some attempts have been made at providing a structured organization of activities within the computer vision community. Aloimonos et al. [10, 26] propose a twolevel organization of activities into 6 groups: ground, general object, general person, speciﬁc object, speciﬁc person, group; which connects to verbs in WordNet. Unfortunately, verbs are more difﬁcult to use directly, because unlike objects in ImageNet [5], there is more ambiguity and polysemism between verbs and activities, than between objects and synsets. This may be partly explained by the fact that our spoken language for activities needs more complicated constructions compared to what is needed for objects.
+
+Outside the vision community, there are efforts that organize general knowledge into structured repositories, such as Freebase[8], FrameNet[7], among others. Since none of them are speciﬁc to activities, their richness and depth are limited. On the other hand, there are also efforts more speciﬁc to activities. In the medical community, Ainsworth et al. [1] organizes a small number of physical human activities into a two level taxonomy.
+
+Since we aim at a large scale benchmark with high activity diversity, we propose the use of the activity taxonomy built by the Department of Labor for conducting the American Time Use Survey [37]. The ATUS taxonomy organizes more than 2000 activities according to two key dimensions: a) social interactions and b) where the activity usually takes place. The ATUS coding lexicon contains a large variety of daily human activities organized under 18 top level categories such as Personal Care, Work-Related, Education and Household activities. In addition, there are two more levels of granularity under these top level categories. For example, the activity Polishing shoes, appears in the hierarchy
+
+Figure 3. Visualization of the sub-tree of the top level category Household activities. Full taxonomy is available in the supplementary material.
+
+as a leaf node under the third category, Sewing, repairing and maintaining textiles, which is part of the second tier category, Housework, which falls under the Household activities top level category.
+
+For the ﬁrst release of ActivityNet, we have manually selected a subset of 203 activity categories, out of the more than two thousand activity examples provided by the ATUS activity hierarchy. The activity classes belong to 7 different top level categories: Personal Care, Eating and Drinking, Household, Caring and Helping, Working, Socializing and Leisure and Sports and Exercises. Figure 3 illustrates the sub-tree for the top-level category Household activities. The rich taxonomy in ActivityNet, which has four levels of granularity, constitutes a semantic organization backbone that may be useful in algorithms that are able to exploit the hierarchy during model training.
+
+3.2. Collecting and annotating human activities
+
+Building benchmark datasets for visual recognition has been traditionally a difﬁcult and time consuming task. The goal of ActivityNet is to provide a large-scale dataset of activities that can be expanded and annotated continously at a reasonably low cost. Traditional data collection practices that require many expert researcher hours are prohibitive. On the other hand, fully automatic methods introduce label noise that is difﬁcult to erradicate.
+
+We now describe the collection and annotation process forobtainingActivityNet. Inspiredby[5,11,38], wefollow a semi-automatic crowdsourcing strategy to collect and annotate videos (Figure 2). We ﬁrst search the web for potential videos depicting a particular human activity. Then, we
+
+HouseholdActivitiesHouseworkInteriorcleaningVacuuming floorCleaning toiletMaking the bedCleaning windowsCleaning out closetPolishing furnitureRecyclingLaundryHand washing clothesIroning clothesSorting laundrySewing,Repair.Polishing shoesCleaning shoesKnitting sweatersInteriorMaint.Interiorarrangem.Changing light bulbsPaintingFixing leaksFumigating houseInstalling carpetPut. Christmas lightsBuild andRep. Furnit.Assembling furniturePainting furnitureHeating& coolingChopping woodSetting the fireExteriorMaint.ExteriorcleaningShoveling snowCleaning chimneyCleaning garageSweeping sidewalkRepair,improv.Fixing broken windowsFixing mailboxLawn,GardenPlantcareGardeningMowing the lawnWatering gardenApplying pesticidesCutting the grassPicking fruitsAnimalsand PetsCare foranimalsBathing dogChanging dog waterExercisingwith animalsWalking the dogVehiclesVehiclerepairChanging oilChanging wheelAssembling bicycleInstalling car stereoPut. air in tiresa) Unlabeled Videosb) Untrimmed Videosc) Trimmed Activity InstancesFigure2.Videocollectionandannotationprocess.(a)Westartwithalargenumberofcandidatevideos,forwhichthelabelsarepartiallyunknown.(b)AMTworkersverifyifanactivityofinterestispresentineachvideo,sothatwecandiscardfalsepositivevideos(inred).Thisresultsinasetofuntrimmedvideosthatcontaintheactivity(ingreen).(c)Finally,weobtaintemporalboundariesforactivityinstances(ingreen)withthehelpofAMTworkers.relyonAmazonMechanicalTurk(AMT)workerstoverifythepresenceoftheactivityineachvideo.Finally,multipleworkersannotateeachvideowiththetemporalboundariesassociatedtotheactivity.SearchtheWeb:Atthisstage,wehaveatextuallistofhumanactivityclassesandourgoalistosearchthewebtoretrievevideosrelatedtoeachactivity.ExploitingthelargeamountofvideodataononlinerepositoriessuchasYouTube,wesearchvideosusingtextbasedqueries.ThesequeriesareexpandedwithWordNet[23]usinghyponyms,hypernymsandsynonymsinordertoincreasethenumberofretrievedvideosandcontentvariety.LabelingUntrimmedVideos:Weverifyallvideosre-trievedandremovethosenotrelatedwiththeactivityathand.WeemployAMTworkers(turkers)torevieweachvideoanddetermineifitcontainsanintendedactivityclass.Inordertokeeptheannotationqualityhigh,weinsertver-iﬁablelabelingquestionsandonlyemploymultipleexpertturkers.Duetotheinaccuracyoftext-basedqueries,weusuallydiscardmanyvideosthatarenotrelatedwithanyoftheintendedactivityclasses.Attheendofthisprocess,wehaveasetofveriﬁeduntrimmedvideosthatareassociatedtoatleastonegroundtruthactivitylabel.AnnotatingtheActivityInstances:Mostcurrentac-tivityclassiﬁcationsystemsrequiretrainingvideostobetrimmedtoonlycontaintheintendedactivity.Neverthe-less,itishardtoﬁndwebvideoscontainingonlyinforma-tionwithaspeciﬁcactivity.Forexample,whensearchingYouTubewiththequery“Preparingpasta”,resultsincludevideoscontainingcontextualinformationaboutthechef.Inthisdirection,weaimtomanuallyannotatethetemporalboundarieswhereanactivityisperformedinavideo.Totacklethismanualprocess,werelyonAMTworkerstotemporallyannotatealltheactivityinstancespresentinavideo.Inordertoensurequality,thetemporalextentofeachactivityinstanceislabelledbymultipleexpertturkers.Then,weclustertheirannotationstoobtainrobustannota-tionagreements.Thisstageproducesacuratedsetofactiv-ityinstances,eachofthemassociatedtoexactlyonegroundtruthactivitylabel.Moreover,itisimportanttonotethatwithinoneuntrimmedvideo,theremaybemorethanoneactivityinstancefrommorethanoneactivityclass.3.3.ActivityNetataGlanceWenowlookintosomeofthepropertiesofthevideosinActivityNet.Weﬁrstreportstatisticsrelatedtothevideodata.Second,wecompareActivityNettoseveralexistingdatasetsforthebenchmarkingofhumanactivities.VideoPropertiesAllActivityNetvideosareobtainedfromonlinevideosharingsites.Wedownloadtheoriginalvideosatthebestqualityavailable.Inordertolimitthetotalstoragerequirement,weprioritizethesearchtowardvideoslessthan20minuteslong.Inpractice,alargeproportionofvideoshaveadurationbetween5and10minutes.Around50%ofthevideosareinHDresolution(1280⇥720),whilethemajorityhaveaframerateof30FPS.CollectionandAnnotationSummaryFigure4-(toprows)showsthenumberofuntrimmedvideosandtrimmedactivityinstancesperclassinthecurrentversionofActiv-ityNet.Thedistributionisclosetouniform,whichhelpstoavoiddataunbalancewhentrainingclassiﬁers.Alsonotethatthereisafactorof1.41trimmedinstancesperuntrimmedvideoinaverage.Finally,ourcollectionpro-cesswillalloweasyexpansionofActivityNetintermsofnumberofsamplespercategoryandnumberofcategories.ComparisonwithexistingdatasetsWecompareActiv-ityNetwithseveralactiondatasets[17,19,20,24,35,16,31]intermsof:1)varietyintermsofthetypeofactivities,and2)numberofactivityclassesandsamplesperclass.Tocomparethevarietyonactivitytypes,wemanuallyanno-tatealltheactionsineachdatasetwithaparenttoplevelcategoryfromtheActivityNethierarchy.Forexample,theactionPushupsfromUCF101isannotatedunderSportsandexercising.InFigure4(bottom-left),weplotastackedhistogramfortheactionsassignedtoeachtoplevelcate-gory.Itillustratesthelackofvarietyonactivitytypesforallexistingdatasets.Incontrast,ActivityNetstrivesforinclud-ingactivitiesintoplevelcategoriesthatarerarelyconsid-eredincurrentbenchmarks:Householdactivities,Personalcare,EducationandWorkingactivities.ToanalyzethescaleofActivityNetcomparedtotheexistingactiondatasets,weplotinFigure4(bottom-right)thenumberofinstancesperclassvsthenumberofactivity/actionclasses.ThecurrentversionofActivityNetrankssecondlargestactivityanalysisdatasetbutitisthemostvariedintermsofactivitytypes.l
+
+ActivityNet UCF101 HMDB51 Hollywood Thumos’14 Sports-1M Olympic MPII
+
+0.7 0.5 Ratio of  top level categories
+
+Personal care Work-related
+
+Eating & drinking Sports & exercises
+
+Household activities Socializing & leisure
+
+Caring & helping Simple actions
+
+Untrimmed
+
+Trimmed - Untrimmed
+
+MPII HPD
+
+ActivityNet
+
+Sports-1M
+
+UCF101
+
+Thumos’14 HMDB51
+
+Olympic
+
+Hollywood
+
+2000 200 Number of samples per class
+
+Figure 4. Summary of ActivityNet statistics. First two rows: Red bars indicate the number of untrimmed instances per activity category; and the top of the gray bars indicate the number of trimmed instances in each class. Bottom left compares the distribution of the activity classes in different datasets with the top levels of our hierarchy. Bottom right compares the scale in terms of both number of samples per category and number of categories between different datasets.
+
+4. Experimental Results
+
+4.1. Video Representation
+
+This section presents a series of evaluations that showcase several benchmarking scenarios in which ActivityNet can be used. These evaluations also serve to illustrate the challenge that general activity understanding is to current computer vision algorithms.
+
+The rest of the section is organized as follows. We ﬁrst describe the video representations adopted in our evaluation scenarios. Then, we examine the performance of a stateof-the-art algorithm for action recognition in three different tasks: a) Untrimmed video classiﬁcation, b) Trimmed activity classiﬁcation, and c) Activity detection. For this study we choose the state-of-the-art action recognition pipeline from [25], which consists of improved trajectories, static and deep features encoded using ﬁsher vectors, and a onevs-all linear SVM as classiﬁer. Lastly, we provide a crosstask analysis and discussions about the results obtained.
+
+Inordertocapturevisualpatternsineachinputvideo, we construct a video representation using a combination of several feature types: motion features, static features and deep features. This is motivated by the observation that combining multiple feature types can lead to signiﬁcant improvements in action recognition [34, 25].
+
+Motion Features (MF): These features aim to capture local motion patterns in a video. In practice, we ﬁrst extract improvedtrajectories [39]to obtainaset oflocal descriptors i.e. HOG, HOF, and MBH. We encode these descriptors using the Fisher vector (FV) coding scheme [28], where each descriptor type is represented separately. In all our experiments, we ﬁrst learn a GMM with 512 components and reduce the dimensionality of the ﬁnal encoding to half using PCA. This is similar to the procedures in [39, 3, 4].
+
+Static Features (SF): These features aim to encode contextual scene information. These context cues are usually helpful to discriminate human activities [12, 13]. In prac-
+
+tice, we capture contextual scene information by extracting SIFT features every ten frames. These features are encoded using FV with a GMM of 1024 components, which is then reduced to a feature size of 48 dimensions using PCA. The ﬁnal representation for each video aggregates all descriptors in a single FV.
+
+Deep Features (DF): These features aim to encode information about the objects in the scene. In many activities involving object interactions, this is an important cue for disambiguation [6]. In practice, we adopt features derived from convolutional networks that have been trained for the task of object recognition. This is motivated by the versatility of these features, which have been successfully applied to many visual recognition tasks. For the network implementation, we adopt the AlexNet [18] architecture trained on ILSVRC-2012 [32] as provided by Caffe [15]. We retain activations of the network associated with the top-3 fullyconnected layers (fc-6, fc-7, and fc-8). We encode temporal information in the activity by averaging activations across several frames. In practice, we compute these deep features every ten frames for all the videos in our dataset.
+
+4.2. ActivityNet Benchmarks
+
+We deﬁne three different application scenarios in which ActivityNet can be used for benchmarking. First, we investigate the performance of an activity recognition algorithm on the task of Untrimmed video classiﬁcation. For the second task, we use the manually annotated trimmed video instances to construct the largest dataset for Trimmed activity classiﬁcation. Finally, we benchmark Activity detection on all the untrimmed videos in ActivityNet.
+
+4.2.1 Untrimmed Video Classiﬁcation
+
+In this task, we evaluate the capability of predicting activities in untrimmed video sequences. Here, videos can contain more than one activity, and typically large time lapses of the video are not related with any activity of interest.
+
+Dataset: Using the labeled untrimmed videos from ActivityNet, we deﬁne a dataset for benchmarking untrimmed video classiﬁcation. The dataset consists of 27801 videos that belong to 203 activity classes. We randomly split the data into three different subsets: train, validation and test, where 50% is used for training, and 25% for validation and testing.
+
+Classiﬁers: Using the training set, we learn a set of linear SVM activity classiﬁers using a one-vs-all strategy. We use the validation set in order to tune the parameters of each classiﬁer. Finally, we evaluate the models in the testing set, where the activity of each test video is predicted to be the one corresponding to the classiﬁer with the largest margin. Results: In this experiment, we measure the mean average precision (mAP) obtained by each activity classiﬁer.
+
+Untrimmed Classiﬁcation (mAP)
+
+Trimmed Classiﬁcation (mAP)
+
+Feature
+
+Validation
+
+Validation
+
+HOG HOF MBH
+
+fc-6 fc-7 fc-8
+
+MF DF SF
+
+MF+DF MF+SF DF+SF MF+DF+SF
+
+Motion features (MF)
+
+Deep features (DF)
+
+Per feature type
+
+39.2% 28.7% 24.5% Combined 40.9% 40.1% 32.6% 42.2%
+
+Table 1. Summary of classiﬁcation results. The ﬁrst two columns report results on the untrimmed video classiﬁcation task, while the last two report results on trimmed video classiﬁcation. The evaluation measure is mean average precision (mAP). We report validation and test performance, when different feature combinations are used. MF and DF refers to the concatenation of HOG, HOF and MBH features, and fc-6 and fc-7 respectively.
+
+Since each untrimmed video may contain more than one activity label, we measure performance using mAP instead of a confusion matrix. Table 1 summarizes our results. We see that combining multiple features improves overall performance. Also, note that deep features obtain a competitive performance compared to the state-of-the-art improved trajectories features. The best results of deep features is obtained when we concatenate the activation of fc-6 and fc-7.
+
+4.2.2 Trimmed Activity Classiﬁcation
+
+This task aims to predict the correct label of a trimmed video clip that contains a single activity instance. Here, we use all the trimmed activity instances annotated in ActivityNet to train classiﬁers and evaluate performance.
+
+Dataset: We deﬁne a dataset for benchmarking human activity classiﬁcation algorithms. The dataset includes 203 activity classes with 193 samples per category on average. These samples correspond to trimmed activity instances in ActivityNet. When generating the training, validation, and test subsets, we constrain the instances from a single video to be in the same subset so as to avoid data contamination. Classiﬁers: As compared to untrimmed video classiﬁ- cation, we build classiﬁers here with features that are only extracted from the trimmed activity itself. We learn a linear SVMclassiﬁerforeachfeaturetype. Whencombiningmultiplefeatures, we simplysumthekernelsbefore thelearning procedure. To enable multi-class classiﬁcation, we utilize a one-vs-all learning approach. Given a test video clip, we select the class with highest score.
+
+Results: To measure recognition performance for this
+
+task, we compute the mean average precision (mAP) over all the classes. As shown in Table 1, performance improves when multiple feature types are combined. As in the untrimmed video classiﬁcation task, the DF model achieves It reveals that a mAP score of 43.0% on the test subset. these deep features by themselves encode discriminative information for human activities. We attribute this to the intuition that these features encode object appearance information and many activity categories involve human-object interactions.
+
+4.2.3 Activity Detection
+
+In this task, the goal is to ﬁnd and recognize all activity instances within an untrimmed test video sequence. Activity detection algorithms should provide start and end frames, designating the duration of each activity present in the video. To evaluate the different classiﬁcation models, we exploit ActivityNet annotations for the evaluation, thus, forming the largest and most diverse activity detection dataset in the literature.
+
+Dataset: To the best of our knowledge, the ActivityNetbased detection dataset we use here is the largest existing datasetforthistask. Itcontainsatotalof849hoursofvideo, where 68.8 hours of video contain 203 human-centric activities. Here, we split the dataset in three different subsets as in the video classiﬁcation tasks above.
+
+Classiﬁers: We initialize our SVM models using the classiﬁerslearnedinthetrimmedactivityclassiﬁcationtask. Then, we employ ﬁve rounds of hard negative mining, which generate a set of negative samples for each activity class. After each round, we only keep the hardest negatives inordertomaintainareasonableruntime. Givenatestvideo sequence, we apply the learned classiﬁers using a sliding temporal window approach. From the training videos, we ﬁnd that 7 temporal window lengths typically exist: 25, 60, 78, 100, 150, 190 and 250 frames. We then ﬁx a sliding step size of 10 frames. Finally, we perform non-maximum suppression to ignore overlapping detection windows.
+
+Results: To measure the performance of our model, we compute the mAP score over all activity classes. To do this, a detection is determined to be a true positive according to the following procedure: 1) we compute the overlap (measured by the intersection over union score) between a predicted temporal segment and a ground truth segment, 2) we mark the detection as positive if the overlap is greater than a threshold ↵. In practice, we vary the threshold ↵ between 0.1 and 0.5. Table 2 summarizes the detection results. We see that MF consistently outperforms both DF and SF, across the different ↵ values. In spite of the low performance of DF and SF, our model reveals a signiﬁcant increase in performance when all feature types are combined. In general, it is clear that the detection task is very challeng-
+
+Feature MF DF SF MF+DF+SF
+
+Table 2. Summary of activity detection results. We report the mAP score for all activity classes. Due to the ambiguity inherent to the temporal annotation of activities, we use multiple values for the overlap threshold (↵). We also investigate the performance of the different feature types, individually and collectively.
+
+ing for state-of-the-art detection methods.
+
+4.3. Discussions
+
+We provide further analysis along three directions. Qualitative results: Figure 5 shows some example results for the easiest and hardest activity classes for the tasks ofuntrimmedvideoclassiﬁcationandtrimmedactivityclassiﬁcation. These results are obtained using all three feature types. A sample set of correct detections are shown in the third column, while some hard false positive/negative samples for each activity class are shown in the last column. For untrimmed video classiﬁcation, we ﬁnd that the two easiest classes correspond to the Sports and exercise category. These activity classes are easier to classify, since they typically contain a repetitive and structured temporal sequence and are usually performed in similar scene contexts. We notice that activities occupying almost the entire video (in temporal length) are the hardest to classify. Regarding trimmed activity classiﬁcation, the best classiﬁers tend to generate false positives when there are similar motions in the video. For example, the most conﬁdent false positives for the Platform diving class are from activities such as Bungee jumping and Balance beam, which contain motions that resemble those in platform diving. We also note that the most difﬁcult classes tend to be confused with activities that have similar object or context appearance.
+
+Where in the hierarchy are the easiest and hardest activity classes? To answer this question, we compute the mAP score per top level category. Table 3 shows these results for trimmed activity classiﬁcation. We note that the activities related with Sports and exercises achieve the highest mAP. In contrast, Household activities achieve the lowest performance, due primarily to their unstructured nature, In contrast, variability, and lack of temporal constraints. Sports and exercises generally have a deﬁned temporal ordering, and involve speciﬁc human-object interactions.
+
+Comparing performance with existing datasets: To emphasize the difﬁculty of ActivityNet, we compare results for several datasets in Table 4. We consistently observe that ActivityNet constitutes a signiﬁcant challenge to state-ofthe-art recognition methods and is substantially more difﬁ- cult than existing activity benchmarks. We attribute this to the following: a) ActivityNet increases the number of categories by a factor of two, and b) the variety in the video data represents a real world challenge for existing algorithms.
+
+Figure 5. Example results for the two hardest and easiest activity classes in the untrimmed and trimmed classiﬁcation tasks. Results are obtained using all three feature types (MF, DF, and SF). The third column shows some correct prediction samples for each class. The last two columns illustrate some hard false positive and hard false negative samples.
+
+Category Household Caring and helping Personal care Work-related Eating and drinking Socializing and leisure Sports and exercises Average
+
+Validation 34.2% 36.2% 41.5% 53.6% 57.6% 63.8% 66.6% 50.5%
+
+Test 33.9% 36.7% 41.3% 53.1% 57.2% 63.3% 66.1% 50.2%
+
+Table 3. Accuracy analysis on activity classiﬁcation. We report mAP results for classifying each top-level class in ActivityNet. Here, all three feature types are used: motion, deep and static features.
+
+Dataset
+
+Method
+
+Performance
+
+Untrimmed video classiﬁcation
+
+Thumos’14 Sports-1M ActivityNet
+
+71% (mAP) 63.9% (mAP) 42.2% (mAP)
+
+Trimmed activity classiﬁcation
+
+UCF101 HMDB51 ActivityNet
+
+Thumos’14 ActivityNet
+
+85.9% (Accuracy) 66.7% (Accuracy) 45.9% (Accuracy)
+
+Activity detection
+
+33.6% (mAP) 11.9% (mAP)
+
+notation effort that is easily scalable to larger numbers of activities and larger samples per activity, at a reasonably low cost. We compare ActivityNet with existing datasets for action/activity recognition. We show that ActivityNet presents more variety in terms of activity diversity and richness of taxonomy. It also contains more categories and samples per category than traditional action datasets. We also introduce three possible applications for using ActivityNet: untrimmed video classiﬁcation, trimmed activity classiﬁcation, and activity detection. The results obtained in these tasks reveal that ActivityNet unveils new challenges in understanding and recognizing human activities.
+
+Since a key goal of ActivityNet is to enable further development, research, and benchmarking in the ﬁeld of human activity understanding, we are releasing our benchmark to the vision community. Annotations, algorithmic baselines and a toolkit will be available at our website http://www.activity-net.org.
+
+Table 4. Cross-dataset performance comparison. State-of-the-art results are reported for each dataset. Reported results for the activity detection task corresponds to the performance obtained with ↵ = 0.2
+
+5. Conclusions
+
+In this paper, we introduce ActivityNet, a new large scale benchmark for human activity understanding. It is made possible by a large and continuous video collection and an-
+
+Acknowledgments We would like to thank the Stanford Vision Lab for their helpful comments and support. Research reported in this publication was supported by competitive research funding from King Abdullah University of Science and Technology (KAUST). JCN is supported by a Microsoft Research Faculty Fellowship.
+
+References
+
+[1] B. Ainsworth, W. Haskell, S. Herrmann, N. Meckes, D. BassettJr., C.Tudor-Locke, J.Greer, J.Vezina, M.Whitt-Glover, and A. Leon. 2011 compendium of physical activities: a second update of codes and met values. Medicine and Science in Sports and Exercise, 2011.
+
+[2] M. Andriluka, L. Pishchulin, P. Gehler, and B. Schiele. 2d human pose estimation: New benchmark and state of the art analysis. In CVPR, June 2014.
+
+[3] I. Atmosukarto, B. Ghanem, and N. Ahuja. Trajectory-based ﬁsher kernel representation for action recognition in videos. In ICPR. IEEE, 2012.
+
+[4] I. Atmosukarto, B. Ghanem, and N. Ahuja. Action recognition using discriminative structured trajectory groups. 2015. [5] J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li, and L. Fei-Fei. ImageNet: A Large-Scale Hierarchical Image Database. In CVPR, 2009.
+
+[6] V. Escorcia and J. C. Niebles. Spatio-temporal human-object In Computer interactions for action recognition in videos. Vision Workshops (ICCVW), 2013 IEEE International Conference on, 2013.
+
+[7] FrameNet. edu.
+
+http://framenet.icsi.berkeley.
+
+[8] Freebase: A community-curated database of well-known people, places, and things. https://www.freebase. com.
+
+[9] L. Gorelick, M. Blank, E. Shechtman, M. Irani, and R. Basri. IEEE Transactions on PatActions as space-time shapes. tern Analysis and Machine Intelligence, 29(12):2247–2253, 2007.
+
+[10] G. Guerra-Filho and Y. Aloimonos. Towards a sensorimotor In International
+
+WordNet SM: Closing the semantic gap. WordNet Conference, 2006.
+
+[11] F. C. Heilbron and J. C. Niebles. Collecting and annotating human activities in web videos. In International Conference on Multimedia Retrieval, 2014.
+
+[12] F. C. Heilbron, A. Thabet, J. C. Niebles, and B. Ghanem. Camera motion and surrounding scene appearance as context for action recognition. In ACCV, 2014.
+
+[13] N. Ikizler-Cinbis and S. Sclaroff. Object, scene and actions: Combining multiple features for human action recognition. In ECCV, 2010.
+
+[14] M. Jain, J. van Gemert, and C. Snoek. University of amsterdam at THUMOS Challenge 2014. ECCV THUMOS Challenge, 2014.
+
+[15] Y.Jia, E.Shelhamer, J.Donahue, S.Karayev, J.Long, R.Girshick, S. Guadarrama, and T. Darrell. Caffe: Convolutional architecture for fast feature embedding. CoRR, 2014. [16] A. Karpathy, G. Toderici, S. Shetty, T. Leung, R. Sukthankar, and L. Fei-Fei. Large-scale video classiﬁcation with convolutional neural networks. In CVPR, 2014.
+
+[17] A. R. Z. Khurram Soomro and M. Shah. A dataset of 101 human action classes from videos in the wild. Technical report, University of Central Florida, 2012.
+
+[18] A. Krizhevsky, I. Sutskever, and G. E. Hinton.
+
+classiﬁcation with deep convolutional neural networks. NIPS, 2012.
+
+ImageNet In
+
+[19] H. Kuehne, H. Jhuang, E. Garrote, T. Poggio, and T. Serre. HMDB: A large video database for human motion recognition. In ICCV, 2011.
+
+[20] I. Laptev, M. Marszałek, C. Schmid, and B. Rozenfeld. In CVPR,
+
+Learning realistic human actions from movies. 2008.
+
+[21] I. Lillo, A. Soto, and J. C. Niebles. Discriminative hierarchical modeling of spatio-temporally composable human activities. In CVPR, 2014.
+
+[22] M. Marszalek, I. Laptev, and C. Schmid. Actions in context.
+
+In CVPR, 2009.
+
+[23] G. A. Miller. WordNet: A Lexical Database for English.
+
+Communications of the ACM, 38:39–41, 1995.
+
+[24] J. C. Niebles, C.-W. Chen, and L. Fei-Fei. Modeling temporal structure of decomposable motion segments for activity classiﬁcation. In ECCV, 2010.
+
+[25] D. Oneata, J. Verbeek, and C. Schmid. The LEAR submission at Thumos 2014. In ECCV THUMOS Challenge, 2014. [26] K. Pastra and Y. Aloimonos. The minimalist grammar of action. Philosophical Transactions of the Royal Society B: Biological Sciences, 367(1585):103–117, 2012.
+
+[27] X. Peng, C. Zou, Y. Qiao, and Q. Peng. Action recognition
+
+with stacked ﬁsher vectors. In ECCV, 2014. [28] F. Perronnin, J. S´anchez, and T. Mensink.
+
+Improving the ﬁsher kernel for large-scale image classiﬁcation. In ECCV, 2010.
+
+[29] L. Pishchulin, M. Andriluka, and B. Schiele. Fine-grained activity recognition with holistic and pose based features. In X. Jiang, J. Hornegger, and R. Koch, editors, Pattern Recognition, volume 8753 of Lecture Notes in Computer Science, pages 678–689. Springer International Publishing, 2014. [30] M. Rodriguez, J. Ahmed, and M. Shah. Action mach a spatio-temporal maximum average correlation height ﬁlter for action recognition. In CVPR, 2008.
+
+[31] M. Rohrbach, S. Amin, M. Andriluka, and B. Schiele. A database for ﬁne grained activity detection of cooking activities. In CVPR, 2012.
+
+[32] O. Russakovsky, J. Deng, H. Su, J. Krause, S. Satheesh, S. Ma, Z. Huang, A. Karpathy, A. Khosla, M. Bernstein, A. C. Berg, and L. Fei-Fei. ImageNet Large Scale Visual Recognition Challenge, 2014.
+
+[33] C. Schuldt, I. Laptev, and B. Caputo. Recognizing human
+
+actions: a local SVM approach. In ICPR, 2004.
+
+[34] K. D. Tang, B. Yao, L. Fei-Fei, and D. Koller. Combining the right features for complex event recognition. In ICCV, 2013.
+
+[35] Thumos challenge 2014. THUMOS14, 2013.
+
+http://crcv.ucf.edu/
+
+[36] A. Torralba, R. Fergus, and W. T. Freeman. 80 million tiny images: A large data set for nonparametric object and scene recognition. IEEE Transactions on Pattern Analysis and Machine Intelligence, 30(11):1958–1970, 2008.
+
+[37] U.S. Department of Labor. American time use survey.
+
+http://www.bls.gov/tus/, 2013.
+
+[38] C. Vondrick, D. Patterson, and D. Ramanan. Efﬁciently scalingupcrowdsourcedvideoannotation. InternationalJournal of Computer Vision, 101(1):184–204, 2013.
+
+[39] H. Wang and C. Schmid. Action Recognition with Improved
+
+Trajectories. In ICCV, 2013.
+
+[40] H. Wang and C. Schmid. Lear-inria submission for the thuIn ICCV Workshop on Action Recognition
+
+mos workshop. with a Large Number of Classes, 2013.
+
+[41] P. Wei, N. Zheng, Y. Zhao, and S.-C. Zhu. Concurrent action
+
+detection with structural prediction. In ICCV, 2013.
+
+[42] J. Xiao, K. A. Ehinger, J. Hays, A. Torralba, and A. Oliva. SUN Database: Exploring a large collection of scene categories. International Journal of Computer Vision, 2014. [43] YouTube statistics. http://www.youtube.com/yt/
+
+press/statistics.html, 2015.
+

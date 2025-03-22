@@ -1,0 +1,156 @@
+Fine-Grained Visual Classiﬁcation of Aircraft
+
+Subhransu Maji TTI Chicago smaji@ttic.edu
+
+Esa Rahtu Juho Kannala University of Oulu, Finland {erahtu, jkannala}@ee.oulu.ﬁ
+
+Matthew Blaschko ´Ecole Centrale Paris matthew.blaschko@ecp.fr
+
+Andrea Vedaldi University of Oxford vedaldi@robots.ox.ac.uk
+
+Abstract
+
+This paper introduces FGVC-Aircraft, a new dataset containing 10,000 images of aircraft spanning 100 aircraft models, organised in a three-level hierarchy. At the ﬁner level, differences between models are often subtle but always visually measurable, making visual recognition challenging but possible. A benchmark is obtained by deﬁning corresponding classiﬁcation tasks and evaluation protocols, and baseline results are presented. The construction of this dataset was made possible by the work of aircraft enthusiasts, a strategy that can extend to the study of number of other object classes. Compared to the domains usually considered in ﬁne-grained visual classiﬁcation (FGVC), for example animals, aircraft are rigid and hence less deformable. They, however, present other interesting modes of variation, including purpose, size, designation, structure, historical style, and branding.
+
+1. Introduction
+
+In this paper, we introduce FGVC-Aircraft, a novel datasetaimedatstudyingtheproblemofﬁne-grainedrecognition of aircraft models (Fig. 1, Sect. 2). The new data includes 10,000 airplane images spanning 100 different models, organised in a hierarchical manner. All models are visually distinguishable, even though in many cases the differences are subtle, making classiﬁcation challenging and interesting.
+
+Airplanes are an alternative to objects typically considered in ﬁne-grained visual classiﬁcation (FGVC) such as birds [5] and pets [2–4]. Compared to these domains, aircraft classiﬁcation has several interesting aspects. First, aircraft designs vary signiﬁcantly depending on the plane size (from home-built to large carriers), designation (private, civil, military), purpose (transporter, carrier, training, sport, ﬁghter, etc.), and technological factors such as propulsion (glider, propellor, jet). Overall, thousands of different airplane models exist or have existed. An interesting mode of variation, which is is not shared with categories such as animals, isthefactthatthestructureofaircraftcanchangewith
+
+their design. For example, the number of wings, undercarriages, wheels per undercarriage, engines, etc. varies. Second, the aircraft designs exhibit systematic historical variations in their style. Thirdly, the same aircraft models are used by different airliner companies, resulting in variable livery branding. Finally, aircraft are largely rigid objects, reducing the impact of deformability on classiﬁcation performance, and allowing one to focus on the other aspects of FGVC.
+
+Our contributions are three-fold: (i) we introduce a new large dataset of aircraft images with detailed model annotations; (ii) we describe how this data was collected using on-line resources and the work of hobbyists and enthusiasts – a method that may be applicable to other object classes; and (iii) we present baseline results on aircraft model identiﬁcation. Sect. 2 describes the content of FGVC-Aircraft, including task deﬁnitions and evaluation protocols, Sect. 3 the dataset construction, Sect. 4 examines the performance of a baseline classiﬁer on the data, and Sect. 5 summarises the contributions, giving further details on the data usage policy.
+
+2. The dataset: content, tasks, and evaluation
+
+FGVC-Aircraft contains 10,000 images of airplanes annotated with the model and bounding box of the dominant aircraft they contain. Aircraft models are organised in a four-level hierarchy, of which only the last three levels are of interest here. • Model. This is the most speciﬁc class label, such as Boeing 737-76J. This level is not considered meaningful for FGVC as differences between models may not be visually measurable, at least given an image of the exterior of the aircraft.
+
+• Variant. Model variants are the ﬁner distinction level that are visually detectable, and were obtained by merging visually indistinguishable models. For example, the variant Boeing 737-700 includes 87 models such as 737- 7H4, 737-76N, 737-7K2, etc. The dataset contains 100 variants.
+
+• Family. Families group together model variants that differ in subtle ways, making differences between families
+
+Figure 1. Our dataset contains 100 variants of aircrafts shown above. These are also annotated with their family and manufacturer, as well as bounding boxes.
+
+more substantial. The goal of this level is to create a classiﬁcation task of intermediate difﬁculty. For example, the family Boeing 737 contains variants 737-200, 737-300, ..., 737-900. The dataset contains 70 families.
+
+• Manufacturer. A manufacturer is a grouping of families produced by the same company. For example, Boeing contains the families 707, 727, 737, .... The dataset contains airplanes made by 30 different manufacturers.
+
+The list of model variants and corresponding example images are given in Fig. 1 and the hierarchy is given in Fig. 2.
+
+FGVC-Aircraft contains 100 example images for each of the 100 model variants. The image resolution is about 1-2 Mpixels. Image quality varies as images were captured in a span of decades, but it is usually very good. The dominant aircraft is generally well centred, which helps focusing on ﬁne-grained discrimination rather than object detection. Images are equally divided into training, validation, and test subsets, so that each subset contains either 33 or 34 images for each variant. Algorithms should be designed on the training and validation subsets, and tested just once on the test subset to avoid over ﬁtting.
+
+Bounding box information can be used for training the
+
+aircraft classiﬁers, but should not be used for testing.
+
+We deﬁne three tasks: aircraft variant recognition, aircraft family recognition, and aircraft manufacturer recognition. The performance is evaluated as class-normalised average classiﬁcation accuracy, obtained as the average of the diagonal elements of the normalised confusion matrix. Formally, let yi ∈ {1,...,M} the ground truth label for image i = 1,...,N (where N = 10,000 and M = 100 for variant recognition). Let ˆyi be the label estimated automatically. The entry Cpq of the confusion matrix is given by
+
+|{i : ˆyi = q ∧ yi = p}| |{i : yi = p}|
+
+where | · | denotes the cardinality of a set. The classnormalised average accuracy is then (cid:80)M
+
+p=1 Cpp/M.
+
+The dataset
+
+is made publicly available for
+
+research purposes only at http://www.robots.ox. ac.uk/˜vgg/data/fgvc-aircraft/. Please note (Sect. 3.1) that the data contains images that were generously made available for research purposes by several photographers; however, these images should not be used for any other purpose without obtaining prior and explicit consent by the respective authors (see Sect. 5.1 for further details).
+
+707−320727−200737−200737−300737−400737−500737−600737−700737−800737−900747−100747−200747−300747−400757−200757−300767−200767−300767−400777−200777−300A300B4A310A318A319A320A321A330−200A330−300A340−200A340−300A340−500A340−600A380ATR−42ATR−72An−12BAE 146−200BAE 146−300BAE−125Beechcraft 1900Boeing 717C−130C−47CRJ−200CRJ−700CRJ−900Cessna 172Cessna 208Cessna 525Cessna 560Challenger 600DC−10DC−3DC−6DC−8DC−9−30DH−82DHC−1DHC−6DHC−8−100DHC−8−300DR−400Dornier 328E−170E−190E−195EMB−120ERJ 135ERJ 145Embraer Legacy 600Eurofighter TyphoonF−16A/BF/A−18Falcon 2000Falcon 900Fokker 100Fokker 50Fokker 70Global ExpressGulfstream IVGulfstream VHawk T1Il−76L−1011MD−11MD−80MD−87MD−90MetrolinerModel B200PA−28SR−20Saab 2000Saab 340SpitfireTornadoTu−134Tu−154Yak−42Figure 2. Label hierarchy shown as the manufacturer, family and the variant. Our dataset contains aircrafts of 100 different variants grouped under 70 families and 30 manufacturers.
+
+Authorship information is contained in a banner at the bottom of each image (20 pixels high). Do not forget to remove this banner before using the images in experiments.
+
+3. Dataset construction
+
+Identifying the detailed model of an aircraft from an image is challenging for anyone but aircraft experts, and collecting 10,000 such annotations is daunting in general. Sect. 3.1 explains how leveraging aircraft data collected by aircraft spotters was the key in the construction of FGVCAircraft. However, collecting data from a restricted number of sources presents its own challenges. Sect. 3.2 introduces a notion of diversity and applies it to select a subset of the data that is maximally uncorrelated. Sect. 3.3 explains how bounding box annotations were crowdsourced using Amazon Mechanical Turk, and Sect. 3.4 how the hierarchical labels were obtained.
+
+3.1. Initial data collection
+
+Enthusiasts, collectors, and other hobbyists may be an excellent source of annotated visual data. In particular, data obtained from aircraft spotters was instrumental in the construction of this FGVC-Aircraft. A large number of such annotated images is available online in Airliners.net (http://www.airliners.net/), a repository of air-
+
+craft spotting data (similar collections exists, for example, for cars and trains). While using such images for research purposes may be considered fair use, nevertheless we found appropriate to ask for explicit permission to the photographers due to the large quantity of data involved. Of about twenty photographers that were contacted, permission to use the data for research purposes was granted by about ten of them (Sect. 5.1), and an explicit negative answer was receivedonlyfromtwoofthem. FGVC-Aircraftcontainsdata only from the photographers that explicitly made their pictures available (see Sect. 2 and Sect. 5.1 for further details). About 70,000 images were downloaded from the ten photographers, resulting in images spanning thousands of different aircraft models. Even after grouping these models into variants, there was still a very large number of different classes, with a very skewed distribution. Popular families such as Airbus and Boeing included thousand of images per model variant, whereas rarer models counted only a dozen images. The 100 most frequent variants were retained, resulting in at least 120 images per variant.
+
+3.2. Diversity maximisation
+
+One drawback of relying on a small set of photographers is that unwanted correlation may be introduced in the data. While these photographers tend to be active in the span of several years, it is natural to expect at least regional de-
+
+ManufacturerFamilyVariantBoeingBoeing 707707−320Boeing 727727−200Boeing 737737−200737−300737−400737−500737−600737−700737−800737−900Boeing 747747−100747−200747−300747−400Boeing 757757−200757−300Boeing 767767−200767−300767−400Boeing 777777−200777−300AirbusA300A300B4A310A310A320A318A319A320A321A330A330−200A330−300A340A340−200A340−300A340−500A340−600A380A380ATRATR−42ATR−42ATR−72ATR−72AntonovAn−12An−12British AerospaceBAE 146BAE 146−200BAE 146−300BAE−125BAE−125BeechcraftBeechcraft 1900Beechcraft 1900BoeingBoeing 717Boeing 717Lockheed CorporationC−130C−130Douglas Aircraft CompanyC−47C−47CanadairCRJ−200CRJ−200CRJ−700CRJ−700CRJ−900CessnaCessna 172Cessna 172Cessna 208Cessna 208Cessna CitationCessna 525ManufacturerFamilyVariantCessnaCessna CitationCessna 560CanadairChallenger 600Challenger 600McDonnell DouglasDC−10DC−10Douglas Aircraft CompanyDC−3DC−3DC−6DC−6DC−8DC−8McDonnell DouglasDC−9DC−9−30de HavillandDH−82DH−82DHC−1DHC−1DHC−6DHC−6Dash 8DHC−8−100DHC−8−300RobinDR−400DR−400DornierDornier 328Dornier 328EmbraerEmbraer E−JetE−170E−190E−195EMB−120EMB−120Embraer ERJ 145ERJ 135ERJ 145Embraer Legacy 600Embraer Legacy 600EurofighterEurofighter TyphoonEurofighter TyphoonLockheed MartinF−16F−16A/BMcDonnell DouglasF/A−18F/A−18Dassault AviationFalcon 2000Falcon 2000Falcon 900Falcon 900FokkerFokker 100Fokker 100Fokker 50Fokker 50Fokker 70Fokker 70Bombardier AerospaceGlobal ExpressGlobal ExpressGulfstream AerospaceGulfstreamGulfstream IVGulfstream VBritish AerospaceHawk T1Hawk T1IlyushinIl−76Il−76Lockheed CorporationL−1011L−1011McDonnell DouglasMD−11MD−11MD−80MD−80MD−87MD−90MD−90FairchildMetrolinerMetrolinerBeechcraftKing AirModel B200PiperPA−28PA−28Cirrus AircraftSR−20SR−20SaabSaab 2000Saab 2000Saab 340Saab 340SupermarineSpitfireSpitfirePanaviaTornadoTornadoTupolevTu−134Tu−134Tu−154Tu−154YakovlevYak−42Yak−42Model DR-400 Euroﬁghter Typhoon F-16A/B Cessna 172 SR-20 BAE-125 DH-82 Tornado C-130 Hawk T1 Model B200 DHC-1 Il-76 An-12 Falcon 900 PA-28 Spitﬁre DC-6 E-195 Cessna 560 Fokker 50 Cessna 525 Global Express Saab 2000 Yak-42 A318 Falcon 2000 Metroliner Beechcraft 1900 Dornier 328 Fokker 70 Saab 340 737-600 A380
+
+Accuracy 94.1% 94.1% 90.9% 88.2% 88.2% 84.8% 84.8% 84.8% 81.8% 81.8% 81.8% 78.8% 76.5% 75.8% 75.8% 75.8% 70.6% 69.7% 69.7% 67.6% 67.6% 66.7% 66.7% 66.7% 66.7% 64.7% 64.7% 64.7% 63.6% 63.6% 63.6% 63.6% 57.6% 57.6%
+
+Model DHC-8-100 Embraer Legacy 600 F/A-18 757-300 767-400 A340-500 Cessna 208 Challenger 600 E-170 Gulfstream V ATR-42 CRJ-900 EMB-120 DC-3 DHC-6 Tu-134 Gulfstream IV Tu-154 737-900 Fokker 100 L-1011 Boeing 717 CRJ-200 DHC-8-300 ERJ 145 ATR-72 707-320 747-400 CRJ-700 MD-11 MD-90 777-300 A340-200 A340-600
+
+Accuracy 57.6% 57.6% 57.6% 54.5% 54.5% 54.5% 54.5% 54.5% 54.5% 54.5% 51.5% 51.5% 51.5% 50.0% 50.0% 48.5% 47.1% 47.1% 45.5% 42.4% 42.4% 41.2% 41.2% 39.4% 39.4% 38.2% 36.4% 36.4% 36.4% 36.4% 36.4% 35.3% 35.3% 35.3%
+
+Model ERJ 135 747-100 747-300 767-200 777-200 BAE 146-200 DC-10 DC-8 MD-87 737-500 727-200 A300B4 A330-300 E-190 BAE 146-300 737-700 A340-300 MD-80 A310 A319 A330-200 C-47 747-200 737-200 737-800 757-200 A320 767-300 DC-9-30 737-400 A321 737-300
+
+Accuracy 35.3% 33.3% 33.3% 33.3% 33.3% 33.3% 33.3% 33.3% 33.3% 32.4% 30.3% 30.3% 30.3% 29.4% 26.5% 24.2% 24.2% 23.5% 21.2% 21.2% 21.2% 21.2% 20.6% 17.6% 17.6% 17.6% 15.2% 14.7% 14.7% 12.1% 11.8% 06.1%
+
+Average
+
+Table 1. Accuracy of variant prediction sorted according to the accuracy for each of the 100 variants in our dataset.
+
+pendencies (for example certain airliners may ﬂy more frequently to certain airports). Therefore, the data was ﬁrst ﬁltered to maximise internal diversity. Each pair of images for a given variant was compared based on photographer, time, airliner, and airport, obtaining an “a priori” similarity score (i.e., without looking at the pictures). Then, 100 images per variant were incrementally and greedily selected in order of decreasing diversity to the images already added to the collection. After doing so, images were randomly assigned to the training, validation, and test subsets. This simple procedure was effective at reducing internal correlation in the data, as reﬂected by a substantial reduction of the classiﬁcation performance of baseline classiﬁers. In particular, sequences of photos are broken whenever possible.
+
+Isolating different photographers in different splits was also considered as an option, but ultimately it was rejected due to the complex dependency structure that such a choice
+
+would have introduced in the data.
+
+3.3. Bounding boxes
+
+About 110 images were initially selected for each variant and submitted to Amazon Mechanical Turk for bounding box annotation. Annotators were instructed to skip images that did not contain the exterior of an aircraft, so that these imagescouldbeidentiﬁedanddiscarded. Threeannotations were collected for each image, presenting annotators with batches of 10 images at a time and paying 0.03 USD per batch. Overall, thecostofannotatingalltheimageswas110 USD and annotations were complete in less than 48 hours. Out of three annotations, we sought at least two whose overlap over union similarity score was above 0.85% (fairly restrictive in practice), discarding other annotations. The remaining annotations were then averaged to obtain the ﬁnal bounding box, and images without a bounding box (usually
+
+due to a problematic image) were discarded. Since slightly more than 100 images were submitted for annotation, this eventually resulted in a sufﬁcient number of validated images.
+
+3.4. Hierarchy
+
+The hierarchy (Fig. 2) was obtained largely by manual inspection. Fortunately, sorting models by name is very likely to suggest possible merges in a straightforward way. These were veriﬁed manually by searching example images, Wikipedia, and the manufacturer websites for clear evidence that two model would differ visually. If no evidence was found, then the two models were merged in a variant. Sometimes, differences are fairly subtle; for example, Boeing variants -200, -300, -400, ...differ mostly in length, an attribute that is difﬁcult to estimate from monocular images (in this case counting windows may be the best way of telling a model from another).
+
+4. Baselines
+
+We consider the classiﬁcation tasks given in Sect. 2. For example, the variant classiﬁcation for our dataset is a 100- way binary classiﬁcation problem and performance is measured in term of class-normalised average accuracy as described earlier.
+
+Fig. 3 shows the confusion matrix for a strong baseline model (non-linear SVM on a χ2 kernel, bag-of-visual words, 600 k-means words dictionary, multi-scale dense SIFT features, and 1 × 1, 2 × 2 spatial pyramid [1]). These modelsweretrainedontheentireimageignoringthebounding box information. As seen in Tab. 1 the performance is quite good for a few relatively distinctive categories (e.g., the “Euroﬁghter Typhoon” has error of just 5.9%). On the other hand, bag-of-visual-words is much worse at picking up subtle variations, such as for Airbus or Boeing family, resulting in large intra-family confusion (Fig. 3). The overall accuracy of the classiﬁer is 48.69%.
+
+Fig. 4 shows the accuracy of the classiﬁer when measured on the hierarchical label classiﬁcation tasks. The accuracy for the variant classiﬁcation is 58.48%, whereas, the accuracy for manufacturer classiﬁcation is 71.30%. At the top level the two manufacturers, Boeing and Airbus, are most confused with one another perhaps due to the similar kinds of aircrafts they manufacture – large passenger planes catering to airliners. Note that for the hierarchical evaluation we trained our models for the variant classiﬁcation task and simply measured the performance at different levels of the hierarchy by merging the labels below. An alternative strategy, which is to train the models directly for the labels at a given level in the hierarchy, performed signiﬁcantly worse in our experiments.
+
+5. Summary
+
+We have introduced FGVC-Aircraft, a new large dataset of aircraft images for ﬁne-grained visual categorisation. The data contains 10,000 images, 100 airplane model variants, 70 families, and 30 manufacturers. We believe that FGVC-Aircraft has the potential of introducing aircraft recognition as a novel domain in FGVC to the wider computer vision community (FGVC-Aircraft will be part of the ImageNet 2013 FGVC challenge). Compared to other classes used frequently in FGVC, aircraft have different and interesting modes of variation.
+
+Images in FGVC-Aircraft were obtained from aircraft spotter collections, maximising internal diversity in order to reduce unwanted correlation between images taken by a limited number of photographers; in the future, we plan to substantially increase the size of the FGVC-Aircraft dataset by including more models as more and more photographers provide permission to use their photos, and apply the same construction to other object categories as well.
+
+5.1. Acknowledgments
+
+The creation of this dataset started during the Johns Hopkins CLSP Summer Workshop 2012, Towards a Detailed Understanding of Objects and Scenes in Natural Images1 with, in alphabetical order, Matthew B. Blaschko, Ross B. Girshick, Juho Kannala, Iasonas Kokkinos, Siddharth Mahendran, Subhransu Maji, Sammy Mohamed, Esa Rahtu, Naomi Saphra, Karen Simonyan, Ben Taskar, AndreaVedaldi, andDavidWeiss. TheCLSPworkshopwas supported by the National Science Foundation via Grant No 1005411, the Ofﬁce of the Director of National Intelligence via the JHU Human Language Technology Center of Excellence; and Google Inc. A special thanks goes to Pekka Rantalankila for helping with the creation of the airplane hierarchy.
+
+Many thanks to the photographers that kindly made available their images for research purposes. These are, in alphabetical order, Mick Bajcar, Aldo Bidini, Wim Callaert, Tommy Desmet, Thomas Posch, James Richard Covington, Gerry Stegmeier, Ben Wang, Darren Wilson and Konstantin von Wedelstaedt. Please note that images are made available exclusively for non-commercial research purposes. The original authors retain the copyright on the respective pictures and should be contacted for any other usage of them. Photographers may be contacted through their http://www.airliners.net proﬁle pages, which are linked from http://www.robots. ox.ac.uk/˜vgg/data/fgvc-aircraft/.
+
+1http://www.clsp.jhu.edu/workshops/
+
+archive/ws-12/groups/tduosn/.
+
+Figure 3. Confusion matrix for the 100 variant classiﬁcation challenge. Some high confusion, due to the similarity of the models are also shown. These correspond to the Boeing 737 family, Boeing 747 family, Airbus family, McDonnell Douglas (MD) and the Embraer family. The average diagonal accuracy is 48.69%.
+
+Figure 4. Confusion matrix for the family (left) and manufacturer (right) classiﬁcation tasks.
+
+[5] C. Wah, S. Branson, P. Welinder, P. Perona, and S. Belongie. The caltech-ucsd birds-200-2011 dataset. Technical report, California Institute of Technology, 2011. 1
+
+References
+
+[1] K. Chatﬁeld, V. Lempitsky, A. Vedaldi, and A. Zisserman. The devil is in the details: an evaluation of recent feature encoding methods. In Proc. BMVC, 2011. 5
+
+[2] Aditya Khosla, Nityananda Jayadevaprakash, Bangpeng Yao, and Li Fei-Fei. Novel dataset for ﬁne-grained image categorization. In CVPR Workshop on Fine-Grained Visual Categorization, 2011. 1
+
+[3] J. Liu, A. Kanazawa, D. Jacobs, and P. Belhumeur. Dog breed classi-
+
+ﬁcation using part localization. In Proc. ECCV, 2012.
+
+[4] O. Parkhi, A. Vedaldi, C. V. Jawahar, and A. Zisserman. Cats vs dogs.
+
+In Proc. CVPR, 2012. 1
+
+747−100747−200747−300747−400747−100747−200747−300747−40000.20.40.60.81Confusion matrix: Family classification (58.48 % accuracy)A300A310A320A330A340A380ATR−42ATR−72An−12BAE 146BAE−125Beechcraft 1900Boeing 707Boeing 717Boeing 727Boeing 737Boeing 747Boeing 757Boeing 767Boeing 777C−130C−47CRJ−200CRJ−700Cessna 172Cessna 208Cessna CitationChallenger 600DC−10DC−3DC−6DC−8DC−9DH−82DHC−1DHC−6DR−400Dash 8Dornier 328EMB−120Embraer E−JetEmbraer ERJ 145Embraer Legacy 600Eurofighter TyphoonF−16F/A−18Falcon 2000Falcon 900Fokker 100Fokker 50Fokker 70Global ExpressGulfstreamHawk T1Il−76King AirL−1011MD−11MD−80MD−90MetrolinerPA−28SR−20Saab 2000Saab 340SpitfireTornadoTu−134Tu−154Yak−42A300A310A320A330A340A380ATR−42ATR−72An−12BAE 146BAE−125Beechcraft 1900Boeing 707Boeing 717Boeing 727Boeing 737Boeing 747Boeing 757Boeing 767Boeing 777C−130C−47CRJ−200CRJ−700Cessna 172Cessna 208Cessna CitationChallenger 600DC−10DC−3DC−6DC−8DC−9DH−82DHC−1DHC−6DR−400Dash 8Dornier 328EMB−120Embraer E−JetEmbraer ERJ 145Embraer Legacy 600Eurofighter TyphoonF−16F/A−18Falcon 2000Falcon 900Fokker 100Fokker 50Fokker 70Global ExpressGulfstreamHawk T1Il−76King AirL−1011MD−11MD−80MD−90MetrolinerPA−28SR−20Saab 2000Saab 340SpitfireTornadoTu−134Tu−154Yak−42Confusion matrix: Manufacturer classification (71.30 % accuracy)ATRAirbusAntonovBeechcraftBoeingBombardier AerospaceBritish AerospaceCanadairCessnaCirrus AircraftDassault AviationDornierDouglas Aircraft CompanyEmbraerEurofighterFairchildFokkerGulfstream AerospaceIlyushinLockheed CorporationLockheed MartinMcDonnell DouglasPanaviaPiperRobinSaabSupermarineTupolevYakovlevde HavillandATRAirbusAntonovBeechcraftBoeingBombardier AerospaceBritish AerospaceCanadairCessnaCirrus AircraftDassault AviationDornierDouglas Aircraft CompanyEmbraerEurofighterFairchildFokkerGulfstream AerospaceIlyushinLockheed CorporationLockheed MartinMcDonnell DouglasPanaviaPiperRobinSaabSupermarineTupolevYakovlevde Havilland  747−100747−200747−300747−400747−100747−200747−300747−40000.20.40.60.81
+

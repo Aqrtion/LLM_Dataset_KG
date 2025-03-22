@@ -1,0 +1,159 @@
+{
+    "entities": [
+        {
+            "id": "20250319022405P1",
+            "name": "Deep Hashing Network for Unsupervised Domain Adaptation",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Hemanth Venkateswara",
+                    "Jose Eusebio",
+                    "Shayok Chakraborty",
+                    "Sethuraman Panchanathan"
+                ],
+                "institution": "Arizona State University"
+            }
+        },
+        {
+            "id": "20250319022405D1",
+            "name": "Office-Home",
+            "type": "Dataset",
+            "attributes": {
+                "size": "15,500 images",
+                "categories": 65,
+                "domains": [
+                    "Art",
+                    "Clipart",
+                    "Product",
+                    "Real-World"
+                ],
+                "availability": "publicly available"
+            }
+        },
+        {
+            "id": "20250319022405R1",
+            "name": "https://hemanthdv.github.io/officehome-dataset/",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022405D2",
+            "name": "Office",
+            "type": "Dataset",
+            "attributes": {
+                "size": "4,100 images",
+                "categories": 31
+            }
+        },
+        {
+            "id": "20250319022405D3",
+            "name": "Office-Caltech",
+            "type": "Dataset",
+            "attributes": {
+                "size": "2,533 images",
+                "categories": 10
+            }
+        },
+        {
+            "id": "20250319022405D4",
+            "name": "ImageNet 2012",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "pre-trained model for VGG-F network"
+            }
+        },
+        {
+            "id": "20250319022405T1",
+            "name": "unsupervised domain adaptation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022405T2",
+            "name": "object recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022405T3",
+            "name": "hashing",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022405T4",
+            "name": "feature learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022405T5",
+            "name": "image classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022405T6",
+            "name": "cross-modal hashing",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319022405D1",
+            "head": "Office-Home",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319022405R1",
+            "tail": "https://hemanthdv.github.io/officehome-dataset/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319022405D1",
+            "head": "Office-Home",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319022405P1",
+            "tail": "Deep Hashing Network for Unsupervised Domain Adaptation",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319022405D1",
+            "head": "Office-Home",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022405T1",
+            "tail": "unsupervised domain adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319022405D1",
+            "head": "Office-Home",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022405T2",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319022405D4",
+            "head": "ImageNet 2012",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022405T4",
+            "tail": "feature learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319022405D2",
+            "head": "Office",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319022405D3",
+            "tail": "Office-Caltech",
+            "tail_type": "Dataset"
+        }
+    ],
+    "has_been_merged": false
+}

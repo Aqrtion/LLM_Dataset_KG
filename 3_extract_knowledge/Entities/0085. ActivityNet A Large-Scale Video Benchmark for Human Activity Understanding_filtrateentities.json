@@ -1,0 +1,141 @@
+{
+    "entities": [
+        {
+            "id": "20250319035231P1",
+            "name": "ActivityNet: A Large-Scale Video Benchmark for Human Activity Understanding",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Fabian Caba Heilbron",
+                    "Victor Escorcia",
+                    "Bernard Ghanem",
+                    "Juan Carlos Niebles"
+                ],
+                "institutions": [
+                    "Universidad del Norte, Colombia",
+                    "King Abdullah University of Science and Technology (KAUST), Saudi Arabia"
+                ]
+            }
+        },
+        {
+            "id": "20250319035231D1",
+            "name": "ActivityNet",
+            "type": "Dataset",
+            "attributes": {
+                "size": "849 video hours",
+                "number of classes": 203,
+                "average videos per class": 137,
+                "activity instances per video": 1.41,
+                "structure": "hierarchical taxonomy (4 levels)",
+                "annotation type": "temporal boundaries",
+                "collection method": "Amazon Mechanical Turk"
+            }
+        },
+        {
+            "id": "20250319035231D2",
+            "name": "UCF101",
+            "type": "Dataset",
+            "attributes": {
+                "number of categories": 101
+            }
+        },
+        {
+            "id": "20250319035231D3",
+            "name": "HMDB51",
+            "type": "Dataset",
+            "attributes": {
+                "number of categories": 51
+            }
+        },
+        {
+            "id": "20250319035231D4",
+            "name": "Hollywood dataset",
+            "type": "Dataset",
+            "attributes": {
+                "number of action categories": 12
+            }
+        },
+        {
+            "id": "20250319035231D5",
+            "name": "Sports-1M",
+            "type": "Dataset",
+            "attributes": {
+                "number of categories": 500,
+                "annotation method": "automatic tagging",
+                "noise level": "high"
+            }
+        },
+        {
+            "id": "20250319035231D6",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {
+                "description": "A Large-Scale Hierarchical Image Database"
+            }
+        },
+        {
+            "id": "20250319035231D7",
+            "name": "TinyImages",
+            "type": "Dataset",
+            "attributes": {
+                "size": "80 million images",
+                "resolution": "32x32",
+                "noise level": "high"
+            }
+        },
+        {
+            "id": "20250319035231R1",
+            "name": "http://www.activity-net.org",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319035231T1",
+            "name": "human activity understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319035231T2",
+            "name": "untrimmed video classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319035231T3",
+            "name": "trimmed activity classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319035231T4",
+            "name": "activity detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319035231T5",
+            "name": "action recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319035231T6",
+            "name": "object recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319035231T7",
+            "name": "scene recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319035231T8",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

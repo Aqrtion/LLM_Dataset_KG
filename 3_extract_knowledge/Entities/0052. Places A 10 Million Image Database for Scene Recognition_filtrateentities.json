@@ -1,0 +1,193 @@
+{
+    "entities": [
+        {
+            "id": "20250319021948P1",
+            "name": "Places: A 10 Million Image Database for Scene Recognition",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Bolei Zhou",
+                    "Agata Lapedriza",
+                    "Aditya Khosla",
+                    "Aude Oliva",
+                    "Antonio Torralba"
+                ],
+                "institutions": [
+                    "Massachusetts Institute of Technology",
+                    "Universitat Oberta de Catalunya"
+                ]
+            }
+        },
+        {
+            "id": "20250319021948D1",
+            "name": "Places Database",
+            "type": "Dataset",
+            "attributes": {
+                "size": "10 million images",
+                "number_of_categories": 434,
+                "versions": [
+                    "Places205",
+                    "Places365"
+                ],
+                "resolution": "at least 200x200 pixels",
+                "diversity": "high"
+            }
+        },
+        {
+            "id": "20250319021948D2",
+            "name": "SUN database",
+            "type": "Dataset",
+            "attributes": {
+                "number_of_categories": 397
+            }
+        },
+        {
+            "id": "20250319021948D3",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1.2 million images"
+            }
+        },
+        {
+            "id": "20250319021948D4",
+            "name": "COCO dataset",
+            "type": "Dataset",
+            "attributes": {
+                "focus": "object instances in scene context"
+            }
+        },
+        {
+            "id": "20250319021948D5",
+            "name": "PASCAL VOC dataset",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948D6",
+            "name": "ADE20K",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948D7",
+            "name": "Visual Genome dataset",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948D8",
+            "name": "Cityscapes dataset",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948D9",
+            "name": "Tiny Image dataset",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948D10",
+            "name": "MIT Indoor67",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948D11",
+            "name": "Scene15",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948D12",
+            "name": "SUN Attribute",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948D13",
+            "name": "Caltech101",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948D14",
+            "name": "Caltech256",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948D15",
+            "name": "Stanford Action40",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948D16",
+            "name": "UIUC Event8",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948T1",
+            "name": "scene recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948T2",
+            "name": "scene classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948T3",
+            "name": "object detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948T4",
+            "name": "image classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948T5",
+            "name": "semantic segmentation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948T6",
+            "name": "scene understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948T7",
+            "name": "visual recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948T8",
+            "name": "object localization",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948T9",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021948T10",
+            "name": "transfer learning",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

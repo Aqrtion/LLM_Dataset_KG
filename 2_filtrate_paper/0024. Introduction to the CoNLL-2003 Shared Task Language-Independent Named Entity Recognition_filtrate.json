@@ -1,0 +1,8 @@
+{
+    "is_related_to_large_models": false,
+    "introduces_new_dataset": true,
+    "dataset_info": {
+        "full_name": "CoNLL-2003 Shared Task Dataset",
+        "abbreviation": "CoNLL-2003"
+    }
+}

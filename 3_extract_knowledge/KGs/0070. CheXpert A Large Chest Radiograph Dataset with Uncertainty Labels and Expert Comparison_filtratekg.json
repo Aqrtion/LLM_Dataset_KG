@@ -1,0 +1,240 @@
+{
+    "entities": [
+        {
+            "id": "20250319030744P1",
+            "name": "CheXpert: A Large Chest Radiograph Dataset with Uncertainty Labels and Expert Comparison",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Jeremy Irvin",
+                    "Pranav Rajpurkar",
+                    "Michael Ko",
+                    "Yifan Yu",
+                    "Silviana Ciurea-Ilcus",
+                    "Chris Chute",
+                    "Henrik Marklund",
+                    "Behzad Haghgoo",
+                    "Robyn Ball",
+                    "Katie Shpanskaya",
+                    "Jayne Seekins",
+                    "David A. Mong",
+                    "Safwan S. Halabi",
+                    "Jesse K. Sandberg",
+                    "Ricky Jones",
+                    "David B. Larson",
+                    "Curtis P. Langlotz",
+                    "Bhavik N. Patel",
+                    "Matthew P. Lungren",
+                    "Andrew Y. Ng"
+                ],
+                "institution": "Stanford University"
+            }
+        },
+        {
+            "id": "20250319030744D1",
+            "name": "CheXpert",
+            "type": "Dataset",
+            "attributes": {
+                "size": "224,316 chest radiographs",
+                "patients": "65,240",
+                "labels": 14,
+                "uncertainty_labels": "present",
+                "modality": "chest radiography"
+            }
+        },
+        {
+            "id": "20250319030744D2",
+            "name": "ChestX-ray14",
+            "type": "Dataset",
+            "attributes": {
+                "description": "Hospital-Scale Chest X-Ray Database",
+                "label_type": "weakly-supervised"
+            }
+        },
+        {
+            "id": "20250319030744D3",
+            "name": "MIMIC-CXR",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030744D4",
+            "name": "OpenI",
+            "type": "Dataset",
+            "attributes": {
+                "size": "7,470 frontal-view radiographs"
+            }
+        },
+        {
+            "id": "20250319030744D5",
+            "name": "PLCO Lung",
+            "type": "Dataset",
+            "attributes": {
+                "size": "185,421 images",
+                "purpose": "lung cancer screening"
+            }
+        },
+        {
+            "id": "20250319030744R1",
+            "name": "https://stanfordmlgroup.github.io/competitions/chexpert",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030744T1",
+            "name": "automated chest radiograph interpretation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030744T2",
+            "name": "pathology detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030744T3",
+            "name": "medical diagnosis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030744T4",
+            "name": "screening",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030744T5",
+            "name": "management of diseases",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030744T6",
+            "name": "training convolutional neural networks",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030744T7",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030744T8",
+            "name": "uncertainty detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030744T9",
+            "name": "radiology report labeling",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319030744R1",
+            "tail": "https://stanfordmlgroup.github.io/competitions/chexpert",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319030744P1",
+            "tail": "CheXpert: A Large Chest Radiograph Dataset with Uncertainty Labels and Expert Comparison",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T1",
+            "tail": "automated chest radiograph interpretation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T2",
+            "tail": "pathology detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T3",
+            "tail": "medical diagnosis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T4",
+            "tail": "screening",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T5",
+            "tail": "management of diseases",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T6",
+            "tail": "training convolutional neural networks",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T7",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T8",
+            "tail": "uncertainty detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T9",
+            "tail": "radiology report labeling",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

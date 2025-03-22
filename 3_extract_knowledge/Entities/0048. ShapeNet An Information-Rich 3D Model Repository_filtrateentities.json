@@ -1,0 +1,235 @@
+{
+    "entities": [
+        {
+            "id": "20250319020902P1",
+            "name": "ShapeNet: An Information-Rich 3D Model Repository",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Angel X. Chang",
+                    "Thomas Funkhouser",
+                    "Leonidas Guibas",
+                    "Pat Hanrahan",
+                    "Qixing Huang",
+                    "Zimo Li",
+                    "Silvio Savarese",
+                    "Manolis Savva",
+                    "Shuran Song",
+                    "Hao Su",
+                    "Jianxiong Xiao",
+                    "Li Yi",
+                    "Fisher Yu"
+                ],
+                "institutions": [
+                    "Stanford University",
+                    "Princeton University",
+                    "Toyota Technological Institute at Chicago"
+                ]
+            }
+        },
+        {
+            "id": "20250319020902D1",
+            "name": "ShapeNet",
+            "type": "Dataset",
+            "attributes": {
+                "size": "3,000,000 models",
+                "synsets": "3,135 categories",
+                "annotations": [
+                    "rigid alignments",
+                    "parts",
+                    "symmetry planes",
+                    "physical sizes",
+                    "keywords"
+                ]
+            }
+        },
+        {
+            "id": "20250319020902D2",
+            "name": "ShapeNetCore",
+            "type": "Dataset",
+            "attributes": {
+                "size": "51,300 models",
+                "categories": "55"
+            }
+        },
+        {
+            "id": "20250319020902D3",
+            "name": "ShapeNetSem",
+            "type": "Dataset",
+            "attributes": {
+                "size": "12,000 models",
+                "categories": "270",
+                "annotations": [
+                    "real-world dimensions",
+                    "material composition",
+                    "volume",
+                    "weight"
+                ]
+            }
+        },
+        {
+            "id": "20250319020902D4",
+            "name": "Princeton Shape Benchmark",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1,800 models",
+                "categories": "90"
+            }
+        },
+        {
+            "id": "20250319020902D5",
+            "name": "SHREC 2014",
+            "type": "Dataset",
+            "attributes": {
+                "size": "9,000 models",
+                "categories": "171"
+            }
+        },
+        {
+            "id": "20250319020902D6",
+            "name": "Benchmark for 3D Mesh Segmentation",
+            "type": "Dataset",
+            "attributes": {
+                "size": "380 models",
+                "categories": "19"
+            }
+        },
+        {
+            "id": "20250319020902D7",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {
+                "size": "14M images",
+                "categories": "20,000"
+            }
+        },
+        {
+            "id": "20250319020902D8",
+            "name": "LabelMe",
+            "type": "Dataset",
+            "attributes": {
+                "annotations": "segmentations",
+                "size": "30,000 images"
+            }
+        },
+        {
+            "id": "20250319020902D9",
+            "name": "SUN dataset",
+            "type": "Dataset",
+            "attributes": {
+                "annotations": "3M object annotations",
+                "categories": "4,000"
+            }
+        },
+        {
+            "id": "20250319020902D10",
+            "name": "Protein Data Bank",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100K protein structures"
+            }
+        },
+        {
+            "id": "20250319020902D11",
+            "name": "PASCAL 3D+",
+            "type": "Dataset",
+            "attributes": {
+                "categories": "12"
+            }
+        },
+        {
+            "id": "20250319020902R1",
+            "name": "http://www.shapenet.org",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020902P2",
+            "name": "ImageNet: A large-scale hierarchical image database",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Jia Deng",
+                    "Wei Dong",
+                    "Richard Socher",
+                    "Li-Jia Li",
+                    "Kai Li",
+                    "Li Fei-Fei"
+                ],
+                "venue": "CVPR 2009"
+            }
+        },
+        {
+            "id": "20250319020902P3",
+            "name": "Princeton Shape Benchmark",
+            "type": "Paper",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020902P4",
+            "name": "WordNet: a lexical database for English",
+            "type": "Paper",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020902T1",
+            "name": "segmentation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020902T2",
+            "name": "alignment",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020902T3",
+            "name": "correspondence",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020902T4",
+            "name": "shape retrieval",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020902T5",
+            "name": "shape classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020902T6",
+            "name": "object recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020902T7",
+            "name": "scene understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020902T8",
+            "name": "part models learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020902T9",
+            "name": "training object detection algorithms",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020902T10",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

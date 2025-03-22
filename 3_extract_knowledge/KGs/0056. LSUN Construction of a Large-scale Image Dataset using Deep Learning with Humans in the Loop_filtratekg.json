@@ -1,0 +1,172 @@
+{
+    "entities": [
+        {
+            "id": "20250319023144P1",
+            "name": "LSUN: Construction of a Large-Scale Image Dataset using Deep Learning with Humans in the Loop",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Fisher Yu",
+                    "Ari Seff",
+                    "Yinda Zhang",
+                    "Shuran Song",
+                    "Thomas Funkhouser",
+                    "Jianxiong Xiao"
+                ],
+                "institution": "Princeton University"
+            }
+        },
+        {
+            "id": "20250319023144D1",
+            "name": "LSUN",
+            "type": "Dataset",
+            "attributes": {
+                "size": "10 million scene images, 59 million object images",
+                "categories": "10 scene, 20 object",
+                "precision": "~90%",
+                "collection_method": "iterative deep learning with Amazon Mechanical Turk",
+                "image_sources": "Google Images",
+                "resolution": "minimum dimension 256 pixels",
+                "comparison": "10x denser than Places, 100x denser than ImageNet"
+            }
+        },
+        {
+            "id": "20250319023144D2",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1.4 million images (classification challenge)",
+                "density": "1000 images per category",
+                "age": "7 years old"
+            }
+        },
+        {
+            "id": "20250319023144D3",
+            "name": "Places",
+            "type": "Dataset",
+            "attributes": {
+                "density_comparison": "10x less dense than LSUN"
+            }
+        },
+        {
+            "id": "20250319023144D4",
+            "name": "SUN database",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023144D5",
+            "name": "PASCAL VOC 2012",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023144D6",
+            "name": "MS COCO",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023144T1",
+            "name": "image classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023144T2",
+            "name": "visual recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023144T3",
+            "name": "training object detection algorithms",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023144T4",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023144T5",
+            "name": "unsupervised image analysis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023144T6",
+            "name": "object localization",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319023144P1",
+            "tail": "LSUN: Construction of a Large-Scale Image Dataset using Deep Learning with Humans in the Loop",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023144T1",
+            "tail": "image classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023144T2",
+            "tail": "visual recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023144T3",
+            "tail": "training object detection algorithms",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023144T4",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023144T5",
+            "tail": "unsupervised image analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023144T6",
+            "tail": "object localization",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

@@ -1,0 +1,240 @@
+{
+  "entities": [
+    {
+      "name": "VQA: Visual Question Answering",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Aishwarya Agrawal",
+          "Jiasen Lu",
+          "Stanislaw Antol",
+          "Margaret Mitchell",
+          "C. Lawrence Zitnick",
+          "Dhruv Batra",
+          "Devi Parikh"
+        ],
+        "institution": "Virginia Tech, Microsoft Research, Facebook AI Research, Georgia Institute of Technology"
+      }
+    },
+    {
+      "name": "VQA",
+      "type": "Dataset",
+      "attributes": {
+        "size": "∼0.25M images",
+        "questions": "∼0.76M",
+        "answers": "∼10M",
+        "components": [
+          "MS COCO images",
+          "Abstract Scenes"
+        ],
+        "split": "train/val/test"
+      }
+    },
+    {
+      "name": "MS COCO",
+      "type": "Dataset",
+      "attributes": {
+        "size": "204,721 images"
+      }
+    },
+    {
+      "name": "Abstract Scenes Dataset",
+      "type": "Dataset",
+      "attributes": {
+        "size": "50,000 scenes"
+      }
+    },
+    {
+      "name": "TinyImage",
+      "type": "Dataset",
+      "attributes": {
+        "size": "80 million images",
+        "resolution": "32x32"
+      }
+    },
+    {
+      "name": "ESP dataset",
+      "type": "Dataset"
+    },
+    {
+      "name": "LabelMe",
+      "type": "Dataset"
+    },
+    {
+      "name": "Lotus Hill dataset",
+      "type": "Dataset"
+    },
+    {
+      "name": "Caltech101",
+      "type": "Dataset"
+    },
+    {
+      "name": "Caltech256",
+      "type": "Dataset"
+    },
+    {
+      "name": "MSRC",
+      "type": "Dataset"
+    },
+    {
+      "name": "PASCAL",
+      "type": "Dataset"
+    },
+    {
+      "name": "www.visualqa.org",
+      "type": "Repository"
+    },
+    {
+      "name": "Visual Question Answering",
+      "type": "Task"
+    },
+    {
+      "name": "object recognition",
+      "type": "Task"
+    },
+    {
+      "name": "image classification",
+      "type": "Task"
+    },
+    {
+      "name": "automatic object clustering",
+      "type": "Task"
+    },
+    {
+      "name": "object localization",
+      "type": "Task"
+    },
+    {
+      "name": "scene understanding",
+      "type": "Task"
+    },
+    {
+      "name": "part models learning",
+      "type": "Task"
+    },
+    {
+      "name": "training object detection algorithms",
+      "type": "Task"
+    },
+    {
+      "name": "benchmarking",
+      "type": "Task"
+    },
+    {
+      "name": "image search",
+      "type": "Task"
+    },
+    {
+      "name": "image understanding",
+      "type": "Task"
+    }
+  ],
+  "relations": [
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail": "www.visualqa.org",
+      "tail_type": "Repository"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail": "VQA: Visual Question Answering",
+      "tail_type": "Paper"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "composed_of",
+      "tail": "MS COCO",
+      "tail_type": "Dataset"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "composed_of",
+      "tail": "Abstract Scenes Dataset",
+      "tail_type": "Dataset"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail": "Visual Question Answering",
+      "tail_type": "Task"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail": "object recognition",
+      "tail_type": "Task"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail": "image classification",
+      "tail_type": "Task"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail": "automatic object clustering",
+      "tail_type": "Task"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail": "object localization",
+      "tail_type": "Task"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail": "scene understanding",
+      "tail_type": "Task"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail": "part models learning",
+      "tail_type": "Task"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail": "training object detection algorithms",
+      "tail_type": "Task"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail": "benchmarking",
+      "tail_type": "Task"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail": "image search",
+      "tail_type": "Task"
+    },
+    {
+      "head": "VQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail": "image understanding",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
+}

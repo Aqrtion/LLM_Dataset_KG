@@ -1,0 +1,94 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319023915D1",
+            "head": "Food-101",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319023915R1",
+            "tail": "http://www.vision.ee.ethz.ch/datasets/food-101/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319023915D1",
+            "head": "Food-101",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319023915P1",
+            "tail": "Food-101 – Mining Discriminative Components with Random Forests",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319023915D1",
+            "head": "Food-101",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023915T1",
+            "tail": "food recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023915D1",
+            "head": "Food-101",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023915T2",
+            "tail": "image classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023915D1",
+            "head": "Food-101",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023915T4",
+            "tail": "component-based classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023915D1",
+            "head": "Food-101",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023915T6",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023915D3",
+            "head": "MIT-Indoor",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023915T5",
+            "tail": "scene classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023915D3",
+            "head": "MIT-Indoor",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023915T6",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023915D4",
+            "head": "Pittsburgh food dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023915T1",
+            "tail": "food recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023915D2",
+            "head": "PFID",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023915T1",
+            "tail": "food recognition",
+            "tail_type": "Task"
+        }
+    ]
+}

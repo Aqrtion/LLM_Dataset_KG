@@ -1,0 +1,67 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319005248D1",
+            "head": "PIQA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319005248P1",
+            "tail": "PIQA: Reasoning about Physical Commonsense in Natural Language",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319005248D1",
+            "head": "PIQA",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319005248R1",
+            "tail": "http://yonatanbisk.com/piqa",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319005248D1",
+            "head": "PIQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005248T1",
+            "tail": "physical commonsense reasoning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005248D1",
+            "head": "PIQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005248T2",
+            "tail": "question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005248D1",
+            "head": "PIQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005248T3",
+            "tail": "problem solving",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005248D1",
+            "head": "PIQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005248T4",
+            "tail": "natural language understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005248D1",
+            "head": "PIQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005248T6",
+            "tail": "benchmarking language models",
+            "tail_type": "Task"
+        }
+    ]
+}

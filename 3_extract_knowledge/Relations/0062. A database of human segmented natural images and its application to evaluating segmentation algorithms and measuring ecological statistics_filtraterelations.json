@@ -1,0 +1,76 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319024745D1",
+            "head": "segmentation database",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319024745P1",
+            "tail": "A Database of Human Segmented Natural Images and its Application to Evaluating Segmentation Algorithms and Measuring Ecological Statistics",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319024745D1",
+            "head": "segmentation database",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319024745D2",
+            "tail": "Corel image database",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319024745D1",
+            "head": "segmentation database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024745T1",
+            "tail": "evaluating segmentation algorithms",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024745D1",
+            "head": "segmentation database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024745T2",
+            "tail": "measuring probability distributions associated with Gestalt grouping factors",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024745D1",
+            "head": "segmentation database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024745T3",
+            "tail": "measuring statistics of image region properties",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024745D3",
+            "head": "MNIST handwritten digit dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024745T4",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024745D4",
+            "head": "FERET face dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024745T4",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024745D5",
+            "head": "Sowerby image dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024745T1",
+            "tail": "evaluating segmentation algorithms",
+            "tail_type": "Task"
+        }
+    ]
+}

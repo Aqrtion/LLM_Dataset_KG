@@ -1,0 +1,46 @@
+{
+    "relations": [
+        {
+            "head": "WINOGRANDE",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "WINOGRANDE: An Adversarial Winograd Schema Challenge at Scale",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "WINOGRANDE",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "commonsense reasoning",
+            "tail_type": "Task"
+        },
+        {
+            "head": "WINOGRANDE",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "pronoun resolution",
+            "tail_type": "Task"
+        },
+        {
+            "head": "WINOGRANDE",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "transfer learning",
+            "tail_type": "Task"
+        },
+        {
+            "head": "WINOGRANDE",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "coreference resolution",
+            "tail_type": "Task"
+        },
+        {
+            "head": "WINOGRANDE",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "gender bias measurement",
+            "tail_type": "Task"
+        }
+    ]
+}

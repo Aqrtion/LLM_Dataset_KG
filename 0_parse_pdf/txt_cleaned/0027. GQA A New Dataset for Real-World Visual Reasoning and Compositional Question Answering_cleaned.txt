@@ -1,0 +1,410 @@
+GQA: A New Dataset for Real-World Visual Reasoning and Compositional Question Answering visualreasoning.net
+
+Drew A. Hudson Stanford University 353 Serra Mall, Stanford, CA 94305 dorarad@cs.stanford.edu
+
+Christopher D. Manning Stanford University 353 Serra Mall, Stanford, CA 94305 manning@cs.stanford.edu
+
+Abstract
+
+We introduce GQA, a new dataset for real-world visual reasoning and compositional question answering, seeking to address key shortcomings of previous VQA datasets. We have developed a strong and robust question engine that leverages Visual Genome scene graph structures to create 22M diverse reasoning questions, which all come with functional programs that represent their semantics. We use the programs to gain tight control over the answer distribution and present a new tunable smoothing technique to mitigate question biases. Accompanying the dataset is a suite of new metricsthatevaluateessentialqualitiessuchasconsistency, grounding and plausibility. A careful analysis is performed for baselines as well as state-of-the-art models, providing ﬁne-grained results for different question types and topologies. Whereas a blind LSTM obtains a mere 42.1%, and strong VQA models achieve 54.1%, human performance tops at 89.3%, offering ample opportunity for new research to explore. We hope GQA will provide an enabling resource for the next generation of models with enhanced robustness, improved consistency, and deeper semantic understanding of vision and language.
+
+1. Introduction
+
+It takes more than a smart guess to answer a good question. The ability to assimilate knowledge and use it to draw inferences is among the holy grails of artiﬁcial intelligence. A tangible form of this goal is embodied in the task of Visual Question Answering (VQA), where a system has to answer free-form questions by reasoning about presented images. Thetaskdemandsarichsetofabilitiesasvariedasobject recognition, commonsense understanding and relation extraction, spanning both the visual and linguistic domains. In recent years, it has sparked substantial interest throughout the research community, becoming extremely popular
+
+Figure 1: Examples from the new GQA dataset for visual reasoning and compositional question answering: Is the bowl to the right of the green apple? What type of fruit in the image is round? What color is the fruit on the right side, red or green? Is there any milk in the bowl to the left of the apple?
+
+across the board, with a host of datasets being constructed [4, 11, 15, 41, 20] and numerous models being proposed [5, 38, 6, 10, 12].
+
+The multi-modal nature of the task and the diversity of skills required to address different questions make VQA particularly challenging. Yet, designing a good test that will reﬂect its full qualities and complications may not be that trivial. Despite the great strides that the ﬁeld recently made, it has been established through a series of studies that existing benchmarks suffer from critical vulnerabilities that render them highly unreliable in measuring the actual degree of visual understanding capacities [39, 11, 2, 8, 3, 13, 18]. Most notable among the ﬂaws of current benchmarks is the strong and prevalent real-world priors displayed throughout the data [39, 11, 3] – most tomatoes are red and most tables are wooden. These in turn are exploited
+
+by VQA models, which become heavily reliant upon such statistical biases and tendencies within the answer distribution to largely circumvent the need for true visual scene understanding [2, 11, 15, 8]. This situation is exacerbated by the simplicity of many of the questions, from both linguistic and semantic perspectives, which in practice rarely require much beyond object recognition [33]. Consequently, early benchmarks led to an inﬂated sense of the state of scene understanding, severely diminishing their credibility [37]. Aside from that, the lack of annotations regarding question structure and content leaves it difﬁcult to understand the factors affecting models’ behavior and performance and to identify the root causes behind their mistakes.
+
+To address these shortcomings, while retaining the visual and semantic richness of real-world images, we introduce GQA, a new dataset for visual reasoning and compositional question answering. We have developed and carefully reﬁned a robust question engine, leveraging content: information about objects, attributes and relations provided through Visual Genome Scene Graphs [20], along with structure: a newly-created extensive linguistic grammar which couples hundreds of structural patterns and detailed lexical semantic resources. Together, they are combined in our engine to generate over 22 million novel and diverse questions, which all come with structured representations in the form of functional programs that specify their contents and semantics, and are visually grounded in the image scene graphs.
+
+GQA questions involve varied reasoning skills, and multi-step inference in particular. We further use the associated semantic representations to greatly reduce biases within the dataset and control for its question type composition, downsampling it to create a 1.7M balanced dataset. ContrarytoVQA2.0, herewebalancenotonlybinaryquestions, but also open ones, by applying a tunable smoothing technique that makes the answer distribution for each question group more uniform. Just like a well-designed exam, our benchmark makes the educated guesses strategy far less rewarding, and demands instead more reﬁned comprehension of both the visual and linguistic contents.
+
+Along with the dataset, we have designed a suite of new metrics, which include consistency, validity, plausibility, grounding and distribution scores, to complement the standard accuracy measure commonly used in assessing methods’ performance. Indeed, studies have shown that the accuracy metric alone does not account for a range of anomalous behaviors that models demonstrate, such as ignoring key question words or attending to irrelevant image regions [2, 8]. Other works have argued for the need to devise new evaluation measures and techniques to shed more light on systems’ inner workings [18, 34, 35, 17]. In fact, beyond providing new metrics, GQA can even directly support the development of more interpretable models, as it provides
+
+a sentence-long explanation that corroborates each answer, and further associates each word from both the questions and the responses with a visual pointer to the relevant region in the image, similar in nature to datasets by Zhu et al. [41], Park et al. [29], and Li et al. [22]. These in turn can serve as a strong supervision signal to train models with enhanced transparency and accessibility.
+
+GQA combines the best of both worlds, having clearly deﬁned and crisp semantic representations on the one hand but enjoying the semantic and visual richness of real-world images on the other. Our three main contributions are (1) the GQA dataset as a resource for studying visual reasoning; (2) development of an effective method for generating a large number of semantically varied questions, which marries scene graph representations with computational linguistic methods; (3) new metrics for GQA, that allow for better assessment of system success and failure modes, as demonstrated through a comprehensive performance analysis of existing models on this task. We hope that the GQA dataset will provide fertile ground for the development of novel methods that push the boundaries of question answering and visual reasoning.
+
+2. Related Work
+
+Recent years have witnessed tremendous progress in visual understanding. Multiple attempts have been made to mitigate the systematic biases of VQA datasets as discussed in section 1 [11, 39, 3, 15], but they fall short in providing an adequate solution: Some approaches operate over constrained and synthetic images [39, 15], neglecting the realismanddiversitynaturalphotosprovide. Meanwhile, Goyal et al. [11] associate most of the questions in VQA1.0 with a pair of similar pictures that result in different answers. While offering partial relief, this technique fails to address open questions, leaving their answer distribution largely unbalanced. In fact, since the method does not cover 29% of the questions due to limitations of the annotation process, even within the binary ones biases still remain.1
+
+At the other extreme, Agrawal et al. [3] partition the questions into training and validation sets such that their respective answer distributions become intentionally dissimilar. While undoubtedly challenging, these adversarial settings penalize models, maybe unjustly, for learning salient properties of the training data. In the absence of other information, making an educated guess is a legitimate choice – a valid and beneﬁcial strategy pursued by machines and people alike [27, 7, 26]. What we essentially need is a balanced test that is more resilient to such gaming strategies, as we strive to achieve with GQA.
+
+1ForVQA1.0, blindmodelsachieve50% inaccuracywithout evenconsidering the images whatsoever [4]. Similarly, for VQA2.0, 67% and 27% of the binary and open questions respectively are answered correctly by such models [11].
+
+Figure 2: Overview of the GQA construction process. Given an image annotated with a scene graph of its objects, attributes and relations, we produce compositional questions by traversing the graph. Each question has both a standard natural-language form and a functional program representing its semantics. Please refer to section 3 for further detail.
+
+In creating GQA, we drew inspiration from the CLEVR task [15], which consists of compositional questions over synthetic images. However, its artiﬁcial nature and low diversity, with only a handful of object classes and properties, makesitparticularlyvulnerabletomemorizationofallcombinations, thereby reducing its effective degree of compositionality. Conversely, GQA operates over real images and a large semantic space, making it much more challenging. Even though our questions are not natural as in other VQA datasets [11, 41], they display a rich vocabulary and diverse linguistic and grammatical structures. They may serve in fact as a cleaner benchmark to asses models in a more controlled and comprehensive fashion, as discussed below.
+
+The task of question generation has been explored in earlier work, mostly for the purpose of data augmentation. Contrary to GQA, those datasets are either small in scale [25] or use only a restricted set of objects and a handful of non-compositional templates [17, 24]. Neural alternatives to visual question generation have been recently proposed [28, 14, 40], but they aim at a quite different goal of creating engaging but potentially inaccurate questions about the wider context of the image such as subjective evoked feelings or speculative events that may lead to or result from the depicted scenes [28].
+
+3. The GQA Dataset
+
+The GQA dataset centers around real-world reasoning, sceneunderstandingandcompositionalquestionanswering. It consists of 113K images and 22M questions of assorted types and varying compositionality degrees, measuring performance on an array of reasoning skills such as object and attributerecognition, transitiverelationtracking, spatialrea-
+
+soning, logical inference and comparisons. Figure 2 provides a brief overview of the GQA components and generation process, and ﬁgure 3 presents multiple instances from the dataset. The dataset along with further information are available at visualreasoning.net.
+
+The images, questions and corresponding answers are all accompanied by matching semantic representations: Each image is annotated with a dense Scene Graph [16, 20], representing the objects, attributes and relations it contains. Each question is associated with a functional program which lists the series of reasoning steps needed to be performed to arrive at the answer. Each answer is augmented with both textual and visual justiﬁcations, pointing to the relevant region within the image.
+
+The structured representations and detailed annotations for images and questions offer multiple advantages. They enable tight control over the answer distribution, which allows us to create a balanced set of challenging questions, and support the formulation of a suite of new metrics that aim to provide deeper insight into models’ behavior. They facilitate performance assessment along various axes of question type and topology, and may open the door for the development of novel methods with more grounded and transparent knowledge representation and reasoning.
+
+We proceed by describing the GQA question engine and the four-step dataset construction pipeline: First, we thoroughly clean, normalize, consolidate and augment the Visual Genome scene graphs [20] linked to each image. Then, we traverse the objects and relations within the graphs, and marry them with grammatical patterns gleaned from VQA 2.0 [11] and sundry probabilistic grammar rules to produce a semantically-rich and diverse set of questions. In the third stage, we use the underlying semantic forms to reduce bi-
+
+ases in the conditional answer distribution, resulting in a balanced dataset that is more robust against shortcuts and guesses. Finally, we discuss the question functional representation, and explain how we use it to compute entailment between questions, supporting new evaluation metrics.
+
+3.1. Scene Graph Normalization
+
+Our starting point in creating the GQA dataset is the Visual Genome Scene Graph annotations [20] that cover 113k images from COCO [23] and Flickr [36].2 The scene graph serves as a formalized representation of the image: each node denotes an object, a visual entity within the image, like a person, an apple, grass or clouds. It is linked to a boundingboxspecifyingitspositionandsize, andismarked up with about 1–3 attributes, properties of the object: e.g., its color, shape, material or activity. The objects are connected by relation edges, representing actions (verbs), spatial relations (prepositions), and comparatives.
+
+The scene graphs are annotated with free-form natural language. In order to use them for question generation we ﬁrst have to normalize the graphs and their vocabulary. We provide here a brief overview of the normalization process, and present a more detailed description in the supplementary. First, wecreateaclean, consolidatedandunambiguous ontology over the graph with 2690 classes including various objects, attributes and relations. We further augment it with semantic and linguistic information which will aid us in creating grammatical questions. Then, we prune inaccurate or unnatural edges, using combination of object detection conﬁdences, n-gram frequencies, co-occurrence statistics, word embedding distances, category-based rules, and manual curation. Finally, we enrich the graph with positional information (absolute and relative) as well as semantic properties (location, weather). By the end of this stage, the resulting scene graphs have clean, uniﬁed, rich and unambiguous semantics for both the nodes and the edges.
+
+3.2. The Question Engine
+
+At the heart of our pipeline is the question engine, responsible for producing diverse, relevant and grammatical questions with varying degrees of compositionality. The generation process harnesses two resources: one is the scenegraphswhichfueltheenginewithrichcontent–information about objects, attributes and relationships; the other is the structural patterns, a mold that shapes the content, casting it into a question.
+
+Our engine operates over 524 patterns, spanning 117 question groups, and 1878 answers which are based on the scene graphs. Each group is associated with three components: (1) a functional program that represents its semantics; (2) A set of textual rephrases which express it in nat-
+
+2We extend Visual Genome dataset with 5k hidden scene graphs col-
+
+lected through crowdsourcing, used for the test set.
+
+A1. Is the tray on top of the table black or light brown? light brown A2. Are the napkin and the cup the same color? yes A3. Is the small table both oval and wooden? yes A4. Is there any fruit to the left of the tray the cup is on top of? yes A5. Are there any cups to the left of the tray on top of the table? no B1. What is the brown animal sitting inside of? box B2. What is the large container made of? cardboard B3. What animal is in the box? bear B4. Is there a bag to the right of the green door? no B5. Is there a box inside the plastic bag? no
+
+Figure 3: Examples of questions from the GQA dataset.
+
+ural language, e.g., “What|Which <type> [do you think] <is> <theObject>?”; (3) A pair of short and long answers: e.g., <attribute> and “The <object> <is> <attribute>.” respectively.3
+
+We begin from a seed set of 250 manually constructed patterns, and extend it with 274 natural patterns derived from VQA1.0 [4] through templatization of words from our ontology.4 To increase the question diversity, apart from using synonyms for objects and attributes, we incorporate probabilistic sections into the patterns, such as optional phrases [x] and alternate expressions (x|y), which get instantiated at random.
+
+It is important to note that the patterns do not strictly limit the structure or depth of each question, but only outline their high-level form, as many of the template ﬁelds can be populated with nested compositional references. For instance, in the pattern above, we may replace <theObject> with “the apple to the left of the white refrigerator”.
+
+To achieve that compositionality, we compute for each object a set of candidate references, which can either be direct, e.g. the bear, this animal, or indirect, using modiﬁers, e.g. the white bear, the bear on the left, the animal behind the tree, the bear that is wearing a coat. Direct references are used when the uniqueness of the object can be conﬁdently conﬁrmed by object detectors, making the corresponding references unambiguous. Alternatively, we use indirect references, leading to multi-step questions as varied
+
+3Note that the long answers can serve as textual justiﬁcations, especially for questions that require increased reasoning such as logical inference, where a question like “Is there a red apple in the picture?” may have the answer: “No, there is an apple, but it is green”
+
+4For instance, a question-answer pair in VQA1.0 such as “What color is the apple? red” turns after templatization into “What <type> <is> the <object>? <attribute>”.
+
+Figure 4: Examples of entailment relations between different question types. Refer to section 3.3 for further detail.
+
+as Who is looking at the animal that is wearing the red coat in front of the window?, and thus greatly increasing the patterns’ effective ﬂexibility. This is the key ingredient behind the automatic generation of compositional questions.
+
+Finally, we compute a set of decoys for the scene graph elements. Indeed, some questions, such as negative ones or those that involve logical inference, pertain to the absence of an object or to an incorrect attribute. Examples include Is the apple green? for a red apple, or Is the girl eating ice cream? when she is in fact eating a cake. Given a triplet (s,r,o), (e.g. (girl, eating, cake) we select a distractor ˆo considering its likelihood to be in relation with s and its plausibility to co-occur in the context of the other objects in the depicted scene. A similar technique is applied in selecting attribute decoys (e.g. a green apple). While choosing distractors, we exclude from consideration candidates that we deem too similar (e.g. pink and orange), based on a manually deﬁned list for each concept in the ontology.
+
+Having all resources prepared:
+
+(1) the clean scene graphs, (2) the structural patterns, (3) the object references and (4) the decoys, we can proceed to generating the questions! We traverse the graph, and for each object, objectattribute pair or subject-relation-object triplet, we produce relevant questions by instantiating a randomly selected question pattern, e.g. “What <type> is <theObject>, <attribute> or <cAttribute>?”, populating all the ﬁelds with the matching information, yielding, for example, the question: “What (color) (is) the (apple on the table), (red) or (green)?”. When choosing object references, we avoid selecting those that disclose the answer or repeat information, e.g. “What color is the red apple?” or “Which dessert sits besides the apple to the left of the cake?”. We also avoid asking about relations that tend to have multiple instances for the same object, e.g. asking what object is on the table, as there may be multiple valid answers.
+
+By the end of this stage, we obtain a diverse set of 22M interesting, challengingandgrammaticalquestions, pertaining to each and every aspect of the image.
+
+3.3. Functional Representation and Entailment
+
+Each question pattern is associated with a structured representation in the form of a functional program. For instance, the question What color is the apple on the white
+
+table? is semantically equivalent to the following program: select: table → ﬁlter: white → relate(subject,on): apple → query: color. As we can see, these programs are composed of atomic operations such as object selection, traversal along a relation edge, or an attribute veriﬁcation, which are then chained together to create challenging reasoning questions.
+
+The semantically unambiguous representations offer multiple advantages over free-form unrestricted questions. For one thing, they enable comprehensive assessment of methods by dissecting their performance along different axes of question textual and semantic lengths, type and topology, thus facilitating the diagnosis of their success and failuremodes(section4.2). Second, theyaidusinbalancing the dataset distribution, mitigating its question-conditional priors and guarding against educated guesses (section 3.4). Finally, they allow us to identify entailment and equivalence relations between different questions: knowing the answer to the question What color is the apple? allows a coherent learner to infer the answer to the questions Is the apple red? Is it green? etc. The same goes especially for questions that involve logical inference like or and and operations or spatial reasoning, e.g. left and right.
+
+As further discussed in section 4.4, this entailment property can be used to measure the coherence and consistency of the models, shedding new light on their inner workings, compared to the widespread but potentially misleading accuracy metric. We deﬁne direct entailment relations between the various functional programs and use these to recursively compute all the questions that can be entailed from a given source. A complete catalog of the functions, their associated question types, and the entailment relations between them is provided in the supplementary.
+
+3.4. Sampling and Balancing
+
+One of the main issues of existing VQA datasets is the prevalent question-conditional biases that allow learners to make educated guesses without truly understanding the presented images, as explained in section 1. However, precise representation of the question semantics can allow tighter control over these biases, having the potential to greatly alleviate the problem. We leverage this observation and use the functionalprograms attached to each question to smooth out the answer distribution.
+
+Given a question’s functional program, we derive two labels, global and local: The global label assigns the question to its answer type, e.g. color for What color is the apple?. The local label further considers the main subject/s of the question, e.g. apple-color or table-material. We use these labels to partition the questions into groups, and smooth the answer distribution of each group within the two levels of granularity, ﬁrst globally, and then locally.
+
+For each group, we ﬁrst compute its answer distribution
+
+Figure 5: Visualization of the balancing process. The conditional answer distribution before (left) and after (middle) the balancing for a selection of question groups. We show the top 10 answers, where the column height corresponds to the relative frequency of each answer. We can see that on the left the distributions are heavily biased, while on the middle it is more uniform and with heavier tails, while intentionally retaining the original real-world tendencies up to a tunable degree. Right: An illustration of the balancing process.
+
+P foreachgroup, whichwethendownsample(formally, using rejection-sampling)to ﬁta smoother answer distribution Q derived through the following procedure: We iterate over theanswersofthatgroupindecreasingfrequencyorder, and reweightP’sheaduptothecurrentiterationtomakeitmore comparable to the tail size. While repeating this operation as we go through the answers, iteratively “moving” probability from the head into the tail [32], we also maintain minimum and maximum ratios between each pair of subsequent answers (sorted by frequency). This ensures that the relative frequency-based answer ranking stays the same.
+
+The advantage of this scheme is that it retains the general real-world tendencies, smoothing them out up to a tunable degree to make the benchmark more challenging and less biased. Refer to ﬁgure 5 for a visualization and to the supplementary for a precise depiction of the procedure. Since balancing is performed in two granularity levels, the obtained answer distributions are made more uniform both locally and globally. Quantitatively, the entropy of the answer distribution is increased by 72%, conﬁrming the success of this stage.
+
+Finally, we downsample the questions based on their type to control the dataset type composition, and ﬁlter out redundant questions that are too semantically similar to existing ones. We split the dataset into 70% train, 10% validation, 10% test and 10% challenge, making sure that all the questions about a given image appear in the same split.
+
+4. Analysis and Baseline Experiments
+
+In the following, we provide an analysis of the GQA dataset and evaluate the performance of baselines, state-ofthe-art models and human subjects, revealing a large gap from the latter. To establish the diversity and realism of GQA questions, we test transfer performance between the GQA and VQA datasets. We then introduce the new metrics that complement our dataset, present quantitative results
+
+anddiscusstheirimplicationsandmerits. Inthesupplementary, we perform a head-to-head comparison between GQA and the popularVQA 2.0 dataset [11], and proceed with further diagnosis of the current top-performing model, MAC [12], evaluating it along multiple axes such as training-set size, question length and compositionality degree.
+
+4.1. Dataset Analysis and Comparison
+
+The GQA dataset consists of 22,669,678 questions over 113,018 images, which cover wide range of reasoning skills and vary in length and number of required inference-steps (ﬁgure 6). The dataset has a vocabulary size of 3097 words and 1878 possible answers. While smaller than natural language datasets, further investigation reveals that it covers 88.8% and 70.6% of VQA questions and answers respectively, corroborating its wide diversity. A wide selection of dataset visualizations is provided in the supplementary.
+
+We associate each question with two types: structural and semantic. The structural type is derived from the ﬁnal operation in the question’s functional program. It can be (1) verify for yes/no questions, (2) query for all open questions, (3) choose for questions that present two alternatives to choose from, e.g. “Is it red or blue?”; (4) logical which involve logical inference, and (5) compare for comparison questions between two or more objects. The semantic type refers to the main subject of the question: (1) object: for existence questions, (2) attribute: consider the properties or position of an object, (3) category: related to object identiﬁcation within some class, (4) relation: for questions asking about the subject or object of a described relation (e.g. “what is the girl wearing?”), and (5) global: about overall properties of the scene such as weather or place. As shown in ﬁgure 6, the questions’ types vary at both the semantic and structural levels.
+
+4.2. Baseline Experiments
+
+We analyze an assortment of models as well as human subjects on GQA. The evaluation results are shown in table 1. Baselines include a “blind” LSTM model with access to the questions only, a “deaf” CNN model with access to the images only, an LSTM+CNN model, and two prior models based on the question group, local or global, which return the most common answer for each group, as deﬁned in section 3.3. We can see that they all achieve low results of 17.82%–41.07%. For the LSTM model, inspection of speciﬁc question types reveals that it achieves only 22.7% for open query questions, and not far above chance for binary question types. We also evaluate the performance of the bottom-up attention model [5] – the winner of the 2017 VQA challenge, and the MAC model [12] – a stateof-the-art compositional attention model for CLEVR [15]. While surpassing the baselines, they still perform well below human scores5, offering ample opportunity for further research in the visual reasoning domain.
+
+4.3. Transfer Performance
+
+We tested the transfer performance between the GQA and VQA datasets, training on one and testing on the other: A MAC model trained on GQA achieves 52.1% on VQA before ﬁne-tuning and 60.5% afterwards. Compare these with 51.6% for LSTM+CNN and 68.3% for MAC, when both are trained and tested on VQA. These quite good results demonstrate the realism and diversity of GQA questions, showing that the dataset can serve as a good proxy for human-like questions. In contrast, MAC trained on VQA gets 39.8% on GQA before ﬁne-tuning and 46.5% afterwards, illustrating the further challenge GQA poses.
+
+4.4. New Evaluation Metrics
+
+Apart from the standard accuracy metric and the more detailed type-based diagnosis our dataset supports, we introduce ﬁve new metrics to get further insight into visual reasoning methods and point to missing capabilities we believe coherent reasoning models should possess.
+
+Consistency. This metric measures responses consistency across different questions. Recall that in section 3.3, we used the questions’ semantic representation to derive equivalence and entailment relations between them. When being presented with a new question, any learner striving to be trustworthy should not contradict its previous answers. It should not answer green to a new question about an apple it has just identiﬁed as red.
+
+For each question-answer pair (q,a), we deﬁne a set Eq = q1,q2,...,qn of entailed questions, the answers to
+
+Figure 6: Top: Dataset statistics, partitioned into structural types, semantic types, and the number of reasoning steps. Bottom: VQA datasets question length distribution.
+
+which can be unambiguously inferred given (q,a). For instance, given the question-answer pair Is there a red apple to the left of the white plate? yes, we can infer the answers to questions such as Is the plate to the right of the apple?, Is there a red fruit to the left of the plate?, What is the white thing to the right of the apple?, etc. For each question q in Q – the set of questions the model answered correctly, we measure the model’s accuracy over the entailed questions Eq and then average these scores across all questions in Q. We see that while people have exceptional consistency of 98.4%, even the best models are inconsistent in about 1 out of 5 questions, and models such as LSTM contradict themselves almost half the time. Achieving high consistency may require deeper understanding of the question semantics in the context of the image, and, in contrast with accuracy, is more robust against educated guesses as it inspects connections between related questions, and thus may serve as a better measure of models’ true visual understanding skills.
+
+Validity and Plausibility. The validity metric checks whether a given answer is in the question scope, e.g. responding some color to a color question. The plausibility score goes a step further, measuring whether the answer is reasonable, or makes sense, given the question (e.g. elephant usually do not eat, say, pizza). Speciﬁcally, we check whether the answer occurs at least once in relation with the question’s subject, across the whole dataset. Thus, we consider e.g., red and green as plausible apple colors and, conversely, purple as implausible.6 The experiments show that models fail to respond with plausible or even valid answers at least 5–15% of the times, indicating limited com-
+
+5To evaluate human performance, we used Amazon Mechanical Turk to collect human responses for 4000 random questions, taking the majority over 5 answers per question.
+
+6While the plausibility metric may not be fully precise especially for infrequent objects due to potential data scarcity issues, it may provide a goodsenseofthegenerallevelofworldknowledgethemodelhasacquired.
+
+choose12%logical10%compare3%verify22%query53%GQA	STRUCTURAL	TYPESobject11%category6%global3%attribute28%relation52%GQA	SEMANTIC	TYPES16%242%344%4+8%GQA	SEMANTIC	STEPS00.10.20.30.4051015202530FrequencyNumber	of	wordsQuestion	Distribution	by	#	wordsVQAV7WCLEVR-HumansCLEVRGQAMetric Open Binary Query Compare Choose Logical Verify Global Object Attribute Relation Category Distribution Grounding Validity Plausibility Consistency Accuracy
+
+Global Prior 16.52 42.99 16.52 35.59 17.45 50.32 53.40 24.70 49.96 34.89 22.88 15.26 130.86 - 89.02 75.34 51.78 28.93
+
+Local Prior 16.99 47.53 16.99 41.91 26.58 50.11 58.80 20.19 54.00 42.67 20.16 17.31 21.56 - 84.44 84.42 54.34 31.31
+
+CNN 1.74 36.05 1.55 36.34 0.85 47.18 47.02 8.64 47.33 22.66 11.60 3.56 19.99 - 35.78 34.84 62.40 17.82
+
+LSTM CNN+LSTM BottomUp MAC 38.91 22.69 71.23 61.90 38.91 22.69 60.04 57.79 70.59 57.15 69.99 61.73 75.45 65.78 60.82 27.22 81.49 74.33 59.82 48.28 46.16 33.24 44.38 22.33 5.34 17.93 82.24 - 96.16 96.39 84.48 87.30 81.59 68.68 54.06 41.07
+
+Humans 87.4 91.2 87.4 93.1 94.3 88.5 90.1 92.3 88.1 90.7 89.2 90.3 - - 98.9 97.2 98.4 89.3
+
+Table 1: Results for baselines and state-of-the-art models on the GQA dataset. All results refer to the test set. Models are evaluated for overall accuracy as well as accuracy per type. In addition, they are evaluated by validity, plausibility, distribution, consistency, and when possible, grounding metrics. Please refer to the text for further detail.
+
+prehension of some questions. Given that these properties are noticeable statistics of the dataset’s conditional answer distribution, not even depending on the speciﬁc images, we would expect a sound method to achieve higher scores.
+
+Distribution. To get further insight into the extent to which methods manage to model the conditional answer distribution, we deﬁne the distribution metric, which measures the overall match between the true answer distribution and the model predicted distribution, using Chi-Square statistic [21]. It allows us to see if the model predicts not only the most common answers but also the less frequent ones. Indeed, the experiments demonstrate that the leading SOTA models score lower than the baselines (for this metric, lower is better), indicating increased capacity in ﬁtting more subtle trends of the dataset’s distribution.
+
+Grounding. For attention-based models, the grounding score checks whether the model attends to regions within the image that are relevant to the question. For each dataset instance, we deﬁne a pointer r to the visual region which the question or answer refer to, and measure the model’s visual attention (probability) over that region. This metric allows us to evaluate the degree to which the model grounds its reasoning in the image, rather than just making educated guesses based on question priors or world tendencies.
+
+Indeed, the models mostly attend to the relevant regions in the image, with grounding scores of about 80%. To verify the reliability of the metric, we further perform experiments with spatial features instead of the object-informed ones used by BottomUp [5] and MAC [12], which lead to a much lower 43% score, demonstrating that object-based features provide models with better granularity for the task, allowing them to focus on more pertinent regions than with the coarser spatial features.
+
+5. Conclusion
+
+In this paper, we introduced the GQA dataset for realworld visual reasoning and compositional question answering. We described the dataset generation process, provided baseline experiments and deﬁned new measures to get more insight into models’ behavior and performance. We believe this benchmark can help drive VQA research in the right directions of deeper semantic understanding, sound reasoning, enhanced robustness and improved consistency. A potential avenue towards such goals may involve more intimate integration between visual knowledge extraction and question answering, two ﬂourishing ﬁelds that oftentimes have been pursued independently. We strongly hope that GQA will motivate and support the development of more compositional, interpretable and cogent reasoning models, to advance research in scene understanding and visual question answering.
+
+6. Acknowledgments
+
+We wish to thank Justin Johnson for discussions about the early versions of this work, and Ross Girshick for his inspirational talk at the VQA workshop 2018. We thank Ranjay Krishna, Eric Cosatto, Alexandru Niculescu-Mizil and the anonymous reviewers for helpful suggestions and comments. Stanford University gratefully acknowledges Facebook Inc., Samsung Electronics Co., Ltd., and the Defense Advanced Research Projects Agency (DARPA) Communicating with Computers (CwC) program under ARO prime contract no. W911NF15-1-0462 for generously supporting this work.
+
+References
+
+[1] Google
+
+corpus
+
+http://books.google.com/ngrams/. 17
+
+[2] A. Agrawal, D. Batra, and D. Parikh. Analyzing the behavior of visual question answering models. In EMNLP, pages 1955–1960, 2016. 1, 2
+
+[3] A. Agrawal, D. Batra, D. Parikh, and A. Kembhavi. Don’t just assume; look and answer: Overcoming priors for visual question answering. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pages 4971–4980, 2018. 1, 2
+
+[4] A. Agrawal, J. Lu, S. Antol, M. Mitchell, C. L. Zitnick, D. Parikh, and D. Batra. VQA: Visual question answering. International Journal of Computer Vision, 123(1):4–31, 2017. 1, 2, 4
+
+[5] P. Anderson, X. He, C. Buehler, D. Teney, M. Johnson, S. Gould, and L. Zhang. Bottom-up and top-down atarXiv preprint tention for image captioning and VQA. arXiv:1707.07998, 2017. 1, 7, 8, 14, 15
+
+[6] J. Andreas, M. Rohrbach, T. Darrell, and D. Klein. Neural module networks. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pages 39–48, 2016. 1
+
+[7] Y. Attali and M. Bar-Hillel. Guess where: The position of correct answers in multiple-choice test items as a psychometric variable. Journal of Educational Measurement, 40(2):109–128, 2003. 2
+
+[8] A. Das, H. Agrawal, L. Zitnick, D. Parikh, and D. Batra. Human attention in visual question answering: Do humans and deep networks look at the same regions? Computer Vision and Image Understanding, 163:90–100, 2017. 1, 2 [9] J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li, and L. Fei-Fei. Imagenet: A large-scale hierarchical image database. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pages 248–255. Ieee, 2009. 14 [10] A. Fukui, D. H. Park, D. Yang, A. Rohrbach, T. Darrell, and M. Rohrbach. Multimodal compact bilinear pooling for visual question answering and visual grounding. Conference on Empirical Methods in Natural Language Processing (EMNLP), 2016. 1
+
+[11] Y. Goyal, T. Khot, D. Summers-Stay, D. Batra, and D. Parikh. Making the V in VQA matter: Elevating the role ofimage understandinginvisualquestionanswering. InProceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pages 6325–6334, 2017. 1, 2, 3, 6, 16
+
+[12] D. A. Hudson and C. D. Manning. Compositional attention networks for machine reasoning. International Conference for Representation Learning (ICLR), 2018. 1, 6, 7, 8, 14, 15 [13] A. Jabri, A. Joulin, and L. van der Maaten. Revisiting visual In European conference on
+
+question answering baselines. computer vision, pages 727–739. Springer, 2016. 1
+
+[14] U. Jain, Z. Zhang, and A. G. Schwing. Creativity: Generating diverse questions using variational autoencoders. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pages 5415–5424, 2017. 3
+
+[15] J. Johnson, B. Hariharan, L. van der Maaten, L. Fei-Fei, C. L. Zitnick, and R. Girshick. Clevr: A diagnostic dataset for compositional language and elementary visual reasoning. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pages 1988–1997, 2017. 1, 2, 3, 7
+
+[16] J. Johnson, R. Krishna, M. Stark, L.-J. Li, D. Shamma, M. Bernstein, and L. Fei-Fei. Image retrieval using scene graphs. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pages 3668–3678, 2015. 3
+
+[17] K. Kaﬂe and C. Kanan. An analysis of visual question answering algorithms. In Computer Vision (ICCV), 2017 IEEE International Conference on, pages 1983–1991. IEEE, 2017. 2, 3
+
+[18] K. Kaﬂe and C. Kanan. Visual question answering: Datasets, algorithms, and future challenges. Computer Vision and Image Understanding, 163:3–20, 2017. 1, 2, 16
+
+[19] D. P. Kingma and J. Ba. Adam: A method for stochastic optimization. arXiv preprint arXiv:1412.6980, 2014. 15 [20] R. Krishna, Y. Zhu, O. Groth, J. Johnson, K. Hata, J. Kravitz, S. Chen, Y. Kalantidis, L.-J. Li, D. A. Shamma, et al. Visual genome: Connecting language and vision using crowdsourced dense image annotations. International Journal of Computer Vision, 123(1):32–73, 2017. 1, 2, 3, 4, 17
+
+[21] H. O. Lancaster and E. Seneta. Chi-square distribution. En-
+
+cyclopedia of biostatistics, 2, 2005. 8
+
+[22] Q. Li, Q. Tao, S. Joty, J. Cai, and J. Luo. VQA-E: Explaining, elaborating, and enhancing your answers for visual questions. arXiv preprint arXiv:1803.07464, 2018. 2 [23] T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Doll´ar, and C. L. Zitnick. Microsoft COCO: Common objects in context. In European conference on computer vision, pages 740–755. Springer, 2014. 4, 17
+
+[24] A. Mahendru, V. Prabhu, A. Mohapatra, D. Batra, and S. Lee. The promise of premise: Harnessing question arXiv preprint premises in visual question answering. arXiv:1705.00601, 2017. 3
+
+[25] M. Malinowski and M. Fritz. A multi-world approach to question answering about real-world scenes based on uncertain input. In Advances in neural information processing systems, pages 1682–1690, 2014. 3
+
+[26] J. Millman, C. H. Bishop, and R. Ebel. An analysis of test-wiseness. Educational and Psychological Measurement, 25(3):707–726, 1965. 2
+
+[27] J. J. Mondak and B. C. Davis. Asked and answered: Knowledge levels when we won’t take ‘don’t know’ for an answer. Political Behavior, 23(3):199–224, 2001. 2
+
+[28] N. Mostafazadeh, I. Misra, J. Devlin, M. Mitchell, X. He, and L. Vanderwende. Generating natural questions about an image. arXiv preprint arXiv:1603.06059, 2016. 3
+
+[29] D. H. Park, L. A. Hendricks, Z. Akata, A. Rohrbach, B. Schiele, T. Darrell, and M. Rohrbach. Multimodal explanations: Justifying decisions and pointing to the evidence. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2018. 2
+
+[30] J. Pennington, R. Socher, and C. Manning. Glove: Global vectors for word representation. In Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP), pages 1532–1543, 2014. 14
+
+[31] S. Ren, K. He, R. Girshick, and J. Sun. Faster R-CNN: Towards real-time object detection with region proposal netIn Advances in neural information processing sysworks. tems, pages 91–99, 2015. 14, 16, 17
+
+[32] Y. Rubner, C. Tomasi, and L. J. Guibas. The earth mover’s distance as a metric for imageretrieval. Internationaljournal of computer vision, 40(2):99–121, 2000. 6
+
+[33] A. Suhr, S. Zhou, I. Zhang, H. Bai, and Y. Artzi. A corpus for reasoning about natural language grounded in photographs. arXiv preprint arXiv:1811.00491, 2018. 2
+
+[34] D. Teney, P. Anderson, X. He, and A. van den Hengel. Tips and tricks for visual question answering: Learnings from the 2017 challenge. arXiv preprint arXiv:1708.02711, 2017. 2, 15
+
+[35] D. Teney, L. Liu, and A. van den Hengel.
+
+Graphstructured representations for visual question answering. arXiv preprint, 2017. 2
+
+[36] B. Thomee, D. A. Shamma, G. Friedland, B. Elizalde, K. Ni, D. Poland, D. Borth, and L.-J. Li. Yfcc100m: The new data in multimedia research. arXiv preprint arXiv:1503.01817, 2015. 4, 17
+
+[37] A. Torralba and A. A. Efros. Unbiased look at dataset bias. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pages 1521–1528. IEEE, 2011. 2
+
+[38] Z. Yang, X. He, J. Gao, L. Deng, and A. Smola. Stacked In Proattention networks for image question answering. ceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pages 21–29, 2016. 1
+
+[39] P. Zhang, Y. Goyal, D. Summers-Stay, D. Batra, and D. Parikh. Yin and yang: Balancing and answering binary In Proceedings of the IEEE Conference visual questions. on Computer Vision and Pattern Recognition (CVPR), pages 5014–5022, 2016. 1, 2
+
+[40] S. Zhang, L. Qu, S. You, Z. Yang, and J. Zhang. Automatic arXiv preprint
+
+generation of grounded visual questions. arXiv:1612.06530, 2016. 3
+
+[41] Y. Zhu, O. Groth, M. Bernstein, and L. Fei-Fei. Visual7W: In Proceedings Grounded question answering in images. of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pages 4995–5004, 2016. 1, 2, 3
+
+7. Dataset Visualizations
+
+Figure 7: Top left: Distribution of GQA questions by ﬁrst four words. The arc length is proportional to the number of questions containing that preﬁx. White areas correspond to marginal contributions. Top right: question type distribution; please refer to the table 2 for details about each type. Middle rows: Occurrences number of the most frequent objects, categories, attributes and relations (excluding left/right). Third row: Word clouds for frequent objects, attributes and relations.
+
+34%11%6%6%6%5%5%4%4%3%2%2%GQA	TYPE	COMPOSITION	(DETAILED)queryRelqueryAttrexistRelchooseAttrverifyAttrlogicOrverifyRelqueryObjectchooseRelexistlogicAndverifyAttrsqueryStatechooseObjecttwoSametwoDiffverifyGlobalchooseGlobalcommonchooseObjRelcompareallDiffallSameFigure 8: Top left: Question length distribution for VQA datasets: we can see that GQA has a diverse range of lengths compared to all other datasets except synthetic CLEVR. Left: GQA Question structural and semantic type distributions. Right: The object class hierarchy we have created as part of the dataset construction process.
+
+Type queryGlobal verifyGlobal chooseGlobal queryAttr verifyAttr verifyAttrs chooseAttr exist existRel logicOr logicAnd queryObject chooseObject queryRel verifyRel chooseRel chooseObjRel compare common twoSame twoDiff allSame allDiff
+
+Open/Binary open binary open open binary binary open binary binary binary binary open open open binary open open binary open verify verify verify verify
+
+Semantic query verify query query verify logical choose verify verify logical logical query choose query verify choose choose compare compare compare compare compare compare
+
+Structural global global global attribute attribute attribute attribute object relation object obj/attr category category relation relation relation relation object object object object object object
+
+Example How is the weather in the image? Is it cloudy today? Is it sunny or cloudy? What color is the apple? Is the apple red? Is the apple red and shiny? Is the apple green or red? Is there an apple in the picture? Is there an apple on the black table? Do you see either an apple or a banana there? Do you see both green apples and bananas there? What kind of fruit is on the table? What kind of fruit is it, an apple or a banana? What is the small girl wearing? Is she wearing a blue dress? Is the cat to the left or to the right of the ﬂower? What is the boy eating, an apple or a slice of pizza?
+
+Form select: scene/query: type select: scene/verify type: attr select: scene/choose type: a|b select: obj/.../query: type select: obj/.../verify type: attr select: obj/.../verify t1: a1/verify t2: a2/and select: obj/.../choose type: a|b select: obj/.../exist select: subj/.../relate (rel): obj/exist select: obj1/.../exist/select: obj2/.../exist/or select: obj1/.../exist/select: obj2/.../exist/and select: category/.../query: name select: category/.../choose: a|b select: subj/.../relate (rel): obj/query: name select: subj/.../verifyRel (rel): obj select: subj/.../chooseRel (r1|r2): obj select: subj/.../relate (rel): obj/choose: a|b select: obj1/.../select: obj2/.../compare type Who is taller, the boy or the girl? select: obj1/.../select: obj2/.../common select: obj1/.../select: obj2/.../same select: obj1/.../select: obj2/.../different select: allObjs/same select: allObjs/different
+
+What is common to the shirt and the ﬂower? Does the shirt and the ﬂower have the same color? Are the table and the chair made of different materials? Are all the people there the same gender? Are the animals in the image of different types?
+
+Table 2: Functions Catalog for all the GQA question types. For each question we mention its structural and semantic types (refer to table 2 for further details), a functional program template and a typical example of a generated question.
+
+00.10.20.30.4051015202530FrequencyNumber	of	wordsQuestion	Distribution	by	#	wordsVQAV7WCLEVR-HumansCLEVRGQAchoose12%logical10%compare3%verify22%query53%GQA	STRUCTURAL	TYPESobject11%category6%global3%attribute28%relation52%GQA	SEMANTIC	TYPESGQA 1. What is the woman to the right of the boat holding? umbrella 2. Are there men to the left of the person that is holding the umbrella? no 3. What color is the umbrella the woman is holding? purple
+
+VQA 1. Why is the person using an umbrella? 2. Is the picture edited? 3. What’s the color of the umbrella?
+
+GQA 1. Is that a giraffe or an elephant? giraffe 2. Who is feeding the giraffe behind the man? lady 3. Is there any fence near the animal behind the man? yes 4. On which side of the image is the man? right 5. Is the giraffe is behind the man? yes
+
+VQA 1. What animal is the lady feeding? 2. Is it raining? 3. Is the man wearing sunglasses?
+
+GQA 1. Is the person’s hair brown and long? yes 2. What appliance is to the left of the man? refrigerator 3. Is the man to the left or to the right of a refrigerator? right 4. Who is in front of the appliance on the left? man 5. Is there a necktie in the picture that is not red? yes 6. What is the person in front of the refrigerator wearing? suit 7. What is hanging on the wall? picture 8. Does the vest have different color than the tie? no 9. What is the color of the shirt? white 10. Is the color of the vest different than the shirt? yes
+
+VQA 1. Does this man need a haircut? 2. What color is the guys tie? 3. What is different about the man’s suit that shows this is for a special occasion?
+
+GQA 1. Who wears the gloves? player 2. Are there any horses to the left of the man? no 3. Is the man to the right of the player that wears gloves? no 4. Is there a bag in the picture? no 5. Do the hat and the plate have different colors? yes
+
+VQA 1. What is the man holding? 2. Where are the people playing? 3. Is the player safe? 4. What is the sport being played?
+
+GQA 1. What is the person doing? playing 2. Is the entertainment center at the bottom or at the top? bottom 3. Is the entertainment center wooden and small? yes 4. Are the pants blue? no 5. Do you think the controller is red? no
+
+VQA 1. What colors are the walls? 2. What game is the man playing? 3. Why do they stand to play?
+
+GQA 1. Are there any coats? yes 2. Do you see a red coat in the image? no 3. Is the person that is to the left of the man exiting a truck? no 4. Which place is this? road
+
+VQA 1. Where is the bus driver? 2. Why is the man in front of the bus? 3. What numbers are repeated in the bus number?
+
+GQA 1. What is in front of the green fence? gate 2. Of which color is the gate? silver 3. Where is this? street 4. What color is the fence behind the gate? green 5. Is the fence behind the gate both brown and metallic? no
+
+VQA 1. What are the yellow lines called? 2. Why don’t the trees have leaves? 3. Where is the stop sign?
+
+Figure 9: Examples of questions from GQA and VQA, for the same images. As the examples demonstrate, GQA questions tend to involve more elements from the image compared to VQA questions, and are longer and more compositional as well. Conversely, VQA questions tend to be a bit more ambiguous and subjective, at times with no clear and conclusive answer. Finally, we can see that GQA provides more questions for each image and thus covers it more thoroughly than VQA.
+
+8. Dataset Balancing
+
+Figure 10: Impact of the dataset balancing on the conditional answer distribution: The left side shows the distribution before any balancing. We show the top 10 answers for a selection of question groups, where the column height corresponds to the relative frequency of each answer. The top row shows global question groups such as color questions, questions about animals, etc. while the bottom row shows local ones e.g. apple-color, table-material etc (section 3.3, main paper). Indeed, we can see that the distributions are heavily biased. The right side shows the distributions after balancing, more uniform and with heavier tails, while intentionally retaining the original real-world tendencies up to a tunable degree.
+
+As discussed in section 3.4 (main paper), given the original 22M auto-generated questions, we have performed answerdistributionbalancing, similaritiesreductionandtype-based sampling, reducingitssizetoa1.7Mbalanaceddataset. The balancing is performed in an iterative manner: as explained in section 3.3, for each question group (e.g. color questions), weiterateovertheanswerdistribution, fromthemost to least frequent answers: (ai,ci) when ai is the answer and ci is its count. In each iteration i, we downsample the head distribution (aj,j ≤ i) such that the ratio between the head (cid:80) will be bounded by and its complementary tail 1−(cid:80) b. While doing so, we also make sure to set minimum and maximum bounds on the frequency ratio ci+1 of each pair ci of consequent answers ai,ai+1. The results of this process is shown in ﬁgure 10. Indeed we can see how the distribu-
+
+tion is “pushed” away from the head and spreads over the tail, while intentionally maintaining the original real-world tendencies presented in the data, to retain its authenticity.
+
+9. Baselines Implementation Details
+
+In section 4.2 (main paper), we perform experiments over multiple baselines and state-of-the-art models. All CNN models use spatial features pre-trained on ImageNet [9], whereas state-of-the-art approaches such as bottomUp [5] and MAC [12] are based on object-based features produced by faster R-CNN detector [31]. All models use GloVe word embeddings of dimension 300 [30]. To allow a fair comparison, all the models use the same LSTM, CNN and classiﬁer components, and so the only difference between the models stem from their core architectural design.
+
+Figure 11: From left to right: (1) Accuracy as a function of textual question length – the number of words in the question. (2) Accuracy as a function of semantic question length – the number of operations in its functional program. (3) Performance as a function of the subset size used for training, ranging from 10K to 10M. (4) Accuracy for different lengths of MAC networks, suggesting that indeed GQA questions are compositional.
+
+We have used a sigmoid-based classiﬁer and trained all models using Adam [19] for 15 epochs, each takes about an hour to complete. For MAC [12], we use the ofﬁcial authored code available online, with 4 cells. For BottomUp [5], since the ofﬁcial implementation is unfortunately not publicly available, we re-implemented the model, carefully following details presented in [5, 34]. To ensure the correctnessofourimplementation, wehavetestedthemodel onthe standard VQA dataset, achieving 67%, which matches the original scores reported by Anderson et al. [5].
+
+10. Further Diagnosis
+
+Following section 4.2 (main paper), and in order to get more insight into models’ behaviors and tendencies, we perform further analysis of the top-scoring model for the GQA dataset, MAC [12]. The MAC network is a recurrent attention network that reasons in multiple concurrent steps over both the question and the image, and is thus geared towards compositional reasoning as well as rich scenes with several regions of relevance.
+
+We assess the model along multiple axes of variation, including question length, both textually, i.e. number of words, and semantically, i.e. number of reasoning operations required to answer it, where an operation can be e.g. following a relation from one object to another, attribute identiﬁcation, or a logical operation such as or, and or not. We provide additional results for different network lengths (namely, cells number) and varying training-set sizes, all can be found in ﬁgure 11.
+
+Interestingly, question textual length correlates positively with the model accuracy. It may be the case that longer questions reveal more cues or information that the model can exploit, potentially sidestepping direct reasoning about the image. However, question semantic length has the opposite impact as expected: 1-step questions are particularly easy for models than the compositional ones which involve more steps.
+
+Figure 12: Performance as a function of the input representation. We encode the scenes through three different methods: spatial features produced by a standard pretrained CNN, object-based features generated by a faster R-CNN detector, and direct embedding of the scene graph semantic representation, equivalent to having perfect sight. We further experiment with both textual questions as well as their counterpart functional programs as input. We can see that the more semantically-imbued the representations get, the higher the accuracy obtained.
+
+Figure 13: Distribution of GQA questions semantic length (number of computation steps to arrive at the answer). We can see that most questions require about 2-3 reasoning steps, where each step may involve tracking a relation between objects, an attribute identiﬁcation or a logical operation.
+
+0.30.40.50.638131823Accuracy	Number	of	Question	WordsAccuracy	/	#	words0.40.50.60.70.812345Accuracy	Number	of	Semantic	OperationsAccuracy	/	#	operations0.40.450.50.5510100100010000Accuracy	Training	Set	Size	(logarithmic	scale)Accuracy	/		training	set	size0.50.510.520.530.540.5512345Accuracy	Number	of	CellsAccuracy	/		#	cells0.20.30.40.50.60.70.80.91spatial	features(CNN)object	features(bottom-up)scene	scene	graph(perfect	sight)functional	programsINPUT	REPRESENTATION16%242%344%4+8%GQA	SEMANTIC	STEPSFigure 14: Entailment relations between different question types. In section 3.3 (main paper) we discuss the entailment and equivalences between questions. Since every question in the dataset has a matching logical representation of the sequence of reasoning steps, we can formally compute all the entailment and equivalence relations between different questions. Indeed, a cogent and reasonable learner should be consistent between its own answers, e.g. should not answer “red” to a question about the color of an object it has just identiﬁed as blue. Some more subtle relations also occur, such as those involving relations, e.g. if X is above Y, than Y is below X, and X is not below Y, etc. ﬁgure 14 shows all the logical relations between the various question types. Refer to table 2 for a complete catalog of the different types. Experiments show that while people excel at consistency, achieving the impressive 98.4%, deep learning models perform much worse in this task, with 69% - 82%. These results cast a doubt about the reliability of existing models and their true visual understanding skills. We therefore believe that improving their skills towards enhanced consistency and cogency is an important direction, which we hope our dataset will encourage.
+
+We can further see that longer MAC networks with more cells are more competent in performing the GQA task, substantiating its increased compositionality. Other experiments show that increasing the training set size has signiﬁ- cant impact on the model’s performance, as found out also by Kaﬂe et al. [18]. Apparently, the training set size has not reached saturation yet and so models may beneﬁt from even larger datasets. Finally, we have measured the impact of different input representations on the performance. We encode the visual scene with three different methods, ranging from standard pretrained CNN-based spatial features, to object-informed features obtained through faster R-CNNs detectors [31], up to even a “perfect sight” model that has access to the precise semantic scene graph through direct node and edge embeddings. Asﬁgure11shows, themorehigh-levelandsemantic the representation is, the better are the results. On the question side, we explore both training on the standard textual questions as well as the semantic functional programs. MAC achieves 53.8% accuracy and 81.59% consistency on the textual questions and 59.7% and 85.85%
+
+on the programs, demonstrating the usefulness and further challenge embodied in the former. It is also more consistent Indeed, the programs consist of only a small operations vocabulary, whereas the questions use both synonyms and hundreds of possible structures, incorporating probabilistic rules to make them more natural and diverse. In particular, GQA questions have sundry subtle and challenging linguistic phenomena such as long-range dependencies, absent from the canonical programs. The textual questions thus provide us with the opportunity to engage with real, interesting and signiﬁcant aspects of natural language, and consequently foster the development of models with enhanced language comprehension skills.
+
+11. Comparison between GQA and VQA 2.0
+
+We proceed by performing a comparison with the VQA 2.0 dataset [11], the ﬁndings of which are summarized in table 3. Apart from the higher average question length, we can see that GQA consequently contains more verbs and prepositions than VQA (as well as more nouns and adjectives)
+
+Aspect Question length Verbs Nouns Adjectives Prepositions Relation questions Spatial questions Logical questions Comparative questions Compositional questions
+
+VQA 6.2 + 1.9 1.4 + 0.6 1.9 + 0.9 0.6 + 0.6 0.5 + 0.6 19.5% 8% 6% 1% 3%
+
+GQA 7.9 + 3.1 1.6 + 0.7 2.5 + 1.0 0.7 + 0.7 1 + 1 51.6% 22.4% 19% 3% 52%
+
+Table 3: A head-to-head comparison between GQA and VQA 2.0. The GQA questions are longer on average, and consequently have moreverbs, nouns, adjectivesandprepositionsthanVQA,alluding to their increased compositionality. In addition, GQA demands increased reasoning (spatial, logical, relational and comparative) and includes signiﬁcantly more compositional questions.
+
+providing further evidence for its increased compositionality. Semantically, we can see that the GQA questions are signiﬁcantly more compositional than VQA’s, and involve variety of reasoning skills in much higher frequency (spatial, logical, relational and comparative).
+
+Some VQA question types are not covered by GQA, such as intention (why) questions or ones involving OCR or external knowledge. The GQA dataset focuses on factual questions and multi-hop reasoning in particular, rather than covering all types. Comparing to VQA, GQA questions are objective, unambiguous, more compositional and can be answered from the images only, potentially making this benchmark more controlled and convenient for making research progress on.
+
+12. Scene Graph Normalization
+
+Our starting point in creating the GQA dataset is the Visual Genome Scene Graph annotations [20] that cover 113k images from COCO [23] and Flickr [36].7 The scene graph serves as a formalized representation of the image: each node denotes an object, a visual entity within the image, like a person, an apple, grass or clouds. It is linked to a boundingboxspecifyingitspositionandsize, andismarked up with about 1-3 attributes, properties of the object: e.g., its color, shape, material or activity. The objects are connected by relation edges, representing actions (verbs), spatial relations (prepositions), and comparatives.
+
+The scene graphs are annotated with free-form natural language. Our ﬁrst goal is thus to convert the annotations into a clear and unambiguous semantic ontology. We begin by cleaning up the graph’s vocabulary, removing stop words, ﬁxing typos, consolidating synonyms and ﬁltering rare or amorphous concepts. We then classify the vocabulary into predeﬁned categories (e.g., animals and fruits for
+
+7We extend the original Visual Genome dataset with 5k new hidden
+
+scene graphs collected through crowdsourcing.
+
+Figure 15: Question length distribution for Visual Question Answering datasets: we can see that GQA questions have a wide range of lengths and are longer on average than all other datasets except the synthetic CLEVR. Note that the long CLEVR questions tend to sound unnatural at times.
+
+objects; colors and materials for attributes), using word embedding distances to get preliminary annotations, which are then followed by manual curation. This results in a class hierarchy over the scene graph’s vocabulary, which we further augment with various semantic and linguistic features like part of speech, voice, plurality and synonyms – information that will be used to create grammatically correct questions in further steps. Our ﬁnal ontology contains 1740 objects, 620 attributes and 330 relations, grouped into a hierarchy that consists of 60 different categories and subcategories. Visualization of the ontology can be found in ﬁgure 8.
+
+At the next step, we prune graph edges that sound unnatural or are otherwise inadequate to be incoporated within the questions to be generated, such as (woman, in, shirt), (tail, attached to, giraffe), or (hand, hugging, bear). We ﬁlter these triplets using a combination of category-based rules, n-gram frquencies [1], dataset co-occurrence statistics, and manual curation.
+
+In order to generate correct and unambiguous questions, some cases require us to validate the uniqueness or absence of an object. Visual Genome, while meant to be as exhaustiveaspossible, cannotguaranteefullcoverage(asitmaybe practically infeasible). Hence, in those cases we use object detectors [31], trained on visual genome with a low detection threshold, to conservatively conﬁrm the object absence or uniqueness.
+
+Next, we augment the graph with absolute and relative positional information: objects appearing within the image margins, are annotated accordingly. Object pairs for which we can safely determine positional relations (e.g., one is to the left of the other), are annotated as well. We also annotate object pairs if they share the same color, material or shape. Finally, we enrich the graph with global information about the image location or weather, if these can be directly inferred from the objects it contains.
+
+By the end of this stage, the resulting scene graphs have clean, uniﬁed, rich and unambiguous semantics for both the nodes and the edges.
+
+00.10.20.30.4051015202530FrequencyNumber	of	wordsQuestion	Distribution	by	#	wordsVQAV7WCLEVR-HumansCLEVRGQAFigure 16: The interfaces used for human experiments on Amazon Mechanical Turk. Top: Each HIT displays several images and asks turkers to list objects and annotate their corresponding bounding boxes. In addition, the turkers are requested to specify attributes and relations between the objects. An option to switch between images is also given to allow the turkers to choose rich enough images to work on. Bottom: Each HIT displays multiple questions and requires the turkers to respond. Since there is a closed set of possible answers (from a vocabulary with Approximately 1878 tokens), and in order to allow a fair comparison between human and models’ performance, we give turkers the option to respond in unconstrained free-form language, but also suggest them multiple answers from our vocabulary that are the most similar to theirs (using word embedding distances). However, turkers are not limited to choose from the suggestions in case they believe none of the proposed answers is correct.
+

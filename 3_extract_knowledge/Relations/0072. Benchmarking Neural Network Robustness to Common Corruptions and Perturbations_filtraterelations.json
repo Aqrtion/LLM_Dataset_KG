@@ -1,0 +1,112 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319031406D1",
+            "head": "IMAGENET-C",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319031406P1",
+            "tail": "BENCHMARKING NEURAL NETWORK ROBUSTNESS TO COMMON CORRUPTIONS AND PERTURBATIONS",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319031406D2",
+            "head": "IMAGENET-P",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319031406P1",
+            "tail": "BENCHMARKING NEURAL NETWORK ROBUSTNESS TO COMMON CORRUPTIONS AND PERTURBATIONS",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319031406D1",
+            "head": "IMAGENET-C",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319031406R1",
+            "tail": "https://github.com/hendrycks/robustness",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319031406D1",
+            "head": "IMAGENET-C",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031406T1",
+            "tail": "corruption robustness",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031406D1",
+            "head": "IMAGENET-C",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031406T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031406D2",
+            "head": "IMAGENET-P",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031406T2",
+            "tail": "perturbation robustness",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031406D2",
+            "head": "IMAGENET-P",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031406T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031406D1",
+            "head": "IMAGENET-C",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319031406D3",
+            "tail": "ImageNet",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319031406D2",
+            "head": "IMAGENET-P",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319031406D3",
+            "tail": "ImageNet",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319031406D7",
+            "head": "ImageNet-22K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031406T3",
+            "tail": "subtype robustness",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031406D3",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031406T6",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031406D3",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031406T7",
+            "tail": "image classification",
+            "tail_type": "Task"
+        }
+    ]
+}

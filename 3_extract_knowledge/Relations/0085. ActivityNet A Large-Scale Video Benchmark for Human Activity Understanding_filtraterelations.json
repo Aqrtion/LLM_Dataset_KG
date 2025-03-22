@@ -1,0 +1,94 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319035231D1",
+            "head": "ActivityNet",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319035231R1",
+            "tail": "http://www.activity-net.org",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319035231D1",
+            "head": "ActivityNet",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319035231P1",
+            "tail": "ActivityNet: A Large-Scale Video Benchmark for Human Activity Understanding",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319035231D1",
+            "head": "ActivityNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035231T1",
+            "tail": "human activity understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319035231D1",
+            "head": "ActivityNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035231T2",
+            "tail": "untrimmed video classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319035231D1",
+            "head": "ActivityNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035231T3",
+            "tail": "trimmed activity classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319035231D1",
+            "head": "ActivityNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035231T4",
+            "tail": "activity detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319035231D1",
+            "head": "ActivityNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035231T5",
+            "tail": "action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319035231D1",
+            "head": "ActivityNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035231T6",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319035231D1",
+            "head": "ActivityNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035231T7",
+            "tail": "scene recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319035231D1",
+            "head": "ActivityNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035231T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        }
+    ]
+}

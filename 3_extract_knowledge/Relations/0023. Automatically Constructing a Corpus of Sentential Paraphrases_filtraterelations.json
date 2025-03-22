@@ -1,0 +1,58 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319004155D1",
+            "head": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319004155R1",
+            "tail": "http://research.microsoft.com/research/nlp/msr_paraphrase.htm",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319004155D1",
+            "head": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319004155P1",
+            "tail": "Automatically Constructing a Corpus of Sentential Paraphrases",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319004155D1",
+            "head": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319004155T1",
+            "tail": "paraphrase identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319004155D1",
+            "head": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319004155T2",
+            "tail": "paraphrase generation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319004155D1",
+            "head": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319004155T3",
+            "tail": "training machine learning models",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319004155D1",
+            "head": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319004155T4",
+            "tail": "evaluation",
+            "tail_type": "Task"
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319043909D1",
+            "head": "Speech Commands v0.02",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319043909R1",
+            "tail": "http://download.tensorflow.org/data/speech_commands_v0.02.tar.gz",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319043909D2",
+            "head": "Speech Commands v0.01",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319043909R2",
+            "tail": "http://download.tensorflow.org/data/speech_commands_v0.01.tar.gz",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319043909D1",
+            "head": "Speech Commands v0.02",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250319043909L1",
+            "tail": "Creative Commons BY 4.0",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250319043909D3",
+            "head": "Common Voice",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250319043909L2",
+            "tail": "CC0",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250319043909D1",
+            "head": "Speech Commands v0.02",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043909T1",
+            "tail": "keyword spotting",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043909D1",
+            "head": "Speech Commands v0.02",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043909T2",
+            "tail": "training object detection algorithms",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043909D1",
+            "head": "Speech Commands v0.02",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043909T3",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043909D1",
+            "head": "Speech Commands v0.02",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043909T4",
+            "tail": "model evaluation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043909D1",
+            "head": "Speech Commands v0.02",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319043909P1",
+            "tail": "Speech Commands: A Dataset for Limited-Vocabulary Speech Recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319043909D1",
+            "head": "Speech Commands v0.02",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319043909D2",
+            "tail": "Speech Commands v0.01",
+            "tail_type": "Dataset"
+        }
+    ]
+}

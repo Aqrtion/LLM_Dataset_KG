@@ -1,0 +1,40 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319031816D1",
+            "head": "Urban 100",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319031816P1",
+            "tail": "Single Image Super-resolution from Transformed Self-Exemplars",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319031816D1",
+            "head": "Urban 100",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031816T1",
+            "tail": "single image super-resolution",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031816D2",
+            "head": "BSD 100",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031816T1",
+            "tail": "single image super-resolution",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031816D3",
+            "head": "Berkeley Segmentation Dataset",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319031816D2",
+            "tail": "BSD 100",
+            "tail_type": "Dataset"
+        }
+    ]
+}

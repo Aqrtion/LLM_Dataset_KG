@@ -1,0 +1,138 @@
+{
+    "entities": [
+        {
+            "id": "20250319030328P1",
+            "name": "NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Eirikur Agustsson",
+                    "Radu Timofte"
+                ],
+                "institutions": [
+                    "CVL, ETH Zurich, Switzerland",
+                    "Merantix GmbH"
+                ]
+            }
+        },
+        {
+            "id": "20250319030328D1",
+            "name": "DIV2K",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1000 images",
+                "resolution": "2K",
+                "partitions": "800 train, 100 validation, 100 test",
+                "diversity": "covers large diversity of contents",
+                "collection_method": "manually crawled from Internet",
+                "purpose": "research"
+            }
+        },
+        {
+            "id": "20250319030328D2",
+            "name": "Set5",
+            "type": "Dataset",
+            "attributes": {
+                "size": "5 images"
+            }
+        },
+        {
+            "id": "20250319030328D3",
+            "name": "Set14",
+            "type": "Dataset",
+            "attributes": {
+                "size": "14 images"
+            }
+        },
+        {
+            "id": "20250319030328D4",
+            "name": "B100",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100 images"
+            }
+        },
+        {
+            "id": "20250319030328D5",
+            "name": "Urban100",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100 images"
+            }
+        },
+        {
+            "id": "20250319030328D6",
+            "name": "Train91",
+            "type": "Dataset",
+            "attributes": {
+                "size": "91 images"
+            }
+        },
+        {
+            "id": "20250319030328D7",
+            "name": "LIVE1",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030328D8",
+            "name": "L20",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030328D9",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030328D10",
+            "name": "Kodak",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030328D11",
+            "name": "SuperTex136",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030328R1",
+            "name": "https://data.vision.ee.ethz.ch/cvl/DIV2K/",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030328T1",
+            "name": "single image super-resolution",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030328T2",
+            "name": "image restoration",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030328T3",
+            "name": "image quality assessment",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030328T4",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030328T5",
+            "name": "perceptual quality assessment",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

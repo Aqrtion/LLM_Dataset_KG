@@ -1,0 +1,67 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319022617D1",
+            "head": "CELEBA-HQ",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319022617P1",
+            "tail": "PROGRESSIVE GROWING OF GANS FOR IMPROVED QUALITY, STABILITY, AND VARIATION",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319022617D1",
+            "head": "CELEBA-HQ",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319022617R1",
+            "tail": "https://github.com/tkarras/progressive_growing_of_gans",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319022617D2",
+            "head": "CELEBA",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319022617D1",
+            "tail": "CELEBA-HQ",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319022617D1",
+            "head": "CELEBA-HQ",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022617T1",
+            "tail": "high-resolution image generation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319022617D1",
+            "head": "CELEBA-HQ",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022617T2",
+            "tail": "training generative adversarial networks",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319022617D3",
+            "head": "LSUN BEDROOM",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022617T2",
+            "tail": "training generative adversarial networks",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319022617D4",
+            "head": "CIFAR10",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022617T3",
+            "tail": "evaluating GAN results",
+            "tail_type": "Task"
+        }
+    ]
+}

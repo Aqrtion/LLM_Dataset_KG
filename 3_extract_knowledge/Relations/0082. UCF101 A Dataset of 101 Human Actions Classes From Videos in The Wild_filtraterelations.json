@@ -1,0 +1,49 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319034224D1",
+            "head": "UCF101",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319034224R1",
+            "tail": "http://crcv.ucf.edu/data/UCF101.php",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319034224D1",
+            "head": "UCF101",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319034224P1",
+            "tail": "UCF101: A Dataset of 101 Human Actions Classes From Videos in The Wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319034224D1",
+            "head": "UCF101",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034224T1",
+            "tail": "action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034224D1",
+            "head": "UCF101",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034224T2",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034224D2",
+            "head": "UCF50",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319034224D1",
+            "tail": "UCF101",
+            "tail_type": "Dataset"
+        }
+    ]
+}

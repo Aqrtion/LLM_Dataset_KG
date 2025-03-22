@@ -1,0 +1,371 @@
+{
+    "entities": [
+        {
+            "id": "20250319040311P1",
+            "name": "NTU RGB+D: A Large Scale Dataset for 3D Human Activity Analysis",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Amir Shahroudy",
+                    "Jun Liu",
+                    "Tian-Tsong Ng",
+                    "Gang Wang"
+                ],
+                "institution": "Nanyang Technological University, Institute for Infocomm Research",
+                "year": "2016"
+            }
+        },
+        {
+            "id": "20250319040311D1",
+            "name": "NTU RGB+D",
+            "type": "Dataset",
+            "attributes": {
+                "samples": "56,880",
+                "classes": 60,
+                "subjects": 40,
+                "views": 80,
+                "sensor": "Microsoft Kinect v2",
+                "modalities": [
+                    "RGB",
+                    "depth",
+                    "skeleton (3D joints)",
+                    "infrared"
+                ],
+                "year": "2016"
+            }
+        },
+        {
+            "id": "20250319040311D2",
+            "name": "MSR-Action3D",
+            "type": "Dataset",
+            "attributes": {
+                "subjects": 10,
+                "views": 1,
+                "sensor": "Kinect v1",
+                "year": "2010"
+            }
+        },
+        {
+            "id": "20250319040311D3",
+            "name": "CAD-60",
+            "type": "Dataset",
+            "attributes": {
+                "samples": 60,
+                "views": "multiple",
+                "sensor": "Kinect v1",
+                "year": "2011"
+            }
+        },
+        {
+            "id": "20250319040311D4",
+            "name": "CAD-120",
+            "type": "Dataset",
+            "attributes": {
+                "samples": 120,
+                "sensor": "Kinect v1",
+                "year": "2013"
+            }
+        },
+        {
+            "id": "20250319040311D5",
+            "name": "RGBD-HuDaAct",
+            "type": "Dataset",
+            "attributes": {
+                "samples": 1189,
+                "classes": 12,
+                "sensor": "Kinect v1",
+                "year": "2011"
+            }
+        },
+        {
+            "id": "20250319040311D6",
+            "name": "MSRDailyActivity3D",
+            "type": "Dataset",
+            "attributes": {
+                "samples": 320,
+                "classes": 16,
+                "sensor": "Kinect v1",
+                "year": "2012"
+            }
+        },
+        {
+            "id": "20250319040311D7",
+            "name": "Act42",
+            "type": "Dataset",
+            "attributes": {
+                "sensor": "Kinect v1",
+                "year": "2012"
+            }
+        },
+        {
+            "id": "20250319040311D8",
+            "name": "3D Action Pairs",
+            "type": "Dataset",
+            "attributes": {
+                "sensor": "Kinect v1",
+                "year": "2013"
+            }
+        },
+        {
+            "id": "20250319040311D9",
+            "name": "Multiview 3D Event",
+            "type": "Dataset",
+            "attributes": {
+                "sensor": "Kinect v1",
+                "year": "2013"
+            }
+        },
+        {
+            "id": "20250319040311D10",
+            "name": "Northwestern-UCLA",
+            "type": "Dataset",
+            "attributes": {
+                "sensor": "Kinect v1",
+                "year": "2014"
+            }
+        },
+        {
+            "id": "20250319040311D11",
+            "name": "UWA3D Multiview",
+            "type": "Dataset",
+            "attributes": {
+                "sensor": "Kinect v1",
+                "year": "2014"
+            }
+        },
+        {
+            "id": "20250319040311D12",
+            "name": "Office Activity",
+            "type": "Dataset",
+            "attributes": {
+                "sensor": "Kinect v1",
+                "year": "2014"
+            }
+        },
+        {
+            "id": "20250319040311D13",
+            "name": "UTD-MHAD",
+            "type": "Dataset",
+            "attributes": {
+                "sensor": "Kinect v1",
+                "year": "2015"
+            }
+        },
+        {
+            "id": "20250319040311D14",
+            "name": "UWA3D Multiview II",
+            "type": "Dataset",
+            "attributes": {
+                "sensor": "Kinect v1",
+                "year": "2015"
+            }
+        },
+        {
+            "id": "20250319040311R1",
+            "name": "http://rose1.ntu.edu.sg/datasets/actionrecognition.asp",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319040311T1",
+            "name": "3D human activity analysis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319040311T2",
+            "name": "action recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319040311T3",
+            "name": "RGB+D human action recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319040311T4",
+            "name": "3D action recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319040311T5",
+            "name": "human activity analysis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319040311T6",
+            "name": "3D object recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319040311T7",
+            "name": "3D scene understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319040311T8",
+            "name": "depth-based action recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319040311T9",
+            "name": "RGB+D-based action recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319040311T10",
+            "name": "3D-based action analysis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319040311T11",
+            "name": "action classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319040311T12",
+            "name": "human action recognition",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319040311R1",
+            "tail": "http://rose1.ntu.edu.sg/datasets/actionrecognition.asp",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319040311P1",
+            "tail": "NTU RGB+D: A Large Scale Dataset for 3D Human Activity Analysis",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T1",
+            "tail": "3D human activity analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T2",
+            "tail": "action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T3",
+            "tail": "RGB+D human action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T4",
+            "tail": "3D action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T5",
+            "tail": "human activity analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T6",
+            "tail": "3D object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T7",
+            "tail": "3D scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T8",
+            "tail": "depth-based action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T9",
+            "tail": "RGB+D-based action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T10",
+            "tail": "3D-based action analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T11",
+            "tail": "action classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T12",
+            "tail": "human action recognition",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

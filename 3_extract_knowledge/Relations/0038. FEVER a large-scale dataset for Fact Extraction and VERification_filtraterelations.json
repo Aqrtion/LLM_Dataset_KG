@@ -1,0 +1,76 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319013228D1",
+            "head": "FEVER",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319013228P1",
+            "tail": "FEVER: a large-scale dataset for Fact Extraction and VERification",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319013228D1",
+            "head": "FEVER",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T1",
+            "tail": "Fact Extraction and Verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319013228D1",
+            "head": "FEVER",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T2",
+            "tail": "claim verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319013228D2",
+            "head": "Fake News Challenge dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T3",
+            "tail": "stance classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319013228D3",
+            "head": "“Liar, Liar Pants on Fire” dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T8",
+            "tail": "fake news detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319013228D4",
+            "head": "Fact checking dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T2",
+            "tail": "claim verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319013228D5",
+            "head": "Emergent dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T3",
+            "tail": "stance classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319013228D6",
+            "head": "TREC Answer Validation Exercise dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T7",
+            "tail": "answer validation",
+            "tail_type": "Task"
+        }
+    ]
+}

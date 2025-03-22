@@ -1,0 +1,76 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319012945D1",
+            "head": "Universal Dependencies v1.2",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319012945R1",
+            "tail": "http://universaldependencies.org",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319012945D1",
+            "head": "Universal Dependencies v1.2",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319012945P1",
+            "tail": "Universal Dependencies v1: A Multilingual Treebank Collection",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319012945D1",
+            "head": "Universal Dependencies v1.2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012945T1",
+            "tail": "dependency parsing",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319012945D1",
+            "head": "Universal Dependencies v1.2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012945T2",
+            "tail": "part-of-speech tagging",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319012945D1",
+            "head": "Universal Dependencies v1.2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012945T3",
+            "tail": "cross-lingual learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319012945D1",
+            "head": "Universal Dependencies v1.2",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319012945D5",
+            "tail": "Stanford Dependencies",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319012945D1",
+            "head": "Universal Dependencies v1.2",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319012945D2",
+            "tail": "Google Universal Dependency Treebank (UDT)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319012945D1",
+            "head": "Universal Dependencies v1.2",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319012945D4",
+            "tail": "CoNLL-X",
+            "tail_type": "Dataset"
+        }
+    ]
+}

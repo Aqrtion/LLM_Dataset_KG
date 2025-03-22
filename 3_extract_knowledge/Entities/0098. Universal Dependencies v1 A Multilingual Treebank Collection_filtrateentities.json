@@ -1,0 +1,140 @@
+{
+    "entities": [
+        {
+            "id": "20250319043109P1",
+            "name": "Universal Dependencies v1: A Multilingual Treebank Collection",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Joakim Nivre",
+                    "Marie-Catherine de Marneffe",
+                    "Filip Ginter",
+                    "Yoav Goldberg",
+                    "Jan Hajič",
+                    "Christopher D. Manning",
+                    "Ryan McDonald",
+                    "Slav Petrov",
+                    "Sampo Pyysalo",
+                    "Natalia Silveira",
+                    "Reut Tsarfaty",
+                    "Daniel Zeman"
+                ],
+                "institutions": [
+                    "The Ohio State University",
+                    "Uppsala University",
+                    "Bar-Ilan University",
+                    "Google Inc.",
+                    "Charles University in Prague",
+                    "University of Cambridge",
+                    "University of Turku",
+                    "Stanford University",
+                    "The Open University of Israel"
+                ]
+            }
+        },
+        {
+            "id": "20250319043109D1",
+            "name": "Universal Dependencies (UD)",
+            "type": "Dataset",
+            "attributes": {
+                "languages": 33,
+                "annotation layers": "morphological, syntactic",
+                "format": "CoNLL-U",
+                "treebanks": 37,
+                "releases": [
+                    "v1.0 October 2014",
+                    "v1.2 November 2015"
+                ]
+            }
+        },
+        {
+            "id": "20250319043109D2",
+            "name": "Google Universal Dependency Treebank (UDT)",
+            "type": "Dataset",
+            "attributes": {
+                "languages": "6 initially, 11 in 2014",
+                "annotation": "Stanford dependencies, Google POS tags"
+            }
+        },
+        {
+            "id": "20250319043109D3",
+            "name": "HamleDT",
+            "type": "Dataset",
+            "attributes": {
+                "languages": 30,
+                "annotation": "automatically harmonized treebanks",
+                "version": "3.0 uses UD standard"
+            }
+        },
+        {
+            "id": "20250319043109D4",
+            "name": "CoNLL-X shared task data",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "dependency parsing shared task"
+            }
+        },
+        {
+            "id": "20250319043109D5",
+            "name": "Stanford Dependencies",
+            "type": "Dataset",
+            "attributes": {
+                "origin": "Developed for English, adapted to multiple languages"
+            }
+        },
+        {
+            "id": "20250319043109R1",
+            "name": "http://universaldependencies.org",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043109T1",
+            "name": "cross-lingual learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043109T2",
+            "name": "multilingual parsing research",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043109T3",
+            "name": "syntactic annotation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043109T4",
+            "name": "morphological analysis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043109T5",
+            "name": "part-of-speech tagging",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043109T6",
+            "name": "unsupervised part-of-speech tagging",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043109T7",
+            "name": "delexicalized parser adaptation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043109T8",
+            "name": "dependency parsing",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

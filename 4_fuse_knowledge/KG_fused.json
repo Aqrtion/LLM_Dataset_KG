@@ -1,0 +1,507 @@
+{
+    "entities": [
+        {
+            "name": "Deep Learning Face Attributes in the Wild",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Ziwei Liu",
+                    "Ping Luo",
+                    "Xiaogang Wang",
+                    "Xiaoou Tang"
+                ],
+                "institution": "The Chinese University of Hong Kong"
+            }
+        },
+        {
+            "name": "CelebA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "200,000 images",
+                "attributes_labeled": 40,
+                "source": "CelebFaces dataset",
+                "alias": [
+                    "CelebFaces"
+                ]
+            }
+        },
+        {
+            "name": "LFWA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "13,233 images",
+                "identities": 5749,
+                "source": "LFW dataset",
+                "alias": [
+                    "LFW (Labeled Faces in the Wild)"
+                ]
+            }
+        },
+        {
+            "name": "ImageNet (ILSVRC 2012)",
+            "type": "Dataset",
+            "attributes": {
+                "training_images": "1.2 million",
+                "validation_images": "50,000",
+                "purpose": "object recognition"
+            }
+        },
+        {
+            "name": "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Alex Wang",
+                    "Amanpreet Singh",
+                    "Julian Michael",
+                    "Felix Hill",
+                    "Omer Levy",
+                    "Samuel R. Bowman"
+                ],
+                "institutions": [
+                    "New York University",
+                    "University of Washington",
+                    "DeepMind"
+                ]
+            }
+        },
+        {
+            "name": "GLUE",
+            "type": "Dataset",
+            "attributes": {
+                "num_tasks": 9,
+                "domains": [
+                    "news",
+                    "movie reviews",
+                    "social QA",
+                    "miscellaneous",
+                    "multi-genre"
+                ],
+                "evaluation_metrics": [
+                    "accuracy",
+                    "F1",
+                    "Pearson/Spearman correlation",
+                    "Matthews correlation"
+                ],
+                "diagnostic_dataset": "included",
+                "evaluation_platform": "gluebenchmark.com"
+            }
+        },
+        {
+            "name": "CoLA",
+            "type": "Dataset",
+            "attributes": {
+                "train_size": "8.5k",
+                "test_size": "1k",
+                "task": "acceptability",
+                "metrics": "Matthews correlation",
+                "domain": "miscellaneous"
+            }
+        },
+        {
+            "name": "SST-2",
+            "type": "Dataset",
+            "attributes": {
+                "train_size": "67k",
+                "test_size": "1.8k",
+                "task": "sentiment analysis",
+                "metrics": "accuracy",
+                "domain": "movie reviews"
+            }
+        },
+        {
+            "name": "MRPC",
+            "type": "Dataset",
+            "attributes": {
+                "train_size": "3.7k",
+                "test_size": "1.7k",
+                "task": "paraphrase detection",
+                "metrics": "accuracy/F1",
+                "domain": "news"
+            }
+        },
+        {
+            "name": "STS-B",
+            "type": "Dataset",
+            "attributes": {
+                "train_size": "7k",
+                "test_size": "1.4k",
+                "task": "sentence similarity",
+                "metrics": "Pearson/Spearman correlation",
+                "domain": "miscellaneous"
+            }
+        },
+        {
+            "name": "QQP",
+            "type": "Dataset",
+            "attributes": {
+                "train_size": "364k",
+                "test_size": "391k",
+                "task": "paraphrase detection",
+                "metrics": "accuracy/F1",
+                "domain": "social QA"
+            }
+        },
+        {
+            "name": "MNLI",
+            "type": "Dataset",
+            "attributes": {
+                "train_size": "393k",
+                "test_size": "matched/mismatched",
+                "task": "textual entailment",
+                "metrics": "accuracy",
+                "domain": "multi-genre"
+            }
+        },
+        {
+            "name": "QNLI",
+            "type": "Dataset",
+            "attributes": {
+                "train_size": "105k",
+                "task": "question answering",
+                "source_dataset": "SQuAD"
+            }
+        },
+        {
+            "name": "RTE",
+            "type": "Dataset",
+            "attributes": {
+                "train_size": "2.5k",
+                "task": "textual entailment",
+                "domain": "news/Wikipedia"
+            }
+        },
+        {
+            "name": "WNLI",
+            "type": "Dataset",
+            "attributes": {
+                "train_size": "634",
+                "task": "textual entailment"
+            }
+        },
+        {
+            "name": "SNLI",
+            "type": "Dataset",
+            "attributes": {
+                "size": "550k",
+                "task": "textual entailment"
+            }
+        },
+        {
+            "name": "SQuAD",
+            "type": "Dataset",
+            "attributes": {
+                "task": "question answering",
+                "version": "v1.0",
+                "size": "107,785 questions",
+                "evaluation_metrics": "F1, exact match"
+            }
+        },
+        {
+            "name": "gluebenchmark.com",
+            "type": "Repository"
+        },
+        {
+            "name": "natural language understanding",
+            "type": "Task",
+            "attributes": {
+                "definition": "Comprehending and interpreting human language to extract meaning"
+            }
+        },
+        {
+            "name": "question answering",
+            "type": "Task",
+            "attributes": {
+                "definition": "Automatically answering questions posed by humans in natural language"
+            }
+        },
+        {
+            "name": "sentiment analysis",
+            "type": "Task",
+            "attributes": {
+                "definition": "Determining the emotional tone or polarity expressed in text"
+            }
+        },
+        {
+            "name": "textual entailment",
+            "type": "Task",
+            "attributes": {
+                "definition": "Determining if a hypothesis can be inferred from a given premise"
+            }
+        },
+        {
+            "name": "paraphrase detection",
+            "type": "Task",
+            "attributes": {
+                "definition": "Identifying whether two sentences have the same meaning"
+            }
+        },
+        {
+            "name": "sentence similarity",
+            "type": "Task",
+            "attributes": {
+                "definition": "Measuring the degree of semantic similarity between two sentences"
+            }
+        },
+        {
+            "name": "acceptability",
+            "type": "Task",
+            "attributes": {
+                "definition": "Judging whether a sentence is grammatically and semantically acceptable"
+            }
+        },
+        {
+            "name": "model evaluation",
+            "type": "Task",
+            "attributes": {
+                "definition": "Assessing the performance and capabilities of machine learning models"
+            }
+        },
+        {
+            "name": "Multi-Genre Natural Language Inference (MultiNLI) Corpus",
+            "type": "Dataset",
+            "attributes": {
+                "size": "433k examples",
+                "genres": 10,
+                "purpose": "development and evaluation of machine learning models for sentence understanding"
+            }
+        },
+        {
+            "name": "Creative Commons Attribution 3.0 Unported License",
+            "type": "License"
+        },
+        {
+            "name": "VQA: Visual Question Answering",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Aishwarya Agrawal",
+                    "Jiasen Lu",
+                    "Stanislaw Antol",
+                    "Margaret Mitchell",
+                    "C. Lawrence Zitnick",
+                    "Dhruv Batra",
+                    "Devi Parikh"
+                ],
+                "institution": "Virginia Tech, Microsoft Research, Facebook AI Research, Georgia Institute of Technology"
+            }
+        },
+        {
+            "name": "VQA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "∼0.25M images",
+                "questions": "∼0.76M",
+                "components": [
+                    "MS COCO images",
+                    "Abstract Scenes"
+                ]
+            }
+        }
+    ],
+    "relations": [
+        {
+            "head": "CelebA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Deep Learning Face Attributes in the Wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "LFWA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Deep Learning Face Attributes in the Wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "CelebA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "CelebFaces",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "LFWA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "LFW (Labeled Faces in the Wild)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "ImageNet (ILSVRC 2012)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "face localization",
+            "tail_type": "Task"
+        },
+        {
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail": "gluebenchmark.com",
+            "tail_type": "Repository"
+        },
+        {
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "CoLA",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "SST-2",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "MRPC",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "STS-B",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "QQP",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "MNLI",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "QNLI",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "RTE",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "WNLI",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "CoLA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "acceptability",
+            "tail_type": "Task"
+        },
+        {
+            "head": "SST-2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "sentiment analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head": "MRPC",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "paraphrase detection",
+            "tail_type": "Task"
+        },
+        {
+            "head": "STS-B",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "sentence similarity",
+            "tail_type": "Task"
+        },
+        {
+            "head": "QQP",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "paraphrase detection",
+            "tail_type": "Task"
+        },
+        {
+            "head": "MNLI",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "textual entailment",
+            "tail_type": "Task"
+        },
+        {
+            "head": "QNLI",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head": "RTE",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "textual entailment",
+            "tail_type": "Task"
+        },
+        {
+            "head": "WNLI",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "textual entailment",
+            "tail_type": "Task"
+        },
+        {
+            "head": "SNLI",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "textual entailment",
+            "tail_type": "Task"
+        },
+        {
+            "head": "SQuAD",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Multi-Genre Natural Language Inference (MultiNLI) Corpus",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail": "Creative Commons Attribution 3.0 Unported License",
+            "tail_type": "License"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "VQA: Visual Question Answering",
+            "tail_type": "Paper"
+        }
+    ]
+}

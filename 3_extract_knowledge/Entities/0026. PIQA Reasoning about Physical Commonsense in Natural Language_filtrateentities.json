@@ -1,0 +1,77 @@
+{
+    "entities": [
+        {
+            "id": "20250319005248P1",
+            "name": "PIQA: Reasoning about Physical Commonsense in Natural Language",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Yonatan Bisk",
+                    "Rowan Zellers",
+                    "Ronan Le Bras",
+                    "Jianfeng Gao",
+                    "Yejin Choi"
+                ],
+                "institutions": [
+                    "Allen Institute for Artificial Intelligence",
+                    "Microsoft Research AI",
+                    "University of Washington"
+                ]
+            }
+        },
+        {
+            "id": "20250319005248D1",
+            "name": "PIQA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "16,000 training QA pairs",
+                "purpose": "physical commonsense reasoning",
+                "collection_method": "instructables.com inspiration + Amazon Mechanical Turk",
+                "validation": "AFLite adversarial filtering",
+                "metrics": "human accuracy: 95%, model accuracy: ~77%"
+            }
+        },
+        {
+            "id": "20250319005248R1",
+            "name": "http://yonatanbisk.com/piqa",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005248T1",
+            "name": "physical commonsense reasoning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005248T2",
+            "name": "question answering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005248T3",
+            "name": "problem solving",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005248T4",
+            "name": "natural language understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005248T5",
+            "name": "tool usage understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005248T6",
+            "name": "benchmarking language models",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

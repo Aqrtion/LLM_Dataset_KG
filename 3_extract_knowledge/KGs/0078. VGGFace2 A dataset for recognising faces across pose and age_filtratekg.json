@@ -1,0 +1,287 @@
+{
+    "entities": [
+        {
+            "id": "20250319033053P1",
+            "name": "VGGFace2: A dataset for recognising faces across pose and age",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Qiong Cao",
+                    "Li Shen",
+                    "Weidi Xie",
+                    "Omkar M. Parkhi",
+                    "Andrew Zisserman"
+                ],
+                "institution": "University of Oxford"
+            }
+        },
+        {
+            "id": "20250319033053D1",
+            "name": "VGGFace2",
+            "type": "Dataset",
+            "attributes": {
+                "size": "3.31 million images",
+                "subjects": 9131,
+                "variations": [
+                    "pose",
+                    "age",
+                    "illumination",
+                    "ethnicity"
+                ],
+                "annotations": [
+                    "bounding boxes",
+                    "fiducial keypoints",
+                    "pose",
+                    "age"
+                ],
+                "collection_method": "Google Image Search with automated and manual filtering"
+            }
+        },
+        {
+            "id": "20250319033053D2",
+            "name": "MS-Celeb-1M",
+            "type": "Dataset",
+            "attributes": {
+                "size": "10 million images",
+                "subjects": 100000
+            }
+        },
+        {
+            "id": "20250319033053D3",
+            "name": "IJB-A",
+            "type": "Dataset",
+            "attributes": {
+                "subjects": 500,
+                "content": "5712 images, 2085 videos"
+            }
+        },
+        {
+            "id": "20250319033053D4",
+            "name": "IJB-B",
+            "type": "Dataset",
+            "attributes": {
+                "subjects": 1845,
+                "content": "21,800 still images, 55,000 video frames"
+            }
+        },
+        {
+            "id": "20250319033053D5",
+            "name": "IJB-C",
+            "type": "Dataset",
+            "attributes": {
+                "subjects": 3531,
+                "content": "31,334 images, 117,500 video frames"
+            }
+        },
+        {
+            "id": "20250319033053D6",
+            "name": "LFW (Labelled Faces in the Wild)",
+            "type": "Dataset",
+            "attributes": {
+                "subjects": 5749,
+                "images": 13233
+            }
+        },
+        {
+            "id": "20250319033053D7",
+            "name": "CelebFaces+",
+            "type": "Dataset",
+            "attributes": {
+                "subjects": 10177,
+                "images": 202599
+            }
+        },
+        {
+            "id": "20250319033053D8",
+            "name": "CASIA-WebFace",
+            "type": "Dataset",
+            "attributes": {
+                "subjects": 10575,
+                "images": 494414
+            }
+        },
+        {
+            "id": "20250319033053D9",
+            "name": "VGGFace",
+            "type": "Dataset",
+            "attributes": {
+                "size": "2.6 million images",
+                "subjects": 2622
+            }
+        },
+        {
+            "id": "20250319033053D10",
+            "name": "MegaFace",
+            "type": "Dataset",
+            "attributes": {
+                "size": "4.7 million images",
+                "subjects": 672057
+            }
+        },
+        {
+            "id": "20250319033053D11",
+            "name": "UMDFaces",
+            "type": "Dataset",
+            "attributes": {
+                "subjects": 8501,
+                "images": 367920
+            }
+        },
+        {
+            "id": "20250319033053D12",
+            "name": "UMDFaces-Videos",
+            "type": "Dataset",
+            "attributes": {
+                "subjects": 3107,
+                "videos": 22075
+            }
+        },
+        {
+            "id": "20250319033053R1",
+            "name": "http://www.robots.ox.ac.uk/~vgg/data/vgg_face2/",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319033053T1",
+            "name": "face recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319033053T2",
+            "name": "face verification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319033053T3",
+            "name": "face identification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319033053T4",
+            "name": "age estimation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319033053T5",
+            "name": "pose estimation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319033053T6",
+            "name": "face detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319033053T7",
+            "name": "face clustering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319033053T8",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319033053R1",
+            "tail": "http://www.robots.ox.ac.uk/~vgg/data/vgg_face2/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319033053P1",
+            "tail": "VGGFace2: A dataset for recognising faces across pose and age",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T1",
+            "tail": "face recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T2",
+            "tail": "face verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T3",
+            "tail": "face identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T4",
+            "tail": "age estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T5",
+            "tail": "pose estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T6",
+            "tail": "face detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T7",
+            "tail": "face clustering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

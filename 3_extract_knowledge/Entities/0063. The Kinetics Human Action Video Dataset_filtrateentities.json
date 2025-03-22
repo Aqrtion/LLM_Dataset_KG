@@ -1,0 +1,168 @@
+{
+    "entities": [
+        {
+            "id": "20250319025051P1",
+            "name": "The Kinetics Human Action Video Dataset",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Will Kay",
+                    "João Carreira",
+                    "Karen Simonyan",
+                    "Brian Zhang",
+                    "Chloe Hillier",
+                    "Sudheendra Vijayanarasimhan",
+                    "Fabio Viola",
+                    "Tim Green",
+                    "Trevor Back",
+                    "Paul Natsev",
+                    "Mustafa Suleyman",
+                    "Andrew Zisserman"
+                ],
+                "institution": "DeepMind"
+            }
+        },
+        {
+            "id": "20250319025051D1",
+            "name": "Kinetics",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 400,
+                "clips per class": "400-1150",
+                "total clips": 306245,
+                "clip duration": "~10s",
+                "splits": "train/val/test",
+                "collection method": "Amazon Mechanical Turk (AMT)",
+                "resolution": "variable",
+                "frame rate": "variable",
+                "non-exhaustive annotation": "yes"
+            }
+        },
+        {
+            "id": "20250319025051D2",
+            "name": "HMDB-51",
+            "type": "Dataset",
+            "attributes": {
+                "number of actions": 51,
+                "total clips": 6766
+            }
+        },
+        {
+            "id": "20250319025051D3",
+            "name": "UCF-101",
+            "type": "Dataset",
+            "attributes": {
+                "number of actions": 101,
+                "total clips": 13320,
+                "distinct videos": 2500
+            }
+        },
+        {
+            "id": "20250319025051D4",
+            "name": "ActivityNet-200",
+            "type": "Dataset",
+            "attributes": {
+                "number of actions": 200,
+                "average clips per class": 141,
+                "total clips": 28108
+            }
+        },
+        {
+            "id": "20250319025051D5",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "image classification",
+                "use case": "pre-training for other tasks"
+            }
+        },
+        {
+            "id": "20250319025051D6",
+            "name": "Caltech 256",
+            "type": "Dataset",
+            "attributes": {
+                "number of categories": 256
+            }
+        },
+        {
+            "id": "20250319025051D7",
+            "name": "PASCAL VOC",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "benchmarking"
+            }
+        },
+        {
+            "id": "20250319025051R1",
+            "name": "http://deepmind.com/kinetics",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025051T1",
+            "name": "human action classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025051T2",
+            "name": "temporal localization",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025051T3",
+            "name": "multi-modal analysis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025051T4",
+            "name": "action recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025051T5",
+            "name": "object detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025051T6",
+            "name": "image segmentation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025051T7",
+            "name": "video modeling",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025051T8",
+            "name": "temporal aggregation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025051T9",
+            "name": "gender imbalance analysis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025051T10",
+            "name": "training action classification networks",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025051T11",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

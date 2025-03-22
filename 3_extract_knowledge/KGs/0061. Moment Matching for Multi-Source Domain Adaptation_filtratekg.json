@@ -1,0 +1,188 @@
+{
+    "entities": [
+        {
+            "id": "20250319024604P1",
+            "name": "Moment Matching for Multi-Source Domain Adaptation",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Xingchao Peng",
+                    "Qinxun Bai",
+                    "Xide Xia",
+                    "Zijun Huang",
+                    "Kate Saenko",
+                    "Bo Wang"
+                ],
+                "institutions": [
+                    "Boston University",
+                    "Horizon Robotics",
+                    "Columbia University",
+                    "Vector Institute & Peter Munk Cardiac Center"
+                ]
+            }
+        },
+        {
+            "id": "20250319024604D1",
+            "name": "DomainNet",
+            "type": "Dataset",
+            "attributes": {
+                "size": "~0.6 million images",
+                "categories": 345,
+                "domains": 6,
+                "domains_list": [
+                    "clipart",
+                    "infograph",
+                    "painting",
+                    "quickdraw",
+                    "real",
+                    "sketch"
+                ],
+                "collection_method": "Manual filtering via Amazon Mechanical Turk",
+                "annotation_quality": "Dual-annotator agreement"
+            }
+        },
+        {
+            "id": "20250319024604D2",
+            "name": "Office",
+            "type": "Dataset",
+            "attributes": {
+                "domains": 3,
+                "classes": 31,
+                "description": "Office environment objects"
+            }
+        },
+        {
+            "id": "20250319024604D3",
+            "name": "Office-Caltech10",
+            "type": "Dataset",
+            "attributes": {
+                "domains": 4,
+                "classes": 10
+            }
+        },
+        {
+            "id": "20250319024604D4",
+            "name": "PACS",
+            "type": "Dataset",
+            "attributes": {
+                "domains": 4,
+                "classes": 7
+            }
+        },
+        {
+            "id": "20250319024604D5",
+            "name": "Syn2Real",
+            "type": "Dataset",
+            "attributes": {
+                "size": "280,157 images"
+            }
+        },
+        {
+            "id": "20250319024604D6",
+            "name": "Digit-Five",
+            "type": "Dataset",
+            "attributes": {
+                "components": [
+                    "MNIST",
+                    "MNIST-M",
+                    "Synthetic Digits",
+                    "SVHN",
+                    "USPS"
+                ]
+            }
+        },
+        {
+            "id": "20250319024604R1",
+            "name": "http://ai.bu.edu/M3SDA/",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319024604T1",
+            "name": "multi-source domain adaptation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319024604T2",
+            "name": "domain adaptation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319024604T3",
+            "name": "object recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319024604T4",
+            "name": "image classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319024604T5",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319024604D1",
+            "head": "DomainNet",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319024604R1",
+            "tail": "http://ai.bu.edu/M3SDA/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319024604D1",
+            "head": "DomainNet",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319024604P1",
+            "tail": "Moment Matching for Multi-Source Domain Adaptation",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319024604D1",
+            "head": "DomainNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024604T1",
+            "tail": "multi-source domain adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024604D1",
+            "head": "DomainNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024604T5",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024604D2",
+            "head": "Office",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024604T2",
+            "tail": "domain adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024604D3",
+            "head": "Office-Caltech10",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024604T2",
+            "tail": "domain adaptation",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

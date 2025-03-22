@@ -1,0 +1,130 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319032136D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319032136R1",
+            "tail": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb2",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319032136D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319032136P1",
+            "tail": "VoxCeleb2: Deep Speaker Recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319032136D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032136T1",
+            "tail": "speaker verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032136D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032136T2",
+            "tail": "speaker identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032136D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032136T3",
+            "tail": "speaker diarisation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032136D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032136T4",
+            "tail": "speaker clustering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032136D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032136T5",
+            "tail": "visual speech synthesis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032136D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032136T6",
+            "tail": "speech separation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032136D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032136T7",
+            "tail": "cross-modal transfer",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032136D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032136T8",
+            "tail": "face recognition training",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032136D2",
+            "head": "VoxCeleb1",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319032136P2",
+            "tail": "VoxCeleb: a large-scale speaker identification dataset",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319032136D3",
+            "head": "SITW (Speakers in the Wild)",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319032136P3",
+            "tail": "The speakers in the wild (SITW) speaker recognition database",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319032136D4",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319032136P4",
+            "tail": "VGGFace2: a dataset for recognising faces across pose and age",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319032136D5",
+            "head": "MS-Celeb-1M",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319032136P5",
+            "tail": "MS-Celeb-1M: A dataset and benchmark for large-scale face recognition",
+            "tail_type": "Paper"
+        }
+    ]
+}

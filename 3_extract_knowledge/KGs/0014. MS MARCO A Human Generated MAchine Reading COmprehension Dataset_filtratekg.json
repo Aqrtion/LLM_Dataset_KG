@@ -1,0 +1,181 @@
+{
+    "entities": [
+        {
+            "id": "20250318233629P1",
+            "name": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Payal Bajaj",
+                    "Daniel Campos",
+                    "Nick Craswell",
+                    "Li Deng",
+                    "Jianfeng Gao",
+                    "Xiaodong Liu",
+                    "Rangan Majumder",
+                    "Andrew McNamara",
+                    "Bhaskar Mitra",
+                    "Tri Nguyen",
+                    "Mir Rosenberg",
+                    "Xia Song",
+                    "Alina Stoica",
+                    "Saurabh Tiwary",
+                    "Tong Wang"
+                ],
+                "institution": "Microsoft AI & Research"
+            }
+        },
+        {
+            "id": "20250318233629D1",
+            "name": "MS MARCO",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1,010,916 questions, 8,841,823 passages",
+                "answers": "human generated + 182,669 rewritten answers",
+                "versions": [
+                    "v1.0",
+                    "v1.1",
+                    "v2.0",
+                    "v2.1"
+                ],
+                "source": "Bing/Cortana query logs",
+                "question_types": [
+                    "NUMERIC",
+                    "ENTITY",
+                    "LOCATION",
+                    "PERSON",
+                    "DESCRIPTION"
+                ]
+            }
+        },
+        {
+            "id": "20250318233629D2",
+            "name": "SQuAD (Stanford Question Answering Dataset)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "107,785 question-answer pairs",
+                "answer_type": "text spans"
+            }
+        },
+        {
+            "id": "20250318233629D3",
+            "name": "NewsQA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100,000+ question-answer pairs",
+                "source": "CNN news articles"
+            }
+        },
+        {
+            "id": "20250318233629D4",
+            "name": "DuReader",
+            "type": "Dataset",
+            "attributes": {
+                "language": "Chinese",
+                "size": "200,000 questions"
+            }
+        },
+        {
+            "id": "20250318233629D5",
+            "name": "NarrativeQA",
+            "type": "Dataset",
+            "attributes": {
+                "content_type": "movie scripts/books",
+                "size": "45,000 question-answer pairs"
+            }
+        },
+        {
+            "id": "20250318233629D6",
+            "name": "SearchQA",
+            "type": "Dataset",
+            "attributes": {
+                "source": "Jeopardy! questions",
+                "size": "140K+ question-answer pairs"
+            }
+        },
+        {
+            "id": "20250318233629D7",
+            "name": "RACE",
+            "type": "Dataset",
+            "attributes": {
+                "language": "English",
+                "question_type": "multiple choice"
+            }
+        },
+        {
+            "id": "20250318233629D8",
+            "name": "ReCoRD",
+            "type": "Dataset",
+            "attributes": {
+                "task": "Cloze-style QA",
+                "size": "12,000 question-passage pairs"
+            }
+        },
+        {
+            "id": "20250318233629D9",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1.5 million labeled examples",
+                "categories": 1000
+            }
+        },
+        {
+            "id": "20250318233629T1",
+            "name": "answerability prediction",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318233629T2",
+            "name": "natural language answer generation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318233629T3",
+            "name": "passage ranking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250318233629D1",
+            "head": "MS MARCO",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250318233629P1",
+            "tail": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250318233629D1",
+            "head": "MS MARCO",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318233629T1",
+            "tail": "answerability prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318233629D1",
+            "head": "MS MARCO",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318233629T2",
+            "tail": "natural language answer generation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318233629D1",
+            "head": "MS MARCO",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318233629T3",
+            "tail": "passage ranking",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

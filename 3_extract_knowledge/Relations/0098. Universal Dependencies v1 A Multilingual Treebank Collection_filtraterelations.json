@@ -1,0 +1,139 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319043109P1",
+            "tail": "Universal Dependencies v1: A Multilingual Treebank Collection",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319043109R1",
+            "tail": "http://universaldependencies.org",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319043109D2",
+            "tail": "Google Universal Dependency Treebank (UDT)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319043109D3",
+            "tail": "HamleDT",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319043109D4",
+            "tail": "CoNLL-X shared task data",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319043109D5",
+            "tail": "Stanford Dependencies",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319043109D2",
+            "head": "Google Universal Dependency Treebank (UDT)",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319043109D1",
+            "tail": "Universal Dependencies (UD)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319043109D4",
+            "head": "CoNLL-X shared task data",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043109T6",
+            "tail": "unsupervised part-of-speech tagging",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043109T1",
+            "tail": "cross-lingual learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043109T2",
+            "tail": "multilingual parsing research",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043109T3",
+            "tail": "syntactic annotation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043109T4",
+            "tail": "morphological analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043109T5",
+            "tail": "part-of-speech tagging",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043109T7",
+            "tail": "delexicalized parser adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043109D1",
+            "head": "Universal Dependencies (UD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043109T8",
+            "tail": "dependency parsing",
+            "tail_type": "Task"
+        }
+    ]
+}

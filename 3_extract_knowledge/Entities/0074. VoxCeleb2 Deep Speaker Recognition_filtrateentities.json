@@ -1,0 +1,138 @@
+{
+    "entities": [
+        {
+            "id": "20250319032136P1",
+            "name": "VoxCeleb2: Deep Speaker Recognition",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Joon Son Chung",
+                    "Arsha Nagrani",
+                    "Andrew Zisserman"
+                ],
+                "institution": "University of Oxford"
+            }
+        },
+        {
+            "id": "20250319032136D1",
+            "name": "VoxCeleb2",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1,128,246 utterances",
+                "speakers": "6,112",
+                "gender_balance": "61% male",
+                "nationalities": 145,
+                "collection_method": "automated YouTube pipeline",
+                "audio_visual": true,
+                "noise_conditions": [
+                    "background chatter",
+                    "laughter",
+                    "overlapping speech"
+                ]
+            }
+        },
+        {
+            "id": "20250319032136D2",
+            "name": "VoxCeleb1",
+            "type": "Dataset",
+            "attributes": {
+                "usage": "speaker identification",
+                "reference": "INTERSPEECH 2017"
+            }
+        },
+        {
+            "id": "20250319032136D3",
+            "name": "SITW (Speakers in the Wild)",
+            "type": "Dataset",
+            "attributes": {
+                "environment": "in the wild"
+            }
+        },
+        {
+            "id": "20250319032136D4",
+            "name": "VGGFace2",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "face recognition across pose and age"
+            }
+        },
+        {
+            "id": "20250319032136D5",
+            "name": "MS-Celeb-1M",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "large-scale face recognition"
+            }
+        },
+        {
+            "id": "20250319032136D6",
+            "name": "POLYCOST",
+            "type": "Dataset",
+            "attributes": {
+                "domain": "telephone speech"
+            }
+        },
+        {
+            "id": "20250319032136D7",
+            "name": "NFI-FRITS",
+            "type": "Dataset",
+            "attributes": {
+                "domain": "forensic speaker recognition"
+            }
+        },
+        {
+            "id": "20250319032136R1",
+            "name": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb2",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032136T1",
+            "name": "speaker verification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032136T2",
+            "name": "speaker identification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032136T3",
+            "name": "speaker diarisation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032136T4",
+            "name": "speaker clustering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032136T5",
+            "name": "visual speech synthesis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032136T6",
+            "name": "speech separation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032136T7",
+            "name": "cross-modal transfer",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032136T8",
+            "name": "face recognition training",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

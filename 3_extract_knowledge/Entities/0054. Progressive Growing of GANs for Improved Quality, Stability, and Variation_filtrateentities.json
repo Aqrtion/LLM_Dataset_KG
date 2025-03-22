@@ -1,0 +1,81 @@
+{
+    "entities": [
+        {
+            "id": "20250319022617P1",
+            "name": "PROGRESSIVE GROWING OF GANS FOR IMPROVED QUALITY, STABILITY, AND VARIATION",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Tero Karras",
+                    "Samuli Laine",
+                    "Timo Aila",
+                    "Jaakko Lehtinen"
+                ],
+                "institutions": [
+                    "NVIDIA",
+                    "Aalto University"
+                ]
+            }
+        },
+        {
+            "id": "20250319022617D1",
+            "name": "CELEBA-HQ",
+            "type": "Dataset",
+            "attributes": {
+                "resolution": "1024x1024",
+                "size": "30000 images",
+                "description": "High-quality version of CELEBA",
+                "source": "Based on CELEBA dataset"
+            }
+        },
+        {
+            "id": "20250319022617D2",
+            "name": "CELEBA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "202599 images",
+                "resolution": "Varied (43x55 to 6732x8984)"
+            }
+        },
+        {
+            "id": "20250319022617D3",
+            "name": "LSUN BEDROOM",
+            "type": "Dataset",
+            "attributes": {
+                "category": "Bedroom images"
+            }
+        },
+        {
+            "id": "20250319022617D4",
+            "name": "CIFAR10",
+            "type": "Dataset",
+            "attributes": {
+                "inception_score": "8.80 (unsupervised)"
+            }
+        },
+        {
+            "id": "20250319022617R1",
+            "name": "https://github.com/tkarras/progressive_growing_of_gans",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022617T1",
+            "name": "high-resolution image generation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022617T2",
+            "name": "training generative adversarial networks",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022617T3",
+            "name": "evaluating GAN results",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

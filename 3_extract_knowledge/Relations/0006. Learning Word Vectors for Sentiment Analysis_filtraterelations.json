@@ -1,0 +1,60 @@
+{
+    "relations": [
+        {
+            "head": "IMDB Review Dataset",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail": "http://www.andrew-maas.net/data/sentiment",
+            "tail_type": "Repository"
+        },
+        {
+            "head": "Pang and Lee (2004) Movie Review Dataset v2.0",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail": "http://www.cs.cornell.edu/people/pabo/movie-review-data",
+            "tail_type": "Repository"
+        },
+        {
+            "head": "IMDB Review Dataset",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Learning Word Vectors for Sentiment Analysis",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "IMDB Review Dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "sentiment analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head": "IMDB Review Dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "document-level sentiment classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Pang and Lee (2004) Movie Review Dataset v2.0",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "sentiment analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Pang and Lee (2004) Sentence Subjectivity Dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "subjectivity detection",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Pang and Lee (2004) Sentence Subjectivity Dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "sentence-level sentiment classification",
+            "tail_type": "Task"
+        }
+    ]
+}

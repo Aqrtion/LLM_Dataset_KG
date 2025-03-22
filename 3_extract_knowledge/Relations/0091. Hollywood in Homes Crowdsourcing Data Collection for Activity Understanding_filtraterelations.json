@@ -1,0 +1,103 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319041030D1",
+            "head": "Charades",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319041030R1",
+            "tail": "http://allenai.org/plato/charades/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319041030D1",
+            "head": "Charades",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319041030P1",
+            "tail": "Hollywood in Homes: Crowdsourcing Data Collection for Activity Understanding",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319041030D1",
+            "head": "Charades",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041030T1",
+            "tail": "action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041030D1",
+            "head": "Charades",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041030T2",
+            "tail": "automatic description generation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041030D1",
+            "head": "Charades",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041030T3",
+            "tail": "video captioning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041030D1",
+            "head": "Charades",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041030T4",
+            "tail": "object detection in videos",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041030D1",
+            "head": "Charades",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041030T5",
+            "tail": "modeling context",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041030D1",
+            "head": "Charades",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041030T6",
+            "tail": "learning object states",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041030D1",
+            "head": "Charades",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041030T7",
+            "tail": "human-object interactions",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041030D1",
+            "head": "Charades",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041030T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041030D1",
+            "head": "Charades",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041030T9",
+            "tail": "training object detection algorithms",
+            "tail_type": "Task"
+        }
+    ]
+}

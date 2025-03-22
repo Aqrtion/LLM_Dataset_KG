@@ -1,0 +1,134 @@
+{
+    "entities": [
+        {
+            "id": "20250319031406P1",
+            "name": "BENCHMARKING NEURAL NETWORK ROBUSTNESS TO COMMON CORRUPTIONS AND PERTURBATIONS",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Dan Hendrycks",
+                    "Thomas Dietterich"
+                ],
+                "conference": "ICLR 2019"
+            }
+        },
+        {
+            "id": "20250319031406D1",
+            "name": "IMAGENET-C",
+            "type": "Dataset",
+            "attributes": {
+                "corruption_types": 15,
+                "categories": [
+                    "noise",
+                    "blur",
+                    "weather",
+                    "digital"
+                ],
+                "severity_levels": 5,
+                "base_dataset": "ImageNet validation images"
+            }
+        },
+        {
+            "id": "20250319031406D2",
+            "name": "IMAGENET-P",
+            "type": "Dataset",
+            "attributes": {
+                "perturbation_types": 10,
+                "sequence_frames": "more than 30",
+                "base_dataset": "ImageNet validation images"
+            }
+        },
+        {
+            "id": "20250319031406D3",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {
+                "reference": "Deng et al., 2009"
+            }
+        },
+        {
+            "id": "20250319031406D4",
+            "name": "CIFAR-10-C",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406D5",
+            "name": "TINY IMAGENET-C",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406D6",
+            "name": "IMAGENET 64×64-C",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406D7",
+            "name": "ImageNet-22K",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406D8",
+            "name": "ImageNet-1K",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406R1",
+            "name": "https://github.com/hendrycks/robustness",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406T1",
+            "name": "corruption robustness",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406T2",
+            "name": "perturbation robustness",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406T3",
+            "name": "subtype robustness",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406T4",
+            "name": "adversarial robustness",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406T5",
+            "name": "speech recognition robustness",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406T6",
+            "name": "object recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406T7",
+            "name": "image classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319031406T8",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

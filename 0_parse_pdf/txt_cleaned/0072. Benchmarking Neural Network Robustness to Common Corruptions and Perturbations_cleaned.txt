@@ -1,0 +1,542 @@
+Published as a conference paper at ICLR 2019
+
+BENCHMARKING NEURAL NETWORK ROBUSTNESS TO COMMON CORRUPTIONS AND PERTURBATIONS
+
+Dan Hendrycks University of California, Berkeley hendrycks@berkeley.edu
+
+Thomas Dietterich Oregon State University tgd@oregonstate.edu
+
+ABSTRACT
+
+In this paper we establish rigorous benchmarks for image classiﬁer robustness. Our ﬁrst benchmark, IMAGENET-C, standardizes and expands the corruption robustness topic, while showing which classiﬁers are preferable in safety-critical applications. Then we propose a new dataset called IMAGENET-P which enables researchers to benchmark a classiﬁer’s robustness to common perturbations. Unlike recent robustness research, this benchmark evaluates performance on common corruptions and perturbations not worst-case adversarial perturbations. We ﬁnd that there are negligible changes in relative corruption robustness from AlexNet classiﬁers to ResNet classiﬁers. Afterward we discover ways to enhance corruption and perturbation robustness. We even ﬁnd that a bypassed adversarial defense provides substantial common perturbation robustness. Together our benchmarks may aid future work toward networks that robustly generalize.
+
+INTRODUCTION
+
+The human vision system is robust in ways that existing computer vision systems are not (Recht et al., 2018; Azulay & Weiss, 2018). Unlike current deep learning classiﬁers (Krizhevsky et al., 2012; He et al., 2015; Xie et al., 2016), the human vision system is not fooled by small changes in query images. Humans are also not confused by many forms of corruption such as snow, blur, pixelation, and novel combinations of these. Humans can even deal with abstract changes in structure and style. Achieving these kinds of robustness is an important goal for computer vision and machine learning. It is also essential for creating deep learning systems that can be deployed in safety-critical applications.
+
+Most work on robustness in deep learning methods for vision has focused on the important challenges of robustness to adversarial examples (Szegedy et al., 2014; Carlini & Wagner, 2017; 2016), unknown unknowns (Hendrycks et al., 2019; Hendrycks & Gimpel, 2017b; Liu et al., 2018), and model or data poisoning (Steinhardt et al., 2017; Hendrycks et al., 2018). In contrast, we develop and validate datasets for two other forms of robustness. Speciﬁcally, we introduce the IMAGETNET-C dataset for input corruption robustness and the IMAGENET-P dataset for input perturbation robustness.
+
+To create IMAGENET-C, we introduce a set of 75 common visual corruptions and apply them to the ImageNet object recognition challenge (Deng et al., 2009). We hope that this will serve as a general dataset for benchmarking robustness to image corruptions and prevent methodological problems such as moving goal posts and result cherry picking. We evaluate the performance of current deep learning systems and show that there is wide room for improvement on IMAGENET-C. We also introduce a total of three methods and architectures that improve corruption robustness without losing accuracy.
+
+To create IMAGENET-P, we introduce a set of perturbed or subtly differing ImageNet images. Using metrics we propose, we measure the stability of the network’s predictions on these perturbed images. Although these perturbations are not chosen by an adversary, currently existing networks exhibit surprising instability on common perturbations. Then we then demonstrate that approaches which enhance corruption robustness can also improve perturbation robustness. For example, some recent architectures can greatly improve both types of robustness. More, we show that the Adversarial Logit Pairing (cid:96)∞ adversarial example defense can yield substantial robustness gains on diverse and common perturbations. By deﬁning and benchmarking perturbation and corruption robustness, we facilitate research that can be overcome by future networks which do not rely on spurious correlations or cues inessential to the object’s class.
+
+Published as a conference paper at ICLR 2019
+
+2 RELATED WORK
+
+Adversarial Examples. An adversarial image is a clean image perturbed by a small distortion carefully crafted to confuse a classiﬁer. These deceptive distortions can occasionally fool black-box classiﬁers (Kurakin et al., 2017). Algorithms have been developed that search for the smallest additive distortions in RGB space that are sufﬁcient to confuse a classiﬁer (Carlini et al., 2017). Thus adversarial distortions serve as type of worst-case analysis for network robustness. Its popularity has often led “adversarial robustness” to become interchangeable with “robustness” in the literature (Bastani et al., 2016; Rauber et al., 2017). In the literature, new defenses (Lu et al., 2017; Papernot et al., 2017; Metzen et al., 2017; Hendrycks & Gimpel, 2017a) often quickly succumb to new attacks (Evtimov et al., 2017; Carlini & Wagner, 2017; 2016), with some exceptions for perturbations on small images (Schott et al., 2018; Madry et al., 2018). For some simple datasets, the existence of any classiﬁcation error ensures the existence of adversarial perturbations of size O(d−1/2), d the input dimensionality (Gilmer et al., 2018b). For some simple models, adversarial robustness requires an increase in the training set size that is polynomial in d (Schmidt et al., 2018). Gilmer et al. (2018a) suggest modifying the problem of adversarial robustness itself for increased real-world applicability.
+
+Robustness in Speech. Speech recognition research emphasizes robustness to common corruptions rather than worst-case, adversarial corruptions (Li et al., 2014; Mitra et al., 2017). Common acoustic corruptions (e.g., street noise, background chatter, wind) receive greater focus than adversarial audio, because common corruptions are ever-present and unsolved. There are several popular datasets containing noisy test audio (Hirsch & Pearce, 2000; Hirsch, 2007). Robustness in noisy environments requires robust architectures, and some research ﬁnds convolutional networks more robust than fully connected networks (Abdel-Hamid et al., 2013). Additional robustness has been achieved through pre-processing techniques such as standardizing the statistics of the input (Liu et al., 1993; Torre et al., 2005; Harvilla & Stern, 2012; Kim & Stern, 2016).
+
+ConvNet Fragility Studies. Several studies demonstrate the fragility of convolutional networks on simple corruptions. For example, Hosseini et al. (2017) apply impulse noise to break Google’s Cloud Vision API. Using Gaussian noise and blur, Dodge & Karam (2017b) demonstrate the superior robustness of human vision to convolutional networks, even after networks are ﬁne-tuned on Gaussian noise or blur. Geirhos et al. (2017) compare networks to humans on noisy and elastically deformed images. They ﬁnd that ﬁne-tuning on speciﬁc corruptions does not generalize and that classiﬁcation error patterns underlying network and human predictions are not similar. Temel et al. (2017; 2018); Temel & AlRegib (2018) propose different corrupted datasets for object and trafﬁc sign recognition.
+
+Robustness Enhancements. In an effort to reduce classiﬁer fragility, Vasiljevic et al. (2016) ﬁnetune on blurred images. They ﬁnd it is not enough to ﬁne-tune on one type of blur to generalize to other blurs. Furthermore, ﬁne-tuning on several blurs can marginally decrease performance. Zheng et al. (2016) also ﬁnd that ﬁne-tuning on noisy images can cause underﬁtting, so they encourage the noisy image softmax distribution to match the clean image softmax. Dodge & Karam (2017a) address underﬁtting via a mixture of corruption-speciﬁc experts assuming corruptions are known beforehand.
+
+3 CORRUPTIONS, PERTURBATIONS, AND ADVERSARIAL PERTURBATIONS
+
+We now deﬁne corruption and perturbation robustness and distinguish them from adversarial perturbation robustness. To begin, we consider a classiﬁer f : X → Y trained on samples from distribution D, a set of corruption functions C, and a set of perturbation functions E. We let PC(c),PE(ε) approximate the real-world frequency of these corruptions and perturbations. Most classiﬁers are judged by their accuracy on test queries drawn from D, i.e., P(x,y)∼D(f(x) = y). Yet in a vast range of cases the classiﬁer is tasked with classifying low-quality or corrupted In view of this, we suggest also computing the classiﬁer’s corruption robustness inputs. Ec∼C[P(x,y)∼D(f(c(x) = y))]. This contrasts with a popular notion of adversarial robustness, often formulated min(cid:107)δ(cid:107)p<b P(x,y)∼D(f(x + δ) = y), b a small budget. Thus, corruption robustness measures the classiﬁer’s average-case performance on corruptions C, while adversarial robustness measures the worst-case performance on small, additive, classiﬁer-tailored perturbations.
+
+Average-case performance on small, general, classiﬁer-agnostic perturbations motivates us to deﬁne perturbation robustness, namely Eε∼E[P(x,y)∼D(f(ε(x)) = f(x))]. Consequently, in measuring perturbation robustness, we track the classiﬁer’s prediction stability, reliability, or consistency in the
+
+Published as a conference paper at ICLR 2019
+
+Figure 1: Our IMAGENET-C dataset consists of 15 types of algorithmically generated corruptions from noise, blur, weather, and digital categories. Each type of corruption has ﬁve levels of severity, resulting in 75 distinct corruptions. See different severity levels in Appendix B.
+
+face of minor input changes. Now in order to approximate C,E and these robustness measures, we designed a set of corruptions and perturbations which are frequently encountered in natural images. We will refer to these as “common” corruptions and perturbations. These common corruptions and perturbations are available in the form of IMAGENET-C and IMAGENET-P.
+
+4 THE IMAGENET-C AND IMAGENET-P ROBUSTNESS BENCHMARKS
+
+4.1 THE DATA OF IMAGENET-C AND IMAGENET-P
+
+IMAGENET-C Design. The IMAGENET-C benchmark consists of 15 diverse corruption types applied to validation images of ImageNet. The corruptions are drawn from four main categories— noise, blur, weather, and digital—as shown in Figure 1. Research that improves performance on this benchmark should indicate general robustness gains, as the corruptions are diverse and numerous. Each corruption type has ﬁve levels of severity since corruptions can manifest themselves at varying intensities. Appendix A gives an example of the ﬁve different severity levels for impulse noise. Real-world corruptions also have variation even at a ﬁxed intensity. To simulate these, we introduce variation for each corruption when possible. For example, each fog cloud is unique to each image. These algorithmically generated corruptions are applied to the ImageNet (Deng et al., 2009) validation images to produce our corruption robustness dataset IMAGENET-C. The dataset can be downloaded or re-created by visiting https://github.com/hendrycks/robustness. IMAGENET-C images are saved as lightly compressed JPEGs; this implies an image corrupted by Gaussian noise is also slightly corrupted by JPEG compression. Our benchmark tests networks with IMAGENET-C images, but networks should not be trained on these images. Networks should be trained on datasets such as ImageNet and not be trained on IMAGENET-C corruptions. To enable further experimentation, we designed an extra corruption type for each corruption category (Appendix B), and we provide CIFAR-10-C, TINY IMAGENET-C, IMAGENET 64 × 64-C, and Inception-sized editions. Overall, the IMAGENET-C dataset consists of 75 corruptions, all applied to ImageNet validation images for testing a pre-existing network.
+
+Gaussian NoiseShot NoiseImpulse NoiseDefocus BlurFrosted Glass BlurMotion BlurZoom BlurSnowFrostFogBrightnessContrastElasticPixelateJPEGPublished as a conference paper at ICLR 2019
+
+Common Corruptions. The ﬁrst corruption type is Gaussian noise. This corruption can appear in low-lighting conditions. Shot noise, also called Poisson noise, is electronic noise caused by the discrete nature of light itself. Impulse noise is a color analogue of salt-and-pepper noise and can be caused by bit errors. Defocus blur occurs when an image is out of focus. Frosted Glass Blur appears with “frosted glass” windows or panels. Motion blur appears when a camera is moving quickly. Zoom blur occurs when a camera moves toward an object rapidly. Snow is a visually obstructive form of precipitation. Frost forms when lenses or windows are coated with ice crystals. Fog shrouds objects andisrenderedwiththediamond-squarealgorithm. Brightnessvarieswithdaylightintensity. Contrast can be high or low depending on lighting conditions and the photographed object’s color. Elastic transformations stretch or contract small image regions. Pixelation occurs when upsampling a lowresolution image. JPEG is a lossy image compression format which introduces compression artifacts.
+
+IMAGENET-P Design. The second benchmark that we propose tests the classiﬁer’s perturbation robustness. Models lacking in perturbation robustness produce erratic predictions which undermines user trust. When perturbations have a high propensity to change the model’s response, then perturbations could also misdirect or destabilize iterative image optimization procedures appearing in style transfer (Gatys et al., 2016), decision explanations (Fong & Vedaldi, 2017), feature visualization (Olah et al., 2017), and so on. Like IMAGENET-C, IMAGENETP consists of noise, blur, weather, and digital distortions. Also as before, the dataset has validation perturbations; has difﬁculty levels; has CIFAR-10, Tiny ImageNet, ImageNet 64 × 64, standard, and Inception-sized editions; and has been designed for benchmarking not IMAGENET-P departs from IMAGENET-C by having perturbation sequences generated from each ImageNet validation image; examples are in Figure 2. Each sequence contains more than 30 frames, so we counteract an increase in dataset size and evaluation time by using only 10 common perturbations.
+
+training networks.
+
+Common Perturbations. Appearing more subtly than the corruption from IMAGENET-C, the Gaussian noise perturbation sequence begins with the clean ImageNet image. The following frames in the sequence consist in the same image but with minute Gaussian noise perturbations applied. This sequence design is similar for the shot noise perturbation sequence. However the remaining perturbation sequences have temporality, so that each frame of the sequence is a perturbation of the previous frame. Since each perturbation is small, repeated application of a perturbation does not bring the image far out-of-distribution. For example, an IMAGENET-P translation perturbation sequence shows a clean ImageNet image sliding from right to left one pixel at a time; with each perturbation of the pixel locations, the resulting frame is still of high quality. The perturbation sequences with temporality are created with motion blur, zoom blur, snow, brightness, translate, rotate, tilt (viewpoint variation through minor 3D rotations), and scale perturbations.
+
+Figure 2: Example frames from the beginning (T = 0) to end (T = 30) of some Tilt and Brightness perturbation sequences.
+
+IMAGENET-C AND IMAGENET-P METRICS AND SETUP
+
+IMAGENET-C Metrics. Common corruptions such as Gaussian noise can be benign or destructive depending on their severity. In order to comprehensively evaluate a classiﬁer’s robustness to a given type of corruption, we score the classiﬁer’s performance across ﬁve corruption severity levels and aggregate these scores. The ﬁrst evaluation step is to take a trained classiﬁer f, which has not been trained on IMAGENET-C, and compute the clean dataset top-1 error rate. Denote this error rate Ef clean. The second step is to test the classiﬁer on each corruption type c at each level of severity s (1 ≤ s ≤ 5). This top-1 error is written Ef s,c. Before we aggregate the classiﬁer’s performance across severities and corruption types, we will make error rates more comparable since different corruptions pose different levels of difﬁculty. For example, fog corruptions often obscure an object’s class more than brightness corruptions. We adjust for the varying difﬁculties by dividing by AlexNet’s errors,
+
+T = 0TiltT = 10T = 20T = 30BrightnessPublished as a conference paper at ICLR 2019
+
+but any baseline will do (even a baseline with 100% error rates, corresponding to an average of CEs). This standardized aggregate performance measure is the Corruption Error, computed with the formula
+
+(cid:18) 5
+
+(cid:88)
+
+(cid:19)(cid:30)(cid:18) 5
+
+(cid:88)
+
+EAlexNet s,c
+
+(cid:19)
+
+Now we can summarize model corruption robustness by averaging the 15 Corruption Error values CEf
+
+JPEG. This results in the mean CE or mCE for short.
+
+Shot Noise,...,CEf
+
+Gaussian Noise,CEf
+
+Wenowintroduceamorenuancedcorruptionrobustnessmeasure. Consideraclassiﬁerthatwithstands most corruptions, so that the gap between the mCE and the clean data error is minuscule. Contrast this with a classiﬁer with a low clean error rate which has its error rate spike in the presence of corruptions; this corresponds to a large gap between the mCE and clean data error. It is possible that the former classiﬁer has a larger mCE than the latter, despite the former degrading more gracefully in the presence of corruptions. The amount that the classiﬁer declines on corrupted inputs is given by (cid:1). Averaging these the formula Relative CEf clean 15 Relative Corruption Errors results in the Relative mCE. This measures the relative robustness or the performance degradation when encountering corruptions. IMAGENET-P Metrics. AstraightforwardapproachtoestimateEε∼E[P(x,y)∼D(f(ε(x)) (cid:54)= f(x))] falls into place when using IMAGENET-P perturbation sequences. Let us denote m perturbation sequences with S = (cid:8)(cid:0)x(i) i=1 where each sequence is made with perturbation p. The “Flip Probability” of network f : X → {1,2,...,1000} on perturbation sequences S is
+
+2 ,...,x(i)
+
+s=1 EAlexNet s,c
+
+c = (cid:0)(cid:80)5
+
+− EAlexNet clean
+
+s,c − Ef
+
+1 ,x(i)
+
+(cid:1)(cid:14)(cid:0)(cid:80)5
+
+(cid:1)(cid:9)m
+
+1 m(n − 1)
+
+m (cid:88)
+
+n (cid:88)
+
+1(cid:0)f(cid:0)x(i)
+
+(cid:1) (cid:54)= f(cid:0)x(i)
+
+(cid:1)(cid:1) = Px∼S(f(xj) (cid:54)= f(xj−1)).
+
+(cid:80)n
+
+1 m(n−1)
+
+is clean and x(i) For noise perturbation sequences, which are not temporally related, x(i) 1 j (j > 1) are perturbed images of x(i) 1 . We can recast the FP formula for noise sequences as (cid:1)(cid:1) = Px∼S(f(xj) (cid:54)= f(x1) | j > 1). As was (cid:1) (cid:54)= f(cid:0)x(i) 1(cid:0)f(cid:0)x(i) (cid:80)m FPf done with the Corruption Error formula, we now standardize the Flip Probability by the sequence’s difﬁculty for increased commensurability. We have, then, the “Flip Rate” FRf p/FPAlexNet . p Averaging the Flip Rate across all perturbations yields the mean Flip Rate or mFR. We do not deﬁne a “relative mFR” since we did not ﬁnd any natural formulation, nor do we directly use predicted class probabilities due to differences in model calibration (Guo et al., 2017).
+
+When the top-5 predictions are relevant, perturbations should not cause the list of top-5 predictions to shufﬂe chaotically, nor should classes sporadically vanish from the list. We penalize top-5 inconsistency of this kind with a different measure. Let the ranked predictions of network f on x be the permutation τ(x) ∈ S1000. Concretely, if “Toucan” has the label 97 in the output space and “Pelican” has the label 145, and if f on x predicts “Toucan” and “Pelican” to be the most and second-most likely classes, respectively, then τ(x)(97) = 1 and τ(x)(144) = 2. These permutations contain the top-5 predictions, so we use permutations to compare top-5 lists. To do this, we deﬁne
+
+d(τ(x),τ(x(cid:48))) =
+
+5 (cid:88)
+
+max{i,σ(i)} (cid:88)
+
+j=min{i,σ(i)}+1
+
+1(1 ≤ j − 1 ≤ 5)
+
+where σ = (τ(x))−1τ(x(cid:48)). If the top-5 predictions represented within τ(x) and τ(x(cid:48)) are identical, then d(τ(x),τ(x(cid:48))) = 0. More examples of d on several permutations are in Appendix C. Comparing the top-5 predictions across entire perturbation sequences results in the unstandardized Top-5 j=2 d(τ(xj),τ(xj−1)) = Px∼S(d(τ(xj),τ(xj−1)). For noise Distance uT5Df p = Ex∼S[d(τ(xj),τ(x1)) | j > 1]. Once the uT5D is perturbation sequences, we have uT5Df standardized, we have the Top-5 Distance T5Df p/uT5DAlexNet . The T5Ds averaged together correspond to the mean Top-5 Distance or mT5D.
+
+p = uT5Df
+
+1 m(n−1)
+
+(cid:80)m
+
+(cid:80)n
+
+Preserving Metric Validity. The goal of IMAGENET-C and IMAGENET-P is to evaluate the robustness of machine learning algorithms on novel corruptions and perturbations. Humans are able to generalize to novel corruptions quite well; for example, they can easily deal with new Instagram ﬁlters. Likewise for perturbations; humans relaxing in front of an undulating ocean do not give turbulent ac-
+
+Published as a conference paper at ICLR 2019
+
+Figure 3: Robustness (mCE) and Relative mCE IMAGENET-C values. Relative mCE values suggestrobustnessinitselfdeclinedfromAlexNetto ResNet. “BN” abbreviates Batch Normalization.
+
+Figure 4: Perturbation robustness of various architectures as measured by the mT5D on IMAGENET-P. Observe that corruption and perturbation robustness track distinct concepts.
+
+Weather
+
+Digital
+
+Error mCE Gauss. Shot Impulse Defocus Glass Motion Zoom Snow Frost Fog Bright Contrast Elastic Pixel JPEG Network 100 100 100 43.5 100.0 100 100 100 AlexNet 106 109 134 41.8 104.4 107 106 105 SqueezeNet 99 97 107 100 100 31.0 93.5 VGG-11 98 97 102 94 95 VGG-19 27.6 88.9 94 85 83 94 88 VGG-19+BN 25.8 81.6 80 85 90 91 91 30.2 84.7 ResNet-18 77 77 85 89 83 23.9 76.7 ResNet-50 Table 1: Clean Error, mCE, and Corruption Error values of different corruptions and architectures on IMAGENET-C. The mCE value is the mean Corruption Error of the corruptions in Noise, Blur, Weather, and Digital columns. Models are trained only on clean ImageNet images.
+
+counts of the scenery before them. Hence, we propose the following protocol. The image recognition network should be trained on the ImageNet training set and on whatever other training sets the investigator wishes to include. Researchers should clearly state whether they trained on these corruptions or perturbations; however, this training strategy is discouraged (see Section 2). We allow training with other distortions (e.g., uniform noise) and standard data augmentation (i.e., cropping, mirroring), even though cropping overlaps with translations. Then the resulting trained model should be evaluated on IMAGENET-C or IMAGENET-P using the above metrics. Optionally, researchers can test with the separate set of validation corruptions and perturbations we provide for IMAGENET-C and IMAGENET-P.
+
+5 EXPERIMENTS
+
+5.1 ARCHITECTURE ROBUSTNESS
+
+How robust are current methods, and has progress in computer vision been achieved at the expense of robustness? As seen in Figure 3, as architectures improve, so too does the mean Corruption Error (mCE). By this measure, architectures have become progressively more successful at generalizing to corrupted distributions. Note that models with similar clean error rates have fairly similar CEs, and in Table 1 there are no large shifts in a corruption type’s CE. Consequently, it would seem that architectures have slowly and consistently improved their representations over time. However, it appears that corruption robustness improvements are mostly explained by accuracy improvements. Recall that the Relative mCE tracks a classiﬁer’s accuracy decline in the presence of corruptions. Figure 3 shows that the Relative mCEs of many subsequent models are worse than that of AlexNet (Krizhevsky et al., 2012). Full results are in Appendix D. In consequence, from AlexNet to ResNet, corruption robustness in itself has barely changed. Thus our “superhuman” classiﬁers are decidedly subhuman.
+
+On perturbed inputs, current classiﬁers are unexpectedly bad. For example, a ResNet-18 on Scale perturbation sequences have a 15.6% probability of ﬂipping its top-1 prediction between adjacent
+
+60657075Architecture Accuracy (%)8090100110120130%AlexNetSqueezeNet 1.1VGG-11ResNet-18VGG-19VGG-19+BNResNet-50Architecture Corruption RobustnessmCERelative mCE60657075Architecture Accuracy (%)8090100110mT5D (%)AlexNetSqueezeNet 1.1VGG-11ResNet-18VGG-19VGG-19+BNResNet-50Architecture Perturbation RobustnessPublished as a conference paper at ICLR 2019
+
+= 15.6%); the uT5DResNet-18
+
+frames (i.e., FPResNet-18 is 3.6. More results are in Appendix E. Clearly perturbations need not be adversarial to fool current classiﬁers. What is also surprising is that while VGGNets are worse than ResNets at generalizing to corrupted examples, on perturbed examples they can be just as robust or even more robust. Likewise, Batch Normalization made VGG-19 less robust to perturbations but more robust to corruptions. Yet this is not to suggest that there is a fundamental trade-off between corruption and perturbation robustness. In fact, both corruption and perturbation robustness can improve together, as we shall see later.
+
+5.2 ROBUSTNESS ENHANCEMENTS
+
+Be aware that Appendix F contains many informative failures in robustness enhancement. Those experiments underscore the necessity in testing on a a diverse test set, the difﬁculty in cleansing corruptions from image, and the futility in expecting robustness gains from some “simpler” models.
+
+Histogram Equalization. Histogram equalization successfully standardizes speech data for robust speech recognition (Torre et al., 2005; Harvilla & Stern, 2012). For images, we ﬁnd that preprocessing with Contrast Limited Adaptive Histogram Equalization (Pizer et al., 1987) is quite effective. Unlike our image denoising attempt (Appendix F), CLAHE reduces the effect of some corruptions while not worsening performance on most others, thereby improving the mCE. We demonstrate CLAHE’s net improvement by taking a pre-trained ResNet-50 and ﬁne-tuning the whole model for ﬁve epochs on images processed with CLAHE. The ResNet-50 has a 23.87% error rate, but ResNet-50 with CLAHE has an error rate of 23.55%. On nearly all corruptions, CLAHE slightly decreases the Corruption Error. The ResNet-50 without CLAHE preprocessing has an mCE of 76.7%, while with CLAHE the ResNet-50’s mCE decreases to 74.5%.
+
+Multiscale Networks. Multiscale architectures achieve greater corruption robustness by propagating features across scales at each layer rather than slowly gaining a global representation of the input as in typical convolutional neural networks. Some multiscale architectures are called Multigrid Networks (Ke et al., 2017). Multigrid networks each have a pyramid of grids in each layer which enables the subsequent layer to operate across scales. Along similar lines, Multi-Scale Dense Networks (MSDNets) (Huang et al., 2018) use information across scales. MSDNets bind network layers with DenseNet-like (Huang et al., 2017b) skip connections. These two different multiscale networks both enhance corruption robustness, but they do not provide any noticeable beneﬁt in perturbation robustness. Now before comparing mCE values, we ﬁrst note the Multigrid network has a 24.6% top-1 error rate, as does the MSDNet, while the ResNet-50 has a 23.9% top-1 error rate. On noisy inputs, Multigrid networks noticeably surpass ResNets and MSDNets, as shown in Figure 5. Since multiscale architectures have high-level representations processed in tandem with ﬁne details, the architectures appear better equipped to suppress otherwise distracting pixel noise. When all corruptions are evaluated, ResNet-50 has an mCE of 76.7%, the MSDNet has an mCE of 73.6%, and the Multigrid network has an mCE of 73.3%.
+
+Feature Aggregating and Larger Networks. Some recent models enhance the ResNet architecture by increasing what is called feature aggregation. Of these, DenseNets and ResNeXts (Xie et al., 2016) are most prominent. Each purports to have stronger representations than ResNets, and the evidence is largely a hard-won ImageNet error-rate downtick. Interestingly, the IMAGENET-C mCE clearly indicates that DenseNets and ResNeXts have superior representations. Accordingly, a switch from a ResNet-50 (23.9% top-1 error) to a DenseNet-121 (25.6% error) decreases the mCE from 76.7% to 73.4% (and the relative mCE from 105.0% to 92.8%). More starkly, switching from a ResNet-50 to a ResNeXt-50 (22.9% top-1) drops the mCE from 76.7% to 68.2% (relative mCE decreases from 105.0% to 88.6%). Corruption robustness results are summarized in Figure 5. This shows that corruption robustness may be a better way to measure future progress in representation learning than the clean dataset top-1 error rate.
+
+Some of the greatest and simplest robustness gains sometimes emerge from making recent models more monolithic. Apparently more representations, more redundancy, and more capacity allow these massivemodelstooperatemorestablyoncorruptedinputs. Wesawearlierthatmakingmodelssmaller does the opposite. Swapping a DenseNet-121 (25.6% top-1) with the larger DenseNet-161 (22.9% top1) decreases the mCE from 73.4% to 66.4% (and the relative mCE from 92.8% to 84.6%). In a similar fashion, a ResNeXt-50 (22.9% top-1) is less robust than the a giant ResNeXt-101 (21.0% top-1). The mCEs are 68.2% and 62.2% respectively (and the relative mCEs are 88.6% and 80.1% respectively).
+
+Published as a conference paper at ICLR 2019
+
+Figure 5: Architectures such as Multigrid networks and DenseNets resist noise corruptions more effectively than ResNets.
+
+Figure 6: Larger feature aggregating networks achieve robustness gains that substantially outpace their accuracy gains.
+
+Both model size and feature aggregation results are summarized in Figure 6. Consequently, future models with even more depth, width, and feature aggregation may attain further corruption robustness.
+
+Feature aggregation and their larger counterparts similarly improve perturbation robustness. While a ResNet-50 has a 58.0% mFR and a 78.3% mT5D, a DenseNet-121 obtains a 56.4% mFR and 76.8% mT5D, and a ResNeXt-50 does even better with a 52.4% mFR and a 74.2% mT5D. Reﬂecting the corruption robustness ﬁndings further, the larger DenseNet-161 has a 46.9% mFR and 69.5% mT5D, while the ResNeXt-101 has a 43.2% mFR and 65.9% mT5D. Thus in two senses feature aggregating networks and their larger versions markedly enhance robustness.
+
+Stylized ImageNet. Geirhos et al. (2019) propose a novel data augmentation scheme where ImageNet images are stylized with style transfer. The intent is that classiﬁers trained on stylized images will rely less on textural cues for classiﬁcation. When a ResNet-50 is trained on typical ImageNet images and stylized ImageNet images, the resulting model has an mCE of 69.3%, down from 76.7%.
+
+Adversarial Logit Pairing. ALP is an adversarial example defense for large-scale image classiﬁers (Kannan et al., 2018). Like nearly all other adversarial defenses, ALP was bypassed and has unclear value as an adversarial defense going forward (Engstrom et al., 2018), yet this is not a decisive reason dismiss it. ALP provides signiﬁcant perturbation robustness even though it does not provide much adversarial perturbation robustness against all adversaries. Although ALP was designed to increase robustness to small gradient perturbations, it markedly improves robustness to all sorts of noise, blur, weather, and digital IMAGENET-P perturbations—methods generalizing this well is a rarity. In point of fact, a publicly available Tiny ImageNet ResNet-50 model ﬁne-tuned with ALP has a 41% and 40% relative decrease in the mFP and mT5D on TINY IMAGENET-P, respectively. ALP’s success in enhancing common perturbation robustness and its modest utility for adversarial perturbation robustness highlights that the interplay between these problems should be better understood.
+
+6 CONCLUSION
+
+In this paper, we introduced what are to our knowledge the ﬁrst comprehensive benchmarks for corruption and perturbation robustness. This was made possible by introducing two new datasets, IMAGENET-C and IMAGENET-P. The ﬁrst of which showed that many years of architectural advancements corresponded to minuscule changes in relative corruption robustness. Therefore benchmarking and improving robustness deserves attention, especially as top-1 clean ImageNet accuracy nears its ceiling. We also saw that classiﬁers exhibit unexpected instability on simple perturbations. Thereafter we found that methods such as histogram equalization, multiscale architectures, and larger featureaggregating models improve corruption robustness. These larger models also improve perturbation robustness. However, we found that even greater perturbation robustness can come from an adversarial defense designed for adversarial (cid:96)∞ perturbations, indicating a surprising interaction between adversarial and common perturbation robustness. In this work, we found several methods to increase robustness, introduced novel experiments and metrics, and created new datasets for the rigorous study of model robustness, a pressing necessity as models are unleashed into safety-critical real-world settings.
+
+GaussianShotImpulse606570758085mCE (%)Noise Corruption RobustnessResNet-50MSDNetMultigrid5560657075mCE (%)Size and Corruption RobustnessResNet-50DenseNet-121DenseNet-161ResNet-50ResNeXt-50ResNeXt-101Published as a conference paper at ICLR 2019
+
+7 ACKNOWLEDGEMENTS
+
+We should like to thank Justin Gilmer, David Wagner, Kevin Gimpel, Tom Brown, Mantas Mazeika, and Steven Basart for their helpful suggestions. This research was supported by a grant from the Future of Life Institute.
+
+REFERENCES
+
+Ossama Abdel-Hamid, Abdel rahman Mohamed, Hui Jiang, and Gerald Penn. Applying convolutional
+
+neural networks concepts to hybrid nn-hmm model for speech recognition. ICASSP, 2013.
+
+Aharon Azulay and Yair Weiss. Why do deep convolutional networks generalize so poorly to small
+
+image transformations? arXiv preprint, 2018.
+
+Osbert Bastani, Yani Ioannou, Leonidas Lampropoulos, Dimitrios Vytiniotis, Aditya Nori, and
+
+Antonio Criminisi. Measuring neural net robustness with constraints. In NIPS. 2016.
+
+Antoni Buades and Bartomeu Coll. A non-local algorithm for image denoising. In CVPR, 2005.
+
+Nicholas Carlini and David Wagner. Defensive distillation is not robust to adversarial examples,
+
+Nicholas Carlini and David Wagner. Adversarial examples are not easily detected: Bypassing ten
+
+detection methods, 2017.
+
+Nicholas Carlini, Guy Katz, Clark Barrett, and David L. Dill. Ground-truth adversarial examples,
+
+Jia Deng, Wei Dong, Richard Socher, Li jia Li, Kai Li, and Li Fei-Fei. Imagenet: A large-scale
+
+hierarchical image database. CVPR, 2009.
+
+Samuel Dodge and Lina Karam. Quality resilient deep neural networks, 2017a.
+
+Samuel Dodge and Lina Karam. A study and comparison of human and deep learning recognition
+
+performance under visual distortions, 2017b.
+
+David Donoho and Iain Johnstone. Ideal spatial adaptation by wavelet shrinkage. Biometrika, 1993.
+
+Logan Engstrom, Andrew Ilyas, and Anish Athalye. Evaluating and understanding the robustness of
+
+adversarial logit pairing. arXiv preprint, 2018.
+
+Ivan Evtimov, Kevin Eykholt, Earlence Fernandes, Tadayoshi Kohno, Bo Li, Atul Prakash, Amir
+
+Rahmati, and Dawn Song. Robust physical-world attacks on deep learning models, 2017.
+
+Ruth Fong and Andrea Vedaldi. Interpretable explanations of black boxes by meaningful perturbation.
+
+ICCV, 2017.
+
+Leon Gatys, Alexander Ecker, and Matthias Bethge. Image style transfer using convolutional neural
+
+networks. CVPR, 2016.
+
+Robert Geirhos, David H. J. Janssen, Heiko H. Schütt, Jonas Rauber, Matthias Bethge, and Felix A. Wichmann. Comparing deep neural networks against humans: object recognition when the signal gets weaker, 2017.
+
+Robert Geirhos, Patricia Rubisch, Claudio Michaelis, Matthias Bethge, Felix A Wichmann, and Wieland Brendel. Imagenet-trained cnns are biased towards texture; increasing shape bias improves accuracy and robustness. ICLR, 2019.
+
+Justin Gilmer, Ryan P. Adams, Ian Goodfellow, David Andersen, and George E. Dahl. Motivating the
+
+rules of the game for adversarial example research. arXiv preprint, 2018a.
+
+Justin Gilmer, Luke Metz, Fartash Faghri, Samuel S. Schoenholz, Maithra Raghu, Martin Wattenberg,
+
+and Ian Goodfellow. Adversarial spheres. ICLR Workshop, 2018b.
+
+Published as a conference paper at ICLR 2019
+
+Chuan Guo, Geoff Pleiss, Yu Sun, and Kilian Q. Weinberger. On calibration of modern neural
+
+networks. International Conference on Machine Learning, 2017.
+
+Mark Harvilla and Richard Stern. Histogram-based subband powerwarping and spectral averaging
+
+for robust speech recognition under matched and multistyle training, 2012.
+
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image
+
+recognition. CVPR, 2015.
+
+Dan Hendrycks and Kevin Gimpel. Early methods for detecting adversarial images, 2017a.
+
+Dan Hendrycks and Kevin Gimpel. A baseline for detecting misclassiﬁed and out-of-distribution
+
+examples in neural networks. In ICLR, 2017b.
+
+Dan Hendrycks, Mantas Mazeika, Duncan Wilson, and Kevin Gimpel. Using trusted data to train
+
+deep networks on labels corrupted by severe noise. NIPS, 2018.
+
+Dan Hendrycks, Mantas Mazeika, and Thomas Dietterich. Deep anomaly detection with outlier
+
+exposure. ICLR, 2019.
+
+Hans-Günter Hirsch. Aurora-5 experimental framework for the performance evaluation of speech
+
+recognition in case of a hands-free speech input in noisy environments, 2007.
+
+Hans-Günter Hirsch and David Pearce. The Aurora experimental framework for the performance evaluation of speech recognition systems under noisy conditions. ISCA ITRW ASR2000, 2000.
+
+Hossein Hosseini, Baicen Xiao, and Radha Poovendran. Google’s cloud vision api is not robust to
+
+noise, 2017.
+
+Gao Huang, Shichen Liu, Laurens van der Maaten, and Kilian Q Weinberger. Condensenet: An
+
+efﬁcient DenseNet using learned group convolutions. arXiv preprint, 2017a.
+
+Gao Huang, Zhuang Liu, Laurens van der Maaten, and Kilian Q Weinberger. Densely connected convolutional networks. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2017b.
+
+Gao Huang, Danlu Chen, Tianhong Li, Felix Wu, Laurens van der Maaten, and Kilian Q. Weinberger.
+
+Multi-scale dense networks for resource efﬁcient image classiﬁcation. ICLR, 2018.
+
+Sergey Ioffe and Christian Szegedy. Batch normalization: Accelerating deep network training by
+
+reducing internal covariate shift. JMLR, 2015.
+
+Harini Kannan, Alexey Kurakin, and Ian Goodfellow. Adversarial logit pairing. NIPS, 2018.
+
+Tsung-Wei Ke, Michael Maire, and Stella X. Yu. Multigrid neural architectures, 2017.
+
+Chanwoo Kim and Richard M. Stern. Power-normalized cepstral coefﬁcients (PNCC) for robust speech recognition. IEEE/ACM Trans. Audio, Speech and Lang. Proc., 24(7):1315–1329, July 2016. ISSN 2329-9290.
+
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey E Hinton. Imagenet classiﬁcation with deep convolu-
+
+tional neural networks. NIPS, 2012.
+
+Ravi Kumar and Sergei Vassilvitskii. Generalized distances between rankings, 2010.
+
+Alexey Kurakin, Ian Goodfellow, and Samy Bengio. Adversarial machine learning at scale. ICLR,
+
+Jinyu Li, Li Deng, Yifan Gong, and Reinhold Haeb-Umbach. An overview of noise-robust automatic
+
+speech recognition. 2014.
+
+Fu-Hua Liu, Richard M. Stern, Xuedong Huang, and Alex Acero. Efﬁcient cepstral normalization for robust speech recognition. In Proc. of DARPA Speech and Natural Language Workshop, 1993.
+
+Si Liu, Risheek Garrepalli, Thomas Dietterich, Alan Fern, and Dan Hendrycks. Open category
+
+detection with PAC guarantees. In ICML, 2018.
+
+Published as a conference paper at ICLR 2019
+
+Jiajun Lu, Hussein Sibai, Evan Fabry, and David Forsyth. Standard detectors aren’t (currently) fooled
+
+by physical adversarial stop signs, 2017.
+
+Aleksander Madry, Aleksandar Makelov, Ludwig Schmidt, Dimitris Tsipras, and Adrian Vladu.
+
+Towards deep learning models resistant to adversarial attacks. ICLR, 2018.
+
+Jan Hendrik Metzen, Tim Genewein, Volker Fischer, and Bastian Bischoff. On detecting adversarial
+
+perturbations, 2017.
+
+Vikramjit Mitra, Horacio Franco, Richard Stern, Julien Van Hout, Luciana Ferrer, Martin Graciarena, Wen Wang, Dimitra Vergyri, Abeer Alwan, and John H.L. Hansen. Robust features in deep learning based speech recognition, 2017.
+
+Chris Olah, Alexander Mordvintsev, and Ludwig Schubert. Feature visualization. Distill, 2017.
+
+Nicolas Papernot, Patrick McDaniel, Xi Wu, Somesh Jha, and Ananthram Swami. Distillation as a
+
+defense to adversarial perturbations against deep neural networks, 2017.
+
+Stephen M. Pizer, E. Philip Amburn, John D. Austin, Robert Cromartie, Ari Geselowitz, Trey Greer, Bart Ter Haar Romeny, and John B. Zimmerman. Adaptive histogram equalization and its variations. Computer Vision, Graphics, and Image Processing, 1987.
+
+Jonas Rauber, Wieland Brendel, and Matthias Bethge. Foolbox v0.8.0: A python toolbox to bench-
+
+mark the robustness of machine learning models, 2017.
+
+Benjamin Recht, Rebecca Roelofs, Ludwig Schmidt, and Vaishaal Shankar. Do cifar-10 classiﬁers
+
+generalize to cifar-10? arXiv preprint, 2018.
+
+Ludwig Schmidt, Shibani Santurkar, Dimitris Tsipras, Kunal Talwar, and Aleksander Madry. Adver-
+
+sarially robust generalization requires more data. arXiv preprint, 2018.
+
+Lukas Schott, Jonas Rauber, Matthias Bethge, and Wieland Brendel. Towards deep learning models
+
+resistant to adversarial attacks. arXiv preprint, 2018.
+
+Jacob Steinhardt, Pang Wei Koh, and Percy Liang. Certiﬁed defenses for data poisoning attacks.
+
+NIPS, 2017.
+
+Christian Szegedy, Wojciech Zaremba, Ilya Sutskever, Joan Bruna, Dumitru Erhan, Ian Goodfellow,
+
+and Rob Fergus. Intriguing properties of neural networks, 2014.
+
+Dogancan Temel and Ghassan AlRegib. Trafﬁc signs in the wild: Highlights from the ieee video and
+
+image processing cup 2017 student competition. IEEE Signal Processing Magazine, 2018.
+
+Dogancan Temel, Gukyeong Kwon, Mohit Prabhushankar, and Ghassan AlRegib. Cure-tsr: Chal-
+
+lenging unreal and real environments for trafﬁc sign recognition. NIPS Workshop, 2017.
+
+Dogancan Temel, Jinsol Lee, and Ghassan AlRegib. Cure-or: Challenging unreal and real environ-
+
+ments for object recognition. ICMLA, 2018.
+
+Ángel de la Torre, Antonio Peinado, José Segura, José Pérez-Córdoba, Ma Carmen Benítez, and Antonio Rubio. Histogram equalization of speech representation for robust speech recognition. IEEE Signal Processing Society, 2005.
+
+Igor Vasiljevic, Ayan Chakrabarti, and Gregory Shakhnarovich. Examining the impact of blur on
+
+recognition by convolutional networks, 2016.
+
+Saining Xie, Ross Girshick, Piotr Dollár, Zhuowen Tu, and Kaiming He. Aggregated residual
+
+transformations for deep neural networks. CVPR, 2016.
+
+Stephan Zheng, Yang Song, Thomas Leung, and Ian Goodfellow. Improving the robustness of deep
+
+neural networks via stability training, 2016.
+
+Published as a conference paper at ICLR 2019
+
+A EXAMPLE OF IMAGENET-C SEVERITIES
+
+Figure 7: Impulse noise modestly to markedly corrupts a frog, showing our benchmark’s varying severities.
+
+InFigure7, weshowtheImpulsenoisecorruptiontypeinﬁvedifferentseverities. Clearly, IMAGENETC corruptions can range from negligible to pulverizing. Because of this range, the benchmark comprehensively assesses each corruption type.
+
+B EXTRA IMAGENET-C CORRUPTIONS
+
+Figure 8: Extra IMAGENET-C corruption examples are available for model validation and sounder experimentation.
+
+Directlyﬁttingthetypesof IMAGENET-C corruptionsshouldbeavoided, asitwouldcauseresearchers to overestimate a model’s robustness. Therefore, it is incumbent on us to simplify model validation. This is why we provide an additional form of corruption for each of the four general types. These are available for download at https://github.com/hendrycks/robustness. There is one corruption type for each noise, blur, weather, and digital category in the validation set. The ﬁrst corruption type is speckle noise, an additive noise where the noise added to a pixel tends to be larger if the original pixel intensity is larger. Gaussian blur is a low-pass ﬁlter where a blurred pixel is a result of a weighted average of its neighbors, and farther pixels have decreasing weight in this average. Spatter can occlude a lens in the form of rain or mud. Finally, saturate is common in edited images where images are made more or less colorful. See Figure 8 for instances of each corruption type.
+
+C MORE ON THE IMAGENET-P METRICS AND SETUP
+
+For some readers, the following function may be opaque, max{i,σ(i)} (cid:88)
+
+5 (cid:88)
+
+d(τ(x),τ(x(cid:48))) =
+
+1(1 ≤ j − 1 ≤ 5)
+
+j=min{i,σ(i)}+1
+
+where σ = (τ(x))−1τ(x(cid:48)) and the empty sum is understood to be zero. A high-level view of d is that it computes the deviation between the top-5 predictions of two prediction lists. For simplicity we ﬁnd the deviation between the identity and σ rather than τ(x) and τ(x(cid:48)). In consequence we can consider d(cid:48)(σ) := d(1,σ) where 1 the identity permutation. To give some intuition, we provide concrete examples of d(cid:48) on permutations. If σ is the identity, then d(cid:48)(σ) = 0. If σ = (1,2,3,4,6,5,7,8,...), d(cid:48)(σ) = 1.
+
+CleanSeverity = 1Severity = 2Severity = 3Severity = 4Severity = 5Speckle NoiseGaussian BlurSpatterSaturatePublished as a conference paper at ICLR 2019
+
+If σ = (1,2,3,4,6,7,5,8,...), d(cid:48)(σ) = 1. Once 5 fell out of the top-5, its displacement did not accumulate any further; this may happen when only the top-5 predictions are shown to the user. If σ = (2,1,3,4,5,6,...), d(cid:48)(σ) = 2. If σ = (3,1,2,4,5,6,...), d(cid:48)(σ) = 4. Also, d(cid:48)((2,3,4,5,6,...,1)) = 5. Distinctly, d(cid:48)((1,2,3,5,6,4,7,8,...)) = 2. As a ﬁnal example, d(cid:48)((5,4,3,2,1,6,7,8,9,...)) = 12.
+
+It may be that we want perturbation robustness for all predictions, including classes with lesser relevance. In such cases, it is still common that the displacement of the top prediction matters more than the displacement of, say, the 500th ranked class. For this there are many possibilities, such as the measure d(cid:48)(σ) = (cid:80)1000 i=1 wi|wi−wσ(i)| such that wi = 1/i. This uses a Zipﬁan assumption about the rankings of the classes: the ﬁrst class is n times as relevant as the nth class. Other possibilities involve using logarithms rather than hyperbolic functions as in the discounted cumulative gain (Kumar & Vassilvitskii, 2010). One could also use the class probabilities provided by the model (should they exist). However such a measure could make it difﬁcult to compare models since some models tend to be more uncalibrated than others (Guo et al., 2017).
+
+As progress is made on this task, researchers may be interested in perturbations which are more likely to cause unstable predictions. To accomplish that, researchers can simply compare a frame with the frame two frames ahead rather than just one frame ahead. We provide concrete code of this slight change in the metric at https://github.com/hendrycks/robustness. For nontemporal perturbation sequences, i.e., noise sequences, we provide sequences where the noise perturbation is larger.
+
+D FULL CORRUPTION ROBUSTNESS RESULTS
+
+IMAGENET-C corruption relative robustness results are in Table 2. Since we use AlexNet errors to normalize Corruption Error values, we now specify the value 1 s,Corruption for each corruption 5 type. Gaussian Noise: 88.6%, Shot Noise: 89.4%, Impulse Noise: 92.3%, Defocus Blur: 82.0%, Glass Blur: 82.6%, Motion Blur: 78.6%, Zoom Blur: 79.8%, Snow: 86.7%, Frost: 82.7%, Fog: 81.9%, Brightness: 56.5%, Contrast: 85.3%, Elastic Transformation: 64.6%, JPEG: 60.7%, Speckle Noise: 84.5%, Gaussian Blur: 78.7%, Spatter: 71.8%, Pixelate: 71.8%, Saturate: 65.8%.
+
+s=1 EAlexNet
+
+(cid:80)5
+
+Weather
+
+Digital
+
+Error Rel. mCE Gauss. Shot Impulse Defocus Glass Motion Zoom Snow Frost Fog Bright Contrast Elastic Pixel JPEG Network 100 100 100 43.5 AlexNet 126 129 229 41.8 SqueezeNet 31.0 VGG-11 151 161 174 165 161 172 VGG-19 27.6 165 125 144 VGG-19+BN 25.8 133 97 126 30.2 ResNet-18 146 111 132 23.9 ResNet-50
+
+Table 2: Clean Error, Relative mCE, and Relative Corruption Errors values of different corruptionsand architectures on IMAGENET-C. All models are trained on clean ImageNet images, not IMAGENET-C images. Here “BN” abbreviates Batch Normalization (Ioffe & Szegedy, 2015).
+
+E FULL PERTURBATION ROBUSTNESS RESULTS
+
+IMAGENET-P mFR values are in Table 3, and mT5D values are in Table 4. Since we use AlexNet errors to normalize our measures, we now specify the value FPAlexNet Perturbation for each corruption type. Gaussian Noise: 23.65%, Shot Noise: 30.06%, Motion Blur: 9.30%, Zoom Blur: 5.94%, Snow: 11.93%, Brightness: 4.89%, Translate: 11.01%, Rotate: 13.10%, Tilt: 7.05%, Scale: 23.53%, Speckle Noise: 18.65%, Gaussian Blur: 2.78%, Spatter: 5.05%, Shear: 10.66%.
+
+Also, the uT5DAlexNet Perturbation values are as follows. Gaussian Noise: 4.77, Shot Noise: 5.76, Motion Blur: 1.93, Zoom Blur: 1.34, Snow: 2.42, Brightness: 1.19, Translate: 2.63, Rotate: 2.95,
+
+Published as a conference paper at ICLR 2019
+
+Tilt: 1.75, Scale: 4.48, Speckle Noise: 3.89, Gaussian Blur: 0.70, Spatter: 1.26, Shear: 2.48.
+
+Weather
+
+Digital
+
+Error mFR Gaussian Network 100.0 43.5 AlexNet 112.6 41.8 SqueezeNet 31.0 VGG-11 74.9 66.9 VGG-19 27.6 VGG-19+BN 25.8 65.1 72.8 30.2 ResNet-18 23.9 ResNet-50 58.0
+
+Shot Motion Zoom Snow Bright Translate Rotate 100 140 90 76 66 73 58
+
+Scale Tilt 100 100 100 93 103 109 59 69 64 49 60 54 51 56 56 66 73 66 48 57 52
+
+Table 3: Flip Rates and the mFR values of different perturbations and architectures on IMAGENET-P. All models are trained on clean ImageNet images, not IMAGENET-P images. Here “BN” abbreviates Batch Normalization.
+
+Weather
+
+Digital
+
+Error mT5D Gaussian Network 100.0 43.5 AlexNet 112.9 41.8 SqueezeNet 83.9 31.0 VGG-11 78.6 VGG-19 27.6 80.5 VGG-19+BN 25.8 87.0 30.2 ResNet-18 78.3 23.9 ResNet-50
+
+Shot Motion Zoom Snow Bright Translate Rotate 100 133 97 88 82 87 79
+
+Scale Tilt 100 100 100 98 106 111 71 79 75 62 74 67 66 80 72 80 89 82 67 80 73
+
+Table 4: Top-5 Distances and the mT5D values of different perturbations and architectures on IMAGENET-P.
+
+F INFORMATIVE ROBUSTNESS ENHANCEMENT ATTEMPTS
+
+Stability Training. Stability training is a technique to improve the robustness of deep networks (Zheng et al., 2016). The method’s creators found that training on images corrupted with noise can lead to underﬁtting, so they instead propose minimizing the cross-entropy from the noisy image’s softmax distribution to the softmax of the clean image. The authors evaluated performance on images with subtle differences and suggested that the method provides additional robustness to JPEG corruptions. We ﬁne-tune a ResNet-50 with stability training for ﬁve epochs. For training with noisy images, we corrupt images with uniform noise, where the maximum and minimum of the uniform noise is tuned over {0.01,0.05,0.1}, and the stability weight is tuned over {0.01,0.05,0.1}. Across all noise strengths and stability weight combinations, the models with stability training tested on IMAGENET-C have a larger mCEs than the baseline ResNet-50’s mCE. Even on unseen noise corruptions, stability training does not increase robustness. However, the perturbation robustness slightly improves. The best model according to the IMAGENET-P validation set has an mFR of 57%, while the original ResNet’s mFR is 58%. An upshot of this failure is that benchmarking robustness-enhancing techniques requires a diverse test set.
+
+Image Denoising. An approach orthogonal to modifying model representations is to improve the inputs using image restoration techniques. Although general image restoration techniques are not yet mature, denoising restoration techniques are not. We thus attempt restore an image with the denoising technique called non-local means (Buades & Coll, 2005). The amount of denoising applied is determined by the noise estimation technique of Donoho & Johnstone (1993). Therefore clean images receive should nearly no modiﬁcations from the restoration method, while noisy images should undergo considerable restoration. We found that denoising increased the mCE from 76.7% to 82.1%. A plausible account is that the non-local means algorithm striped the images of their subtle details even when images lacked noise, despite having the non-local means algorithm governed by the noise estimate. Therefore, the gains in noise robustness were wiped away by subtle blurs to
+
+Published as a conference paper at ICLR 2019
+
+images with other types of corruptions, showing that targeted image restoration can prove harmful for robustness.
+
+10-Crop Classiﬁcation. Viewing an object at several different locations may give way to a more stable prediction. Having this intuition in mind, we perform 10-crop classiﬁcation. 10-crop classiﬁcation is executed by cropping all four corners and cropping the center of an image. These crops and their horizontal mirrors are processed through a network to produce 10 predicted class probability distributions. We average these distributions to compute the ﬁnal prediction. Of course, a prediction informed by 10-crops rather than a single central crop is more accurate. Ideally, this revised prediction should be more robust too. However, the gains in mCE do not outpace the gains in accuracy on a ResNet-50. In all, 10-crop classiﬁcation is a computationally expensive option which contributes to classiﬁcation accuracy but not noticeably to robustness.
+
+Smaller Models. All else equal, “simpler” models often generalize better, and “simplicity” frequently translates to model size. Accordingly, smaller models may be more robust. We test this hypothesis with CondenseNets (Huang et al., 2017a). A CondenseNet attains its small size via sparse convolutions and pruned ﬁlter weights. An off-the-shelf CondenseNet (C = G = 4) obtains a 26.3% error rate and a 80.8% mCE. On the whole, this CondenseNet is slightly less robust than larger models of similar accuracy. Even more pruning and sparsiﬁcation yields a CondenseNet (C = G = 8) with both deteriorated performance (28.9% error rate) and robustness (84.6% mCE). Here again robustness is worse than larger model robustness. Though models fashioned for mobile devices are smaller and in some sense simpler, this does not improve robustness.
+
+G A SEPARATE TYPE OF ROBUSTNESS
+
+Anothergoalformachinelearningistolearnthefundamentalstructureofcategories. Broadcategories, such as “bird,” have many subtypes, such as “cardinal” or “bluejay.” Humans can observe previously unseen bird species yet still know that they are birds. A test of learned fundamental structure beyond superﬁcial features is subtype robustness. In subtype robustness we test generalization to unseen subtypes which share share essential characteristics of a broader type. We repurpose the ImageNet-22K dataset for a closer investigation into subtype robustness.
+
+SubtypeRobustness. Anaturalimagedataset with a hierarchical taxonomy and numerous types and subtypes is ImageNet-22K, an ImageNet-1K superset. In this subtype robustness experiment, we manually select 25 broad types from ImageNet-22K, listed in the next paragraph. Each broad type has many subtypes. We call a subtype “seen” if and only if it is in ImageNet-1K and a subtype of one of the 25 broad types. The subtype is “unseen” if and only if it is a subtype of the 25 broad types and is from ImageNet-22K but not ImageNet-1K. In this experiment, the correct classiﬁcation decision for an image of a subtype is the broad type label. We take pre-trained ImageNet-1K classiﬁers which have not trained on unseen subtypes. Next we ﬁne-tune the last layer of these pre-trained ImageNet-1K classiﬁers on seen subtypes so that they predict one of 25 broad types. Then, we test the accuracy on images of seen subtypes and on images of unseen subtypes. Accuracy on unseen subtypes is our measure of subtype robustness. Seen and unseen accuracies are shown in Figure 9, while the ImageNet-1K classiﬁcation accuracy before ﬁne-tuning is on the horizontal axis. Despite only having 25 classes and having trained on millions of images, these classiﬁers demonstrate a subtype robustness performance gap that should be far less pronounced. We also observe that the architectures proposed so far hardly deviate from the trendline.
+
+Figure 9: ImageNet classiﬁers and their robustness to unseen subtypes. Unseen subtypes of known broad types are noticeably harder for classiﬁers.
+
+60657075ImageNet-1K Accuracy (%)65707580859095100ImageNet Subtype Accuracy (%)AlexNetSqueezeNet 1.1VGG-11ResNet-18VGG-19VGG-19+BNResNet-50ResNeXt-101Subtype RobustnessSeen SubtypesUnseen SubtypesPublished as a conference paper at ICLR 2019
+
+The 25 broad types which we selected from ImageNet are as follows. Amphibian (n01627424), Appliance (n02729837), Aquatic Mammal (n02062017), Bird (n01503061), Bear (n02131653), Beverage (n07881800), Big cat (n02127808), Building (n02913152), Cat (n02121620), Clothing (n03051540), Dog (n02084071), Electronic Equipment (n03278248), Fish (n02512053), Footwear (n03380867), Fruit (n13134947), Fungus (n12992868), Geological Formation (n09287968), Hoofed Animal (n02370806), Insect (n02159955), Musical Instrument (n03800933), Primate (n02469914), Reptile (n01661091), Utensil (n04516672), Vegetable (n07707451), Vehicle (n04576211).
+

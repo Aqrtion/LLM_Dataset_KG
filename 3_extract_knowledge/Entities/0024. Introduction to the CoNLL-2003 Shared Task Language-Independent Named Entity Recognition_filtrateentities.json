@@ -1,0 +1,77 @@
+{
+    "entities": [
+        {
+            "id": "20250319004350P1",
+            "name": "Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Erik F. Tjong Kim Sang",
+                    "Fien De Meulder"
+                ],
+                "institution": "University of Antwerp"
+            }
+        },
+        {
+            "id": "20250319004350T1",
+            "name": "language-independent named entity recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004350T2",
+            "name": "named entity recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004350D1",
+            "name": "CoNLL-2003 English Dataset",
+            "type": "Dataset",
+            "attributes": {
+                "components": "training, development, test, unannotated",
+                "unannotated_data_size": "17 million tokens",
+                "annotation_scheme": "IOB with PER, ORG, LOC, MISC",
+                "preprocessing": "tokenized, POS tagged, chunked using MBT tagger",
+                "source": "Reuters Corpus"
+            }
+        },
+        {
+            "id": "20250319004350D2",
+            "name": "CoNLL-2003 German Dataset",
+            "type": "Dataset",
+            "attributes": {
+                "components": "training, development, test, unannotated",
+                "unannotated_data_size": "14 million tokens",
+                "annotation_scheme": "IOB with PER, ORG, LOC, MISC",
+                "preprocessing": "lemmatized, tagged, chunked using TreeTagger",
+                "source": "ECI Multilingual Text Corpus"
+            }
+        },
+        {
+            "id": "20250319004350D3",
+            "name": "Reuters Corpus",
+            "type": "Dataset",
+            "attributes": {
+                "content": "Reuters news stories between August 1996 and August 1997"
+            }
+        },
+        {
+            "id": "20250319004350D4",
+            "name": "ECI Multilingual Text Corpus",
+            "type": "Dataset",
+            "attributes": {
+                "content": "German newspaper Frankfurter Rundshau articles from August 1992"
+            }
+        },
+        {
+            "id": "20250319004350D5",
+            "name": "CoNLL-2002 Dataset",
+            "type": "Dataset",
+            "attributes": {
+                "languages": "Spanish, Dutch",
+                "task": "named entity recognition"
+            }
+        }
+    ]
+}

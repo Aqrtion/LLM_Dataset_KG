@@ -1,0 +1,1388 @@
+Moment Matching for Multi-Source Domain Adaptation
+
+Xingchao Peng Boston University xpeng@bu.edu
+
+Qinxun Bai Horizon Robotics qinxun.bai@horizon.ai
+
+Xide Xia Boston University xidexia@bu.edu
+
+Zijun Huang Columbia University zijun.huang@columbia.edu
+
+Kate Saenko Boston University saenko@bu.edu
+
+Bo Wang Vector Institute & Peter Munk Cardiac Center bowang@vectorinstitute.ai
+
+Abstract
+
+Conventional unsupervised domain adaptation (UDA) assumes that training data are sampled from a single domain. This neglects the more practical scenario where training data are collected from multiple sources, requiring multi-source domain adaptation. We make three major contributions towards addressing this problem. First, we collect and annotate by far the largest UDA dataset, called DomainNet, which contains six domains and about 0.6 million images distributed among 345 categories, addressing the gap in data availability for multi-source UDA research. Second, we propose a new deep learning approach, Moment Matching for Multi-Source Domain Adaptation (M3SDA), which aims to transfer knowledge learned frommultiplelabeledsourcedomainstoanunlabeledtarget domain by dynamically aligning moments of their feature distributions. Third, we provide new theoretical insights speciﬁcally for moment matching approaches in both single and multiple source domain adaptation. Extensive experiments are conducted to demonstrate the power of our new dataset in benchmarking state-of-the-art multi-source domain adaptation methods, as well as the advantage of our proposed model. Dataset and Code are available at http://ai.bu.edu/M3SDA/
+
+1. Introduction
+
+Generalizing models learned on one visual domain to novel domains has been a major obstacle in the quest for universal object recognition. The performance of the learnedmodelsdegradessigniﬁcantlywhentestingonnovel domains due to the presence of domain shift [36].
+
+Recently, transfer learning and domain adaptation methods have been proposed to mitigate the domain gap. For example, several UDA methods [27, 41, 25] incorporate Maximum Mean Discrepancy loss into a neural network to diminish the domain discrepancy; other models introduce different learning schema to align the source and target domains, including aligning second order correlation [39, 32],
+
+Figure 1. We address Multi-Source Domain Adaptation where source images come from multiple domains. We collect a large scale dataset, DomainNet, with six domains, 345 categories, and ∼0.6 million images and propose a model (M3SDA) to transfer knowledge from multiple source domains to an unlabeled target domain.
+
+moment matching [47], adversarial domain confusion [40, 8, 38] and GAN-based alignment [50, 15, 23]. However, most of current UDA methods assume that source samples are collected from a single domain. This assumption neglects the more practical scenarios where labeled images are typically collected from multiple domains. For example, thetrainingimagescanbetakenunderdifferentweather or lighting conditions, share different visual cues, and even have different modalities (as shown in Figure 1).
+
+In this paper, we consider multi-source domain adaptation (MSDA), a more difﬁcult but practical problem of knowledge transfer from multiple distinct domains to one unlabeled target domain. The main challenges in the research of MSDA are that: (1) the source data has multiple domains, which hampers the effectiveness of mainstream single UDA method; (2) source domains also possess domain shift with each other; (3) the lack of large-scale multidomain dataset hinders the development of MSDA models. In the context of MSDA, some theoretical analysis [1, 28, 4, 49, 14] has been proposed for multi-source domain
+
+sketchrealquickdrawpaintinginfographclipartairplaneclockaxeballbicyclebirdstrawberryflowerpizzabutterfly
+
+Dataset Digit-Five Ofﬁce [37]
+
+4,110 2010 2,533 Ofﬁce-Caltech [11] 2012 2015 12,000 CAD-Pascal [33] Ofﬁce-Home [43] 2017 15,500 2017 9,991 2018 16,156 2018 280,157 569,010
+
+Images Classes Domains Description 5 3 4 6 4 4 - 3 6
+
+digit ofﬁce ofﬁce animal,vehicle ofﬁce, home animal, stuff PACS [21] museum Open MIC [17] animal,vehicle Syn2Real [35] DomainNet (Ours) see Appendix Table 1. A collection of most notable datasets to evaluate domain adaptation methods. Speciﬁcally, “Digit-Five” dataset indicates ﬁve most popular digit datasets (MNIST [19], MNIST-M [8], Synthetic Digits [8], SVHN, and USPS) which are widely used to evaluate domain adaptation models. Our dataset is challenging as it containsmoreimages, categories, anddomainsthanotherdatasets. (see Table 10, Table 11, and Table 12 in Appendix for detailed categories.)
+
+adaptation (MSDA). Ben-David et al [1] pioneer this direction by introducing an H∆H-divergence between the weighted combination of source domains and target domain. More applied works [6, 45] use an adversarial discriminator to align the multi-source domains with the target domain. However, these works focus only on aligning the source domains with the target, neglecting the domain shift between the source domains. Moreover, H∆Hdivergence based analysis does not directly correspond to moment matching approaches.
+
+In terms of data, research has been hampered due to the lack of large-scale domain adaptation datasets, as state-ofthe-art datasets contain only a few images or have a limited number of classes. Many domain adaptation models exhibit saturation when evaluated on these datasets. For example, many methods achieve ∼90 accuracy on the popular Ofﬁce [37] dataset; Self-Ensembling [7] reports ∼99% accuracy on the “Digit-Five” dataset and ∼92% accuracy on Syn2Real [35] dataset.
+
+In this paper, we ﬁrst collect and label a new multidomain dataset called DomainNet, aiming to overcome benchmark saturation. Our dataset consists of six distinct domains, 345 categories and ∼0.6 million images. A comparison of DomainNet and several existing datasets is shown in Table 1, and example images are illustrated in Figure 1. We evaluate several state-of-the-art single domain adaptation methods on our dataset, leading to surprising ﬁndings (see Section 5). We also extensively evaluate our model on existing datasets and on DomainNet and show that it outperforms the existing single- and multi-source approaches.
+
+Secondly, we propose a novel approach called M3SDA to tackle MSDA task by aligning the source domains with the target domain, and aligning the source domains with each other simultaneously. We dispose multiple complex adversarial training procedures presented in [45], but di-
+
+rectly align the moments of their deep feature distributions, leading to a more robust and effective MSDA model. To our best knowledge, we are the ﬁrst to empirically demonstrate that aligning the source domains is beneﬁcial for MSDA tasks.
+
+Finally, we extend existing theoretical analysis [1, 14, 49] to the case of moment-based divergence between source and target domains, which provides new theoretical insight speciﬁcally for moment matching approaches in domain adaptation, including our approach and many others.
+
+2. Related Work
+
+Domain Adaptation Datasets Several notable datasets that can be utilized to evaluate domain adaptation approaches are summarized in Table 1. The Ofﬁce dataset [37] is a popular benchmark for ofﬁce environment objects. It contains 31 categories captured in three domains: ofﬁce environment images taken with a high quality camera (DSLR), ofﬁce environment images taken with a low quality camera (Webcam), and images from an online merchandising website (Amazon). The ofﬁce dataset and its extension, OfﬁceCaltech10 [11], have been used in numerous domain adaptation papers [25, 40, 27, 39, 45], and the adaptation performance has reached ∼90% accuracy. More recent benchmarks [43, 17, 34] are proposed to evaluate the effectiveness of domain adaptation models. However, these datasets are small-scale and limited by their speciﬁc environments, such as ofﬁce, home, and museum. Our dataset contains about 600k images, distributed in 345 categories and 6 distinct domains. We capture various object divisions, ranging from furniture, cloth, electronic to mammal, building, etc.
+
+Single-source UDA Over the past decades, various singlesource UDA methods have been proposed. These methods can be taxonomically divided into three categories. The ﬁrst category is the discrepancy-based DA approach, which utilizes different metric learning schemas to diminish the domain shift between source and target domains. Inspired by the kernel two-sample test [12], Maximum Mean Discrepancy (MMD) is applied to reduce distribution shift in various methods [27, 41, 9, 44]. Other commonly used methods include correlation alignment [39, 32], Kullback-Leibler (KL) divergence [51], and H divergence [1]. The second category is the adversarial-based approach [24, 40]. A domain discriminator is leveraged to encourage the domain confusion by an adversarial objective. Among these approaches, generative adversarial networks are widely used to learn domain-invariant features as well to generate fake source or target data. Other frameworks utilize only adversarial loss to bridge two domains. The third category is reconstruction-based, which assumes the data reconstruction helps the DA models to learn domain-invariant features. The reconstruction is obtained via an encoder-
+
+Figure 2. Statistics for our DomainNet dataset. The two plots show object classes sorted by the total number of instances. The top ﬁgure shows the percentages each domain takes in the dataset. The bottom ﬁgure shows the number of instances grouped by 24 different divisions. Detailed numbers are shown in Table 10, Table 11 and Table 12 in Appendix. (Zoom in to see the exact class names!)
+
+decoder [3, 10] or a GAN discriminator, such as dualGAN [46], cycle-GAN [50], disco-GAN [16], and CyCADA [15]. Though these methods make progress on UDA, few of them consider the practical scenario where training data are collected from multiple sources. Our paper proposes a model to tackle multi-source domain adaptation, which is a more general and challenging scenario. Multi-Source Domain Adaptation Compared with single source UDA, multi-source domain adaptation assumes that training data from multiple sources are available. Originated from the early theoretical analysis [1, 28, 4], MSDA has many practical applications [45, 6]. Ben-David et al [1] introduce an H∆H-divergence between the weighted combination of source domains and target domain. Crammer et al [4] establish a general bound on the expected loss of the model by minimizing the empirical loss on the nearest k sources. Mansour et al [28] claim that the target hypothesis can be represented by a weighted combination of source hypotheses. In the more applied works, Deep Cocktail Network (DCTN) [45] proposes a k-way domain discriminator and category classiﬁer for digit classiﬁcation and real-world object recognition. Hoffman et al [14] propose normalized solutions with theoretical guarantees for cross-entropy loss, aiming to provide a solution for the MSDA problem with very practical beneﬁts. Duan et al [6] propose Domain Selection Machine for event recognition in consumer videos by leveraging a large number of loosely labeled web images from different sources. Different from these methods, our model directly matches all the distributions by matching the moments. Moreover, we provide a concrete proof of why matching the moments of multiple distributions works for multi-source domain adaptation. Moment Matching The moments of distributions have been studied by the machine learning community for a long In order to diminish the domain discrepancy betime.
+
+tween two domains, different moment matching schemes have been proposed. For example, MMD matches the ﬁrst moments of two distributions. Sun et al [39] propose an approach that matches the second moments. Zhang et al [48] propose to align inﬁnte-dimensional covariance matrices in RKHS. Zellinger et al [47] introduce a moment matching regularizer to match high moments. As the generative adversarial network (GAN) becomes popular, many GANbased moment matching approaches have been proposed. McGAN [29] utilizes a GAN to match the mean and covariance of feature distributions. GMMN [22] and MMD GAN [20] are proposed for aligning distribution moments with generative neural networks. Compared to these methods, our work focuses on matching distribution moments for multiple domains and more importantly, we demonstrate that this is crucial for multi-source domain adaptation.
+
+3. The DomainNet dataset
+
+is well-known that deep models require massive amounts of training data. Unfortunately, existing datasets for visual domain adaptation are either small-scale or limited in the number of categories. We collect by far the largest domain adaptation dataset to date, DomainNet . The DomainNet contains six domains, with each domain containing 345 categories of common objects, as listed in Table 10, Table 11, and Table 12 (see Appendix). The domains include Clipart (clp, see Appendix, Figure 9): collection of clipart images; Infograph (inf, see Figure 10): infographic images with speciﬁc object; Painting (pnt, see Figure 11): artistic depictions of objects in the form of paintings; Quickdraw (qdr, see Figure 12): drawings of the worldwide players of game “Quick Draw!”1; Real (rel, see Figure 13): photos and real world images; and Sketch
+
+1https://quickdraw.withgoogle.com/data
+
+treegolf clubsquirreldogwhalespreadsheetsnowmantigertableshoewindmillsubmarinefeatherbirdspiderstrawberrynailbeardbreadtrainwatermelonzebrasheepelephantteapoteyemushroomsea turtleswordstreetlightlighthouseowlhorsepenguinpondsocksnorkelhelicoptersnakebutterflyumbrellariverfishvangrapeshot air balloonwine glassteddy-bearspeedboatsunswanbicyclebrainbracelettornadoflowerstairscupsteaktractorwristwatchtoothbrushsuitcasetriangleparrotzigzagice creammugbeachcatraccoongardenmonkeysharkanimal migrationlionsaxophoneasparagustentfiretruckhandspoonsquigglepalm treeoctopustoasterskateboarddumbbellmountainbottlecappigshovelwashing machinewine bottlestovecoffee cupleafgoateedrumsyogabowtiesailboatscissorsonionsnailbushouse plantmapmoonlobstercanoepineapplenecklacebasketbearenvelopebeegrassmotorbikebeddonutfacehatskullschool busdolphincruise shiptoothpasteblueberryshortseyeglassesbackpackbookbroccoliduckhamburgerhelmetcakerhinocerosladdertrombonehedgehogtelevisionscorpionpearflashlightbarnlegoceantelephonebenchpillowhot tubfenceflamingowaterslidecrocodilesweatermoustacherollerskatescirclegiraffesyringepoolcrabcandlecarrotsoccer ballbroomsandwichsnowflakeparachutecastlesleeping bagtoothbinocularskangarooriflewheelpickup truckhot dogpantspandascrewdriverpolice carcamellightningpencilarmmicrophonefireplacemegaphonepianolollipoptrumpetkeyboardpeasmosquitotennis racquettraffic lightflip flopsflying saucerdragonhousecowbeltThe Great Walldiamondbandageangelmermaidplierslaptoprainkneebathtubcrayoncactusgarden hosediving boardpursecouchhockey puckjacketfire hydrantblackberrybataxeswing setlipstickfrying pansinkbasketballt-shirtcookietoestereorakepaper clipboomerangalarm clockchurchbaseball batambulancemailboxpaintbrushsmiley facepostcardremote controlpotatoearhospitalThe Mona Lisaknifeforkantcamerapaint cancoolerjailstring beanlinemousepicture framehourglasslighterfloor lamphurricanedishwashercellocomputerbushmarkerpeanutclarinetradiobucketovenstitchesoctagonbaseballfanchandelieranvilchairaircraft carrierhammerstarcrownmicrowaveerasercompasskeystop signcannoncalculatormatchessawcamouflagerainbowdressercalendarceiling fan010002000Number of Instancesclipartinfographpaintingquickdrawrealsketchtableteapotstreetlightumbrellawine glassstairsvasetoothbrushsuitcasetoiletstovebedtoothpastesee sawladderbenchpillowhot tubfencedoorsleeping bagfireplacelanternbathtubcouchswing setsinkmailboxpostcardpicture framefloor lampchandelierchairdresserceiling fansquirreldogwhaletigerzebrasheepelephanthorsecatraccoonmonkeylionpigbeardolphinrabbitrhinoceroshedgehoggiraffekangaroopandacamelcowbatmousenailswordstethoscopeskateboarddumbbellbottlecapshovelbasketsyringebroomriflewheelscrewdriverbandagepliersaxerakeboomerangdrillpaint canpassportbucketstitchesanvilhammercompasskeysawshoesockbraceletwristwatchbowtienecklacehatshortseyeglasseshelmetsweaterrollerskatespantsflip flopsunderwearbeltdiamondpursejacketlipstickt-shirtcrowncamouflagespreadsheettoasterheadphoneswashing machinelight bulbtelevisionflashlighttelephonemicrophonemegaphonekeyboardlaptopstereopower outletremote controlcell phonecameracoolerdishwashercomputerradioovenfanmicrowavecalculatorgolf clubwindmilllighthousebridgepondgardententThe Eiffel TowersquareskyscraperbarnwaterslidepoolcastlehouseThe Great Wallgarden hosediving boardchurchhospitaljailnailcupmugcoffee cupscissorsmapenvelopebackpackbookcandlebinocularspencilclockbandagecrayonpaper clipalarm clockpaintbrushmarkererasercalendarbeardeyebrainhandgoateefaceskullnoselegmoustachefingertoothfootarmkneetoeelbowsmiley facemouthtrucktrainvanbicycletractorfiretruckbusmotorbikeschool buscarpickup truckpolice carbulldozerroller coasterambulancebreadsteakice creamdonutpopsiclehamburgercakepizzasandwichhot doglollipopcookiebirthday cakepeanutriversuntornadobeachmountainmoonoceansnowflakelightningcloudrainhurricanestarrainbowspidersea turtlesnakefishsharkoctopusfrogsnaillobsterscorpioncrocodilecrabsnowmanfeatherteddy-bearanimal migrationtraffic lightdragonangelmermaidcampfirefire hydrantThe Mona Lisastop signcannonsaxophonedrumsviolinguitartromboneharppianotrumpetcelloclarinetstrawberrywatermelongrapespineappleblueberrypearbananablackberryapplesnorkelyogasoccer ballhockey sticktennis racquetflying saucerhockey puckbasketballbaseball batbaseballtreeflowerpalm treeleafhouse plantgrasscactusbushbirdowlpenguinswanparrotduckflamingomushroomasparagusonionbroccolicarrotpeaspotatostring beantrianglezigzagsquigglehexagoncirclelineoctagonspoonwine bottlefrying panknifeforkhourglasslightermatchessubmarinespeedboatsailboatcanoecruise shipaircraft carrierhelicopterhot air balloonparachuteairplanebutterflybeemosquitoant010002000Number of Instancesfurniture (9.93%)mammal (8.22%)tool (7.33%)cloth (6.48%)electricity (6.45%)building (6.39%)office (5.76%)human body (5.52%)road transport (4.64%)food (4.04%)nature (3.93%)cold blooded (3.92%)other (3.60%)music (2.80%)fruit (2.79%)sport (2.66%)tree (2.54%)bird (2.40%)vegetable (2.31%)shape (2.04%)kitchen (1.97%)water transport (1.88%)sky transport (1.21%)insect (1.15%)Figure 3. The framework of Moment Matching for Multi-source Domain Adaptation (M3SDA). Our model consists of three components: i) feature extractor, ii) moment matching component, and iii) classiﬁers. Our model takes multi-source annotated training data as input and transfers the learned knowledge to classify the unlabeled target samples. Without loss of generality, we show the i-th domain and j-th domain as an example. The feature extractor maps the source domains into a common feature space. The moment matching component attempts to match the i-th and j-th domains with the target domain, as well as matching the i-th domain with the j-th domain. The ﬁnal predictions of target samples are based on the weighted outputs of the i-th and j-th classiﬁers. (Best viewed in color!)
+
+(skt, see Figure 14): sketches of speciﬁc objects.
+
+the Moment Distance between DS and DT is deﬁned as
+
+The images from clipart, infograph, painting, real, and sketch domains are collected by searching a category name combined with a domain name (e.g. “aeroplane painting”) in different image search engines. One of the main challenges is that the downloaded data contain a large portion of outliers. To clean the dataset, we hire 20 annotators to manually ﬁlter out the outliers. This process took around 2,500 hours (more than 2 weeks) in total. To control the annotation quality, we assign two annotators to each image, and only take the images agreed by both annotators. After the ﬁltering process, we keep 423.5k images from the 1.2 million images crawled from the web. The dataset has an average of around 150 images per category for clipart and infograph domain, around 220 per category for painting and sketch domain, and around 510 for real domain. A statistical overview of the dataset is shown in Figure 2.
+
+The quickdraw domain is downloaded directly from https://quickdraw.withgoogle.com/. The raw data are presented as a series of discrete points with temporal information. We use the B-spline [5] algorithm to connect all the points in each strike to get a complete drawing. We choose 500 images for each category to form the quickdraw domain, which contains 172.5k images in total. 4. Moment Matching for Multi-Source DA
+
+Given DS = {D1,D2,...,DN} the collection of labeled source domains and DT the unlabeled target domain, where all domains are deﬁned by bounded rational measures on input space X, the multi-source domain adaptation problem aims to ﬁnd a hypothesis in the given hypothesis space H, which minimizes the testing target error on DT. Deﬁnition 1. Assume X1, X2 ,..., XN, XT are collections of i.i.d. samples from D1,D2,...,DN,DT respectively, then
+
+MD2(DS,DT) =
+
+2 (cid:88)
+
+(cid:16) 1 N
+
+N (cid:88)
+
+(cid:107)E(Xk
+
+i ) − E(Xk
+
+T)(cid:107)2
+
+k=1 (cid:19)−1 N−1 (cid:88)
+
+(cid:18)N 2
+
+N (cid:88)
+
+(cid:107)E(Xk
+
+i ) − E(Xk
+
+j)(cid:107)2
+
+(cid:17)
+
+M3SDA We propose a moment-matching model for MSDA based on deep neural networks. As shown in Figure 3, our model comprises of a feature extractor G, a momentmatching component, and a set of N classiﬁers C = {C1,C2,...,CN}. The feature extractor G maps DS, DT to a common latent feature space. The moment matching component minimizes the moment-related distance deﬁned in Equation 1. The N classiﬁers are trained on the annotated source domains with cross-entropy loss. The overall objective function is:
+
+min G,C
+
+N (cid:88)
+
+LDi + λmin G
+
+MD2(DS,DT),
+
+where LDi is the softmax cross entropy loss for the classiﬁer Ci on domain Di, and λ is the trade-off parameter.
+
+M3SDA assumes that p(y|x) will be aligned automatically when aligning p(x), which might not hold in practice. To mitigate this limitation, we further propose M3SDA-β. M3SDA-β In order to align p(y|x) and p(x) at the same time, we follow the training paradigm proposed by [38]. In particular, we leverage two classiﬁers per domain to form N pairs of classiﬁers C(cid:48) = (cid:48))}. The training proce{(C1,C1 dure includes three steps. i). We train G and C(cid:48) to classify the multi-source samples correctly. The objective is similar
+
+(cid:48)),...,(CN,CN
+
+(cid:48)),(C2,C2
+
+Share WeightsShare Weightsi-thclassifierj-thclassifierWeightedFinal PredictionMultipleSource Domainsi-thdomainj-thdomaintargetdomainFeature ExtractorMoment Matching ComponentClassifiers Trainedon Source Domains  i-th source domain   j-th source domain   target domain Dotted lines appear in test phaseii). We then train the classiﬁer pairs for a to Equation 2. ﬁxed G. The goal is to make the discrepancy of each pair of classiﬁers as large as possible on the target domain. For (cid:48) should possess a large example, the outputs of C1 and C1 discrepancy. Following [38], we deﬁne the discrepancy of two classiﬁers as the L1-distance between the outputs of the two classiﬁers. The objective is:
+
+N (cid:88)
+
+min (cid:48) C
+
+N (cid:88)
+
+|PCi(DT) − PCi
+
+(cid:48)(DT)|,
+
+where PCi(DT), PCi (cid:48)(DT) denote the outputs of Ci, Ci respectively on the target domain. iii). Finally, we ﬁx C(cid:48) and train G to minimize the discrepancy of each classiﬁer pair on the target domain. The objective function is as follows:
+
+(cid:48)
+
+N (cid:88)
+
+|PCi(DT) − PCi
+
+(cid:48)(DT)|,
+
+These three training steps are performed periodically until the whole network converges. Ensemble Schema In the testing phase, testing data from the target domain are forwarded through the feature generator and the N classiﬁers. We propose two schemas to combine the outputs of the classiﬁers:
+
+• average the outputs of the classiﬁers, marked as
+
+M3SDA∗
+
+• Derive a weight vector W = (w1,...,wN−1) ((cid:80)N−1 i=1 wi = 1, assuming N-th domain is the target). The ﬁnal prediction is the weighted average of the outputs.
+
+To this end, how to derive the weight vector becomes a critical problem. The main philosophy of the weight vector is to make it represent the intrinsic closeness between the target domain and source domains. In our setting, the weighted vector is derived by the source-only accuracy between the i-th domain and the N-th domain, i.e. wi = acci/(cid:80)N−1 4.1. Theoretical Insight
+
+j=1 accj.
+
+Following [1], we introduce a rigorous model of multisource domain adaptation for binary classiﬁcation. A domain D = (µ,f) is deﬁned by a probability measure (distribution) µ on the input space X and a labeling function f : X → {0,1}. A hypothesis is a function h : X → {0,1}. The probability that h disagrees with the domain labeling function f under the domain distribution µ is deﬁned as: (cid:15)D(h) = (cid:15)D(h,f) = Eµ[|h(x) − f(x)|].
+
+For a source domain DS and a target domain DT, we refer to the source error and the target error of a hypothesis h as (cid:15)S(h) = (cid:15)DS(h) and (cid:15)T(h) = (cid:15)DT(h) respectively. When the expectation in Equation 5 is computed
+
+with respect to an empirical distribution, we denote the corresponding empirical error by ˆ(cid:15)D(h), such as ˆ(cid:15)S(h) and ˆ(cid:15)T(h). In particular, we examine algorithms that minimize convex combinations of source errors, i.e., given a weight vector α = (α1,...,αN) with (cid:80)N j=1 αj = 1, we deﬁne the α-weighted source error of a hypothesis h as (cid:15)α(h) = (cid:80)N j=1 αj(cid:15)j(h), where (cid:15)j(h) is the shorthand of (cid:15)Dj(h). The empirical α-weighted source error can be deﬁned analogously and denoted by ˆ(cid:15)α(h).
+
+Previous theoretical bounds [1, 14, 49] on the target error are based on the H∆H-divergence between the source and target domains. While providing theoretical insights for general multi-source domain adaptation, these H∆Hdivergence based bounds do not directly motivate momentbased approaches. In order to provide a speciﬁc insight for moment-based approaches, we introduce the k-th order cross-moment divergence between domains, denoted by dCMk(·,·), and extend the analysis in [1] to derive the following moment-based bound for multi-source domain adaptation. See Appendix for the deﬁnition of the crossmoment divergence and the proof of the theorem.
+
+Theorem 1. Let H be a hypothesis space of V C dimension d. Let m be the size of labeled samples from all sources {D1,D2,...,DN}, Sj be the labeled sample set of size βjm ((cid:80) j βj = 1) drawn from µj and labeled by the groundtruth labeling function fj. If ˆh ∈ H is the empirical minimizer of ˆ(cid:15)α(h) for a ﬁxed weight vector α and h∗ T = minh∈H (cid:15)T(h) is the target error minimizer, then for any δ ∈ (0,1) and any (cid:15) > 0, there exist N integers {nj j=1 and N constants {anj
+
+}N j=1, such that with probability at least 1 − δ,
+
+(cid:15)}N
+
+(cid:15)
+
+(cid:15)T(ˆh) ≤ (cid:15)T(h∗
+
+T) + ηα,β,m,δ + (cid:15) nj (cid:15)(cid:88)
+
+(cid:16)
+
+2λj + anj
+
+(cid:15)
+
+N (cid:88)
+
+dCMk(Dj,DT)
+
+(cid:17)
+
+where ηα,β,m,δ = 4
+
+(cid:114)
+
+((cid:80)N
+
+)(2d(log( 2m
+
+d )+1)+2log( 4 δ)
+
+and λj = minh∈H{(cid:15)T(h) + (cid:15)j(h)}.
+
+Theorem 1shows thatthe upperbound on thetarget error of the learned hypothesis depends on the pairwise moment divergence dCMk(DS,DT) between the target domain and each source domain.2 This provides a direct motivation for moment matching approaches beyond ours. In particular, it motivates our multi-source domain adaptation approach to align the moments between each target-source pair. Moreover, it is obvious that the last term of the bound, (cid:80) k dCMk(Dj,DT), is lower bounded by the pairwise divergences between source domains. To see this, consider
+
+2Note that single source is just a special case when N = 1.
+
+Standards
+
+Models
+
+Source Combine
+
+MultiSource
+
+Source Only DAN [25] DANN [8] Source Only DAN [25] CORAL [39] DANN [8] JAN [27] ADDA [40] DCTN [45] MEDA [44] MCD [38] M3SDA (ours) M3SDA-β (ours)
+
+mt,up,sv,sy → mm 63.70±0.83 67.87±0.75 70.81±0.94 63.37±0.74 63.78±0.71 62.53±0.69 71.30±0.56 65.88±0.68 71.57± 0.52 70.53±1.24 71.31±0.75 72.50±0.67 69.76±0.86 72.82±1.13
+
+mm,up,sv,sy → mt 92.30±0.91 97.50± 0.62 97.90±0.83 90.50±0.83 96.31±0.54 97.21±0.83 97.60±0.75 97.21±0.73 97.89±0.84 96.23±0.82 96.47±0.78 96.21±0.81 98.58±0.47 98.43±0.68
+
+mm,mt,sv,sy → up 90.71±0.54 93.49±0.85 93.47±0.79 88.71±0.89 94.24±0.87 93.45±0.82 92.33±0.85 95.42±0.77 92.83±0.74 92.81±0.27 97.01±0.82 95.33±0.74 95.23±0.79 96.14±0.81
+
+mm,mt,up,sy → sv 71.51±0.75 67.80±0.84 68.50±0.85 63.54±0.93 62.45±0.72 64.40±0.72 63.48±0.79 75.27±0.71 75.48±0.48 77.61±0.41 78.45±0.77 78.89±0.78 78.56±0.95 81.32±0.86
+
+mm,mt,up,sv → sy 83.44±0.79 86.93±0.93 87.37±0.68 82.44±0.65 85.43±0.77 82.77±0.69 85.34±0.84 86.55±0.64 86.45±0.62 86.77±0.78 84.62±0.79 87.47±0.65 87.56±0.53 89.58±0.56
+
+Table 2. Digits Classiﬁcation Results. mt, up, sv, sy, mm are abbreviations for MNIST, USPS, SVHN, Synthetic Digits, MNIST-M, respectively. Our model M3SDA and M3SDA-β achieve 86.13% and 87.65% accuracy, outperforming other baselines by a large margin.
+
+the toy example consisting of two sources D1,D2, and a target DT, since dCMk(·,·) is a metric, triangle inequality implies the following lower bound:
+
+dCMk(D1,DT) + dCMk(D2,DT) ≥ dCMk(D1,D2).
+
+This motivates our algorithm to also align the moments between each pair of source domains. Intuitively, it is not possible to perfectly align the target domain with every source domain, if the source domains are not aligned themselves. Further discussions of Theorem 1 and its relationship with our algorithm are provided in the Appendix.
+
+5. Experiments
+
+We perform an extensive evaluation on the following tasks: digit classiﬁcation (MNIST, SVHN, USPS, MNIST-M, Sythetic Digits), and image recognition (Ofﬁce-Caltech10, DomainNet dataset). In total, we conduct 714 experiments. The experiments are run on a GPU-cluster with 24 GPUs and the total running time is more than 21,440 GPU-hours. Due to space limitations, we only report major results; more implementation details are provided in the supplementary material. Throughout the experiments, we set the trade-off parameter λ in Equation 2 as 0.5. In terms of the parameter sensitivity, we have observed that the performance variation is not signiﬁcant if λ is between 0.1∼1. All of our experiments are implemented in the PyTorch3 platform.
+
+5.1. Experiments on Digit Recognition
+
+Five digit datasets are sampled from ﬁve different sources, namely MNIST [19], Synthetic Digits [8], MNISTM [8], SVHN, and USPS. Following DCTN [45], we sample 25000 images from training subset and 9000 from testing subset in MNIST, MINST-M, SVHN, and Synthetic Digits. USPS dataset contains only 9298 images in total, so we take
+
+3http://pytorch.org
+
+the entire dataset as a domain. In all of our experiments, we take turns to set one domain as the target domain and the rest as the source domains.
+
+We take four state-of-the-art discrepancy-based approaches: Deep Adaptation Network [25] (DAN), Joint Adaptation Network (JAN), Manifold Embedded Distribution Alignment (MEDA), and Correlation Alignment [39] (CORAL), and four adversarial-based approaches: Domain Adversarial Neural Network [8] (DANN), Adversarial Discriminative Domain Adaptation [40] (ADDA), Maximum Classiﬁer Discrepancy (MCD) and Deep Cocktail Network [45] (DCTN) as our baselines. In the source combine setting, all the source domains are combined to a single domain, and the baseline experiments are conducted in a traditional single domain adaptation manner.
+
+The results are shown in Table 2. Our model M3SDA achieves an 86.13% average accuracy, and M3SDA-β boosts the performance to 87.65%, outperforming other baselines by a large margin. One interesting observation is that the results on MNIST-M dataset is lower. This phenomenon is probably due to the presence of negative transfer [31]. For a fair comparison, all the experiments are based on the same network architecture. For each experiment, we run the same setting for ﬁve times and report the mean and standard deviation. (See Appendix for detailed experiment settings and analyses.)
+
+5.2. Experiments on Ofﬁce-Caltech10
+
+The Ofﬁce-Caltech10 [11] dataset is extended from the standard Ofﬁce31 [37] dataset. It consists of the same 10 object categories from 4 different domains: Amazon, Caltech, DSLR, and Webcam.
+
+The experimental results on Ofﬁce-Caltech10 dataset are shown in Table 4. Our model M3SDA gets a 96.1% average accuracy on this dataset, and M3SDA-β further boosts the performance to 96.4%. All the experiments are based on ResNet-101 pre-trained on ImageNet. As far as we
+
+AlexNet clp inf pnt qdr rel
+
+skt Avg. JAN clp inf pnt qdr rel
+
+skt Avg. DANN clp inf pnt qdr rel
+
+skt Avg. ADDA clp inf pnt qdr rel
+
+skt Avg. DAN clp inf pnt qdr rel
+
+clp N/A 7.8 24.5 14.3 38.1 25.7 22.1 inf 17.6 N/A 18.7 8.7 28.1 15.3 17.7 pnt 27.5 8.2 N/A 7.1 43.1 23.9 22.0 qdr 17.8 2.2 7.4 N/A 8.1 10.9 9.3 rel 33.5 9.1 32.5 7.5 N/A 21.9 20.9 skt 35.3 8.2 27.7 13.3 36.8 N/A 24.3
+
+clp N/A 9.1 23.4 16.2 37.9 29.7 23.2 inf 17.2 N/A 15.6 4.4 24.8 13.5 15.1 pnt 29.9 8.9 N/A 7.9 42.1 26.1 23.0 qdr 14.2 1.6 4.4 N/A 8.5 10.1 7.8 rel 37.4 11.5 33.3 10.1 N/A 26.4 23.7 skt 39.1 8.8 28.2 13.9 36.2 N/A 25.2
+
+skt Avg. clp N/A 9.1 23.2 13.7 37.6 28.6 22.4 clp 65.5 8.2 21.4 10.5 36.1 10.8 17.4 inf inf 17.9 N/A 16.4 2.1 27.8 13.3 15.5 32.9 27.7 23.8 2.2 26.4 13.7 19.8 pnt pnt 29.1 8.6 N/A 5.1 41.5 24.7 21.8 28.1 7.5 57.6 2.6 41.6 20.8 20.1 qdr qdr 16.8 1.8 4.8 N/A 9.3 10.2 8.6 13.4 1.2 2.5 68.0 5.5 7.1 5.9 rel rel 36.5 11.4 33.9 5.9 N/A 24.5 22.4 36.9 10.2 33.9 4.9 72.8 23.1 21.8 skt skt 35.5 7.1 21.9 11.8 30.8 56.3 21.4 37.9 8.2 26.3 12.2 35.3 N/A 24.0 29.4 6.8 20.7 6.4 28.1 15.1 17.8 Avg. 27.6 8.0 21.0 10.5 29.9 21.2 19.7 Avg. 26.3 7.1 22.2 10.2 30.8 19.5 19.4 Avg. 27.6 7.8 20.9 7.8 30.3 20.3 19.1 Avg. skt Avg. RTN clp inf pnt qdr rel SE clp N/A 9.7 12.2 2.2 33.4 23.1 16.1 clp N/A 8.1 21.1 13.1 36.1 26.5 21.0 inf inf 10.3 N/A 9.6 1.2 13.1 6.9 8.2 15.6 N/A 15.3 3.4 25.1 12.8 14.4 pnt pnt 17.1 9.4 N/A 2.1 28.4 15.9 14.6 26.8 8.1 N/A 5.2 40.6 22.6 20.7 qdr qdr 13.6 3.9 11.6 N/A 16.4 11.5 11.4 15.1 1.8 4.5 N/A 8.5 8.9 7.8 rel rel 31.7 12.9 19.9 3.7 N/A 26.3 18.9 35.3 10.7 31.7 7.5 N/A 22.9 21.6 skt skt 34.1 7.4 23.3 12.6 32.1 N/A 21.9 18.7 7.8 12.2 7.7 28.9 N/A 15.1 25.4 7.2 19.2 8.4 28.4 18.7 17.9 Avg. 28.2 9.3 20.1 8.4 31.1 21.7 19.8 Avg. 31.4 13.1 24.9 2.2 35.7 23.9 21.9 Avg. 18.3 8.7 13.1 3.4 24.1 16.7 14.1 Avg. Table 3. Single-source baselines on the DomainNet dataset. Several single-source adaptation baselines are evaluated on the DomainNet dataset, including AlexNet [18], DAN [25], JAN [27], DANN [8], RTN [26], ADDA [40], MCD [38], SE [7]. In each sub-table, the column-wise domains are selected as the source domain and the row-wise domains are selected as the target domain. The green numbers represent the average performance of each column or row. The red numbers denote the average accuracy for all the 30 (source, target) combinations.
+
+skt Avg. clp N/A 14.2 26.1 1.6 45.0 33.8 24.1 inf 23.6 N/A 21.2 1.5 36.7 18.0 20.2 pnt 34.4 14.8 N/A 1.9 50.5 28.4 26.0 qdr 15.0 3.0 7.0 N/A 11.5 10.2 9.3 rel 42.6 19.6 42.6 2.2 N/A 29.3 27.2 skt 41.2 13.7 27.6 3.8 34.8 N/A 24.2
+
+clp N/A 11.2 24.1 3.2 41.9 30.7 22.2 inf 19.1 N/A 16.4 3.2 26.9 14.6 16.0 pnt 31.2 9.5 N/A 8.4 39.1 25.4 22.7 qdr 15.7 2.6 5.4 N/A 9.9 11.9 9.1 rel 39.5 14.5 29.1 12.1 N/A 25.7 24.2 skt 35.3 8.9 25.2 14.9 37.6 N/A 25.4
+
+skt Avg. MCD clp inf pnt qdr rel
+
+clp inf pnt qdr rel
+
+Standards
+
+Source Combine
+
+MultiSource
+
+Models
+
+Source only DAN [25] Source only DAN [25] DCTN [45] JAN [27] MEDA [44] MCD [38] M3SDA (ours) M3SDA-β (ours)
+
+→W 99.0 99.3 99.1 99.5 99.4 99.4 99.3 99.5 99.4 99.5
+
+→D 98.3 98.2 98.2 99.1 99.0 99.4 99.2 99.1 99.2 99.2
+
+→C 87.8 89.7 85.4 89.2 90.2 91.2 91.4 91.5 91.5 92.2
+
+→A 86.1 94.8 88.7 91.6 92.7 91.8 92.9 92.1 94.1 94.5
+
+Table 4. Results on Ofﬁce-Caltech10 dataset. A,C,W and D represent Amazon, Caltech, Webcam and DSLR, respectively. All the experiments are based on ResNet-101 pre-trained on ImageNet.
+
+Figure 4. Accuracy vs. Number of categories. This plot shows the painting→real scenario. More plots with similar trend can be accessed in Figure 5 (see Appendix).
+
+know, our models achieve the best performance among all the results ever reported on this dataset. We have also tried AlexNet, but it did not work as well as ResNet-101.
+
+5.3. Experiments on DomainNet
+
+Single-Source Adaptation To demonstrate the intrinsic difﬁculty of DomainNet, we evaluate multiple state-ofthe-art algorithms for single-source adaptation: Deep Alignment Network (DAN) [25], Joint Adaptation Network (JAN) [27], Domain Adversarial Neural Network (DANN) [8], Residual Transfer Network (RTN) [26], Adversarial Deep Domain Adaptation (ADDA) [40], Maximum Classiﬁer Discrepancy (MCD) [38], and SelfEnsembling (SE) [7]. As the DomainNet dataset contains 6 domains, experimentsfor30different(sources, target)combinationsareperformedforeachbaseline. Foreachdomain, wefollowa70%/30%splitschemetoparticipateourdataset into training and testing trunk. The detailed statistics can be viewed in Table 8 (see Appendix). All other experimental settings (neural network, learning rate, stepsize, etc.) are kept the same as in the original papers. Speciﬁcally, DAN, JAN, DANN, and RTN are based on AlexNet [18], ADDA and MCD are based on ResNet-101 [13], and SE is based on ResNet-152 [13]. Table 3 shows all the source-only and experimental results. (Source-only results for ResNet-101
+
+and ResNet-152 are in Appendix, Table 7). The results show that our dataset is challenging, especially for the infograph and quickdraw domain. We argue that the difﬁculty is mainly introduced by the large number of categories in our dataset. Multi-Source Domain Adaptation DomainNet contains six domains. Inspired by Xu et al [45], we introduce two MSDA standards: (1) single best, reporting the single bestperforming source transfer result on the test set, and (2) source combine, combining the source domains to a single domain and performing traditional single-source adaptation. The ﬁrst standard evaluates whether MSDA can improve the best single source UDA results; the second testify whether MSDA is necessary to exploit. Baselines For both single best and source combine experiment setting, we take the following state-of-the-art methods as our baselines: Deep Alignment Network (DAN) [25], Joint Adaptation Network (JAN) [27], Domain Adversarial Neural Network (DANN) [8], Residual Transfer Network (RTN) [26], Adversarial Deep Domain Adaptation (ADDA) [40], Maximum Classiﬁer Discrepancy (MCD) [38], and Self-Ensembling (SE) [7]. For multisource domain adaptation, we take Deep Cocktail Network (DCTN) [45] as our baseline. Results The experimental results of multi-source domain
+
+2050100150200250300345Number of Categories0.20.40.60.8AccuracySEMCDDANJANRTNDANNADDAAlexNetAvg
+
+Models
+
+Standards
+
+Single Best
+
+Source Combine
+
+inf,pnt,qdr, rel,skt→clp 39.6±0.58 39.1±0.51 35.3±0.73 35.3±0.71 37.9±0.69 39.5±0.81 31.7±0.70 42.6±0.32 47.6±0.52 45.4±0.49 44.2±0.57 40.9±0.43 45.5±0.59 47.5±0.76 24.7±0.32 54.3±0.64 48.6±0.73 57.0±0.79 57.2±0.98 58.6±0.53 65.5±0.56 69.3±0.37 71.0±0.63
+
+Source Only DAN [25] RTN [26] JAN [27] DANN [8] ADDA [40] SE [7] MCD [38] Source Only DAN [25] RTN [26] JAN [27] DANN [8] ADDA [40] SE [7] MCD [38] DCTN [45] M3SDA∗ (ours) M3SDA (ours) M3SDA-β (ours) AlexNet ResNet101 ResNet152
+
+clp,inf,qdr, rel,skt→pnt 33.9 ± 0.62 33.3±0.62 31.7±0.82 32.5±0.65 33.9±0.60 29.1±0.78 19.9±0.75 42.6±0.98 38.1±0.45 36.2±0.58 35.3±0.59 35.4±0.50 37.0±0.69 36.7±0.53 12.7±0.35 45.7±0.63 48.8±0.63 50.5±0.45 51.6±0.44 52.3±0.55 57.6±0.49 66.3±0.67 68.1 ± 0.49 Table 5. Multi-source domain adaptation results on the DomainNet dataset. Our model M3SDA and M3SDA-β achieves 41.5% and 42.6% accuracy, signiﬁcantly outperforming all other baselines. M3SDA∗ indicates the normal average of all the classiﬁers. When the target domain is quickdraw, the multi-source methods perform worse than single-source and source only baselines, which indicates negative transfer [31] occurs in this case. (clp: clipart, inf: infograph, pnt: painting, qdr: quickdraw, rel: real, skt: sketch.)
+
+clp,inf,pnt, qdr,skt →rel 41.6 ± 0.84 42.1±0.73 40.6±0.55 43.1±0.78 41.5±0.67 41.9±0.82 33.4±0.56 50.5±0.43 51.9±0.85 48.6±0.72 48.4±0.67 45.8±0.59 48.9±0.65 49.1±0.82 22.8±0.51 58.4±0.65 53.5±0.56 62.0±0.45 61.6±0.89 62.7±0.51 72.8±0.67 80.1±0.59 81.3±0.49
+
+clp,inf,pnt, rel,skt→qdr 11.8 ± 0.69 16.2±0.38 13.1±0.68 14.3±0.62 13.7±0.56 14.9±0.54 7.7±0.44 3.8±0.64 13.3±0.39 15.3±0.37 14.6±0.76 12.1±0.67 13.2±0.77 14.7±0.50 7.1±0.46 7.6±0.49 7.2±0.46 4.4± 0.21 5.2±0.45 6.3±0.58 68.0±0.55 66.8±0.51 69.1±0.52
+
+clp,pnt,qdr, rel,skt→inf 8.2±0.75 11.4±0.81 10.7±0.61 9.1±0.63 11.4±0.91 14.5±0.69 12.9±0.58 19.6±0.76 13.0±0.41 12.8±0.86 12.6±0.73 11.1±0.61 13.1±0.72 11.4±0.67 3.9±0.47 22.1±0.70 23.5±0.59 22.1±0.68 24.2±1.21 26.0± 0.89 27.7±0.34 34.5±0.42 36.1±0.61
+
+clp,inf,pnt, qdr,rel →skt 23.1±0.72 29.7±0.93 26.5±0.78 25.7±0.61 28.6±0.63 30.7±0.68 26.3±0.50 33.8±0.89 33.7±0.54 34.0±0.54 31.7±0.73 32.3±0.63 31.8±0.62 33.5±0.49 9.1±0.49 43.5±0.57 47.3±0.47 48.5±0.56 49.6±0.56 49.5±0.76 56.3±0.59 60.7±0.48 65.2±0.57
+
+Oracle Results
+
+MultiSource
+
+adaptation are shown in Table 5. We report the results of the two different weighting schemas and all the baseline results in Table 5. Our model M3SDA achieves an average accuracy of 41.5%, and M3SDA-β boosts the performance to 42.6%. The results demonstrate that our models designed for MSDA outperform the single best UDA results, the source combine results, and the multi-source baseline. From the experimental results, we make three interesting (1)The performance of M3SDA∗ is 40.8%. observations. After applying the weight vector W, M3SDAimproves the meanaccuracyby0.7percent. (2)Inclp,inf,pnt,rel,skt→qdr setting, the performances of our models are worse than source-only baseline, which indicates that negative transfer [31] occurs. (3) In the source combine setting, the performances of DAN [25], RTN [26], JAN [27], DANN [8] are lower than the source only baseline, indicating the negative transfer happens when the training data are from multiple source domains. Effect of Category Number To show how the number of categories affects the performance of state-of-the-art domainadaptationmethods, wechoosethepainting→realsetting in DomainNet and gradually increase the number of category from 20 to 345. The results are in Figure 4. An interesting observation is that when the number of categories is small (which is exactly the case in most domain adaptation benchmarks), all methods tend to perform well. However, their performances drop at different rates when the number of categories increases. For example, SE [7] per-
+
+forms the best when there is a limit number of categories, but worst when the number of categories is larger than 150.
+
+6. Conclusion
+
+In this paper, we have collected, annotated and evaluated by far the largest domain adaptation dataset named DomainNet. The dataset is challenging due to the presence of notable domain gaps and a large number of categories. We hope it will be beneﬁcial to evaluate future single- and multi-source UDA methods.
+
+We have also proposed M3SDA to align multiple source domains with the target domain. We derive a meaningful error bound for our method under the framework of crossmoment divergence. Further, we incorporate the moment matching component into deep neural network and train the model in an end-to-end fashion. Extensive experiments on multi-source domain adaptation benchmarks demonstrate that our model outperforms all the multi-source baselines as well as the best single-source domain adaptation method.
+
+7. Acknowledgements
+
+We thank Ruiqi Gao, Yizhe Zhu, Saito Kuniaki, Ben Usman, Ping Hu for their useful discussions and suggestions. We thank anonymous annotators for their hard work to label the data. This work was partially supported by NSF and Honda Research Institute. The authors also acknowledge support from CIFAR AI Chairs Program.
+
+References
+
+[1] Shai Ben-David,
+
+John Blitzer, Koby Crammer, Alex Kulesza, Fernando Pereira, and Jennifer Wortman Vaughan. A theory of learning from different domains. Machine learning, 79(1-2):151–175, 2010. 1, 2, 3, 5, 12
+
+[2] Shai Ben-David, John Blitzer, Koby Crammer, Fernando Pereira, et al. Analysis of representations for domain adaptation. Advances in neural information processing systems, pages 137–144, 2007. 12
+
+[3] Konstantinos Bousmalis, George Trigeorgis, Nathan Silberman, Dilip Krishnan, and Dumitru Erhan. Domain separation networks. In Advances in Neural Information Processing Systems, pages 343–351, 2016. 3
+
+[4] Koby Crammer, Michael Kearns, and Jennifer Wortman. Learning from multiple sources. Journal of Machine Learning Research, 9(Aug):1757–1774, 2008. 1, 3, 12
+
+[5] Carl De Boor, Carl De Boor, Etats-Unis Math´ematicien, Carl De Boor, and Carl De Boor. A practical guide to splines, volume 27. Springer-Verlag New York, 1978. 4
+
+[6] Lixin Duan, Dong Xu, and Shih-Fu Chang. Exploiting web images for event recognition in consumer videos: A multiple source domain adaptation approach. In Computer Vision and Pattern Recognition (CVPR), 2012 IEEE Conference on, pages 1338–1345. IEEE, 2012. 2, 3
+
+[7] Geoff French, Michal Mackiewicz, and Mark Fisher. SelfIn International ensembling for visual domain adaptation. Conference on Learning Representations, 2018. 2, 7, 8, 13, 14
+
+[8] Yaroslav Ganin and Victor Lempitsky. Unsupervised domain adaptation by backpropagation. In Francis Bach and David Blei, editors, Proceedings of the 32nd International Conference on Machine Learning, volume 37 of Proceedings of Machine Learning Research, pages 1180–1189, Lille, France, 07–09 Jul 2015. PMLR. 1, 2, 6, 7, 8
+
+[9] Muhammad Ghifary, W Bastiaan Kleijn, and Mengjie Zhang. Domain adaptive neural networks for object recognition. In Paciﬁc Rim international conference on artiﬁcial intelligence, pages 898–904. Springer, 2014. 2
+
+[10] Muhammad Ghifary, W Bastiaan Kleijn, Mengjie Zhang, David Balduzzi, and Wen Li. Deep reconstructionclassiﬁcation networks for unsupervised domain adaptation. In European Conference on Computer Vision, pages 597– 613. Springer, 2016. 3
+
+[11] Boqing Gong, Yuan Shi, Fei Sha, and Kristen Grauman. Geodesic ﬂow kernel for unsupervised domain adaptation. In Computer Vision and Pattern Recognition (CVPR), 2012 IEEE Conference on, pages 2066–2073. IEEE, 2012. 2, 6
+
+[12] Arthur Gretton, Karsten M Borgwardt, Malte Rasch, Bernhard Sch¨olkopf, and Alex J Smola. A kernel method for the two-sample-problem. In Advances in neural information processing systems, pages 513–520, 2007. 2
+
+[13] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 770–778, 2016. 7, 14
+
+[14] Judy Hoffman, Mehryar Mohri, and Ningshan Zhang. AlIn S. gorithms and theory for multiple-source adaptation.
+
+Bengio, H. Wallach, H. Larochelle, K. Grauman, N. CesaBianchi, and R. Garnett, editors, Advances in Neural Information Processing Systems 31, pages 8246–8256. Curran Associates, Inc., 2018. 1, 2, 3, 5
+
+[15] Judy Hoffman, Eric Tzeng, Taesung Park, Jun-Yan Zhu, Phillip Isola, Kate Saenko, Alexei Efros, and Trevor Darrell. CyCADA: Cycle-consistent adversarial domain adapIn Jennifer Dy and Andreas Krause, editors, Protation. ceedings of the 35th International Conference on Machine Learning, volume 80 of Proceedings of Machine Learning Research, pages 1989–1998, Stockholmsmssan, Stockholm Sweden, 10–15 Jul 2018. PMLR. 1, 3
+
+[16] Taeksoo Kim, Moonsu Cha, Hyunsoo Kim, Jung Kwon Lee, and Jiwon Kim. Learning to discover cross-domain relations with generative adversarial networks. In Doina Precup and Yee Whye Teh, editors, Proceedings of the 34th International Conference on Machine Learning, volume 70 of Proceedings of Machine Learning Research, pages 1857–1865, International Convention Centre, Sydney, Australia, 06–11 Aug 2017. PMLR. 3
+
+[17] Piotr Koniusz, Yusuf Tas, Hongguang Zhang, Mehrtash Harandi, Fatih Porikli, and Rui Zhang. Museum exhibit identiﬁcation challenge for the supervised domain adaptation and beyond. In The European Conference on Computer Vision (ECCV), September 2018. 2
+
+[18] Alex Krizhevsky, Ilya Sutskever, and Geoffrey E Hinton. Imagenet classiﬁcation with deep convolutional neural netIn Advances in neural information processing sysworks. tems, pages 1097–1105, 2012. 7
+
+[19] Yann LeCun, L´eon Bottou, Yoshua Bengio, and Patrick Haffner. Gradient-basedlearningappliedtodocumentrecognition. Proceedings of the IEEE, 86(11):2278–2324, 1998. 2, 6
+
+[20] Chun-Liang Li, Wei-Cheng Chang, Yu Cheng, Yiming Yang, and Barnab´as P´oczos. Mmd gan: Towards deeper underIn Advances in standing of moment matching network. Neural Information Processing Systems, pages 2203–2213, 2017. 3
+
+[21] Da Li, Yongxin Yang, Yi-Zhe Song,
+
+and Timothy Hospedales. Deeper, broader and artier domain generalization. In International Conference on Computer Vision, 2017. 2
+
+[22] Yujia Li, Kevin Swersky, and Rich Zemel. Generative moIn International Conference on
+
+ment matching networks. Machine Learning, pages 1718–1727, 2015. 3
+
+[23] Ming-Yu Liu, Thomas Breuel, and Jan Kautz. Unsupervised image-to-image translation networks. In Advances in Neural Information Processing Systems, pages 700–708, 2017. 1
+
+[24] Ming-Yu Liu and Oncel Tuzel. Coupled generative adversarial networks. In Advances in neural information processing systems, pages 469–477, 2016. 2
+
+[25] Mingsheng Long, Yue Cao, Jianmin Wang, and Michael Jordan. Learning transferable features with deep adaptation networks. In Francis Bach and David Blei, editors, Proceedings of the 32nd International Conference on Machine Learning, volume 37 of Proceedings of Machine Learning Research, pages 97–105, Lille, France, 07–09 Jul 2015. PMLR. 1, 2, 6, 7, 8, 13
+
+[26] Mingsheng Long, Han Zhu, Jianmin Wang, and Michael I Jordan. Unsupervised domain adaptation with residual transfer networks. In Advances in Neural Information Processing Systems, pages 136–144, 2016. 7, 8
+
+[27] Mingsheng Long, Han Zhu, Jianmin Wang, and Michael I. Jordan. Deep transfer learning with joint adaptation networks. In Proceedings of the 34th International Conference on Machine Learning, ICML 2017, Sydney, NSW, Australia, 6-11 August 2017, pages 2208–2217, 2017. 1, 2, 6, 7, 8 [28] Yishay Mansour, Mehryar Mohri, Afshin Rostamizadeh, and A R. Domain adaptation with multiple sources. In D. Koller, D. Schuurmans, Y. Bengio, and L. Bottou, editors, Advances in Neural Information Processing Systems 21, pages 1041– 1048. Curran Associates, Inc., 2009. 1, 3
+
+[29] Youssef Mroueh, Tom Sercu, and Vaibhava Goel. McGan: Mean and covariance feature matching GAN. In Doina Precup and Yee Whye Teh, editors, Proceedings of the 34th International Conference on Machine Learning, volume 70 of Proceedings of Machine Learning Research, pages 2527– 2535, International Convention Centre, Sydney, Australia, 06–11 Aug 2017. PMLR. 3
+
+[30] OA Muradyan and S Ya Khavinson. Absolute values of the coefﬁcients of the polynomials in weierstrass’s approximation theorem. Mathematical notes of the Academy of Sciences of the USSR, 22(2):641–645, 1977. 12
+
+[31] Sinno Jialin Pan and Qiang Yang. A survey on transfer learning. IEEE Transactions on knowledge and data engineering, 22(10):1345–1359, 2010. 6, 8, 14
+
+[32] Xingchao Peng and Kate Saenko. Synthetic to real adaptation with generative correlation alignment networks. In 2018 IEEE Winter Conference on Applications of Computer Vision, WACV2018, LakeTahoe, NV,USA,March12-15, 2018, pages 1982–1991, 2018. 1, 2
+
+[33] Xingchao Peng, Baochen Sun, Karim Ali, and Kate Saenko. Learning deep object detectors from 3d models. In Proceedings of the IEEE International Conference on Computer Vision, pages 1278–1286, 2015. 2
+
+[34] Xingchao Peng, Ben Usman, Neela Kaushik, Judy Hoffman, Dequan Wang, and Kate Saenko. Visda: The visual domain arXiv preprint arXiv:1710.06924, adaptation challenge. 2017. 2
+
+[35] Xingchao Peng, Ben Usman, Kuniaki Saito, Neela Kaushik, Judy Hoffman, and Kate Saenko. Syn2real: A new benchmark forsynthetic-to-real visual domain adaptation. CoRR, abs/1806.09755, 2018. 2
+
+[36] Joaquin Quionero-Candela, Masashi Sugiyama, Anton Schwaighofer, and Neil D. Lawrence. Dataset Shift in Machine Learning. The MIT Press, 2009. 1
+
+[37] Kate Saenko, Brian Kulis, Mario Fritz, and Trevor Darrell. Adapting visual category models to new domains. In European conference on computer vision, pages 213–226. Springer, 2010. 2, 6
+
+[38] Kuniaki Saito, Kohei Watanabe, Yoshitaka Ushiku, and Tatsuya Harada. Maximum classiﬁer discrepancy for unsupervised domain adaptation. In The IEEE Conference on Computer Vision and Pattern Recognition (CVPR), June 2018. 1, 4, 5, 6, 7, 8, 14
+
+[39] Baochen Sun, Jiashi Feng, and Kate Saenko. Return of frustratingly easy domain adaptation. In AAAI, volume 6, page 8, 2016. 1, 2, 3, 6
+
+[40] Eric Tzeng, Judy Hoffman, Kate Saenko, and Trevor Darrell. Adversarial discriminative domain adaptation. In Computer Vision and Pattern Recognition (CVPR), volume 1, page 4, 2017. 1, 2, 6, 7, 8
+
+[41] Eric Tzeng, Judy Hoffman, Ning Zhang, Kate Saenko, and Trevor Darrell. Deep domain confusion: Maximizing for domain invariance. arXiv preprint arXiv:1412.3474, 2014. 1, 2
+
+[42] Vladimir N Vapnik and A Ya Chervonenkis. On the uniform convergence of relative frequencies of events to their probabilities. In Measures of complexity, pages 11–30. Springer, 2015. 13
+
+[43] Hemanth Venkateswara, Jose Eusebio, Shayok Chakraborty, and Sethuraman Panchanathan. Deep hashing network for unsupervised domain adaptation. In (IEEE) Conference on Computer Vision and Pattern Recognition (CVPR), 2017. 2 [44] Jindong Wang, Wenjie Feng, Yiqiang Chen, Han Yu, Meiyu Huang, and Philip S Yu. Visual domain adaptation with manifold embedded distribution alignment. In ACM Multimedia Conference, 2018. 2, 6, 7
+
+[45] Ruijia Xu, Ziliang Chen, Wangmeng Zuo, Junjie Yan, and Liang Lin. Deep cocktail network: Multi-source unsuperIn Proceedvised domain adaptation with category shift. ings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 3964–3973, 2018. 2, 3, 6, 7, 8
+
+[46] Zili Yi, Hao (Richard) Zhang, Ping Tan, and Minglun Gong. Dualgan: Unsupervised dual learning for image-to-image translation. In ICCV, pages 2868–2876, 2017. 3
+
+[47] Werner Zellinger, Thomas Grubinger, Edwin Lughofer, Thomas Natschl¨ager, and Susanne Saminger-Platz. Central moment discrepancy (CMD) for domain-invariant representation learning. CoRR, abs/1702.08811, 2017. 1, 3
+
+[48] Zhen Zhang, Mianzhi Wang, Yan Huang, and Arye Nehorai. Aligning inﬁnite-dimensional covariance matrices in reproducing kernel hilbert spaces for domain adaptation. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 3437–3445, 2018. 3
+
+[49] Han Zhao, Shanghang Zhang, Guanhang Wu, Jos´e MF Moura, Joao P Costeira, and Geoffrey J Gordon. Adversarial multiple source domain adaptation. In Advances in Neural Information Processing Systems, pages 8568–8579, 2018. 1, 2, 5
+
+[50] Jun-Yan Zhu, Taesung Park, Phillip Isola, and Alexei A Efros. Unpaired image-to-image translation using cycleconsistent adversarial networks. In Computer Vision (ICCV), 2017 IEEE International Conference on, 2017. 1, 3
+
+[51] Fuzhen Zhuang, Xiaohu Cheng, Ping Luo, Sinno Jialin Pan, and Qing He. Supervised representation learning: Transfer learning with deep autoencoders. In IJCAI, pages 4119– 4125, 2015. 2
+
+8. Appendix
+
+C. Proof of Theorem 1
+
+The appendix is organized as follows: Section A shows the ablation study for source-source alignment. Section B introduces the formal deﬁnition of the cross-moment divergence; Section C gives the proof of Theorem 1 and further discussions; Section D provides the details of experiments on “Digit-Five” dataset; Section E shows feature visualization with t-SNE plot; Section F shows how the number of categories will affect the performance of the state-of-theart models; Section G and Section H introduce the ResNet baselines and Train/Test split of our DomainNet dataset, respectively; Section I and Section J show the image samples and the detailed statistics of our DomainNet dataset; Section K shows a toy experiment to demonstrate the importance of aligning the source domains; Section L shows the time consumption of our method, compared to baseline.
+
+A. Ablation Study
+
+To show how much performance gain we can get through source-source alignment (S-S) and source-target (S-T) alignment, we perform ablation study based on our model. From Table 6, we observe the key factor to the performance boost is matching the moments of source distributions to the target distribution. Matching source domains with each other further boosts the performance. The experimental results empirically demonstrate that aligning source domains is essential for MSDA.
+
+Schema S-S only S-T only M3SDA-β
+
+digit-ﬁve 81.5 (+4.1) 85.8 (+8.1) 87.7 (+10)
+
+Ofﬁce-Caltech10 94.5 (+1.6) 96.2 (+3.3) 96.4 (+3.5)
+
+DomainNet 34.4 (+1.5) 39.7 (+6.8) 42.6 (+9.7)
+
+Table 6. S-S only: only matching source domains with each other; S-T only: only matching source with target; “+”: performance gain from baseline.
+
+B. Cross-moment Divergence
+
+Deﬁnition 2 (cross-moment divergence). Given a compact domain X ⊂ Rn and two probability measures µ,µ(cid:48) on X, the k-th order cross-moment divergence between µ and µ(cid:48) is
+
+Theorem 2 (Weierstrass Approximation Theorem). Let f : C → R be continuous, where C is a compact subset of Rn. There exists a sequence of real polynomials (Pm(x))m∈N, such that
+
+|f(x) − Pm(x)|→ 0,
+
+as m → ∞.
+
+sup x∈C
+
+Note that for x ∈ Rn, a multivariate polynomial Pm :
+
+Rn → R is of the form
+
+Pm(x) =
+
+m (cid:88)
+
+(cid:88)
+
+n (cid:89)
+
+(xj)ij,
+
+where ∆k = {(i1,i2,...,in) ∈ Nn
+
+0|(cid:80)n
+
+j=1 ij = k}.
+
+Lemma 3. For any hypothesis h,h(cid:48) ∈ H, for any (cid:15) > 0, there exist an integer n(cid:15) and a constant an(cid:15), such that
+
+|(cid:15)S(h,h(cid:48)) − (cid:15)T(h,h(cid:48))|≤
+
+an(cid:15)
+
+n(cid:15)(cid:88)
+
+dCMk(DS,DT) + (cid:15).
+
+Proof.
+
+|(cid:15)S(h,h(cid:48)) − (cid:15)T(h,h(cid:48))|≤ sup h,h(cid:48)∈H
+
+|(cid:15)S(h,h(cid:48)) − (cid:15)T(h,h(cid:48))|
+
+h,h(cid:48)∈H
+
+h,h(cid:48)∈H
+
+|Px∼DS[h(x) (cid:54)= h(cid:48)(x)] − Px∼DT[h(x) (cid:54)= h(cid:48)(x)]|
+
+(cid:12) (cid:12) (cid:12) (cid:12)
+
+(cid:90)
+
+1h(x)(cid:54)=h(cid:48)(x)dµS −
+
+(cid:90)
+
+1h(x)(cid:54)=h(cid:48)(x)dµT
+
+(cid:12) (cid:12) (cid:12) (cid:12)
+
+where X is a compact subset of Rn. For any ﬁxed h,h(cid:48), the indicator function 1h(x)(cid:54)=h(cid:48)(x)(x) is a Lebesgue integrable function (L1 function) on X. It is known that the space of continuous functions with compact support, denoted by Cc(X), is dense in L1(X), i.e., any L1 function on X can be approximated arbitrarily well4 by functions in Cc(X). As a result, for any (cid:15)
+
+2 > 0, there exists f ∈ Cc(X), such that,
+
+dCMk(µ,µ(cid:48)) n (cid:90) (cid:12) (cid:89) (cid:12) (cid:12)
+
+(cid:88)
+
+(xj)ijdµ(x) −
+
+(cid:90)
+
+n (cid:89)
+
+(cid:12) (xj)ijdµ(cid:48)(x) (cid:12) (cid:12),
+
+where ∆k = {(i1,i2,...,in) ∈ Nn
+
+0|(cid:80)n
+
+j=1 ij = k}.
+
+sup h,h(cid:48)∈H (cid:12) (cid:90) (cid:12) (cid:12) (cid:12)
+
+(cid:12) (cid:90) (cid:12) (cid:12) (cid:12)
+
+1h(x)(cid:54)=h(cid:48)(x)dµS −
+
+f(x)dµS −
+
+(cid:90)
+
+f(x)dµT
+
+(cid:90)
+
+(cid:12) (cid:12) (cid:12) (cid:12)
+
+1h(x)(cid:54)=h(cid:48)(x)dµT
+
+(cid:15) 2
+
+(cid:12) (cid:12) (cid:12) (cid:12)
+
+As seen in the rest of the paper, for two domains D = (µ,f) and D(cid:48) = (µ(cid:48),f(cid:48)), we use dCMk(D,D(cid:48)) to denote dCMk(µ,µ(cid:48)) for readability concerns.
+
+Using Theorem 2, for any (cid:15)
+
+2, there exists a polynomial
+
+4with respect to the corresponding norm
+
+Pn(cid:15)(x) =
+
+n(cid:15)(cid:80) k=1
+
+(cid:80) i∈∆k
+
+n (cid:81) j=1
+
+(xj)ij, such that
+
+(cid:90)
+
+f(x)dµS −
+
+f(x)dµT
+
+(cid:12) (cid:12) (cid:12) (cid:12)
+
+Pn(cid:15)(x)dµS −
+
+X (cid:90)
+
+Pn(cid:15)(x)dµT
+
+(cid:12) (cid:12) (cid:12) (cid:12)
+
+(cid:15) 2
+
+(cid:90)
+
+(cid:90)
+
+(cid:12) (cid:12) (cid:12) (cid:12) (cid:12) (cid:12) (cid:12) (cid:12) n(cid:15)(cid:88)
+
+(cid:12) (cid:12) (cid:12)
+
+(cid:88)
+
+(cid:90)
+
+(cid:88)
+
+(cid:90)
+
+n (cid:89)
+
+(xj)ijdµS
+
+n (cid:89)
+
+(xj)ijdµT
+
+(cid:12) (cid:12) (cid:12) +
+
+(cid:15) 2
+
+j=1 (cid:90)
+
+(cid:12) (cid:12) |ai| (cid:12)
+
+n (cid:89)
+
+(xj)ijdµS
+
+n(cid:15)(cid:88)
+
+(cid:88)
+
+(cid:16)
+
+i∈∆k n (cid:89)
+
+k=1 (cid:90)
+
+n(cid:15)(cid:88)
+
+(cid:16)
+
+k=1 (cid:90)
+
+n (cid:89)
+
+(xj)ijdµT
+
+(cid:17)
+
+(cid:12) (cid:12) (cid:12)
+
+(cid:15) 2
+
+(cid:12) (cid:12) (cid:12)
+
+(cid:88)
+
+(cid:90)
+
+n (cid:89)
+
+(xj)ijdµS
+
+(xj)ijdµT
+
+(cid:17)
+
+(cid:12) (cid:12) (cid:12)
+
+(cid:15) 2
+
+n(cid:15)(cid:88)
+
+a∆kdCMk(DS,DT) +
+
+(cid:15) 2
+
+an(cid:15)
+
+n(cid:15)(cid:88)
+
+dCMk(DS,DT) +
+
+(cid:15) 2
+
+where a∆k = max |ai| and an(cid:15) = 2 max i∈∆k 1≤k≤n(cid:15) ing Equation 7, 8, 9, we prove the lemma.
+
+a∆k. Combin-
+
+Note that the constants a∆k can actually be meaningfully bounded when applying the Weierstrass Approximation Theorem. According to [30], a sequence of positive numbers {Mk} can be constructed, such that, for any (cid:15) > 0, there exists a polynomial Pn(cid:15) such that |Pn(cid:15)(x) − f(x)| < (cid:15) and |a∆k| < (cid:15)Mk,∀k = 1,...,n(cid:15).
+
+Lemma 4 (Lemma 6, [1]). For each Dj ∈ {D1,...,DN}, let Sj be a labeled sample set of size βjm drawn from µj and labeled by the groundtruth labeling function fj. For any ﬁxed weight vector α, let ˆ(cid:15)α(h) be the empirical α- weighted error of some ﬁxed hypothesis h on these sample sets, and let (cid:15)α(h) be the true α-weighted error, then
+
+P[|ˆ(cid:15)α(h) − (cid:15)α(h)|≥ (cid:15)] ≤ 2exp
+
+(cid:16) −2m(cid:15)2 α2 (cid:80)N j βj
+
+(cid:17)
+
+will be useful in proving the uniform convergence bound for hypothesis space of ﬁnite VC dimension. Now we are ready to prove Theorem 1.
+
+Theorem 1. Let H be a hypothesis space of V C dimension d. Let m be the size of labeled samples from all sources {D1,D2,...,DN}, Sj be the labeled sample set of size βjm ((cid:80) j βj = 1) drawn from µj and labeled by the groundtruth labeling function fj. If ˆh ∈ H is the empirical minimizer of ˆ(cid:15)α(h) for a ﬁxed weight vector α and h∗ T = minh∈H (cid:15)T(h) is the target error minimizer, then for any δ ∈ (0,1) and any (cid:15) > 0, there exist N integers {nj j=1 and N constants {anj
+
+}N j=1, such that with probability at least 1 − δ,
+
+(cid:15)}N
+
+(cid:15)
+
+(cid:15)T(ˆh) ≤ (cid:15)T(h∗
+
+T) + ηα,β,m,δ + (cid:15) nj (cid:15)(cid:88)
+
+(cid:16)
+
+2λj + anj
+
+(cid:15)
+
+N (cid:88)
+
+dCMk(Dj,DT)
+
+(cid:17)
+
+where ηα,β,m,δ = 4
+
+(cid:114)
+
+((cid:80)N
+
+)(2d(log( 2m
+
+d )+1)+2log( 4 δ)
+
+and λj = minh∈H{(cid:15)T(h) + (cid:15)j(h)}.
+
+Proof. Let h∗
+
+j = argmin
+
+{(cid:15)T(h) + (cid:15)j(h)}. Then for any
+
+(cid:15) > 0, there exists N integers {nj {anj
+
+}N j=1, such that
+
+(cid:15)
+
+(cid:15)}N
+
+j=1 and N constant
+
+|(cid:15)α(h) − (cid:15)T(h)|
+
+(cid:12) (cid:12) (cid:12)
+
+N (cid:88)
+
+αj(cid:15)j(h) − (cid:15)T(h)
+
+(cid:12) (cid:12) (cid:12) ≤
+
+N (cid:88)
+
+αj|(cid:15)j(h) − (cid:15)T(h)|
+
+(cid:16)
+
+N (cid:88)
+
+|(cid:15)j(h) − (cid:15)j(h,h∗
+
+j)|+|(cid:15)j(h,h∗
+
+j) − (cid:15)T(h,h∗
+
++ |(cid:15)T(h,h∗
+
+j) − (cid:15)T(h)|
+
+(cid:17)
+
+N (cid:88)
+
+N (cid:88)
+
+αj((cid:15)j(h∗
+
+j) + |(cid:15)j(h,h∗
+
+j) − (cid:15)T(h,h∗
+
+j)|+(cid:15)T(h∗
+
+(cid:16)
+
+aj n(cid:15)
+
+nj (cid:15)(cid:88)
+
+dCMk(Dj,DT)
+
+(cid:17)
+
+(cid:15) 2
+
+The third inequality follows from the triangle inequality of classiﬁcation error5 [2, 4]. The last inequality follows from the deﬁnition of λj and Lemma 3. Now using both Equation 10 and Lemma 4, we have for any δ ∈ (0,1) and any
+
+Lemma 4 is a slight modiﬁcation of the Hoeffdings inequality for the empirical α-weighted source error, which
+
+5Foranylabelingfunctionf1,f2,f3, wehave(cid:15)(f1,f2) ≤ (cid:15)(f1,f3)+
+
+(cid:15)(f2,f3).
+
+(cid:15) > 0, with probability 1 − δ,
+
+D. Details of Digit Experiments
+
+(cid:15)T(ˆh) ≤ (cid:15)α(ˆh) +
+
+(cid:15) 2
+
+N (cid:88)
+
+(cid:16)
+
+aj n(cid:15)
+
+nj (cid:15)(cid:88)
+
+dCMk(Dj,DT)
+
+(cid:17)
+
+(cid:17)
+
+(cid:17)
+
+(cid:17)
+
+dCMk(Dj,DT)
+
+dCMk(Dj,DT)
+
+dCMk(Dj,DT)
+
+k=1 (cid:15) 2 nj (cid:15)(cid:88)
+
+k=1 (cid:15) 2 nj (cid:15)(cid:88)
+
+k=1 (cid:15) 2 nj (cid:15)(cid:88)
+
+≤ ˆ(cid:15)α(ˆh) +
+
+ηα,β,m,δ +
+
+N (cid:88)
+
+(cid:16)
+
+aj n(cid:15)
+
+≤ ˆ(cid:15)α(h∗
+
+ηα,β,m,δ +
+
+N (cid:88)
+
+(cid:16)
+
+aj n(cid:15)
+
+j=1 ≤ (cid:15)α(h∗
+
+T) + ηα,β,m,δ +
+
+N (cid:88)
+
+(cid:16)
+
+aj n(cid:15)
+
+j=1 ≤ (cid:15)T(h∗
+
+T) + ηα,β,m,δ + (cid:15) nj (cid:15)(cid:88)
+
+(cid:16)
+
+2λj + aj n(cid:15)
+
+N (cid:88)
+
+dCMk(Dj,DT)
+
+(cid:17)
+
+The ﬁrst and the last inequalities follow from Equation 10, the second and the fourth inequalities follow from applying Lemma 4 (instead of standard Hoeffding’s inequality) in the standard proof of uniform convergence for empirical risk minimizers [42]. The third inequality follows from the deﬁnition of ˆh.
+
+To better understand the bounds in Theorem 1, the second term of the bound is the VC-dimension based generalization error, which is the upper bound of the difference between the empirical error ˆ(cid:15)α and the true expected error (cid:15)α. The last term (a summation), as shown in Equation 10, characterizes the upper bound of the difference between the α-weighted error (cid:15)α and the target error (cid:15)T. The constants }N {anj j=1 in this term can be meaningfully bounded, as explained at the end of the proof of Lemma 3.
+
+(cid:15)
+
+Note that the bound explicitly depends on cross-moment divergence terms dCMk(Dj,DT), and thus sheds new light on the theoretical motivation of moment matching approaches, including our proposed approach and many existing approaches for both single and multiple source domain adaptation. To the best of our knowledge, this is the ﬁrst target error bound in the literature of domain adaptation that explicitly incorporates a moment-based divergence between the source(s) and the target domains.
+
+NetworkArchitectureInourdigitalexperiments(Table2), our feature extractor is composed of three conv layers and two fc layers. We present the conv layers as (input, output, kernel, stride, padding) and fc layers as (input, output). The three conv layers are: conv1 (3, 64, 5, 1, 2), conv2 (64, 64, 5, 1, 2), conv3 (64, 128, 5, 1, 2). The two fc layers are: fc1 (8192, 3072), fc2 (3072, 2048). The architecture of the feature generator is: (conv1, bn1, relu1, pool1)-(conv2, bn2, relu2, pool2)-(conv3, bn3, relu3)-(fc1, bn4, relu4, dropout)- (fc2, bn5, relu5). The classiﬁer is a single fc layer, i.e. fc3 (2048, 10). ConvergenceAnalysisAsourframeworkinvolvesmultiple classiﬁers and the model is trained with multiple losses, we visualize the learning procedure of mm,mt,sv,sy→up setting in Figure 7. The ﬁgure shows the training errors of multiple classiﬁers are decreasing, despite some frequent deviations. The MD (Moment Discrepancy) loss decreases in a steady way, demonstrating that the MD loss and the cross-entropy loss gradually converge.
+
+E. Feature visualization
+
+To demonstrate the transfer ability of our model, we visualize the DAN [25] features and M3SDA-β features with t-SNE embedding in two tasks: mm,mt,up,sy→sv and A,D,W→C. The results are shown in Figure 6. We make two important observations: i) Comparing Figure 6(a) with Figure 6(b), we ﬁnd that M3SDA-β is capable of learning more discriminative features; ii) From Figure 6(c) and Figure 6(d), we ﬁnd that the clusters of M3SDA-β features are more compact than those of DAN, which suggests that the features learned by M3SDA-β attain more desirable discriminative property. These observations imply the superiority of our model over DAN in multi-source domain adaptation.
+
+F. Effect of Category Number
+
+In this section, we show more results to clarify how the number of categories affects the performances of the stateof-the-art models. We choose the following four settings, i.e., painting→real (Figure 5(a)), infograph→real (Figure 5(b)), sketch→clipart (Figure 5(c)), quickdraw→clipart (Figure 5(d)), and gradually increase the number of categories from 20 to 345. From the four ﬁgures, we make the following interesting observations:
+
+• All the models perform well when the number of categories is small. However, their performances drop rapidly when the number of categories increases.
+
+• Self-Ensembling [7] model has a good performance when the number of categories is small, but it is not suitable to large scale domain adaptation.
+
+ResNet101 clp inf pnt qdr rel
+
+skt Avg. ResNet152 clp inf pnt qdr rel
+
+clp inf pnt qdr rel skt Avg.
+
+N/A19.337.511.152.241.0 32.2 30.2N/A31.2 3.6 44.027.9 27.4 39.618.7N/A 4.9 54.536.3 30.8 7.0 0.9 1.4 N/A 4.1 8.3 4.3 48.422.249.4 6.4 N/A38.8 33.0 46.915.437.010.947.0N/A 31.4 34.415.331.3 7.4 40.430.5 26.5
+
+clp inf pnt qdr rel skt Avg.
+
+skt Avg. N/A19.837.912.252.344.8 33.4 31.3N/A31.1 4.7 45.529.6 28.4 42.019.5N/A 7.4 55.037.7 32.3 12.2 1.8 2.9 N/A 6.3 9.4 6.5 50.524.449.0 6.2 N/A39.9 34.0 51.018.239.712.547.4N/A 33.8 37.416.732.1 8.6 41.332.3 28.1
+
+Table 7. Single-source ResNet101 and ResNet152 [13] baselines on the DomainNet dataset. We provide ResNet baselines for Table 3. In each sub-table, the column-wise domains are selected as the source domain and the row-wise domains are selected as the target domain. The green numbers represent the average performance of each column or row. The red numbers denote the average accuracy for all the 30 (source, target) combinations. (clp: clipart, inf: infograph, pnt: painting, qdr: quickdraw, rel: real, skt: sketch.)
+
+(a) painting→real
+
+(b) infograph→real
+
+(c) sketch→clipart
+
+(d) quickdraw→clipart
+
+Figure 5. Accuracy vs. Number of Catogries. We plot how the performances of different models will change when the number of categories increases. We select four UDA settings, i.e., painting→real, infograph→real, sketch→clipart, quickdraw→clipart. The ﬁgure shows the performance of all models drop signiﬁcantly with the increase of category number.
+
+G. ResNet baselines
+
+We report ResNet [13] source only baselines in Table 7. The MCD [38] and the SE [7] methods (In Table 3) are based on ResNet101 and ResNet152, respectively. We have observed these two methods both perform worse than their sourceonlybaselines, whichindicatesnegativetransfer[31] phenomenon occurs in these two scenarios. Exploring why negative transfer happens is beyond the scope of this literature. One preliminary guess is due to the large number of categories.
+
+Train Test Total Per-Class Table 8. Train/Test split. We split DomainNet with a 70%/30% ratio. The “Per-Class” row shows the average number of images that each category contains.
+
+H. Train/Test Split
+
+We show the detailed number of images we used in our experiments in Table 8. For each domain, we follow a 70%/30% schema to split the dataset to training and testing trunk. The “Per-Class” row shows the average number of images that each category contains.
+
+2050100150200250300345Number of Categories0.20.40.60.8AccuracySEMCDDANJANRTNDANNADDAAlexNet2050100150200250300345Number of Categories0.20.40.60.8AccuracySEMCDDANJANRTNDANNADDAAlexNet2050100150200250300345Number of Categories0.20.40.60.8AccuracySEMCDDANJANRTNDANNADDAAlexNet2050100150200250300345Number of Categories0.20.40.6AccuracySEMCDDANJANRTNDANNADDAAlexNet(a) DAN Features on SVHN
+
+(b) M3SDA-β Features on SVHN
+
+(c) DAN Features on Caltech
+
+(d) M3SDA-β Features on Caltech
+
+Figure 6. Feature visualization: t-SNE plot of DAN features and M3SDA-β features on SVHN in mm,mt,up,sy→sv setting; t-SNE of DAN features and M3SDA-β features on Caltech in A,D,W→C setting. We use different markers and different colors to denote different categories. (Best viewed in color.)
+
+Models ResNet101 M3SDA
+
+Training (ms) 200.87 267.58 Table 9. Time consumption of our model and the baseline.
+
+Testing (ms) 60.84 61.20
+
+Mammal, Tool, Cloth, Electricity, Building, Ofﬁce, Human Body, Road Transportation, Food, Nature, Cold Blooded, Music, Fruit, Sport, Tree, Bird, Vegetable, Shape, Kitchen, Water Transportation, Sky Transportation, Insect, Others.
+
+K. Toy Experiment
+
+In multi-source domain adaptation, the source domains are not i.i.d and as a result, are not automatically aligned with each other. Intuitively, it is not possible to perfectly align the target domain with every source domain, if the source domains are not aligned themselves. More speciﬁ- cally, as explained in the paragraph following Theorem 1, the last term of our target error bound is lower bounded by pairwise divergences between source domains. This motivates our algorithm to also align the moments between each pair of source domains.
+
+Empirically, let’s consider a toy experiment setting in which we have two source domains (denoted by yellow and green)andone targetdomain(denoted byblue), as shownin Figure 8. In the experiments, we utilize a 2-layer fully connected neural network as the backbone. We can observe the source domains and target domain are better aligned when matching source domain distributions using our model is applied.
+
+L. Time Consumption
+
+We show the training and testing time consumption in Figure 9. The experiments are run in PyTorch with a NVIDIA TITAN X GPU on CentOS 7 server. The server has8IntelCOREi7processors. Webenchmarkallthemodels with a minibatch size of 16 and an image size of 224 x 224. The CUDA version is 8.0 with CuDNN 5.15.
+
+Figure 7. Analysis: training error of each classiﬁer, Moment Discrepancy(MD,deﬁnedinEquation1), andaccuracy(redboldline) w.r.t. trainingepochsinmm,mt,sv,sy→upsetting. Theboldredline shows how the accuracy changes w.r.t. training epochs.
+
+(a) Original
+
+(b) No Within-Source Matching
+
+(c) Our model
+
+Figure 8. Yellow and green points are sampled from two source domains. Blue points are sampled from target domain.
+
+I. Image Samples
+
+We sample the images for each domain and show them in Figure 9 (clipart), Figure 10 (infograph), Figure 11 (painting), Figure 12 (quickdraw), Figure 13 (real), and Figure 14 (sketch).
+
+J. Dataset Statistics
+
+Table 10, Table 11, and Table 12 show the detailed statistics of our DomainNet dataset. Our dataset contains 6 distinct domains, 345 categories and ∼0.6 million images. The categories are from 24 divisions, which are: Furniture,
+
+201001020201001020100102030201001020201001020302010010203020100102030201001020300102030405060Num of trainng epoches0.000.250.500.751.001.251.50Training errormnist-mmnistsvhnsyntheticMD0.650.700.750.800.850.900.95AccuracyFigure 9. Images sampled from clipart domain of the DomainNet dataset.
+
+Figure 10. Images sampled from infograph domain of the DomainNet dataset.
+
+Figure 11. Images sampled from painting domain of the DomainNet dataset.
+
+Figure 12. Images sampled from quickdraw domain of the DomainNet dataset.
+
+Figure 13. Images sampled from real domain of the DomainNet dataset.
+
+Figure 14. Images sampled from sketch domain of the DomainNet dataset.
+
+class bathtub ceiling fan couch fence hot tub mailbox postcard sleeping bag streetlight table toothbrush vase
+
+bat cat dolphin hedgehog lion panda raccoon squirrel zebra
+
+anvil basket broom drill key passport riﬂe shovel stitches wheel
+
+belt camouﬂage eyeglasses helmet necklace rollerskates sock underwear
+
+Furniture
+
+total class
+
+chair 878 1480 door
+
+total class 500 724 188 1835 bench 500 320 96
+
+skt 500 517 210 1507 bed 500 217 25 500 601 60 500 770 140 1723 ﬁreplace
+
+clp inf pnt qdr rel clp inf pnt qdr rel 197 180 46 100 135 45 148 53 94 38 63 35 81 49 26 232 61 138 98 49 165 99 96 197 500 757 49 144 86 74 60 101 500 595 151 1410 picture frame 88 45 18 299 28 88 37 91 386 282 27 96 17 14 377 224 187 500 432 309 2029 swing set 326 113 537 500 463 268 2207 suitcase 222 209 391 500 631 327 2280 toilet 297 736 104 500 563 300 2500 teapot 105 468 31 500 582 235 2043 toothpaste 159 556 11 220 628 168 500 338 245 2099 161 319 262 500 632 187 2061 wine glass
+
+347 500 371 361 1709 dresser 15 418 500 442 244 1774 lantern 372 500 207 115 1342 pillow 166 500 273 519 1785 sink 500 353 525 2073 stove
+
+500 636 49 500 406 591 1624 stairs
+
+500 511 198 1813 umbrella
+
+500 700 123 1574 ﬂoor lamp
+
+1211 chandelier
+
+1401 see saw
+
+1733 ladder
+
+total clp inf pnt qdr rel 167 500 662 290 1737 71 47 1236 500 393 34 57 223 29 952 141 500 234 13 41 23 500 246 278 1314 180 100 10 179 58 1521 151 170 144 500 656 115 1736 500 231 464 1454 133 32 94 500 614 269 1910 256 255 16 143 35 1459 175 519 31 500 583 118 1926 145 511 299 500 362 297 2114
+
+1816 elephant
+
+99 306 500 361 160 1461 bear 172 344 500 796 130 1985 cow 165 401 500 581 85
+
+35 43 84 138 48 64 46 87 86 187 24 221 180 779 500 693 389 2762 tiger 235 306 298 500 683 278 2300
+
+248 500 727 109 1770 horse 505 500 516 330 1961 monkey 264 500 587 79 249 500 676 348 1984 rhinoceros
+
+1603 pig
+
+1220 axe
+
+219 417 500 444 192 1850 boomerang
+
+500 639 234 1663 bucket 500 573 144 1418 dumbbell 500 229 137 1090 nail 500 535 97
+
+122 23 78 84 171 35 21 136 44 68 59 97 120 34 26 149 240 500 520 122 1614 saw 83 214 17 206 285 17 133 385 19
+
+112 500 450 630 1923 skateboard
+
+1249 sword
+
+1312 pliers
+
+Mammal
+
+1536 dog
+
+379 500 585 178 1847 camel
+
+124 81 188 134 156 500 541 17 115 188 425 500 789 266 2283 giraffe 201 216 521 500 645 103 2186 kangaroo 405 500 699 166 1978 mouse 123 85 203 326 500 577 227 1926 rabbit 93 220 500 684 183 1780 sheep 102 91 315 285 422 500 607 386 2515 whale
+
+219 500 382 219 1460 bandage 500 628 120 1426 bottlecap 41 61 500 335 162 1256 compass 189 500 581 190 1933 hammer 2332 paint can
+
+92 48 45 92 142 56 387 86 41 256 838 500 674 23 38 65 34 76 263 50 139 124 470 500 591 384 2208 syringe
+
+47 1521 118 26 538 500 606 139 1927 191 36 1091 500 272 14 78 147 70 1181 46 500 347 71 60 42 1368 172 500 560 34 293 500 453 163 1512 rake 119 66 500 594 93 58 1430 500 417 373 1602 screwdriver 205 34 150 500 118 110 988 73 152 500 557 419 1941 stethoscope 343 107 346 500 496 237 2029 500 589 222 1689
+
+500 661 125 1535 bowtie 500 124 69 crown 500 680 219 1801 ﬂip ﬂops 500 622 210 1785 jacket 115 347 500 697 114 1856 pants 322 500 493 141 1709 shoe
+
+500 531 453 2135 sweater 500 286 132 1537 wristwatch
+
+28 55 calculator 287 97 computer 148 49 fan 95 32 keyboard 91 73 megaphone 14 59 oven 117 70 remote control telephone 148 279 78 washing machine 265 519 15
+
+1038 camera 1296 cooler 1239 ﬂashlight 1564 laptop
+
+500 374 69 12 500 362 31 19 16 500 460 66 370 500 503 64 160 500 560 189 1573 microphone 500 492 176 1252 power outlet 11 1399 spreadsheet 111 500 554 47
+
+500 479 255 1739 television 500 466 155 1920
+
+292 500 533 327 1893 bracelet 81 500 170 176 1152 diamond 206 500 525 120 1551 hat 272 500 457 84
+
+146 95 208 17 147 53 82 72 173 381 500 398 136 1604 purse 16 127 291 260 500 587 645 2410 shorts 153 500 579 167 1713 t-shirt 222 92 285 470 18 500 553 224 2050 Electricity
+
+1467 lipstick
+
+118 161 500 387 319 1511 light bulb
+
+156 500 480 109 1369 cell phone 13 500 528 90 418 500 461 95
+
+1387 1366 dishwasher 109 47 1311 1757 headphones 285 224 181 500 551 188 1929 185 482 500 262 405 1846 12 500 338 170 1148 114 10 16 500 398 165 1259 30 101 65 289 334 12 1436 500 211 90 196 337 107 500 536 267 1943
+
+152 500 562 156 1583 microwave 102 500 620 95
+
+1418 radio 500 751 677 2546 stereo 500 400 127 1760 toaster
+
+Table 10. Detailed statistics of the DomainNet dataset.
+
+total class
+
+clp inf pnt qdr rel
+
+class The Eiffel Tower 114 190 321 500 553 276 1954 The Great Wall 116 80 bridge diving board golf club jail pool tent
+
+471 500 769 335 2202 castle 66 61 182 12 1485 garden 127 500 593 71 207 169 650 500 552 695 2773 hospital 1365 lighthouse 500 587 94 54 104 26 139 173 90 500 680 103 1685 skyscraper 153 234 141 500 590 339 1957 waterslide
+
+alarm clock binoculars candle crayon eraser mug paper clip
+
+500 521 202 1423 backpack
+
+84 148 500 402 266 1617 book 261 500 621 77 1678 clock 500 512 285 1498 cup 19 17 1096 map 500 356 51 500 500 598 186 1993 nail 112 500 549 119 1427 pencil
+
+Building
+
+clp inf pnt qdr rel
+
+total class 159 500 530 148 1533 barn
+
+1633 church 20 1980 garden hose 147 48 50 1391 house 411 500 722 384 2206 pond
+
+123 225 500 682 56 47 291 213 500 815 98 63 95 500 674 24 48 123 66 195 159 179 500 284 466 1783 square 159 328 12 Ofﬁce 341 265 500 439 220 1798 bandage 500 731 146 1797 calendar
+
+500 606 115 1720 windmill
+
+Human Body
+
+266 500 619 44 582 500 406 396 2064 envelope
+
+1548 coffee cup
+
+206 423 500 507 193 1871 marker 256 838 500 674 23 369 183 500 461 26
+
+2332 paintbrush 1590 scissors
+
+clp inf pnt qdr rel total 157 150 426 500 313 201 1747 1419 54 1492 108 306 105 500 374 144 1537 2152 105 72 163 211 144 500 98 727 1843 245 372 397 500 635 245 2394
+
+arm ear face goatee leg nose toe
+
+ambulance bus motorbike roller coaster train
+
+birthday cake cookie hot dog peanut sandwich
+
+beach lightning ocean river sun
+
+crab frog scorpion snail
+
+cello guitar saxophone violin
+
+129 422 500 235 249 1585 beard 50 187 500 348 199 1393 elbow 101 58 54 500 696 452 1832 ﬁnger 255 236 129 500 562 219 1901 hand 89 57 85
+
+174 178 500 659 145 1745 moustache 226 512 500 362 103 1760 skull 1438 tooth 407 12
+
+500 623 115 1412 bicycle
+
+80 101 183 112 500 745 233 1874 car 42 143 46 500 637 61 109 373 406 500 681 240 2309 truck
+
+209 106 500 772 209 1838 pickup truck
+
+1462 school bus
+
+119 500 307 233 1393 bread 1439 donut 54
+
+165 69 78 97 138 148 500 644 143 1611 ice cream 38 500 423 130 1279 pizza 60 84 189 110 139 500 579 132 1649 steak
+
+373 500 728 481 2331 brain 97 57
+
+500 398 155 1423 eye 500 625 283 1689 foot 268 262 500 563 264 1954 knee
+
+430 500 424 107 1711 mouth 189 500 329 600 1825 smiley face 113 46
+
+Road Transportation
+
+272 196 500 705 343 2087 bulldozer 356 45 500 564 145 1709 ﬁretruck 116 143 500 619 188 1612 police car
+
+71 99 46 230 142 66 117 678 158 500 673 265 2391 van
+
+500 478 405 1821 tractor
+
+373 500 630 127 1834 hamburger
+
+197 232 315 500 794 276 2314 cake 139 65 160 187 311 500 657 184 1999 lollipop 157 127 500 600 202 1663 popsicle 77 155 360 50 500 758 238 2061 Nature
+
+105 183 499 500 622 79 199 500 560 94 171 68 475 500 591 77 47 54 134 155 558 500 651 111 2109 snowﬂake 248 352 572 500 161 258 2091 tornado
+
+1988 cloud 1592 moon 1744 rain
+
+153 500 717 152 1680 crocodile
+
+108 50 163 118 167 500 761 203 1912 lobster 171 53 166 18
+
+133 500 447 455 1759 sea turtle 321 500 465 405 1875 snake
+
+460 1647 star
+
+352 500 274 235 1510 rainbow 405 500 66
+
+172 142 278 500 324 100 1516 hurricane 126 195 324 500 568 155 1868 mountain 78 71 175 41 169 329 373 500 497 211 2079 Cold Blooded 164 56 243 47 236 190 410 500 621 254 2211 shark 425 500 501 470 2121 spider 168 57
+
+120 500 713 161 1714 ﬁsh 254 500 649 174 1867 octopus
+
+93 103 204 203 500 632 183 1825 harp 236 74 174 282 203 500 512 203 1874
+
+358 500 482 310 1960 trombone
+
+1299 clarinet
+
+214 25 258 37 227 195 175 500 484 191 1772 trumpet
+
+1268 drums 1713 piano
+
+Table 11. Detailed statistics of the DomainNet dataset.
+
+skt clp inf pnt qdr rel 181 1343 banana 445 500 54 88 171 110 167 500 733 129 1810 grapes 83
+
+139 333 500 673 131 1859 strawberry
+
+total class
+
+Fruit skt clp inf pnt qdr rel 376 359 500 258 204 1747 blackberry 50 93 171 318 500 734 287 2103 pear 357 308 530 500 454 198 2347 watermelon
+
+total class
+
+1242 baseball bat 106 353 145 500 118 196 1418 basketball
+
+242 500 396 137 1548 hockey puck 188 59 179 500 689 397 2124 soccer ball
+
+1478 hockey stick
+
+163 268 500 272 377 1665 tennis racquet
+
+46 148 312 332 500 378 173 1843 house plant 277 607 500 333 166 1948 tree 65
+
+626 1282 cactus
+
+Tree 122 500 658 61
+
+292 416 500 484 156 1873 leaf
+
+1496 ﬂower
+
+skt 500 568 60
+
+total clp inf pnt qdr rel 1462 106 214 14 74 115 448 500 438 183 1758 193 401 410 500 671 128 2303
+
+336 208 222 500 803 306 2375 duck 133 114 496 500 757 202 2202 parrot 469 52
+
+Bird 419 500 404 276 1792 ﬂamingo 336 500 781 266 2020 penguin
+
+Vegetable
+
+134 408 500 659 209 1959 broccoli
+
+49 136 298 254 500 788 252 2228 onion 500 608 83 86
+
+1396 string bean
+
+105 229 100 500 679 181 1794 carrot 87 62 139 87
+
+471 500 599 158 1877 peas 70 Shape
+
+199 248 292 500 259 202 1700 hexagon 29 500 465 117 1245 squiggle 323 412 110 500 515 144 2004
+
+196 362 160 500 592 116 1926 line 148 115 674 500 71
+
+442 1950 triangle
+
+200 63 32 228 127 158 500 534 406 1953 wine bottle
+
+500 351 176 1374 frying pan 500 582 129 1381 lighter
+
+Kitchen
+
+169 500 399 132 1455 hourglass 187 68 66 27 27 230 442 59
+
+500 587 118 1325 matches 500 407 274 1912
+
+Water Transportation
+
+class apple blueberry pineapple
+
+baseball ﬂying saucer snorkel yoga
+
+bush grass palm tree
+
+bird owl swan
+
+asparagus mushroom potato
+
+circle octagon zigzag
+
+fork knife spoon
+
+aircraft carrier sailboat
+
+27 162 119 322 500 422 361 1886 speedboat
+
+1201 canoe
+
+airplane parachute
+
+ant mosquito
+
+212 500 218 331 1396 helicopter 140 500 629 233 1644
+
+235 500 381 111 1370 bee 500 562 144 1559
+
+The Mona Lisa 150 112 191 500 289 145 1387 angel campﬁre feather snowman trafﬁc light
+
+122 53 268 432 344 500 505 336 2385 ﬁre hydrant 174 123 901 500 114 712 2524 stop sign 211 280 60
+
+1467 cannon
+
+395 500 703 129 1866 cruise ship 141 500 620 487 2095 submarine
+
+Sky Transportation
+
+145 216 257 500 804 200 2122 hot air balloon
+
+Insect
+
+202 233 313 500 452 144 1844 butterﬂy
+
+Others
+
+500 300 93 500 579 148 1464 mermaid 500 168 109 1087 teddy-bear
+
+604 500 444 112 1963 299 1516 animal migration 235 68 231 500 485 196 1547 105 30 207 30 500 449 228 1513 99 124 407 301 500 528 238 2098
+
+1064 dragon
+
+Table 12. Detailed statistics of the DomainNet dataset.
+

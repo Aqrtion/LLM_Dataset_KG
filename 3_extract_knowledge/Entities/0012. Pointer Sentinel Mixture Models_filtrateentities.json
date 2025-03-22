@@ -1,0 +1,59 @@
+{
+    "entities": [
+        {
+            "id": "20250318231601P1",
+            "name": "Pointer Sentinel Mixture Models",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Stephen Merity",
+                    "Caiming Xiong",
+                    "James Bradbury",
+                    "Richard Socher"
+                ],
+                "institution": "MetaMind - A Salesforce Company"
+            }
+        },
+        {
+            "id": "20250318231601D1",
+            "name": "WikiText-2",
+            "type": "Dataset",
+            "attributes": {
+                "size": "2 times Penn Treebank",
+                "vocabulary": "larger than PTB",
+                "structure": "articles with original casing/punctuation"
+            }
+        },
+        {
+            "id": "20250318231601D2",
+            "name": "WikiText-103",
+            "type": "Dataset",
+            "attributes": {
+                "size": "103 million words",
+                "vocabulary": "extensive long-tail coverage",
+                "structure": "full Wikipedia articles"
+            }
+        },
+        {
+            "id": "20250318231601D3",
+            "name": "Penn Treebank (PTB)",
+            "type": "Dataset",
+            "attributes": {
+                "preprocessing": "lower-cased, numbers replaced",
+                "vocabulary_size": 10000
+            }
+        },
+        {
+            "id": "20250318231601R1",
+            "name": "WikiText dataset site",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250318231601T1",
+            "name": "language modeling",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

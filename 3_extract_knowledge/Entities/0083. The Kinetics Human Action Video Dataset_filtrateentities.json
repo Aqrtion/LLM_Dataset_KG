@@ -1,0 +1,193 @@
+{
+    "entities": [
+        {
+            "id": "20250319034533P1",
+            "name": "The Kinetics Human Action Video Dataset",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Will Kay",
+                    "Jo˜ao Carreira",
+                    "Karen Simonyan",
+                    "Brian Zhang",
+                    "Chloe Hillier",
+                    "Sudheendra Vijayanarasimhan",
+                    "Fabio Viola",
+                    "Tim Green",
+                    "Trevor Back",
+                    "Paul Natsev",
+                    "Mustafa Suleyman",
+                    "Andrew Zisserman"
+                ],
+                "institution": "DeepMind/Google"
+            }
+        },
+        {
+            "id": "20250319034533D1",
+            "name": "Kinetics",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 400,
+                "total clips": 306245,
+                "clip duration": "~10s",
+                "splits": "train/val/test",
+                "source": "YouTube",
+                "resolution": "variable",
+                "annotation": "non-exhaustive",
+                "collection method": "Amazon Mechanical Turk"
+            }
+        },
+        {
+            "id": "20250319034533D2",
+            "name": "HMDB-51",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 51,
+                "total clips": 6766,
+                "videos": 3312
+            }
+        },
+        {
+            "id": "20250319034533D3",
+            "name": "UCF-101",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 101,
+                "total clips": 13320,
+                "videos": 2500
+            }
+        },
+        {
+            "id": "20250319034533D4",
+            "name": "ActivityNet-200",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 200,
+                "total clips": 28108,
+                "videos": 19994
+            }
+        },
+        {
+            "id": "20250319034533D5",
+            "name": "Caltech 256",
+            "type": "Dataset",
+            "attributes": {
+                "number of categories": 256
+            }
+        },
+        {
+            "id": "20250319034533D6",
+            "name": "PASCAL VOC",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533D7",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533R1",
+            "name": "http://deepmind.com/kinetics",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T1",
+            "name": "human action classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T2",
+            "name": "temporal localization",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T3",
+            "name": "multi-modal analysis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T4",
+            "name": "action recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T5",
+            "name": "training action classification models",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T6",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T7",
+            "name": "video modeling",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T8",
+            "name": "spatio-temporal feature learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T9",
+            "name": "temporal aggregation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T10",
+            "name": "attention mechanisms",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T11",
+            "name": "object detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T12",
+            "name": "image segmentation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T13",
+            "name": "non-visual modalities analysis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T14",
+            "name": "pre-training",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T15",
+            "name": "human pose estimation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034533T16",
+            "name": "object category recognition",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319030126D1",
+            "head": "EuroSAT",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319030126R1",
+            "tail": "https://github.com/phelber/eurosat",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319030126D1",
+            "head": "EuroSAT",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319030126P1",
+            "tail": "EuroSAT: A Novel Dataset and Deep Learning Benchmark for Land Use and Land Cover Classification",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319030126D1",
+            "head": "EuroSAT",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030126T1",
+            "tail": "land use and land cover classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030126D1",
+            "head": "EuroSAT",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030126T2",
+            "tail": "detecting land use and land cover changes",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030126D1",
+            "head": "EuroSAT",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030126T3",
+            "tail": "improving geographical maps",
+            "tail_type": "Task"
+        }
+    ]
+}

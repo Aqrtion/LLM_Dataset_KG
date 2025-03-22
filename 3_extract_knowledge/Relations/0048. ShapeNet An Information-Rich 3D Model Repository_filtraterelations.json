@@ -1,0 +1,157 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319020902D1",
+            "head": "ShapeNet",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319020902R1",
+            "tail": "http://www.shapenet.org",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319020902D1",
+            "head": "ShapeNet",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319020902P1",
+            "tail": "ShapeNet: An Information-Rich 3D Model Repository",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319020902D2",
+            "head": "ShapeNetCore",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319020902D1",
+            "tail": "ShapeNet",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319020902D3",
+            "head": "ShapeNetSem",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319020902D1",
+            "tail": "ShapeNet",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319020902D7",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319020902P2",
+            "tail": "ImageNet: A large-scale hierarchical image database",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319020902D4",
+            "head": "Princeton Shape Benchmark",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319020902P3",
+            "tail": "Princeton Shape Benchmark",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319020902D8",
+            "head": "LabelMe",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319020902P4",
+            "tail": "Building a database of 3D scenes from user annotations",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319020902D1",
+            "head": "ShapeNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020902T1",
+            "tail": "segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020902D1",
+            "head": "ShapeNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020902T2",
+            "tail": "alignment",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020902D1",
+            "head": "ShapeNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020902T3",
+            "tail": "correspondence",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020902D1",
+            "head": "ShapeNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020902T4",
+            "tail": "shape retrieval",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020902D1",
+            "head": "ShapeNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020902T5",
+            "tail": "shape classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020902D1",
+            "head": "ShapeNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020902T6",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020902D1",
+            "head": "ShapeNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020902T7",
+            "tail": "scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020902D1",
+            "head": "ShapeNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020902T8",
+            "tail": "part models learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020902D1",
+            "head": "ShapeNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020902T9",
+            "tail": "training object detection algorithms",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020902D1",
+            "head": "ShapeNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020902T10",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        }
+    ]
+}

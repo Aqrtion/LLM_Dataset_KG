@@ -1,0 +1,306 @@
+{
+    "entities": [
+        {
+            "id": "20250319015825P1",
+            "name": "Deep Learning Face Attributes in the Wild",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Ziwei Liu",
+                    "Ping Luo",
+                    "Xiaogang Wang",
+                    "Xiaoou Tang"
+                ],
+                "institution": "The Chinese University of Hong Kong"
+            }
+        },
+        {
+            "id": "20250319015825D1",
+            "name": "CelebFaces",
+            "type": "Dataset",
+            "attributes": {
+                "size": "160,000 images",
+                "identities": "8,000",
+                "reference": "[27]"
+            }
+        },
+        {
+            "id": "20250319015825D2",
+            "name": "LFW (Labeled Faces in the Wild)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "13,233 images",
+                "identities": "5,749",
+                "reference": "[12]"
+            }
+        },
+        {
+            "id": "20250319015825D3",
+            "name": "CelebA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "200,000 images",
+                "identities": "10,000",
+                "attributes": "40"
+            }
+        },
+        {
+            "id": "20250319015825D4",
+            "name": "LFWA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "13,233 images",
+                "based_on": "LFW"
+            }
+        },
+        {
+            "id": "20250319015825D5",
+            "name": "LFWA+",
+            "type": "Dataset",
+            "attributes": {
+                "attributes": "30 additional",
+                "based_on": "LFWA"
+            }
+        },
+        {
+            "id": "20250319015825D6",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1.2 million training images",
+                "reference": "[6]"
+            }
+        },
+        {
+            "id": "20250319015825D7",
+            "name": "ILSVRC 2012",
+            "type": "Dataset",
+            "attributes": {
+                "training_images": "1.2 million",
+                "validation_images": "50,000"
+            }
+        },
+        {
+            "id": "20250319015825D8",
+            "name": "SUN database",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "scene recognition",
+                "reference": "[29]"
+            }
+        },
+        {
+            "id": "20250319015825T1",
+            "name": "face verification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T2",
+            "name": "face identification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T3",
+            "name": "face retrieval",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T4",
+            "name": "attribute prediction",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T5",
+            "name": "face localization",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T6",
+            "name": "attribute classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T7",
+            "name": "face recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T8",
+            "name": "attribute recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T9",
+            "name": "part localization",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T10",
+            "name": "object detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T11",
+            "name": "alignment",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T12",
+            "name": "object classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T13",
+            "name": "automatic part localization",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015825T14",
+            "name": "scene recognition",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319015825D3",
+            "head": "CelebA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319015825P1",
+            "tail": "Deep Learning Face Attributes in the Wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319015825D4",
+            "head": "LFWA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319015825P1",
+            "tail": "Deep Learning Face Attributes in the Wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319015825D5",
+            "head": "LFWA+",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319015825P1",
+            "tail": "Deep Learning Face Attributes in the Wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319015825D3",
+            "head": "CelebA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319015825D1",
+            "tail": "CelebFaces",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319015825D4",
+            "head": "LFWA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319015825D2",
+            "tail": "LFW (Labeled Faces in the Wild)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319015825D5",
+            "head": "LFWA+",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319015825D4",
+            "tail": "LFWA",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319015825D6",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T5",
+            "tail": "face localization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D6",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T12",
+            "tail": "object classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D1",
+            "head": "CelebFaces",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T7",
+            "tail": "face recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D2",
+            "head": "LFW (Labeled Faces in the Wild)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T4",
+            "tail": "attribute prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D8",
+            "head": "SUN database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T5",
+            "tail": "face localization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D3",
+            "head": "CelebA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T4",
+            "tail": "attribute prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D4",
+            "head": "LFWA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T4",
+            "tail": "attribute prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D5",
+            "head": "LFWA+",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T4",
+            "tail": "attribute prediction",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

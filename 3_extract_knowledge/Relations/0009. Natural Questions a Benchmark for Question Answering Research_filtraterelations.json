@@ -1,0 +1,67 @@
+{
+    "relations": [
+        {
+            "head_id": "20250318225612D1",
+            "head": "Natural Questions (NQ)",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250318225612R1",
+            "tail": "https://ai.google.com/research/NaturalQuestions",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250318225612D1",
+            "head": "Natural Questions (NQ)",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250318225612P1",
+            "tail": "Natural Questions: A Benchmark for Question Answering Research",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250318225612D1",
+            "head": "Natural Questions (NQ)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318225612T1",
+            "tail": "question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318225612D1",
+            "head": "Natural Questions (NQ)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318225612T2",
+            "tail": "machine reading comprehension",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318225612D1",
+            "head": "Natural Questions (NQ)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318225612T6",
+            "tail": "supporting facts identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318225612D3",
+            "head": "SQuAD 2.0",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250318225612D2",
+            "tail": "SQuAD",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250318225612T1",
+            "head": "question answering",
+            "head_type": "Task",
+            "relation": "has_subtask",
+            "tail_id": "20250318225612T4",
+            "tail": "boolean question answering",
+            "tail_type": "Task"
+        }
+    ]
+}

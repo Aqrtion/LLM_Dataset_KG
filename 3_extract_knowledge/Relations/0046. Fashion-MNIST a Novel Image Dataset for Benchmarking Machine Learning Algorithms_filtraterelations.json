@@ -1,0 +1,49 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319020328D1",
+            "head": "Fashion-MNIST",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319020328R1",
+            "tail": "https://github.com/zalandoresearch/fashion-mnist",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319020328D1",
+            "head": "Fashion-MNIST",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319020328P1",
+            "tail": "Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319020328D1",
+            "head": "Fashion-MNIST",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020328T1",
+            "tail": "benchmarking machine learning algorithms",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020328D1",
+            "head": "Fashion-MNIST",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020328T2",
+            "tail": "machine learning classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020328D2",
+            "head": "MNIST",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020328T3",
+            "tail": "machine learning prototyping",
+            "tail_type": "Task"
+        }
+    ]
+}

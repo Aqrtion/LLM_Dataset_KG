@@ -1,0 +1,46 @@
+Output Format:
+1. Strictly adhere to the output JSON format provided below.
+2. Only output the JSON format result exactly as specified without any additional information.
+3. NO COMMENTS. NO ACKNOWLEDGEMENTS.
+{
+  "entities": [
+    {
+      "name": "Entity1",
+      "type": "Predefined_Entity_Type",
+      "attributes": {
+        "Attribute1": "Value1",
+        "Attribute2": "Value2"
+      }
+    },
+    {
+      "name": "Entity2",
+      "type": "Predefined_Entity_Type",
+      "attributes": {
+        "Attribute1": "Value1",
+        "Attribute2": "Value2"
+      }
+    },
+    ... ...
+  ],
+  "relations": [
+    {
+      "head": "HeadEntity1",
+      "head_type": "Predefined_Entity_Type",
+      "relation": "Predefined_Relation_Type",
+      "tail": "tailEntity1",
+      "tail_type": "Predefined_Entity_Type"
+    },
+    {
+      "head": "HeadEntity2",
+      "head_type": "Predefined_Entity_Type",
+      "relation": "Predefined_Relation_Type",
+      "tail": "tailEntity2",
+      "tail_type": "Predefined_Entity_Type"
+    },
+    ... ...
+  ]
+}
+
+###
+Input:
+{input}

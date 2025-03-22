@@ -1,0 +1,85 @@
+{
+    "entities": [
+        {
+            "id": "20250319004913P1",
+            "name": "Neural Network Acceptability Judgments",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Alex Warstadt",
+                    "Amanpreet Singh",
+                    "Samuel R. Bowman"
+                ],
+                "institution": "New York University"
+            }
+        },
+        {
+            "id": "20250319004913D1",
+            "name": "Corpus of Linguistic Acceptability (CoLA)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "10,657 sentences",
+                "labels": "grammatical/ungrammatical",
+                "sources": "linguistics literature",
+                "splits": "in-domain, out-of-domain"
+            }
+        },
+        {
+            "id": "20250319004913D2",
+            "name": "British National Corpus (BNC)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100 million tokens",
+                "language": "English"
+            }
+        },
+        {
+            "id": "20250319004913R1",
+            "name": "https://nyu-mll.github.io/CoLA/",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004913T1",
+            "name": "acceptability classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004913T2",
+            "name": "grammatical knowledge evaluation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004913T3",
+            "name": "unsupervised language modeling",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004913T4",
+            "name": "transfer learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004913T5",
+            "name": "syntactic and semantic phenomena analysis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004913T6",
+            "name": "real/fake sentence discrimination",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004913T7",
+            "name": "language model pretraining",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

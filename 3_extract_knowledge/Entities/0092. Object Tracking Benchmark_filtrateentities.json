@@ -1,0 +1,156 @@
+{
+    "entities": [
+        {
+            "id": "20250319041315P1",
+            "name": "Object Tracking Benchmark",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Yi Wu",
+                    "Jongwoo Lim",
+                    "Ming-Hsuan Yang"
+                ],
+                "institution": "Nanjing University of Information Science and Technology, Hanyang University, University of California at Merced"
+            }
+        },
+        {
+            "id": "20250319041315D1",
+            "name": "TB-100",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100 sequences",
+                "description": "benchmark dataset for object tracking with full annotations",
+                "content": "36 body, 26 face/head videos"
+            }
+        },
+        {
+            "id": "20250319041315D2",
+            "name": "TB-50",
+            "type": "Dataset",
+            "attributes": {
+                "size": "50 sequences",
+                "description": "subset of TB-100 with more challenging sequences"
+            }
+        },
+        {
+            "id": "20250319041315D3",
+            "name": "VIVID",
+            "type": "Dataset",
+            "attributes": {
+                "application": "surveillance scenarios"
+            }
+        },
+        {
+            "id": "20250319041315D4",
+            "name": "CAVIAR",
+            "type": "Dataset",
+            "attributes": {
+                "application": "surveillance scenarios"
+            }
+        },
+        {
+            "id": "20250319041315D5",
+            "name": "PETS",
+            "type": "Dataset",
+            "attributes": {
+                "application": "surveillance scenarios"
+            }
+        },
+        {
+            "id": "20250319041315D6",
+            "name": "Berkeley segmentation",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315D7",
+            "name": "FERET face recognition",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315D8",
+            "name": "optical flow dataset",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315D9",
+            "name": "Pascal Visual Object Classes (VOC)",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315R1",
+            "name": "http://pami.visual-tracking.net",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315T1",
+            "name": "object tracking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315T2",
+            "name": "performance evaluation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315T3",
+            "name": "model update",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315T4",
+            "name": "semi-supervised learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315T5",
+            "name": "online boosting",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315T6",
+            "name": "template matching",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315T7",
+            "name": "ratio shift",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315T8",
+            "name": "peak difference",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315T9",
+            "name": "optical flow",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315T10",
+            "name": "face recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041315T11",
+            "name": "segmentation",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

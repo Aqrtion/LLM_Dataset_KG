@@ -1,0 +1,542 @@
+BDD100K: A Diverse Driving Dataset for Heterogeneous Multitask Learning
+
+Fisher Yu1 Haofeng Chen1 Xin Wang1 Wenqi Xian2∗ Yingying Chen1 Fangchen Liu3∗ Vashisht Madhavan4∗ Trevor Darrell1
+
+1UC Berkeley 2Cornell University
+
+3UC San Diego
+
+4Element, Inc.
+
+Abstract
+
+Datasets drive vision progress, yet existing driving datasets are impoverished in terms of visual content and supported tasks to study multitask learning for autonomous driving. Researchers are usually constrained to study a small set of problems on one dataset, while real-world computer vision applications require performing tasks of various complexities. We construct BDD100K 1, the largest driving video dataset with 100K videos and 10 tasks to evaluate the exciting progress of image recognition algorithms on autonomous driving. The dataset possesses geographic, environmental, and weather diversity, which is useful for training models that are less likely to be surprised by new conditions. Based on this diverse dataset, we build a benchmark for heterogeneous multitask learning and study how to solve the tasks together. Our experiments show that special training strategies are needed for existing models to perform such heterogeneous tasks. BDD100K opens the door for future studies in this important venue.
+
+1. Introduction
+
+Diverse, large-scale annotated visual datasets, such as ImageNet [8] and COCO [19], have been the driving force behind recent advances in supervised learning tasks in computer vision. Typical deep learning models can require millions of training examples to achieve state-of-the-art performance for a task [17, 28, 16].
+
+For autonomous driving applications, however, leveraging the power of deep learning is not as simple due to the lack of comprehensive datasets. Existing datasets for autonomous driving [15, 7, 24] are limited in one or more signiﬁcant aspects, including the scene variation, the richness of annotations, and the geographic distribution. Additionally, models trained on existing datasets tend to overﬁt speciﬁc domain characteristics [26].
+
+Real-world applications require performing a combina-
+
+∗Work done at UC Berkeley. 1The data is available at https://bdd-data.berkeley.edu
+
+tion of perception tasks with different complexities, instead of only homogeneous multiple tasks with the same prediction structure [27, 38, 1, 21]. Although it may be feasible to label a large number of images with simple annotations such as drivable areas and object bounding boxes [11, 19], it remains challenging to obtain more complicated annotations such as instance segmentation [3], not to mention multi-object detection and segmentation tracking [31, 22]. As a result, even though a considerable amount of effort has been put into constructing large-scale visual datasets, research on those complicated tasks is still limited to small datasets [7, 15]. In production environments, it is also unclear how to allocate resources for various annotations to support the applications requiring heterogeneous tasks with various output structures.
+
+We aim to facilitate algorithmic study on large-scale diverse visual data and multiple tasks. We build BDD100K, a new, diverse, and large-scale dataset of visual driving scenes, together with various tasks, to overcome the limitations. We have been able to collect and annotate the largest available dataset of annotated driving scenes, consisting of over 100K diverse video clips. BDD100K covers more realistic driving scenarios and captures more of the “long-tail” ofappearancevariationandposeconﬁgurationofcategories of interest in diverse environmental domains. Our benchmarks are comprised of ten tasks: image tagging, lane detection, drivable area segmentation, road object detection, semantic segmentation, instance segmentation, multi-object detection tracking, multi-object segmentation tracking, domain adaptation, and imitation learning, as shown in Figure 1. These diverse tasks make the study of heterogeneous multitask learning possible. In our benchmarks, the models can perform a series of tasks with increasing complexities. We conduct extensive evaluations of existing algorithms on our new benchmarks. Special attention is paid to multitask learning in homogeneous, cascaded, and heterogeneous settings. Our experiments present many new ﬁndings, made possible by the diverse set of tasks on a single dataset. Our benchmark models on heterogeneous multitask learning shed light on the challenges of designing one single model to support multiple tasks.
+
+Figure 1: Overview of our dataset. Our dataset includes a diverse set of driving videos under various weather conditions, time, and scene types. The dataset also comes with a rich set of annotations: scene tagging, object bounding box, lane marking, drivable area, full-frame semantic and instance segmentation, multiple object tracking, and multiple object tracking with segmentation.
+
+The major contributions of our paper are: 1) a comprehensive diverse 100K driving video dataset supporting tasks of multiple complexities, which can serve as an evaluation benchmark for computer vision research for autonomous driving; 2) a benchmark for heterogeneous multitask learning and baseline studies to facilitate future study.
+
+2. Related Works
+
+Visual datasets are necessary for numerous recognition tasks in computer vision. Especially with the advent of deep learning methods, large scale visual datasets, such as [8, 36, 40, 24], are essential for learning high-level image representations. They are general-purpose and include millions of images with image-level categorical labels. These large datasets are useful in learning representations for image recognition, but most of the complex visual understanding tasks in the real world require more ﬁne-grained recognition such as object localization and segmentation [11]. Our proposed dataset provides these multi-granularity annotations for more in-depth visual reasoning. In addition, weprovidetheseannotationsinthecontextofvideos, which provides an additional dimension of visual information. Although large video datasets exist [5, 2, 29], they usually are restricted to image-level labels. Driving datasets have received increasing attention in the recent years, due to the popularity of autonomous vehicle technology. The goal is to understand the challenge of computer vision systems in the context of self-driving. Some of the datasets focus on particular objects such as pedestrians [9, 39]. Cityscapes [7] provides instance-level semantic segmentation on sampled frames of videos collected by their own vehicle. RobotCar [20] and KITTI [15] also
+
+provide data of multiple sources such as LiDAR scanned points. Because it is very difﬁcult to collect data that covers a broad range of time and location, the data diversity of these datasets is limited. For a vehicle perception system to be robust, it needs to learn from a variety of road conditions in numerous cities. Our data was collected from the same original source as the videos in [33]. However, the primary contribution of our paper is the video annotations with benchmarks on heterogeneous tasks. Mapillary Vistas [24] provides ﬁne-grained annotations for user uploaded data, which is much more diverse with respect to location. However, these images are one-off frames that are not placed in the context of videos with temporal structure. Like Vistas, our data is crowdsourced, however, our dataset is collected solely from drivers, with each annotated image corresponding to a video sequence, which enables interesting applications for modeling temporal dynamics.
+
+Multitask Learning aims to improve generalization of a certain task by learning from other tasks [6, 23]. It has been widely studied in machine learning [6, 12]. The growing interests in learning the relationship between tasks gives rise to a number of multitask and transfer learning training benchmarks and challenges. Robust Vision Challenge [1] features six vision challenges, where a single model is expected to produce results on multiple vision tasks. Zamir et al. [38] investigate the dependency structure among twenty-six visual tasks by transfer learning. McCann et al. [21] present a challenge with ten natural language processing tasks, and proposes a model that solves all by formulating each task as question answering. Similar to McCann et al. [21], existing multitask and transfer learning setups are homogeneous in output structures. The tasks can be
+
+Figure 2: Geographical distribution of our data sources. Each dot represents the starting location of every video clip. Our videos are from many cities and regions in the populous areas in the US.
+
+(a) Number of instances in each category.
+
+(b) Occlusion
+
+(c) Truncation
+
+Figure 3: Instance statistics of our object categories. (a) Number of instances of each category, which follows a long-tail distribution. (b) Roughly half of the instances are occluded. (c) About 7% of the instances are truncated.
+
+formulated as pixel-level or low-dimensional classiﬁcation and regression. BDD100K contains multiple tasks including pixel-level, region-based, and temporally aware tasks, opening the door for heterogeneous multitask learning.
+
+3. BDD100K
+
+We aim to provide a large-scale diverse driving video dataset with comprehensive annotations that can expose the challenges of street-scene understanding. To achieve good diversity, we obtain our videos in a crowd-sourcing manner uploaded by tens of thousands of drivers, supported by Nexar 2. The dataset contains not only images with high resolution (720p) and high frame rate (30fps), but also GPS/IMU recordings to preserve the driving trajectories. In total, we have 100K driving videos (40 seconds each) collected from more than 50K rides, covering New York, San Francisco Bay Area, and other regions as shown in Figure 2. The dataset contains diverse scene types such as city streets, residential areas, and highways. Furthermore, the videos were recorded in diverse weather conditions at different times of the day. The videos are split into training (70K), validation (10K) and testing (20K) sets. The frame at the 10th second in each video is annotated for image tasks and the entire sequences are used for tracking tasks.
+
+3.1. Image Tagging
+
+We have collected image-level annotation on six weather conditions, six scene types, and three distinct times of day,
+
+2https://www.getnexar.com
+
+for each image. The videos contain large portions of extreme weather conditions, such as snow and rain. They also include a diverse number of different scenes across the world. Notably, our dataset contains approximately an equal number of day-time and night-time videos. Such diversity allows us to study domain transfer and generalize our object detection model well on new test sets. Detailed distributions of images with weather, scene, and day hours tags are shown in the Appendix. We provide image tagging classiﬁcation results using DLA-34 [37] in Figure 4. The average classiﬁcation accuracy across different weather and scenes are around 50 to 60%.
+
+Figure 4: Image tagging classiﬁcation results using DLA-34.
+
+3.2. Object Detection
+
+Locating objects is a fundamental task for not only autonomous driving but the general visual recognition. We provide bounding box annotations of 10 categories for each of the reference frames of 100K videos. The instance statistics is shown in Figure 3a. We provide visibility attributes including “occluded” and “truncated” in Figure 3b and Figure 3c.
+
+CarSignLightPersonTruckBusBikeRiderMotorTrain103104105106Instances102185734377726590612926242963165051022964614296179OccludedNot100102104106Instances871201970234TruncatedNot100102104106Instances1274861713949clearovercastsnowyrainycloudyfoggyavg050100Accuracy (%)93.477.277.065.953.40.061.1city streettunnelhighwayresidentialparkinggas stationavg86.170.467.850.530.60.050.9Figure 5: Examples of lane marking annotations. Red lanes are vertical and blue lanes are parallel. Left: we label all the visible lane boundaries. Middle: not all marking edges are lanes for vehicles to follow, such as pedestrian crossing. Right: parallel lanes can also be along the current driving direction.
+
+Figure 6: Examples of drivable areas. Red regions are directly drivable and the blue ones are alternative. Although drivable areas can be conﬁned within lane markings, they are also related to locations of other vehicles shown in the right two columns.
+
+3.3. Lane Marking
+
+The lane marking detection is critical for vision-based vehicle localization and trajectory planning. However, available datasets are often limited in scale and diversity. For example, the Caltech Lanes Dataset [4] only contains 1,224 images, and the Road Marking Dataset [32] has 1,443 images labeled in 11 classes of lane markings. The most recent work, VPGNet [18], consists of about 20,000 images taken during three weeks of driving in Seoul.
+
+Our lane markings (Figure 5) are labeled with 8 main categories: road curb, crosswalk, double white, double yellow, double other color, single white, single yellow, single other color. The other categories are ignored during evaluation. We label the attributes of continuity (full or dashed) and direction (parallel or perpendicular). Shown in Table 1, our lane marking annotations cover a diverse set of classes. Detailed distributions of types of lane markings and drivable areas are shown in the Appendix.
+
+Datasets
+
+Training Total Sequences
+
+Caltech Lanes Dataset [4] Road Marking Dataset [32] KITTI-ROAD [14] VPGNet [18]
+
+BDD100K
+
+Table 1: Lane marking statistics. Our lane marking annotations are signiﬁcantly richer and are more diverse.
+
+3.4. Drivable Area
+
+Lanes alone are not sufﬁcient to decide road affordability for driving. Although most of the time, the vehicle should stay between the lanes, it is common that no clear lane marking exists. In addition, the road area is shared with all other vehicles, but a lane can not be driven on if
+
+occupied. All these conditions beyond lane markings direct our driving decisions and thus are relevant for designing autonomous driving algorithms.
+
+Our drivable areas are divided into two different categories: directly drivable area and alternatively drivable area. The directly drivable area is what the driver is currently driving on – it is also the region where the driver has priority over other cars or the right of the way. In contrast, alternativelydrivableareaisalanethedriveriscurrentlynot driving on, but able to do so via changing lanes. Although the directly and alternatively drivable areas are visually indistinguishable, they are functionally different, and require the algorithms to recognize blocking objects and scene context. Some examples are shown in Figure 6. The distribution of drivable region annotations is shown in the Appendix. Not surprisingly, on highways or city streets, where trafﬁc is closely regulated, drivable areas are mostly within lanes and they do not overlap with the vehicles or objects on the road. However, in residential areas, the lanes are sparse. Our annotators can ﬁnd the drivable areas based on the surroundings.
+
+3.5. Semantic Instance Segmentation
+
+We provide ﬁne-grained, pixel-level annotations for images from each of the 10,000 video clips randomly sampled from the whole dataset. Each pixel is given a label and a corresponding identiﬁer denoting the instance number of that object label in the image. Since many classes (e.g., sky) are not amenable to being split into instances, only a small subset of class labels are assigned instance identiﬁers. The entire label set consists of 40 object classes, which are chosen to capture the diversity of objects in road scenes as well as maximizing the number of labeled pixels in each image. Besides a large number of labels, our dataset exceeds previous efforts in terms of scene diversity and complexity. The
+
+Figure 7: Cumulative distributions of the box size (left), the ratio between the max and min box size for each track (middle) and track length (right). Our dataset is more diverse in object scale.
+
+Figure 8: Number of occlusions by track (left) and number of occluded frames for each occlusion (right). Our dataset covers complicated occlusion and reappearing patterns.
+
+whole set is split into 3 parts: 7K images for training, 1K images for validation, and 2K images for testing. The distribution of classes in the semantic instance segmentation dataset is shown in the Appendix.
+
+3.6. Multiple Object Tracking
+
+To understand the temporal association of objects within the videos, we provide a multiple object tracking (MOT) dataset including 2,000 videos with about 400K frames. Each video is approximately 40 seconds and annotated at 5 fps, resulting in approximately 200 frames per video. We observe a total number of 130.6K track identities and 3.3M bounding boxes in the training and validation set. The dataset splits are 1400 videos for training, 200 videos for validation and 400 videos for testing. Table 2 shows the comparison of BDD100K with previous MOT datasets. Our tracking benchmark provides one orderof-magnitude bigger than the previously popular tracking dataset, MOT17 [22]. A recent dataset released by Waymo [30] has fewer tracking sequences (1150 vs 2000) and fewer frames (230K vs 398K) in total, compared to ours. But Waymo data has more 2D boxes (9.9M vs 4.2M), while ours has better diversity including different weather conditions and more locations. Distributions of tracks and bounding boxes by category are shown in the Appendix.
+
+Datasets
+
+Frames Sequences Identities Boxes
+
+KITTI [15] MOT17 [22]
+
+47K 337K
+
+BDD100K
+
+131K 3.3M
+
+Table 2: MOT datasets statistics of training and validation sets. Our dataset has more sequences, frames, identities as well as more box annotations.
+
+BDD100K MOT is diverse in object scale. Figure 7 (left) plots the cumulative distribution of box size, deﬁned wh for a bounding box with width w and height h. as Figure 7 (middle) shows the cumulative distribution of the ratio between the maximum box size and the minimum box size along each track, and Figure 7 (right) shows that of the
+
+length of each track. The distributions show that the MOT dataset is not only diverse in visual scale among and within tracks, but also in the temporal range of each track.
+
+Objects in our tracking data also present complicated occlusion and reappearing patterns are shown in Figure 8. An object may be fully occluded or move out of the frame, and then reappear later. We observe 49,418 occurrences of occlusion in the dataset, or one occurrence of occlusion every 3.51 tracks. Our dataset shows the real challenges of object re-identiﬁcation for tracking in autonomous driving.
+
+3.7. Multiple Object Tracking and Segmentation
+
+We further provide a multiple object tracking and segmentation (MOTS) dataset with 90 videos. We split the dataset into 60 training videos, 10 validation videos, and 20 testing videos.
+
+Datasets
+
+Frames Seq. Identities Ann. Ann. / Fr.
+
+KITTI MOTS [31] MOTS Challenge [31]
+
+8K 2.9K
+
+38K 27K
+
+DAVIS 2017 [25] YouTube VOS [34]
+
+6.2K 90 120K 4.5K 7.8K 197K
+
+BDD100K MOTS
+
+6.3K 129K
+
+Table 3: Comparisons with other MOTS and VOS datasets.
+
+Table 3 shows the details of the BDD MOTS dataset and the comparison with existing multiple object tracking and segmentation (MOTS) and video object segmentation (VOS) datasets. MOTS aims to perform segmentation and tracking of multiple objects in crowded scenes. Therefore, MOTS datasets like KITTI MOTS and MOTS Challenge [31] require denser annotations per frame and therefore are smaller in size than VOS datasets. BDD100K MOTS provides a MOTS dataset that is larger than the KITTI and MOTS Challenge datasets, with the number of annotations comparable with the large-scale YouTube VOS [34] dataset. Detailed distributions of the MOTS dataset by category are shown in the Appendix.
+
+024Occlusions110100Percentage (%)Number of occlusions100101102Occluded frames020406080100Percentage (%)Occlusion durations(a) Our Image
+
+(b) Trained on Cityscapes
+
+(c) Trained on Ours
+
+(d) Ground Truth
+
+Figure 9: Visual comparisons of the same model (DRN [35]) trained on different datasets. We ﬁnd that there is a dramatic domain shift between Cityscapes and our new dataset. For example, due to infrastructure difference, the model trained on Cityscapes is confused by some simple categories such as sky and trafﬁc signs.
+
+City Non-City Val
+
+Daytime Non-Daytime Val
+
+City-30K 29.5 Non-City-30K 24.9 Random-30K 28.7
+
+28.8 Daytime-30K 24.9 Non-Daytime-30K 28.3 Random-30K
+
+Table 4: Domain discrepancy experiments with object detection. We take the images from one domain and report testing results in AP on the same domain or the opposite domain. We can observe signiﬁcant domain discrepancies, especially between daytime and nighttime.
+
+3.8. Imitation Learning
+
+GPS/IMU recordings in our dataset show the human driver action given the visual input and the driving trajectories. We can use those recordings as a demonstration supervision for the imitation learning algorithms and use perplexity to measure the similarity of driving behaviors on the validation and testing set. We refer to Xu et al. [33] for details on the evaluation protocols. Visualizations of the driving trajectories are shown in the Appendix.
+
+4. Diversity
+
+One distinct featureof our data is diversity, besides video and scale. We can study new challenges that the diversity bringstoexistingalgorithmsandhowourdatacomplements existing datasets. We conduct two sets of experiments on object detection and semantic segmentation. In object detection experiments, we study the different domains within our dataset. While in semantic segmentation, we investigate the domains between our data and Cityscapes [7].
+
+4.1. Object Detection
+
+Our dataset has an advantage in diversity, compared to other popular driving datasets. We investigate the inﬂuence of domain differences on object detection. The whole dataset is partitioned into several domains based on time of day and scene types. City street and daytime are chosen as validation domains. The training sets have the same
+
+number of images (30K) in the training set. We then train Faster-RCNN [28] based on ResNet-50 on those domains and evaluate the result with COCO API [19].
+
+We ﬁnd that there is indeed a domain discrepancy between image sets from different conditions, as shown in Table 4. The difference between city and non-city is significant, but the gap between daytime and nighttime is much bigger. Although this is not completely surprising, the results indicate that more work is necessary to bridge the gap. 4.2. Semantic Segmentation
+
+We also compare the models trained on Cityscapes and ours, to understand the difference between our new datasets and existing driving datasets. Cityscapes data is collected in German cities, while our data is mainly from the US. We observe that there is a dramatic domain shift between the two datasets for semantic segmentation models. The models perform much worse when tested on a different dataset. This suggests that even for the domain of other datasets, our new dataset is complementary, which augments existing datasets. Figure 9 shows the discrepancy visually. We can observe that the model trained on Cityscape can not recognize the trafﬁc sign in the US.
+
+5. Multitask Learning
+
+BDD100K gives the opportunity to study joint solution for the heterogeneous tasks. In this section, we investigate the effects of modeling various tasks jointly with the same base model. We study how to utilize diversity and quantity
+
+of simple labels to improve the accuracy of the complicated tasks, such as from object detection to tracking.
+
+5.1. Homogeneous Multitask Learning
+
+Weﬁrstinvestigatetheeffectsofjointlyperformingtasks with similar output structures. The BDD100K lane marking and drivable area datasets share the same set of 70K training images. Drivable area annotations consist of 2 foreground classes and lane marking annotations have 3 attributes (direction, continuity, and category). We formulate the detection of drivable area as segmentation and lane marking as contour detection. We evaluate drivable area segmentation by mean IoU, and lane marking by the Optimal Dataset Scale F-measure (ODS-F) for each category of the three attributes using the Structured Edge Detection Toolbox [10] with tolerance τ = 1, 2, and 10 pixels. We employ morphological thinning for each score threshold during evaluation. We employ DLA-34 [37] as the base model for the segmentation tasks. We implement the segmentation head with four 3 × 3 convolution blocks followed by an 1 × 1 convolution to produce segmentation maps in a 4x down-sampled scale, and use bilinear interpolation to upsample the output to the original scale. For lane marking, we use three segmentation heads for the three attributes. We employ the weighted cross-entropy loss with foreground weight 10 for the lane marking heads, and the gradient-based nonmaximum suppression for post-processing. We construct three train sets with 10K, 20K and the full 70K images and report the evaluation results of models trained on individual tasks and both tasks in Table 5. Full evaluation results for lane marking are shown in the Appendix.
+
+Training Set
+
+Lane ODS-F (τ = 10) (%) cat. mean dir.
+
+Drivable IoU (%) direct altern. mean
+
+Lane 10K Drive 10K - Lane+Drive 10K 53.97 52.59 44.65 50.40
+
+Lane 20K - Drive 20K Lane+Drive 20K 57.19 55.64 49.50 54.11
+
+Lane 70K Drive 70K - Lane+Drive 70K 57.35 55.76 49.63 54.24
+
+Table 5: Evaluation results of homogeneous multitask learning on lane marking and drivable area segmentation. We train lane marking, drivable area segmentation and the joint training of both on training splits with 10K, 20K, and the full 70K images.
+
+We observe that when training with only 10K images, the mean ODS-F score of lane marking prediction improves from 45.41 to 50.40 when jointly training with the drivable area task. However, the improvement of jointly training on the drivable area detection task, from 64.23 to 64.37, is marginal compared to the individual task. As we increase
+
+the number of training images to 20K and 70K, the difference between jointly training and single-task training becomes insigniﬁcant, though the performance numbers are generally higher than those trained on 10K images.
+
+One hypothesis for the results is that the drivable area detection task and the lane marking task share a similar prediction structure, referred as the homogeneous tasks, and therefore the additional supervision may fail to bring new information to each individual task. These results further motivate us to study multitask learning of heterogeneous tasks with diverse prediction structure and annotation types in this work.
+
+5.2. Cascaded Multitask Learning
+
+Certain tasks such as object tracking and instance segmentation are more time-consuming to annotate. But they can depend on predictions of simple tasks. This connection has been studied as cascaded multitask learning. For example, more accurate object detection can locate the object candidates better for tracking. A natural question is whether to spend all the annotation efforts for the complicated tasks, or to allocate some resources for the basic tasks.
+
+Training Set
+
+AP AP50 AP75
+
+Inst-Seg 21.8 40.5 20.5 Inst-Seg + Det 24.5 45.4 21.6
+
+Table 6: Evaluation results for instance segmentation when joint training with the object detection set. Additional localization supervision can improve instance segmentation signiﬁcantly.
+
+Training Set AP MOTA MOTP IDS
+
+MOT MOT + Det
+
+Table 7: Evaluation results for multiple object tracking cascaded with object detection. AP is the detection metric. Even though the tracking set has much more boxes, the model can still beneﬁt from the diverse instance examples in the detection set.
+
+Object detection and instance segmentation. The BDD instance segmentation dataset contains 7K images, whereas the detection dataset has 70K images. We ﬁrst study whether adding more object detection annotations can help instance segmentation. We use Mask R-CNN [16] with ResNet-50 [17] as the backbone, and train detection and instance segmentation in a batch-level round-robin manner. As shown in Table 6, AP increases from 21.8 to 24.5 with joint training. The instance segmentation model is able to learn better object appearance features and localization from the detection set with a much richer diversity of images and object examples. Zhou et al. [41] explore the shape priors in the detection supervision and improve the semi-supervised instance segmentation results further.
+
+Training Set
+
+Sem-Seg Sem-Seg + Det Sem-Seg + Lane + Driv
+
+Table 8: Evaluation results for semantic segmentation. We explore segmentation joint-training with different tasks. Detection can improve the overall accuracy of segmentation, although their output structures are different. However, although Lane and Drivable area improve the segmentation of road and sidewalk, the overall accuracy drops.
+
+MOT and object detection. BDD100K MOT has 278K training frames from 1,400 videos, whereas the detection set contains 70K images sampled from 70K videos. For the detection and MOT models, we use a modiﬁed version of Faster R-CNN [28] with a shared DLA-34 [37] backbone. The implementation details of the tracking model are shown in the Appendix. Table 7 shows that joint training of detection and multiple object tracking improves the singletask MOT model with detection AP increasing from 28.1 to 30.7 and MOTA from 55.0 to 56.7, with a slight increase in identity switch. Semantic segmentation with other tasks. Following a similar manner, we ﬁne-tune a base semantic segmentation model byjointly trainingsemantic segmentationwith detectionandlanemarking/drivableareaasshowninTable8. We observe that training with the additional 70K object detection dataset improves the overall mIoU from 56.9 to 58.3, with the improvement mostly attributed to the object classes that are present in the object detection dataset. When jointly training with the lane marking and drivable area sets, the IOU of the stuff classes (e.g., road and sidewalk) improves though the overall IOU across all classes decreases.
+
+To summarize, adding more annotations to the simple tasks in the task cascade can help improve the performances of the complicated tasks that require more expensive labels.
+
+5.3. Heterogeneous Multitask Learning
+
+The ultimate goal of our benchmark is to study how to perform all the heterogeneous tasks together for autonomous driving. To understand the potential and difﬁ- culty, we study joint training for multiple object tracking and segmentation, a downstream task to object detection, instance segmentation, and multiple object tracking. Since the MOTS dataset requires time-consuming instance segmentationannotationsateachframe, thedatasetisrelatively limited in video diversity, with 12K frames from 60 videos in the training set. We aim to improve the performance on the task of MOTS by leveraging the diversity from the detection set with 70K images from 70K videos, the MOT set with 278K frames from 1,400 videos, and the instance segmentation set with 7K images from 7K videos.
+
+We report instance segmentation AP and multi-object
+
+tracking and segmentation accuracy (MOTSA), precision (MOTSP), and other metrics used by [31] in Table 9. We ﬁrst ﬁne-tune the MOTS model from pre-trained models of upstream tasks. Compared with training MOTS from scratch, ﬁne-tuning from the pre-trained instance segmentation model improves segmentation AP and MOTSP. Finetuning from the pre-trained MOT model, on the other hand, reduces identity switch (IDSW). The extra training examples from the instance segmentation and MOT datasets improve the segmentation and box propagation respectively, thus improving the overall MOTSA results by a large margin. We ﬁnally ﬁne-tune the jointly trained detection and tracking model mentioned in Table 7 by jointly training the four tasks together. We achieve an overall segmentation AP of 23.3 and MOTSA of 41.4.
+
+Training Set
+
+AP MOTSA MOTSP FN FP IDSW
+
+MOTS (S) InstSeg (I) + MOTS MOT (T) + MOTS
+
+Det + T + I + S
+
+Table 9: MOTS evaluation results. Both instance segmentation AP and MOTS evaluation metrics are reported. Instance segmentation tracking is very hard to label, but we are able to use object detection, tracking, andinstancesegmentationtoimprovesegmentation tracking accuracy signiﬁcantly.
+
+6. Conclusion
+
+In this work, we presented BDD100K, a large-scale driving video dataset with extensive annotations for heterogeneous tasks. We built a benchmark for heterogeneous multitask learning where the tasks have various prediction structures and serve different aspects of a complete driving system. Our experiments provided extensive analysis to different multitask learning scenarios: homogeneous multitask learning and cascaded multitask learning. The results presented interesting ﬁndings about allocating the annotation budgets in multitask learning. We hope our work can foster future studies on heterogeneous multitask learning and shed light on this important direction.
+
+References
+
+[1] Robust
+
+Vision robustvision.net/. 1, 2
+
+Challenge.
+
+http://www.
+
+[2] S. Abu-El-Haija, N. Kothari, J. Lee, P. Natsev, G. Toderici, B. Varadarajan, and S. Vijayanarasimhan. Youtube-8m: A large-scale video classiﬁcation benchmark. arXiv preprint arXiv:1609.08675, 2016. 2
+
+[3] D. Acuna, H. Ling, A. Kar, and S. Fidler. Efﬁcient interactive annotation of segmentation datasets with polygonrnn++. 2018. 1
+
+[4] M. Aly. Real time detection of lane markers in urban streets. In Intelligent Vehicles Symposium, pages 7–12, 2008. 4
+
+[5] F. Caba Heilbron, V. Escorcia, B. Ghanem, and J. Carlos Niebles. Activitynet: A large-scale video benchmark for human activity understanding. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 961–970, 2015. 2
+
+[6] R. Caruana. Multitask learning. Machine learning,
+
+[7] M. Cordts, M. Omran, S. Ramos, T. Rehfeld, M. Enzweiler, R. Benenson, U. Franke, S. Roth, and B. Schiele. The cityscapes dataset for semantic urban scene understanding. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 3213–3223, 2016. 1, 2, 6
+
+[8] J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li, and L. Fei-Fei. ImageNet: A Large-Scale Hierarchical Image Database. In CVPR09, 2009. 1, 2
+
+[9] P. Doll´ar, C. Wojek, B. Schiele, and P. Perona. Pedestrian In Computer Vision and Pattern detection: A benchmark. Recognition, 2009. CVPR 2009. IEEE Conference on, pages 304–311. IEEE, 2009. 2, 10
+
+[10] P. Doll´ar and C. L. Zitnick. Structured forests for fast edge
+
+detection. In ICCV, 2013. 7
+
+[11] M. Everingham, L. Van Gool, C. K. Williams, J. Winn, and A. Zisserman. The pascal visual object classes (voc) challenge. International journal of computer vision, 88(2):303– 338, 2010. 1, 2
+
+[12] T. Evgeniou and M. Pontil. Regularized multi–task learning. In Proceedings of the tenth ACM SIGKDD international conference on Knowledge discovery and data mining, pages 109–117. ACM, 2004. 2
+
+[13] C. Feichtenhofer, A. Pinz, and A. Zisserman. Detect to track
+
+and track to detect. In iccv, 2017. 12
+
+[14] J. Fritsch, T. Kuhnl, and A. Geiger. A new performance measure and evaluation benchmark for road detection algorithms. In Intelligent Transportation Systems-(ITSC), 2013 16th International IEEE Conference on, pages 1693–1700. IEEE, 2013. 4
+
+[15] A. Geiger, P. Lenz, C. Stiller, and R. Urtasun. Vision meets robotics: The kitti dataset. The International Journal of Robotics Research, 32(11):1231–1237, 2013. 1, 2, 5, 10
+
+[16] K. He, G. Gkioxari, P. Doll´ar, and R. Girshick. Mask r-cnn. In Proceedingsofthe IEEEinternationalconferenceon computer vision, pages 2961–2969, 2017. 1, 7
+
+[17] K. He, X. Zhang, S. Ren, and J. Sun. Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 770–778, 2016. 1, 7
+
+[18] S. Lee, J. Kim, J. S. Yoon, S. Shin, O. Bailo, N. Kim, T.- H. Lee, H. S. Hong, S.-H. Han, and I. S. Kweon. VPGNet: Vanishing point guided network for lane and road marking detection and recognition. In Computer Vision (ICCV), 2017 IEEE International Conference on, pages 1965–1973. IEEE, 2017. 4
+
+[19] T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Doll´ar, and C. L. Zitnick. Microsoft coco: Common objects in context. In European conference on computer vision, pages 740–755. Springer, 2014. 1, 6
+
+[20] W. Maddern, G. Pascoe, C. Linegar, and P. Newman. 1 year, IJ Robotics Res.,
+
+1000 km: The oxford robotcar dataset. 36(1):3–15, 2017. 2
+
+[21] B. McCann, N. S. Keskar, C. Xiong, and R. Socher. The natural language decathlon: Multitask learning as question answering. arXiv preprint arXiv:1806.08730, 2018. 1, 2
+
+[22] A. Milan, L. Leal-Taix´e, I. Reid, S. Roth, and K. Schindler. arXiv
+
+Mot16: A benchmark for multi-object tracking. preprint arXiv:1603.00831, 2016. 1, 5
+
+[23] T. M. Mitchell. The need for biases in learning generalizations. Department of Computer Science, Laboratory for Computer Science Research , 1980. 2
+
+[24] G. Neuhold, T. Ollmann, S. R. Bul`o, and P. Kontschieder. The mapillary vistas dataset for semantic understanding of street scenes. In International Conference on Computer Vision (ICCV), 2017. 1, 2
+
+[25] J. Pont-Tuset, F. Perazzi, S. Caelles, P. Arbel´aez, A. SorkineThe 2017 davis chalarXiv preprint
+
+Hornung, and L. Van Gool. lenge on video object segmentation. arXiv:1704.00675, 2017. 5
+
+[26] S.-A. Rebufﬁ, H. Bilen, and A. Vedaldi. Learning multiple visualdomainswithresidualadapters. InAdvancesinNeural Information Processing Systems, pages 506–516, 2017. 1
+
+[27] S.-A. Rebufﬁ, H. Bilen, and A. Vedaldi. Learning multiple visualdomainswithresidualadapters. InAdvancesinNeural Information Processing Systems, pages 506–516, 2017. 1
+
+[28] S. Ren, K. He, R. Girshick, and J. Sun. Faster r-cnn: Towards real-time object detection with region proposal networks. In Advances in neural information processing systems, pages 91–99, 2015. 1, 6, 8, 12
+
+[29] K. Soomro, A. R. Zamir, and M. Shah. Ucf101: A dataset of 101 human actions classes from videos in the wild. arXiv preprint arXiv:1212.0402, 2012. 2
+
+[30] P. Sun, H. Kretzschmar, X. Dotiwalla, A. Chouard, V. Patnaik, P. Tsui, J. Guo, Y. Zhou, Y. Chai, B. Caine, et al. Scalability in perception for autonomous driving: Waymo open dataset. arXiv, pages arXiv–1912, 2019. 5
+
+[31] P. Voigtlaender, M. Krause, A. Osep, J. Luiten, B. B. G. Sekar, A. Geiger, and B. Leibe. Mots: Multi-object tracking
+
+and segmentation. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 7942– 7951, 2019. 1, 5, 8
+
+[32] T. Wu and A. Ranganathan. A practical system for road In Intelligent Vehicles
+
+marking detection and recognition. Symposium, pages 25–30, 2012. 4
+
+[33] H. Xu, Y. Gao, F. Yu, and T. Darrell. End-to-end learning of driving models from large-scale video datasets. arXiv preprint, 2017. 2, 6
+
+[34] N. Xu, L. Yang, Y. Fan, D. Yue, Y. Liang, J. Yang, and T. Huang. Youtube-vos: A large-scale video object segmentation benchmark. arXiv preprint arXiv:1809.03327, 2018. 5
+
+[35] F. Yu, V. Koltun, and T. Funkhouser. Dilated residual networks. In Computer Vision and Pattern Recognition (CVPR), 2017. 6, 10
+
+[36] F. Yu, A. Seff, Y. Zhang, S. Song, T. Funkhouser, and J. Xiao. LSUN: Construction of a large-scale image dataset using deep learning with humans in the loop. arXiv preprint arXiv:1506.03365, 2015. 2
+
+[37] F. Yu, D. Wang, E. Shelhamer, and T. Darrell. Deep layer aggregation. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 2403–2412, 2018. 3, 7, 8
+
+[38] A. R. Zamir, A. Sax, W. Shen, L. J. Guibas, J. Malik, and S. Savarese. Taskonomy: Disentangling task transfer learning. In The IEEE Conference on Computer Vision and Pattern Recognition (CVPR), June 2018. 1, 2
+
+[39] S. Zhang, R. Benenson, and B. Schiele. Citypersons: A diverse dataset for pedestrian detection. In The IEEE Conference on Computer Vision and Pattern Recognition (CVPR), July 2017. 2, 10
+
+[40] B. Zhou, A. Lapedriza, J. Xiao, A. Torralba, and A. Oliva. Learning deep features for scene recognition using places database. In Advances in neural information processing systems, pages 487–495, 2014. 2
+
+[41] Y. Zhou, X. Wang, J. Jiao, T. Darrell, and F. Yu. Learning saliency propagation for semi-supervised instance segmentation. In Computer Vision and Pattern Recognition (CVPR), 2020. 7
+
+Appendix
+
+A. Dataset Details
+
+We present more details about our dataset and annota-
+
+tions in this section.
+
+A.1. Image Tagging
+
+Figure 10 shows the distribution of weather, scene, and time of day attributes in BDD100K. The distribution demonstrates visual diversity of the images and thus provides an opportunity to study visual transfer between different domains.
+
+Caltech [9] KITTI [15] City [39] Ours
+
+# persons # per image
+
+Table 10: Comparisons on number of pedestrians with other datasets. The statistics are based on the training set in each dataset.
+
+A.2. Object Detection
+
+Table 10 compares the number of pedestrians of the detection dataset with other datasets. Our dataset has more examples of pedestrians, but because our dataset contains non-city scenes such as highways, the number of person per image is lower than Cityscapes.
+
+A.3. Lane Marking and Drivable Area
+
+Our choice of annotated lane attributes is based on their inﬂuence on driving decisions. The continuity of a lane marking is essential for making a “driving-across” decision, so we labeled it independently as an important attribute. Similarly, the direction of a lane marking is also signiﬁcant for autonomous driving. For example, if a lane marking is parallel to the passing car, it may serve to guide cars and separate lanes; if it is perpendicular, it can be treated as a sign of deceleration or stop. The distribution of the number of annotations in varied driving scenes are shown in Figure 12a, Figure 12b, and Figure 12c. The detailed evaluation results for the lane marking benchmark are in Table 14. Drivable area detection is a new task, so we show results of a baseline method on the task here. First, the drivable area detection is converted to 3-way segmentation task (background, directly, and alternatively drivable) by ignoring the region ID. Then, we train DRN-D-22 model [35] on the 70,000 training images. We ﬁnd that after learning from the large-scale image dataset, the model learns to split the road according to the lanes and extrapolate the drivable area to unmarked space. The mIoU for directly and alternatively drivable areas is 79.4% and 63.3%. However, the same model can achieve much higher accuracy on road segmentation, which indicates that techniques beyond segmentation may be required to solve the drivable area problem.
+
+24K 1.0K 97K 4.6K 1.5K
+
+685 1.8K 131K Tracks 3.3M 440K 23K 2.6M 177K 67K 1.9K 13K 33K Boxes Truncated 346K 18K 1.4K 284K 26K 11K 557 1.4K 3.1K Occluded 2.2M 253K 18K 1.7M 132K 51K 1.9K 9.1K 26K
+
+Table 11: Annotations of the BDD100K MOT dataset by category.
+
+(a) Weather
+
+(b) Scene
+
+(c) Hours
+
+Figure 10: Distribution of images in weather, scene, and day hours categories.
+
+(a) Image
+
+(b) DRN
+
+(c) Ground truth
+
+Figure 11: Drivable area prediction by segmentation. The segmentation predicts the drivable area with lanes well, as shown in the top row. Also, we ﬁnd that the segmentation model learns to interpolate in areas that has no lane markings.
+
+A.4. GPS Trajectory
+
+Figure 13 shows GPS trajectories of example sequences. Our data presents diverse driving behaviors, like starting, stopping, turning and passing. The data is suitable to train and test imitation learning algorithms on real driving data.
+
+The model is also confused by the US highway trafﬁc sign. However, the same model trained on our dataset does not suffer these problems. Also, the model of Cityscapes may over-ﬁt the hood of the data collecting vehicle and produces erroneous segmentation for the lower part of the images.
+
+A.5. Semantic Instance Segmentation
+
+A.6. Multiple Object Tracking and Segmentation
+
+Figure 14 shows the distribution of number of instances observed in the segmentation annotations. BDD100K has a good coverage on rare categories (e.g. trailer, train) and large number of instances of common trafﬁc objects such as persons and cars. We also observe long-tail effects on our dataset. There are almost 60 thousand car instances, a few hundred rider and motorcycle instances, and mere dozens of trailer and train instances.
+
+Figure 9 in the main paper shows some segmentation examples produced by DRN-D-38. They also reveal some interesting properties of various domains. Probably because of the infrastructure differences between Germany and the US, the models trained on Cityscapes confuse some big structures in an unreasonable way, such as segmenting the sky as building as shown in the third row of the ﬁgure.
+
+Table 11 and Table 12 shows the label distributions by categories. Our bounding box tracking annotations cover more than one hundred thousand instances with more than two million bounding boxes, and the segmentation tracking set contains more than six thousand instances with one hundred thousand polygons. We showed in the paper submission, our tracking annotation set is one of the largest out there, in addition to our advantage in multitask and diversity.
+
+B. Model Details
+
+In this section, we present more implementation details
+
+for benchmark models.
+
+ClearPartlyCloudyOver-castRainySnowyFoggy100102104106Instances5352570661259171257888181Residen-tialHigh-wayCityStreetParkingLotGasStationsTunnel100102104106Instances11753249876196053640206Dawn/DuskDaytimeNight100102104106Instances72855251139986(a) Lane category
+
+(b) Lane direction Figure 12: Distribution of different types of lane markings and drivable areas.
+
+(c) Lane continuity
+
+(d) Drivable areas
+
+Figure 13: Trajectories of example driving videos.
+
+Tracks Masks Truncated Occluded
+
+6.3K 1.8K 31 4.0K 215 129K 15K 85K
+
+76 22K 894 93K 7.6K 4.0K 117 369 1.4K 70 833 49 970 13K 793 61K 5.7K 3.1K 116 292
+
+45 12K 1.3K 743
+
+Table 12: Annotations of BDD100K MOTS by category.
+
+B.1. Tracking
+
+We use a modiﬁed Faster R-CNN [28] architecture for tracking similar with Feichtenhofer et al. [13]. Like Feichtenhofer et al. [13], we use a correlation module and a bounding box propagation (regression) head to estimate the bounding box offset between two frames for shortterm association. We also implement an association head based on appearance to learn embeddings for instance reidentiﬁcation. During training, we sample a pair of frames within the interval of t = 3 frames. During inference, we ﬁrst perform detection for the ﬁrst frame. For each subsequent frame, we use the propagation head to associate detected bounding boxes with boxes from the previous frame basedonoverlap. Wethenusetheassociationheadbasedon appearance to associate the rest with the unmatched boxes in the previous 15 frames using dot product of the embeddings followed by softmax.
+
+RoadCurbDoubleWhiteDoubleYellowDoubleOtherSingleWhiteSingleYellowSingleOtherCross-walk100103106Instances1574018222534263735328828993394154108ParallelVertical100103106Instances562157193712FullDashed100103106Instances75586991626DrivableAlternative100103106Instances9162688392Figure 14: Distribution of classes in semantic instance segmentation. It presents a long-tail effect with more than 10 cars and poles per image, but only tens of trains in the whole dataset.
+
+Figure 15: Example annotations for BDD100K MOTS. Frames are down-sampled for visualization.
+
+bannerbillboardlane dividerparking signpolepolegroupstreet lighttraffic conetraffic devicetraffic lighttraffic signsign framepersonriderbicyclebuscarcaravanmotorcycletrailertraintruck100101102103104105106Instances46607716443045807113411376668729614606182433307698929542610565920918924043423868Train (30K)
+
+City Non-City Random
+
+City Non-City Random
+
+City Non-City Random
+
+Daytime Non-Daytime Random
+
+Daytime Non-Daytime Random
+
+Daytime Non-Daytime Random
+
+Non-City
+
+Daytime
+
+Non-Daytime
+
+AP AP50 AP75 APS APM APL
+
+Table 13: Full evaluation results of the domain discrepancy experiments with object detection.
+
+Threshold
+
+Training Set
+
+Direction
+
+Continuity
+
+parallel
+
+vertical
+
+continuous
+
+dashed
+
+crosswalk
+
+Lane 10K Lane+Drivable 10K Lane 20K Lane+Drivable 20K Lane 70K Lane+Drivable 70K
+
+Lane 10K Lane+Drivable 10K Lane 20K Lane+Drivable 20K Lane 70K Lane+Drivable 70K
+
+Lane 10K Lane+Drivable 10K Lane 20K Lane+Drivable 20K Lane 70K Lane+Drivable 70K
+
+double white
+
+Category road curb
+
+double yellow
+
+single white
+
+single yellow
+
+total avg.
+
+Table 14: Full evaluation results of the individual lane marking task and the joint training of lane marking and the drivable area detection. We report the ODS-F scores with different thresholds τ = 1,2,10 pixels of direction, continuity as well as each category.
+

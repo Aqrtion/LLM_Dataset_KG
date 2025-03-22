@@ -1,0 +1,85 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319030328D1",
+            "head": "DIV2K",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319030328R1",
+            "tail": "https://data.vision.ee.ethz.ch/cvl/DIV2K/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319030328D1",
+            "head": "DIV2K",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319030328P1",
+            "tail": "NTIRE 2017 Challenge on Single Image Super-Resolution: Dataset and Study",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319030328D1",
+            "head": "DIV2K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030328T1",
+            "tail": "single image super-resolution",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030328D1",
+            "head": "DIV2K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030328T4",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030328D2",
+            "head": "Set5",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030328T4",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030328D3",
+            "head": "Set14",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030328T4",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030328D4",
+            "head": "B100",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030328T4",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030328D5",
+            "head": "Urban100",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030328T4",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030328D6",
+            "head": "Train91",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030328T1",
+            "tail": "single image super-resolution",
+            "tail_type": "Task"
+        }
+    ]
+}

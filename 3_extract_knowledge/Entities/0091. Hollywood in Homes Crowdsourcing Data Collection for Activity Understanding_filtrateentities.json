@@ -1,0 +1,158 @@
+{
+    "entities": [
+        {
+            "id": "20250319041030P1",
+            "name": "Hollywood in Homes: Crowdsourcing Data Collection for Activity Understanding",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Gunnar A. Sigurdsson",
+                    "Gül Varol",
+                    "Xiaolong Wang",
+                    "Ali Farhadi",
+                    "Ivan Laptev",
+                    "Abhinav Gupta"
+                ],
+                "institutions": [
+                    "Carnegie Mellon University",
+                    "Inria",
+                    "University of Washington",
+                    "The Allen Institute for AI"
+                ]
+            }
+        },
+        {
+            "id": "20250319041030D1",
+            "name": "Charades",
+            "type": "Dataset",
+            "attributes": {
+                "size": "9,848 videos",
+                "average_length": "30 seconds",
+                "action_classes": 157,
+                "object_classes": 46,
+                "scenes": "15 indoor types",
+                "collection_method": "Amazon Mechanical Turk",
+                "annotations": [
+                    "temporally localized actions",
+                    "free-text descriptions",
+                    "object interactions"
+                ]
+            }
+        },
+        {
+            "id": "20250319041030D2",
+            "name": "ActivityNet",
+            "type": "Dataset",
+            "attributes": {
+                "size": "27,847 videos",
+                "origin": "Internet videos"
+            }
+        },
+        {
+            "id": "20250319041030D3",
+            "name": "UCF101",
+            "type": "Dataset",
+            "attributes": {
+                "size": "13K videos"
+            }
+        },
+        {
+            "id": "20250319041030D4",
+            "name": "HMDB51",
+            "type": "Dataset",
+            "attributes": {
+                "size": "7K videos"
+            }
+        },
+        {
+            "id": "20250319041030D5",
+            "name": "Sports1M",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1.1M videos"
+            }
+        },
+        {
+            "id": "20250319041030D6",
+            "name": "MPII Cooking",
+            "type": "Dataset",
+            "attributes": {
+                "action_classes": 78
+            }
+        },
+        {
+            "id": "20250319041030D7",
+            "name": "ADL",
+            "type": "Dataset",
+            "attributes": {
+                "size": "46 videos"
+            }
+        },
+        {
+            "id": "20250319041030D8",
+            "name": "KTH action dataset",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041030R1",
+            "name": "http://allenai.org/plato/charades/",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041030T1",
+            "name": "action recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041030T2",
+            "name": "automatic description generation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041030T3",
+            "name": "video captioning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041030T4",
+            "name": "object detection in videos",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041030T5",
+            "name": "modeling context",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041030T6",
+            "name": "learning object states",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041030T7",
+            "name": "human-object interactions",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041030T8",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041030T9",
+            "name": "training object detection algorithms",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

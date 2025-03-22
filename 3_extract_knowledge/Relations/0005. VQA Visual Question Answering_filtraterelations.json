@@ -1,0 +1,109 @@
+{
+    "relations": [
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail": "www.visualqa.org",
+            "tail_type": "Repository"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "VQA: Visual Question Answering",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "MS COCO",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "Abstract Scenes Dataset",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "Visual Question Answering",
+            "tail_type": "Task"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "image classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "automatic object clustering",
+            "tail_type": "Task"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "object localization",
+            "tail_type": "Task"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "part models learning",
+            "tail_type": "Task"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "training object detection algorithms",
+            "tail_type": "Task"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "image search",
+            "tail_type": "Task"
+        },
+        {
+            "head": "VQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "image understanding",
+            "tail_type": "Task"
+        }
+    ]
+}

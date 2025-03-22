@@ -1,0 +1,121 @@
+{
+    "entities": [
+        {
+            "id": "20250318230205P1",
+            "name": "A large annotated corpus for learning natural language inference",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Samuel R. Bowman",
+                    "Gabor Angeli",
+                    "Christopher Potts",
+                    "Christopher D. Manning"
+                ],
+                "institution": "Stanford University"
+            }
+        },
+        {
+            "id": "20250318230205D1",
+            "name": "Stanford Natural Language Inference (SNLI) corpus",
+            "type": "Dataset",
+            "attributes": {
+                "size": "570,152 sentence pairs",
+                "labels": [
+                    "entailment",
+                    "contradiction",
+                    "neutral"
+                ],
+                "collection_method": "Amazon Mechanical Turk",
+                "validation": "5 annotations per example",
+                "public_availability": "freely available"
+            }
+        },
+        {
+            "id": "20250318230205D2",
+            "name": "Recognizing Textual Entailment (RTE) challenge tasks",
+            "type": "Dataset",
+            "attributes": {
+                "size": "fewer than a thousand examples each"
+            }
+        },
+        {
+            "id": "20250318230205D3",
+            "name": "Sentences Involving Compositional Knowledge (SICK)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "4,500 training examples"
+            }
+        },
+        {
+            "id": "20250318230205D4",
+            "name": "Denotation Graph",
+            "type": "Dataset",
+            "attributes": {
+                "size": "millions of examples",
+                "quality": "noisy"
+            }
+        },
+        {
+            "id": "20250318230205D5",
+            "name": "Paraphrase Database",
+            "type": "Dataset",
+            "attributes": {
+                "content": "entailment annotations over pairs of words/phrases"
+            }
+        },
+        {
+            "id": "20250318230205T1",
+            "name": "natural language inference (NLI)",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318230205T2",
+            "name": "entailment detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318230205T3",
+            "name": "contradiction detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318230205T4",
+            "name": "semantic parsing",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318230205T5",
+            "name": "commonsense reasoning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318230205T6",
+            "name": "transfer learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318230205T7",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318230205T8",
+            "name": "machine learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318230205T9",
+            "name": "information retrieval",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

@@ -1,0 +1,67 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319012420D2",
+            "head": "WikiText-2",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319012420P1",
+            "tail": "Pointer Sentinel Mixture Models",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319012420D3",
+            "head": "WikiText-103",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319012420P1",
+            "tail": "Pointer Sentinel Mixture Models",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319012420D1",
+            "head": "Penn Treebank (PTB)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012420T1",
+            "tail": "language modeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319012420D2",
+            "head": "WikiText-2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012420T1",
+            "tail": "language modeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319012420D3",
+            "head": "WikiText-103",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319012420D2",
+            "tail": "WikiText-2",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319012420D3",
+            "head": "WikiText-103",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319012420R1",
+            "tail": "WikiText dataset site",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319012420D1",
+            "head": "Penn Treebank (PTB)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012420T2",
+            "tail": "word-level prediction",
+            "tail_type": "Task"
+        }
+    ]
+}

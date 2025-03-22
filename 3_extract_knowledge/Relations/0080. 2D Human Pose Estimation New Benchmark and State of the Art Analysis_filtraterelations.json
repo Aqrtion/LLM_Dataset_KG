@@ -1,0 +1,67 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319033832D1",
+            "head": "MPII Human Pose",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319033832R1",
+            "tail": "human-pose.mpi-inf.mpg.de",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319033832D1",
+            "head": "MPII Human Pose",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319033832P1",
+            "tail": "2D Human Pose Estimation: New Benchmark and State of the Art Analysis",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319033832D1",
+            "head": "MPII Human Pose",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033832T1",
+            "tail": "human pose estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033832D1",
+            "head": "MPII Human Pose",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033832T2",
+            "tail": "upper body pose estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033832T1",
+            "head": "human pose estimation",
+            "head_type": "Task",
+            "relation": "has_subtask",
+            "tail_id": "20250319033832T2",
+            "tail": "upper body pose estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033832T1",
+            "head": "human pose estimation",
+            "head_type": "Task",
+            "relation": "has_subtask",
+            "tail_id": "20250319033832T3",
+            "tail": "multiple people pose estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033832T1",
+            "head": "human pose estimation",
+            "head_type": "Task",
+            "relation": "has_subtask",
+            "tail_id": "20250319033832T4",
+            "tail": "pose estimation in image sequences",
+            "tail_type": "Task"
+        }
+    ]
+}

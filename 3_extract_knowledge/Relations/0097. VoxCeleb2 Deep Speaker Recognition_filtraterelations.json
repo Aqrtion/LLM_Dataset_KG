@@ -1,0 +1,103 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319042813D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319042813R1",
+            "tail": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb2",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319042813D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319042813P1",
+            "tail": "VoxCeleb2: Deep Speaker Recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319042813D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042813T1",
+            "tail": "speaker identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042813D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042813T2",
+            "tail": "speaker verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042813D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042813T3",
+            "tail": "clustering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042813D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042813T4",
+            "tail": "diarisation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042813D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042813T5",
+            "tail": "visual speech synthesis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042813D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042813T6",
+            "tail": "speech separation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042813D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042813T7",
+            "tail": "cross-modal transfer",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042813D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042813T8",
+            "tail": "face recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042813D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042813T9",
+            "tail": "training speaker embedding systems",
+            "tail_type": "Task"
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+{
+    "entities": [
+        {
+            "id": "20250319023915P1",
+            "name": "Food-101 – Mining Discriminative Components with Random Forests",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Lukas Bossard",
+                    "Matthieu Guillaumin",
+                    "Luc Van Gool"
+                ],
+                "institution": "ETH Zurich, K.U. Leuven"
+            }
+        },
+        {
+            "id": "20250319023915D1",
+            "name": "Food-101",
+            "type": "Dataset",
+            "attributes": {
+                "size": "101,000 images",
+                "classes": 101,
+                "training_images_per_class": 750,
+                "test_images_per_class": 250,
+                "source": "foodspotting.com",
+                "availability": "public",
+                "noise": "training images contain noise"
+            }
+        },
+        {
+            "id": "20250319023915D2",
+            "name": "PFID",
+            "type": "Dataset",
+            "attributes": {
+                "description": "standardized fast-food images",
+                "environment": "controlled laboratory conditions"
+            }
+        },
+        {
+            "id": "20250319023915D3",
+            "name": "MIT-Indoor",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023915D4",
+            "name": "Pittsburgh food dataset",
+            "type": "Dataset",
+            "attributes": {
+                "classes": 101,
+                "instances_per_class": 3,
+                "images_per_instance": 8
+            }
+        },
+        {
+            "id": "20250319023915R1",
+            "name": "http://www.vision.ee.ethz.ch/datasets/food-101/",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023915T1",
+            "name": "food recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023915T2",
+            "name": "image classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023915T3",
+            "name": "discriminative part mining",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023915T4",
+            "name": "component-based classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023915T5",
+            "name": "scene classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023915T6",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

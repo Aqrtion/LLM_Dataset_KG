@@ -1,0 +1,208 @@
+{
+    "entities": [
+        {
+            "id": "20250319012144P1",
+            "name": "VoxCeleb2: Deep Speaker Recognition",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Joon Son Chung",
+                    "Arsha Nagrani",
+                    "Andrew Zisserman"
+                ],
+                "institution": "University of Oxford"
+            }
+        },
+        {
+            "id": "20250319012144D1",
+            "name": "VoxCeleb2",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1,128,246 utterances",
+                "speakers": 6112,
+                "conditions": "noisy/unconstrained",
+                "multilingual": "145 nationalities",
+                "modality": "audio-visual"
+            }
+        },
+        {
+            "id": "20250319012144D2",
+            "name": "VoxCeleb1",
+            "type": "Dataset",
+            "attributes": {
+                "reference": "Previous version"
+            }
+        },
+        {
+            "id": "20250319012144D3",
+            "name": "SITW (Speakers in the Wild)",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144D4",
+            "name": "VGGFace2",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144D5",
+            "name": "MS-Celeb-1M",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144D6",
+            "name": "NFI-FRITS",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144D7",
+            "name": "POLYCOST",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144R1",
+            "name": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb2",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T1",
+            "name": "speaker recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T2",
+            "name": "speaker verification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T3",
+            "name": "speaker identification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T4",
+            "name": "clustering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T5",
+            "name": "diarisation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T6",
+            "name": "visual speech synthesis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T7",
+            "name": "speech separation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T8",
+            "name": "cross-modal transfer",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T9",
+            "name": "face recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T10",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319012144D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319012144R1",
+            "tail": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb2",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319012144D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319012144P1",
+            "tail": "VoxCeleb2: Deep Speaker Recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319012144D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012144T2",
+            "tail": "speaker verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319012144D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012144T3",
+            "tail": "speaker identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319012144D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012144T4",
+            "tail": "clustering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319012144D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012144T5",
+            "tail": "diarisation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319012144D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319012144D2",
+            "tail": "VoxCeleb1",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319012144D4",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012144T9",
+            "tail": "face recognition",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

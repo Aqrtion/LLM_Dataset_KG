@@ -1,0 +1,153 @@
+{
+    "entities": [
+        {
+            "id": "20250318223609P1",
+            "name": "MEASURING MASSIVE MULTITASK LANGUAGE UNDERSTANDING",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Dan Hendrycks",
+                    "Collin Burns",
+                    "Steven Basart",
+                    "Andy Zou",
+                    "Mantas Mazeika",
+                    "Dawn Song",
+                    "Jacob Steinhardt"
+                ],
+                "conference": "ICLR 2021"
+            }
+        },
+        {
+            "id": "20250318223609D1",
+            "name": "Massive Multitask Test",
+            "type": "Dataset",
+            "attributes": {
+                "tasks": 57,
+                "subjects": [
+                    "STEM",
+                    "humanities",
+                    "social sciences",
+                    "law",
+                    "ethics"
+                ],
+                "question_sources": [
+                    "GRE",
+                    "USMLE",
+                    "Oxford University Press",
+                    "Examination for Professional Practice in Psychology"
+                ],
+                "format": "multiple-choice"
+            }
+        },
+        {
+            "id": "20250318223609D2",
+            "name": "HellaSwag",
+            "type": "Dataset",
+            "attributes": {
+                "task_type": "commonsense reasoning"
+            }
+        },
+        {
+            "id": "20250318223609D3",
+            "name": "Physical IQA",
+            "type": "Dataset",
+            "attributes": {
+                "task_type": "physical commonsense reasoning"
+            }
+        },
+        {
+            "id": "20250318223609D4",
+            "name": "Cosmos QA",
+            "type": "Dataset",
+            "attributes": {
+                "task_type": "reading comprehension"
+            }
+        },
+        {
+            "id": "20250318223609D5",
+            "name": "ETHICS dataset",
+            "type": "Dataset",
+            "attributes": {
+                "focus": "moral intuitions"
+            }
+        },
+        {
+            "id": "20250318223609D6",
+            "name": "GLUE",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "general language understanding evaluation"
+            }
+        },
+        {
+            "id": "20250318223609D7",
+            "name": "SuperGLUE",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "advanced language understanding evaluation"
+            }
+        },
+        {
+            "id": "20250318223609D8",
+            "name": "Harvard Law Library case law corpus",
+            "type": "Dataset",
+            "attributes": {
+                "content": "legal case summaries"
+            }
+        },
+        {
+            "id": "20250318223609R1",
+            "name": "github.com/hendrycks/test",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250318223609T1",
+            "name": "massive multitask language understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318223609T2",
+            "name": "zero-shot learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318223609T3",
+            "name": "few-shot learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318223609T4",
+            "name": "question answering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318223609T5",
+            "name": "legal understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318223609T6",
+            "name": "moral intuition prediction",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318223609T7",
+            "name": "history question answering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318223609T8",
+            "name": "mathematics problem solving",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

@@ -1,0 +1,80 @@
+{
+    "entities": [
+        {
+            "id": "20250319020328P1",
+            "name": "Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Han Xiao",
+                    "Kashif Rasul",
+                    "Roland Vollgraf"
+                ],
+                "institution": "Zalando Research"
+            }
+        },
+        {
+            "id": "20250319020328D1",
+            "name": "Fashion-MNIST",
+            "type": "Dataset",
+            "attributes": {
+                "size": "70,000 images",
+                "image_dimensions": "28x28 grayscale",
+                "classes": 10,
+                "training_split": "60,000 images",
+                "test_split": "10,000 images",
+                "data_format": "MNIST-compatible"
+            }
+        },
+        {
+            "id": "20250319020328D2",
+            "name": "MNIST",
+            "type": "Dataset",
+            "attributes": {
+                "description": "10-class handwritten digits"
+            }
+        },
+        {
+            "id": "20250319020328D3",
+            "name": "CIFAR10",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020328D4",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020328D5",
+            "name": "EMNIST",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020328R1",
+            "name": "https://github.com/zalandoresearch/fashion-mnist",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020328T1",
+            "name": "benchmarking machine learning algorithms",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020328T2",
+            "name": "machine learning classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020328T3",
+            "name": "machine learning prototyping",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

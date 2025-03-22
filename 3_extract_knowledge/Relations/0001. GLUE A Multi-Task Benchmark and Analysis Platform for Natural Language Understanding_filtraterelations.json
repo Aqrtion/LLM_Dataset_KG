@@ -1,0 +1,211 @@
+{
+    "relations": [
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250318214228R1",
+            "tail": "https://gluebenchmark.com",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250318214228P1",
+            "tail": "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250318214228D2",
+            "tail": "CoLA",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250318214228D3",
+            "tail": "SST-2",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250318214228D4",
+            "tail": "MRPC",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250318214228D5",
+            "tail": "STS-B (Semantic Textual Similarity Benchmark)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250318214228D6",
+            "tail": "QQP (Quora Question Pairs)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250318214228D7",
+            "tail": "MNLI (Multi-Genre Natural Language Inference Corpus)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250318214228D8",
+            "tail": "QNLI (Question-answering NLI)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250318214228D9",
+            "tail": "RTE (Recognizing Textual Entailment)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250318214228D10",
+            "tail": "WNLI (Winograd NLI)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250318214228D12",
+            "tail": "GLUE Diagnostic Dataset",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250318214228D2",
+            "head": "CoLA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318214228T6",
+            "tail": "acceptability classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318214228D3",
+            "head": "SST-2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318214228T2",
+            "tail": "sentiment analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318214228D4",
+            "head": "MRPC",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318214228T4",
+            "tail": "paraphrase detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318214228D5",
+            "head": "STS-B (Semantic Textual Similarity Benchmark)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318214228T5",
+            "tail": "sentence similarity",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318214228D6",
+            "head": "QQP (Quora Question Pairs)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318214228T4",
+            "tail": "paraphrase detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318214228D7",
+            "head": "MNLI (Multi-Genre Natural Language Inference Corpus)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318214228T3",
+            "tail": "textual entailment",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318214228D8",
+            "head": "QNLI (Question-answering NLI)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318214228T3",
+            "tail": "textual entailment",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318214228D9",
+            "head": "RTE (Recognizing Textual Entailment)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318214228T3",
+            "tail": "textual entailment",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318214228D10",
+            "head": "WNLI (Winograd NLI)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318214228T3",
+            "tail": "textual entailment",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318214228D1",
+            "head": "GLUE",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318214228T1",
+            "tail": "natural language understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318214228D12",
+            "head": "GLUE Diagnostic Dataset",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250318214228P1",
+            "tail": "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding",
+            "tail_type": "Paper"
+        }
+    ]
+}

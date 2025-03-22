@@ -1,0 +1,58 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319010018D1",
+            "head": "CLEVR",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319010018P1",
+            "tail": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319010018D1",
+            "head": "CLEVR",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010018T1",
+            "tail": "visual question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010018D1",
+            "head": "CLEVR",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010018T2",
+            "tail": "compositional reasoning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010018D1",
+            "head": "CLEVR",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010018T3",
+            "tail": "attribute comparison",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010018D1",
+            "head": "CLEVR",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010018T4",
+            "tail": "counting",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010018D1",
+            "head": "CLEVR",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010018T5",
+            "tail": "logical reasoning",
+            "tail_type": "Task"
+        }
+    ]
+}

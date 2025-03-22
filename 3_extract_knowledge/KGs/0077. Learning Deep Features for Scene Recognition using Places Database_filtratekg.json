@@ -1,0 +1,266 @@
+{
+    "entities": [
+        {
+            "id": "20250319032706P1",
+            "name": "Learning Deep Features for Scene Recognition using Places Database",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Bolei Zhou",
+                    "Agata Lapedriza",
+                    "Jianxiong Xiao",
+                    "Antonio Torralba",
+                    "Aude Oliva"
+                ],
+                "institutions": [
+                    "MIT",
+                    "Princeton University",
+                    "Universitat Oberta de Catalunya"
+                ]
+            }
+        },
+        {
+            "id": "20250319032706D1",
+            "name": "Places",
+            "type": "Dataset",
+            "attributes": {
+                "size": "7 million images",
+                "categories": 476,
+                "subsets": [
+                    "Places 205",
+                    "Places 88"
+                ],
+                "collection_method": "Image search engines with adjective queries, AMT annotation",
+                "diversity": "Higher than SUN and ImageNet",
+                "resolution": "200x200 pixels or larger"
+            }
+        },
+        {
+            "id": "20250319032706D2",
+            "name": "SUN database",
+            "type": "Dataset",
+            "attributes": {
+                "categories": 397,
+                "images_per_category": "100+"
+            }
+        },
+        {
+            "id": "20250319032706D3",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {
+                "type": "object-centric",
+                "size": "1.2 million images (ILSVRC 2012)"
+            }
+        },
+        {
+            "id": "20250319032706D4",
+            "name": "MIT Indoor67",
+            "type": "Dataset",
+            "attributes": {
+                "categories": 67,
+                "focus": "indoor places"
+            }
+        },
+        {
+            "id": "20250319032706D5",
+            "name": "Scene15",
+            "type": "Dataset",
+            "attributes": {
+                "categories": 15
+            }
+        },
+        {
+            "id": "20250319032706D6",
+            "name": "SUN Attribute Database",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706D7",
+            "name": "Caltech101",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706D8",
+            "name": "Caltech256",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706D9",
+            "name": "Stanford Action40",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706D10",
+            "name": "UIUC Event8",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706R1",
+            "name": "http://places.csail.mit.edu",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706T1",
+            "name": "scene recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706T2",
+            "name": "scene classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706T3",
+            "name": "object recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706T4",
+            "name": "visual recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706T5",
+            "name": "training CNNs",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706T6",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706T7",
+            "name": "cross-dataset generalization",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706T8",
+            "name": "visualization of CNN layers",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032706T9",
+            "name": "dataset comparison",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319032706R1",
+            "tail": "http://places.csail.mit.edu",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319032706P1",
+            "tail": "Learning Deep Features for Scene Recognition using Places Database",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T1",
+            "tail": "scene recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T2",
+            "tail": "scene classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T3",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T4",
+            "tail": "visual recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T5",
+            "tail": "training CNNs",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T6",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T7",
+            "tail": "cross-dataset generalization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T8",
+            "tail": "visualization of CNN layers",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T9",
+            "tail": "dataset comparison",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

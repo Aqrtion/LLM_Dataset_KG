@@ -1,0 +1,145 @@
+{
+    "entities": [
+        {
+            "id": "20250319042813P1",
+            "name": "VoxCeleb2: Deep Speaker Recognition",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Joon Son Chung",
+                    "Arsha Nagrani",
+                    "Andrew Zisserman"
+                ],
+                "institution": "University of Oxford"
+            }
+        },
+        {
+            "id": "20250319042813D1",
+            "name": "VoxCeleb2",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1,128,246 utterances",
+                "speakers": 6112,
+                "hours": 2442,
+                "gender_balance": "61% male",
+                "nationalities": 145,
+                "conditions": "noisy and unconstrained",
+                "multilingual": true
+            }
+        },
+        {
+            "id": "20250319042813D2",
+            "name": "VoxCeleb1",
+            "type": "Dataset",
+            "attributes": {
+                "usage": "testing dataset"
+            }
+        },
+        {
+            "id": "20250319042813D3",
+            "name": "SITW",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "speaker recognition benchmark"
+            }
+        },
+        {
+            "id": "20250319042813D4",
+            "name": "VGGFace2",
+            "type": "Dataset",
+            "attributes": {
+                "application": "face recognition"
+            }
+        },
+        {
+            "id": "20250319042813D5",
+            "name": "MS-Celeb-1M",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "large-scale face recognition"
+            }
+        },
+        {
+            "id": "20250319042813D6",
+            "name": "NFI-FRITS",
+            "type": "Dataset",
+            "attributes": {
+                "domain": "forensic speaker recognition"
+            }
+        },
+        {
+            "id": "20250319042813D7",
+            "name": "POLYCOST",
+            "type": "Dataset",
+            "attributes": {
+                "source": "telephone-speech"
+            }
+        },
+        {
+            "id": "20250319042813D8",
+            "name": "DARPA speech recognition dataset",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319042813R1",
+            "name": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb2",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319042813T1",
+            "name": "speaker identification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319042813T2",
+            "name": "speaker verification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319042813T3",
+            "name": "clustering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319042813T4",
+            "name": "diarisation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319042813T5",
+            "name": "visual speech synthesis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319042813T6",
+            "name": "speech separation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319042813T7",
+            "name": "cross-modal transfer",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319042813T8",
+            "name": "face recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319042813T9",
+            "name": "training speaker embedding systems",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

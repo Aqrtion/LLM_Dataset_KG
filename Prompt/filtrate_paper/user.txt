@@ -1,0 +1,63 @@
+Output Format:
+1. Strictly adhere to the output JSON format provided below.
+2. Only output the JSON format result exactly as specified without any additional information.
+3. NO COMMENTS. NO ACKNOWLEDGEMENTS.
+{
+  "is_related_to_large_models": true/false,
+  "introduces_new_dataset": true/false,
+  "dataset_info": {
+      "full_name": "Full Dataset Name"/null,
+      "abbreviation": "Dataset Abbreviation"/null
+  }
+}
+
+###
+
+Example:
+Input:
+Title, abstract and Introduction:
+ImageNet: A Large-Scale Hierarchical Image Database
+
+Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li and Li Fei-Fei Dept. of Computer Science, Princeton University, USA
+
+{jiadeng, wdong, rsocher, jial, li, feifeili}@cs.princeton.edu
+
+Abstract
+
+The explosion of image data on the Internet has the potential to foster more sophisticated and robust models and algorithms to index, retrieve, organize and interact with images and multimedia data. But exactly how such data can be harnessed and organized remains a critical problem. We introduce here a new database called “ImageNet”, a largescale ontology of images built upon the backbone of the WordNet structure. ImageNet aims to populate the majority of the 80,000 synsets of WordNet with an average of 500- 1000 clean and full resolution images. This will result in tens of millions of annotated images organized by the semantic hierarchy of WordNet. This paper offers a detailed analysis of ImageNet in its current state: 12 subtrees with 5247 synsets and 3.2 million images in total. We show that ImageNet is much larger in scale and diversity and much more accurate than the current image datasets. Constructing such a large-scale database is a challenging task. We describe the data collection scheme with Amazon Mechanical Turk. Lastly, we illustrate the usefulness of ImageNet through three simple applications in object recognition, image classiﬁcation and automatic object clustering. We hope that the scale, accuracy, diversity and hierarchical structure of ImageNet can offer unparalleled opportunities to researchers in the computer vision community and beyond.
+
+1. Introduction
+
+The digital era has brought with it an enormous explosion of data. The latest estimations put a number of more than 3 billion photos on Flickr, a similar number of video clips on YouTube and an even larger number for images in the Google Image Search database. More sophisticated and robust models and algorithms can be proposed by exploiting these images, resulting in better applications for users to index, retrieve, organize and interact with these data. But exactly how such data can be utilized and organized is a problem yet to be solved. In this paper, we introduce a new image database called “ImageNet”, a large-scale ontology of images. We believe that a large-scale ontology of images is a critical resource for developing advanced, large-scale
+
+content-based image search and image understanding algorithms, as well as for providing critical training and benchmarking data for such algorithms.
+
+ImageNet uses the hierarchical structure of WordNet [9]. Each meaningful concept in WordNet, possibly described by multiple words or word phrases, is called a “synonym set” or “synset”. There are around 80,000 noun synsets in WordNet. In ImageNet, we aim to provide on average 500-1000 images to illustrate each synset. Images of each concept are quality-controlled and human-annotated as described in Sec. 3.2. ImageNet, therefore, will offer In this paper, tens of millions of cleanly sorted images. we report the current version of ImageNet, consisting of 12 “subtrees”: mammal, bird, ﬁsh, reptile, amphibian, vehicle, furniture, musical instrument, geological formation, tool, ﬂower, fruit. These subtrees contain 5247 synsets and 3.2 million images. Fig. 1 shows a snapshot of two branches of the mammal and vehicle subtrees. The database is publicly available at http://www.image-net.org.
+
+The rest of the paper is organized as follows: We ﬁrst show that ImageNet is a large-scale, accurate and diverse image database (Section 2). In Section 4, we present a few simple application examples by exploiting the current ImageNet, mostly the mammal and vehicle subtrees. Our goal is to show that ImageNet can serve as a useful resource for visual recognition applications such as object recognition, image classiﬁcation and object localization. In addition, the construction of such a large-scale and high-quality database can no longer rely on traditional data collection methods. Sec. 3 describes how ImageNet is constructed by leveraging Amazon Mechanical Turk.
+
+Data Related Paragraphs:
+ImageNet is built upon the hierarchical structure provided by WordNet. In its completion, ImageNet aims to contain in the order of 50 million cleanly labeled full resolution images (500-1000 per synset). At the time this paper is written, ImageNet consists of 12 subtrees. Most analysis will be based on the mammal and vehicle subtrees.
+
+Accuracy We would like to offer a clean dataset at all levels of the WordNet hierarchy. Fig. 4 demonstrates the labeling precision on a total of 80 synsets randomly sampled at different tree depths. An average of 99.7% precision is achieved on average. Achieving a high precision for all depths of the ImageNet tree is challenging because the lower in the hierarchy a synset is, the harder it is to classify, e.g. Siamese cat versus Burmese cat.
+
+We collect candidate images from the Internet by querying several image search engines. For each synset, the queries are the set of WordNet synonyms. Search engines typically limit the number of images retrievable (in the order of a few hundred to a thousand). To obtain as many images as possible, we expand the query set by appending the queries with the word from parent synsets, if the same word appears in the gloss of the target synset. For example, when querying “whippet”, according to WordNet’s gloss a “small slender dog of greyhound type developed in England”, we also use “whippet dog” and “whippet greyhound”.
+
+To collect a highly accurate dataset, we rely on humans to verify each candidate image collected in the previous step for a given synset. This is achieved by using the service of Amazon Mechanical Turk (AMT), an online platform on which one can put up tasks for users to complete and to get paid. AMT has been used for labeling vision data [23]. With a global user base, AMT is particularly suitable for large scale labeling.
+
+ImageNet is an ambitious project. Thus far, we have constructed 12 subtrees containing 3.2 million images. Our goal is to complete the construction of around 50 million images in the next two years. We describe here the method we use to construct ImageNet, shedding light on how properties of Sec. 2 can be ensured in this process.
+
+Output:
+{
+  "is_related_to_large_models": true,
+  "introduces_new_dataset": true,
+  "dataset_info": {
+      "full_name": null,
+      "abbreviation": "ImageNet"
+  }
+}
+
+###
+
+Input:
+{input}

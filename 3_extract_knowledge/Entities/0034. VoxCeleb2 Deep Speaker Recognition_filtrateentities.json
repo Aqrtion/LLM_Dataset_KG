@@ -1,0 +1,133 @@
+{
+    "entities": [
+        {
+            "id": "20250319012144P1",
+            "name": "VoxCeleb2: Deep Speaker Recognition",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Joon Son Chung",
+                    "Arsha Nagrani",
+                    "Andrew Zisserman"
+                ],
+                "institution": "University of Oxford"
+            }
+        },
+        {
+            "id": "20250319012144D1",
+            "name": "VoxCeleb2",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1,128,246 utterances",
+                "speakers": 6112,
+                "conditions": "noisy/unconstrained",
+                "multilingual": "145 nationalities",
+                "modality": "audio-visual"
+            }
+        },
+        {
+            "id": "20250319012144D2",
+            "name": "VoxCeleb1",
+            "type": "Dataset",
+            "attributes": {
+                "reference": "Previous version"
+            }
+        },
+        {
+            "id": "20250319012144D3",
+            "name": "SITW (Speakers in the Wild)",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144D4",
+            "name": "VGGFace2",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144D5",
+            "name": "MS-Celeb-1M",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144D6",
+            "name": "NFI-FRITS",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144D7",
+            "name": "POLYCOST",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144R1",
+            "name": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb2",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T1",
+            "name": "speaker recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T2",
+            "name": "speaker verification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T3",
+            "name": "speaker identification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T4",
+            "name": "clustering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T5",
+            "name": "diarisation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T6",
+            "name": "visual speech synthesis",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T7",
+            "name": "speech separation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T8",
+            "name": "cross-modal transfer",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T9",
+            "name": "face recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012144T10",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

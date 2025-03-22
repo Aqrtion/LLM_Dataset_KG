@@ -1,0 +1,94 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319025051D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319025051R1",
+            "tail": "http://deepmind.com/kinetics",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319025051D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319025051P1",
+            "tail": "The Kinetics Human Action Video Dataset",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319025051D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025051T1",
+            "tail": "human action classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025051D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025051T3",
+            "tail": "multi-modal analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025051D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025051T7",
+            "tail": "video modeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025051D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025051T8",
+            "tail": "temporal aggregation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025051D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025051T11",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025051D2",
+            "head": "HMDB-51",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319025051P2",
+            "tail": "HMDB: a large video database for human motion recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319025051D3",
+            "head": "UCF-101",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319025051P3",
+            "tail": "UCF101: A dataset of 101 human actions classes from videos in the wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319025051D5",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319025051P4",
+            "tail": "ImageNet: A Large-Scale Hierarchical Image Database",
+            "tail_type": "Paper"
+        }
+    ]
+}

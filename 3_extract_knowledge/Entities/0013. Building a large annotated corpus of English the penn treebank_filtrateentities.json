@@ -1,0 +1,64 @@
+{
+    "entities": [
+        {
+            "name": "Building a Large Annotated Corpus of English: The Penn Treebank",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Mitchell P. Marcus",
+                    "Beatrice Santorini",
+                    "Mary Ann Marcinkiewicz"
+                ],
+                "institution": "University of Pennsylvania, Northwestern University"
+            }
+        },
+        {
+            "name": "Penn Treebank",
+            "type": "Dataset",
+            "attributes": {
+                "size": "4.5 million words",
+                "annotations": [
+                    "part-of-speech (POS) tags",
+                    "skeletal syntactic structure"
+                ],
+                "version": "as of 11/92",
+                "language": "American English"
+            }
+        },
+        {
+            "name": "Brown Corpus",
+            "type": "Dataset",
+            "attributes": {
+                "tagset": "original Brown Corpus tagset",
+                "availability": "untagged version used as source"
+            }
+        },
+        {
+            "name": "DARPA WSJ-CSR1 corpus",
+            "type": "Dataset",
+            "attributes": {
+                "description": "digitally recorded read speech including parsed Dow Jones Newswire materials"
+            }
+        },
+        {
+            "name": "part-of-speech tagging",
+            "type": "Task"
+        },
+        {
+            "name": "syntactic parsing",
+            "type": "Task"
+        },
+        {
+            "name": "predicate-argument structure extraction",
+            "type": "Task"
+        },
+        {
+            "name": "stochastic parsing",
+            "type": "Task"
+        },
+        {
+            "name": "POS taggers development",
+            "type": "Task"
+        }
+    ]
+}

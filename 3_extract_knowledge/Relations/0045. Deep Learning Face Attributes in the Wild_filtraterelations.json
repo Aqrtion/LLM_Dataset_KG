@@ -1,0 +1,130 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319015825D3",
+            "head": "CelebA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319015825P1",
+            "tail": "Deep Learning Face Attributes in the Wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319015825D4",
+            "head": "LFWA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319015825P1",
+            "tail": "Deep Learning Face Attributes in the Wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319015825D5",
+            "head": "LFWA+",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319015825P1",
+            "tail": "Deep Learning Face Attributes in the Wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319015825D3",
+            "head": "CelebA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319015825D1",
+            "tail": "CelebFaces",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319015825D4",
+            "head": "LFWA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319015825D2",
+            "tail": "LFW (Labeled Faces in the Wild)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319015825D5",
+            "head": "LFWA+",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319015825D4",
+            "tail": "LFWA",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319015825D6",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T5",
+            "tail": "face localization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D6",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T12",
+            "tail": "object classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D1",
+            "head": "CelebFaces",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T7",
+            "tail": "face recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D2",
+            "head": "LFW (Labeled Faces in the Wild)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T4",
+            "tail": "attribute prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D8",
+            "head": "SUN database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T5",
+            "tail": "face localization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D3",
+            "head": "CelebA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T4",
+            "tail": "attribute prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D4",
+            "head": "LFWA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T4",
+            "tail": "attribute prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015825D5",
+            "head": "LFWA+",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015825T4",
+            "tail": "attribute prediction",
+            "tail_type": "Task"
+        }
+    ]
+}

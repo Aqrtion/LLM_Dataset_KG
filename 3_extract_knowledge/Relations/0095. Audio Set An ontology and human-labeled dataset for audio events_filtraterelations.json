@@ -1,0 +1,94 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319042130D1",
+            "head": "AudioSet",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319042130R1",
+            "tail": "g.co/audioset",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319042130D1",
+            "head": "AudioSet",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319042130P1",
+            "tail": "AUDIOSET: AN ONTOLOGY AND HUMAN-LABELED DATASET FOR AUDIO EVENTS",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319042130D1",
+            "head": "AudioSet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042130T1",
+            "tail": "audio event detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042130D1",
+            "head": "AudioSet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042130T2",
+            "tail": "audio event classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042130D1",
+            "head": "AudioSet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042130T3",
+            "tail": "sound understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042130D1",
+            "head": "AudioSet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042130T4",
+            "tail": "acoustic scene analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042130D1",
+            "head": "AudioSet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042130T5",
+            "tail": "automatic audio event recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042130D1",
+            "head": "AudioSet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042130T6",
+            "tail": "training audio event recognizers",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042130D1",
+            "head": "AudioSet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042130T7",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042130D1",
+            "head": "AudioSet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042130T8",
+            "tail": "audio content analysis",
+            "tail_type": "Task"
+        }
+    ]
+}

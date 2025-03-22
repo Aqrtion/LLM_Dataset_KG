@@ -1,0 +1,203 @@
+{
+    "entities": [
+        {
+            "id": "20250319013228P1",
+            "name": "FEVER: a large-scale dataset for Fact Extraction and VERification",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "James Thorne",
+                    "Andreas Vlachos",
+                    "Christos Christodoulopoulos",
+                    "Arpit Mittal"
+                ],
+                "institution": "University of Sheffield, Amazon Research Cambridge"
+            }
+        },
+        {
+            "id": "20250319013228D1",
+            "name": "FEVER",
+            "type": "Dataset",
+            "attributes": {
+                "size": "185,445 claims",
+                "classes": [
+                    "SUPPORTED",
+                    "REFUTED",
+                    "NOTENOUGHINFO"
+                ],
+                "inter_annotator_agreement": "Fleiss κ 0.6841",
+                "evidence_composition": "16.82% multi-sentence",
+                "cross_page_evidence": "12.15%",
+                "annotation_precision": "95.42%",
+                "annotation_recall": "72.36%"
+            }
+        },
+        {
+            "id": "20250319013228D2",
+            "name": "Fake News Challenge dataset",
+            "type": "Dataset",
+            "attributes": {
+                "size": "50K labeled claim-article pairs",
+                "claims": 300,
+                "articles": 2582
+            }
+        },
+        {
+            "id": "20250319013228D3",
+            "name": "“Liar, Liar Pants on Fire” dataset",
+            "type": "Dataset",
+            "attributes": {
+                "size": "12.8K claims",
+                "source": "PolitiFact API"
+            }
+        },
+        {
+            "id": "20250319013228D4",
+            "name": "Fact checking dataset",
+            "type": "Dataset",
+            "attributes": {
+                "size": "106 claims",
+                "source": "PolitiFact"
+            }
+        },
+        {
+            "id": "20250319013228D5",
+            "name": "Emergent dataset",
+            "type": "Dataset",
+            "attributes": {
+                "task": "stance classification"
+            }
+        },
+        {
+            "id": "20250319013228D6",
+            "name": "TREC Answer Validation Exercise dataset",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1,000 instances per language"
+            }
+        },
+        {
+            "id": "20250319013228T1",
+            "name": "Fact Extraction and Verification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319013228T2",
+            "name": "claim verification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319013228T3",
+            "name": "stance classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319013228T4",
+            "name": "natural logic inference",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319013228T5",
+            "name": "question answering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319013228T6",
+            "name": "claim extraction",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319013228T7",
+            "name": "answer validation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319013228T8",
+            "name": "fake news detection",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319013228D1",
+            "head": "FEVER",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319013228P1",
+            "tail": "FEVER: a large-scale dataset for Fact Extraction and VERification",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319013228D1",
+            "head": "FEVER",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T1",
+            "tail": "Fact Extraction and Verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319013228D1",
+            "head": "FEVER",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T2",
+            "tail": "claim verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319013228D2",
+            "head": "Fake News Challenge dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T3",
+            "tail": "stance classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319013228D3",
+            "head": "“Liar, Liar Pants on Fire” dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T8",
+            "tail": "fake news detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319013228D4",
+            "head": "Fact checking dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T2",
+            "tail": "claim verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319013228D5",
+            "head": "Emergent dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T3",
+            "tail": "stance classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319013228D6",
+            "head": "TREC Answer Validation Exercise dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319013228T7",
+            "tail": "answer validation",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

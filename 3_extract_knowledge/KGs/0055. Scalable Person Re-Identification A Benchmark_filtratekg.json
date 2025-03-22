@@ -1,0 +1,187 @@
+{
+    "entities": [
+        {
+            "id": "20250319022946P1",
+            "name": "Scalable Person Re-identification: A Benchmark",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Liang Zheng",
+                    "Liyue Shen",
+                    "Lu Tian",
+                    "Shengjin Wang",
+                    "Jingdong Wang",
+                    "Qi Tian"
+                ],
+                "institutions": [
+                    "Tsinghua University",
+                    "Microsoft Research",
+                    "University of Texas at San Antonio"
+                ]
+            }
+        },
+        {
+            "id": "20250319022946D1",
+            "name": "Market-1501",
+            "type": "Dataset",
+            "attributes": {
+                "size": "32,668 annotated bboxes + 500K distractors",
+                "identities": 1501,
+                "cameras": 6,
+                "detector": "Deformable Part Model (DPM)",
+                "evaluation_metrics": [
+                    "mAP",
+                    "CMC"
+                ],
+                "features": [
+                    "multi-query",
+                    "cross-camera search",
+                    "open system"
+                ]
+            }
+        },
+        {
+            "id": "20250319022946D2",
+            "name": "VIPeR",
+            "type": "Dataset",
+            "attributes": {
+                "identities": 632,
+                "cameras": 2,
+                "image_size": "128x48"
+            }
+        },
+        {
+            "id": "20250319022946D3",
+            "name": "CUHK03",
+            "type": "Dataset",
+            "attributes": {
+                "identities": 1467,
+                "bboxes": 13164,
+                "detector": "DPM"
+            }
+        },
+        {
+            "id": "20250319022946D4",
+            "name": "i-LIDS",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022946R1",
+            "name": "http://www.liangzheng.com.cn",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022946T1",
+            "name": "person re-identification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022946T2",
+            "name": "image search",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022946T3",
+            "name": "metric learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022946T4",
+            "name": "multiple query techniques",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022946T5",
+            "name": "search reranking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319022946T6",
+            "name": "large-scale data analysis",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319022946D1",
+            "head": "Market-1501",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319022946R1",
+            "tail": "http://www.liangzheng.com.cn",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319022946D1",
+            "head": "Market-1501",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319022946P1",
+            "tail": "Scalable Person Re-identification: A Benchmark",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319022946D1",
+            "head": "Market-1501",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022946T1",
+            "tail": "person re-identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319022946D1",
+            "head": "Market-1501",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022946T2",
+            "tail": "image search",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319022946D1",
+            "head": "Market-1501",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022946T3",
+            "tail": "metric learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319022946D1",
+            "head": "Market-1501",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022946T4",
+            "tail": "multiple query techniques",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319022946D1",
+            "head": "Market-1501",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022946T5",
+            "tail": "search reranking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319022946D1",
+            "head": "Market-1501",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319022946T6",
+            "tail": "large-scale data analysis",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

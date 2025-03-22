@@ -1,0 +1,53 @@
+{
+    "relations": [
+        {
+            "head": "3D Poses in the Wild (3DPW)",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail": "http://virtualhumans.mpi-inf.mpg.de/3DPW",
+            "tail_type": "Repository"
+        },
+        {
+            "head": "3D Poses in the Wild (3DPW)",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Recovering Accurate 3D Human Pose in The Wild Using IMUs and a Moving Camera",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "3D Poses in the Wild (3DPW)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head": "3D Poses in the Wild (3DPW)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "3D human pose estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head": "TotalCapture",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "validation",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Recovering Accurate 3D Human Pose in The Wild Using IMUs and a Moving Camera",
+            "head_type": "Paper",
+            "relation": "introduced_in",
+            "tail": "3D Poses in the Wild (3DPW)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "sensor fusion",
+            "head_type": "Task",
+            "relation": "used_for",
+            "tail": "motion capture in natural environments",
+            "tail_type": "Task"
+        }
+    ]
+}

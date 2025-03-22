@@ -1,0 +1,105 @@
+{
+    "entities": [
+        {
+            "name": "WINOGRANDE: An Adversarial Winograd Schema Challenge at Scale",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Keisuke Sakaguchi",
+                    "Ronan Le Bras",
+                    "Chandra Bhagavatula",
+                    "Yejin Choi"
+                ],
+                "institutions": [
+                    "Allen Institute for Artificial Intelligence",
+                    "University of Washington"
+                ]
+            }
+        },
+        {
+            "name": "WINOGRANDE",
+            "type": "Dataset",
+            "attributes": {
+                "size": "44k problems",
+                "construction_method": "crowdsourcing with Amazon Mechanical Turk, AFLITE algorithm",
+                "purpose": "commonsense reasoning evaluation",
+                "splits": [
+                    "WINOGRANDEdebiased (12,282 instances)",
+                    "WINOGRANDEall (43,972 instances)"
+                ]
+            }
+        },
+        {
+            "name": "WSC (Winograd Schema Challenge)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "273 problems",
+                "focus": "pronoun resolution"
+            }
+        },
+        {
+            "name": "DPR (Definite Pronoun Resolution Dataset)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1,886 problems",
+                "creation": "authored by 30 undergraduate students"
+            }
+        },
+        {
+            "name": "COPA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1,000 problems",
+                "focus": "commonsense causal reasoning"
+            }
+        },
+        {
+            "name": "KnowRef",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "coreference resolution without gender/number cues"
+            }
+        },
+        {
+            "name": "Winogender",
+            "type": "Dataset",
+            "attributes": {
+                "focus": "gender bias measurement in coreference resolution"
+            }
+        },
+        {
+            "name": "SuperGLUE-WSC",
+            "type": "Dataset",
+            "attributes": {
+                "composition": "aggregates WSC, PDP, and additional examples"
+            }
+        },
+        {
+            "name": "PDP (Pronoun Disambiguation Problems)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "80 problems"
+            }
+        },
+        {
+            "name": "commonsense reasoning",
+            "type": "Task"
+        },
+        {
+            "name": "pronoun resolution",
+            "type": "Task"
+        },
+        {
+            "name": "transfer learning",
+            "type": "Task"
+        },
+        {
+            "name": "coreference resolution",
+            "type": "Task"
+        },
+        {
+            "name": "gender bias measurement",
+            "type": "Task"
+        }
+    ]
+}

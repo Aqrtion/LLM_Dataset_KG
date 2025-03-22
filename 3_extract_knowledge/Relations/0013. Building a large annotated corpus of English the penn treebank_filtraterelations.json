@@ -1,0 +1,53 @@
+{
+    "relations": [
+        {
+            "head": "Penn Treebank",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Building a Large Annotated Corpus of English: The Penn Treebank",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "Penn Treebank",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "part-of-speech tagging",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Penn Treebank",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "syntactic parsing",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Penn Treebank",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "predicate-argument structure extraction",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Penn Treebank",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "stochastic parsing",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Penn Treebank",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "POS taggers development",
+            "tail_type": "Task"
+        },
+        {
+            "head": "DARPA WSJ-CSR1 corpus",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "Penn Treebank",
+            "tail_type": "Dataset"
+        }
+    ]
+}

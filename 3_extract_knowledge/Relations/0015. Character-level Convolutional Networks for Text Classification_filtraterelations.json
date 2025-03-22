@@ -1,0 +1,137 @@
+{
+    "relations": [
+        {
+            "head": "AG’s News",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Character-level Convolutional Networks for Text Classification",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "Sogou News",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Character-level Convolutional Networks for Text Classification",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "DBPedia",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Character-level Convolutional Networks for Text Classification",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "Yelp Review Polarity",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Character-level Convolutional Networks for Text Classification",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "Yelp Review Full",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Character-level Convolutional Networks for Text Classification",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "Yahoo! Answers",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Character-level Convolutional Networks for Text Classification",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "Amazon Review Full",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Character-level Convolutional Networks for Text Classification",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "Amazon Review Polarity",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Character-level Convolutional Networks for Text Classification",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "AG’s News",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "text classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Sogou News",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "text classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "DBPedia",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "text classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Yelp Review Polarity",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "text classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Yelp Review Full",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "text classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Yahoo! Answers",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "text classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Amazon Review Full",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "text classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Amazon Review Polarity",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "text classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "text classification",
+            "head_type": "Task",
+            "relation": "has_subtask",
+            "tail": "sentiment analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head": "text classification",
+            "head_type": "Task",
+            "relation": "has_subtask",
+            "tail": "topic classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "WordNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "text classification",
+            "tail_type": "Task"
+        }
+    ]
+}

@@ -1,0 +1,165 @@
+{
+    "entities": [
+        {
+            "id": "20250319002611P1",
+            "name": "ConceptNet 5.5: An Open Multilingual Graph of General Knowledge",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Robyn Speer",
+                    "Joshua Chin",
+                    "Catherine Havasi"
+                ],
+                "institutions": [
+                    "Luminoso Technologies, Inc.",
+                    "Union College"
+                ]
+            }
+        },
+        {
+            "id": "20250319002611D1",
+            "name": "ConceptNet 5.5",
+            "type": "Dataset",
+            "attributes": {
+                "size": "21 million edges, 8 million nodes",
+                "languages": 83,
+                "sources": [
+                    "Open Mind Common Sense",
+                    "Wiktionary",
+                    "Open Multilingual WordNet",
+                    "DBPedia",
+                    "JMDict",
+                    "OpenCyc"
+                ],
+                "structure": "knowledge graph"
+            }
+        },
+        {
+            "id": "20250319002611D2",
+            "name": "ConceptNet 5.2",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611D3",
+            "name": "WordNet",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611D4",
+            "name": "Open Multilingual WordNet",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611D5",
+            "name": "DBPedia",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611D6",
+            "name": "OpenCyc",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611D7",
+            "name": "JMDict",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611D8",
+            "name": "Wiktionary",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611D9",
+            "name": "Open Mind Common Sense (OMCS)",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611D10",
+            "name": "ConceptNet Numberbatch 16.09",
+            "type": "Dataset",
+            "attributes": {
+                "version": "16.09",
+                "components": [
+                    "ConceptNet 5.5",
+                    "word2vec",
+                    "GloVe"
+                ]
+            }
+        },
+        {
+            "id": "20250319002611R1",
+            "name": "http://conceptnet.io",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611R2",
+            "name": "https://github.com/commonsense/conceptnet5",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611R3",
+            "name": "https://github.com/commonsense/conceptnet-numberbatch",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611T1",
+            "name": "word relatedness evaluation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611T2",
+            "name": "solving SAT-style analogies",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611T3",
+            "name": "natural language processing",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611T4",
+            "name": "machine learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611T5",
+            "name": "semantic space construction",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611T6",
+            "name": "multilingual embedding propagation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611T7",
+            "name": "training word embeddings",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319002611T8",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

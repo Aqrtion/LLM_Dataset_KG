@@ -1,0 +1,39 @@
+Role:
+You are a Large Language Models (LLMs) specialist extracting structured knowledge from technical documents.
+
+###
+
+Task:
+1. Entity Extraction:
+   Extract key entities from the text and classify them into predefined high-level entity types based on the schema below. Only extract entities that fit within the given categories.
+   Predefined Entity Schema:
+   - Paper: Formal research paper titles (e.g. "LLaMA: Open and Efficient Foundation Language Models")
+   - Task: Research tasks related to large language model (LLM) technologies (e.g. "instruction tuning", "chain-of-thought reasoning")
+   - Dataset: Formal names with versions (e.g. "The Pile v1.2", "RedPajama-Data-1T"), including dataset abbreviations in parentheses (e.g. "C4 (Colossal Clean Crawled Corpus)")
+   - Repository: Dataset storage locations (e.g. "https://huggingface.co/datasets/EleutherAI/pile", "https://huggingface.co/datasets/togethercomputer/RedPajama-Data-1T"). Exclude: Code repositories
+   - License: Data usage licenses (e.g. "AI2 Impact License", "CC-BY-NC-4.0")
+
+2. Relation Extraction:
+   Identify relationships between extracted entities using the predefined schema below. Ensure that the relations describe meaningful and standardized interactions.
+   Predefined Relation Schema:
+   | Relation        | Valid Head   | Valid Tail | Description                      |
+   |-----------------|--------------|------------|----------------------------------|
+   | stored_in       | Dataset      | Repository | Dataset storage location         |
+   | licensed_under  | Dataset      | License    | Dataset usage terms              |
+   | used_for        | Dataset      | Task       | Dataset application purpose      |
+   | introduced_in   | Dataset/Task | Paper      | Origin publication               |
+   | has_subtask     | Task         | Task       | Parent task - Subtask hierarchy  |
+   | composed_of     | Dataset      | Dataset    | Dataset composition relationship |
+   | has_new_version | Dataset      | Dataset    | Dataset inheritance relationship |
+
+3. Attribute Extraction:
+   Extract relevant attributes for entities and store them as key-value pairs. Attributes should provide additional structured information about the entity.
+
+###
+
+Context:
+1. You will be provided with a fragment of an academic paper, which includes the title, abstract, introduction, and some paragraphs.
+2. The content may vary in clarity and completeness.
+4. Consider the technical details, innovation, and scientific rigor of the paper during your analysis.
+
+###

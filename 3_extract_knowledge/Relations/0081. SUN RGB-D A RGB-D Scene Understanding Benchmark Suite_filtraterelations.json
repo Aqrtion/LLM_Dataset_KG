@@ -1,0 +1,85 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319034024D1",
+            "head": "SUN RGB-D",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319034024R1",
+            "tail": "http://rgbd.cs.princeton.edu",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319034024D1",
+            "head": "SUN RGB-D",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319034024P1",
+            "tail": "SUN RGB-D: A RGB-D Scene Understanding Benchmark Suite",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319034024D1",
+            "head": "SUN RGB-D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034024T1",
+            "tail": "scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034024D1",
+            "head": "SUN RGB-D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034024T2",
+            "tail": "object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034024D1",
+            "head": "SUN RGB-D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034024T3",
+            "tail": "semantic segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034024D1",
+            "head": "SUN RGB-D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034024T4",
+            "tail": "scene categorization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034024D1",
+            "head": "SUN RGB-D",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319034024D2",
+            "tail": "NYU Depth v2",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319034024D1",
+            "head": "SUN RGB-D",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319034024D3",
+            "tail": "Berkeley B3DO Dataset",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319034024D1",
+            "head": "SUN RGB-D",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319034024D4",
+            "tail": "SUN3D",
+            "tail_type": "Dataset"
+        }
+    ]
+}

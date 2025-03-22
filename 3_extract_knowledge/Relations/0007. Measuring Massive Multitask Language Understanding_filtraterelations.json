@@ -1,0 +1,76 @@
+{
+    "relations": [
+        {
+            "head_id": "20250318223609D1",
+            "head": "Massive Multitask Test",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250318223609R1",
+            "tail": "github.com/hendrycks/test",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250318223609D1",
+            "head": "Massive Multitask Test",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250318223609P1",
+            "tail": "MEASURING MASSIVE MULTITASK LANGUAGE UNDERSTANDING",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250318223609D1",
+            "head": "Massive Multitask Test",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318223609T1",
+            "tail": "massive multitask language understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318223609D1",
+            "head": "Massive Multitask Test",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318223609T5",
+            "tail": "legal understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318223609D1",
+            "head": "Massive Multitask Test",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318223609T6",
+            "tail": "moral intuition prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318223609D1",
+            "head": "Massive Multitask Test",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318223609T7",
+            "tail": "history question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318223609D1",
+            "head": "Massive Multitask Test",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318223609T8",
+            "tail": "mathematics problem solving",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318223609D5",
+            "head": "ETHICS dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318223609T6",
+            "tail": "moral intuition prediction",
+            "tail_type": "Task"
+        }
+    ]
+}

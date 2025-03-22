@@ -1,0 +1,786 @@
+6 1 0 2 c e D 0 2
+
+]
+
+V C . s c [
+
+1 v 0 9 8 6 0 . 2 1 6 1 : v i X r a
+
+CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning
+
+Justin Johnson1,2∗ Li Fei-Fei1
+
+Bharath Hariharan2 C. Lawrence Zitnick2
+
+Laurens van der Maaten2 Ross Girshick2
+
+1Stanford University
+
+2Facebook AI Research
+
+Abstract
+
+When building artiﬁcial intelligence systems that can reason and answer questions about visual data, we need diagnostic tests to analyze our progress and discover shortcomings. Existing benchmarks for visual question answering can help, but have strong biases that models can exploit to correctly answer questions without reasoning. They also conﬂatemultiplesourcesoferror, makingit hardto pinpoint model weaknesses. We present a diagnostic dataset that tests a range of visual reasoning abilities. It contains minimal biases and has detailed annotations describing the kind of reasoning each question requires. We use this dataset to analyze a variety of modern visual reasoning systems, providing novel insights into their abilities and limitations.
+
+1. Introduction
+
+A long-standing goal of artiﬁcial intelligence research is to develop systems that can reason and answer questions about visual information. Recently, several datasets have been introduced to study this problem [4, 10, 21, 26, 32, 46, 49]. Each of these Visual Question Answering (VQA)datasetscontainschallengingnaturallanguagequestions about images. Correctly answering these questions requires perceptual abilities such as recognizing objects, attributes, and spatial relationships as well as higher-level skills such as counting, performing logical inference, making comparisons, or leveraging commonsense world knowledge [31]. Numerous methods have attacked these problems [2, 3, 9, 24, 44], but many show only marginal improvementsoverstrongbaselines[4,16,48]. Unfortunately, our ability to understand the limitations of these methods is impeded by the inherent complexity of the VQA task. Are methods hampered by failures in recognition, poor reasoning, lack of commonsense knowledge, or something else?
+
+The difﬁculty of understanding a system’s competences
+
+∗Work done during an internship at FAIR.
+
+Q: Are there an equal number of large things and metal spheres? Q: What size is the cylinder that is left of the brown metal thing that is left of the big sphere? Q: There is a sphere with the same size as the metal cube; is it made of the same material as the small red sphere? Q: How many objects are either small cylinders or metal things?
+
+Figure 1. A sample image and questions from CLEVR. Questions test aspects of visual reasoning such as attribute identiﬁcation, counting, comparison, multiple attention, and logical operations.
+
+is exempliﬁed by Clever Hans, a 1900s era horse who appeared to be able to answer arithmetic questions. Careful observation revealed that Hans was correctly “answering” questions by reacting to cues read off his human observers [30]. Statistical learning systems, like those used for VQA, may develop similar “cheating” approaches to superﬁcially “solve” tasks without learning the underlying reasoning processes [35, 36]. For instance, a statistical learner may correctly answer the question “What covers the ground?” not because it understands the scene but because biased datasets often ask questions about the ground when it is snow-covered [1, 47]. How can we determine whether a system is capable of sophisticated reasoning and not just exploiting biases of the world, similar to Clever Hans?
+
+In this paper we propose a diagnostic dataset for studying the ability of VQA systems to perform visual reasoning. We refer to this dataset as the Compositional Language and Elementary Visual Reasoning diagnostics dataset (CLEVR; pronounced as clever in homage to Hans). CLEVR contains 100k rendered images and about one million automaticallygenerated questions, of which 853k are unique. It has chal-
+
+1
+
+lenging images and questions that test visual reasoning abilities such as counting, comparing, logical reasoning, and storing information in memory, as illustrated in Figure 1.
+
+We designed CLEVR with the explicit goal of enabling detailed analysis of visual reasoning. Our images depict simple 3D shapes; this simpliﬁes recognition and allows us to focus on reasoning skills. We ensure that the information in each image is complete and exclusive so that external information sources, such as commonsense knowledge, cannot increase the chance of correctly answering questions. We minimize question-conditional bias via rejection sampling within families of related questions, and avoid degenerate questions that are seemingly complex but contain simple shortcuts to the correct answer. Finally, we use structured ground-truth representations for both images and questions: images are annotated with ground-truth object positions and attributes, and questions are represented as functional programs that can be executed to answer the question (see Section 3). These representations facilitate indepth analyses not possible with traditional VQA datasets. These design choices also mean that while images in CLEVR may be visually simple, its questions are complex and require a range of reasoning skills. For instance, factorizedrepresentationsmayberequiredtogeneralizetounseen combinations of objects and attributes. Tasks such as counting or comparing may require short-term memory [15] or attending to speciﬁc objects [24, 44]. Questions that combine multiple subtasks in diverse ways may require compositional systems [2, 3] to answer.
+
+We use CLEVR to analyze a suite of VQA models and discover weaknesses that are not widely known. For example, we ﬁnd that current state-of-the-art VQA models struggleontasksrequiringshorttermmemory, suchascomparing the attributes of objects, or compositional reasoning, suchasrecognizingnovelattributecombinations. Theseobservations point to novel avenues for further research.
+
+Finally, we stress that accuracy on CLEVR is not an end goal in itself: a hand-crafted system with explicit knowledge of the CLEVR universe might work well, but will not generalize to real-world settings. Therefore CLEVR should be used in conjunction with other VQA datasets in order to study the reasoning abilities of general VQA systems.
+
+The CLEVR dataset, as well as code for generating new
+
+images and questions, will be made publicly available.
+
+2. Related Work
+
+In recent years, a range of benchmarks for visual understanding have been proposed, including datasets for image captioning [7, 8, 23, 45], referring to objects [19], relationalgraphprediction[21], andvisualTuringtests[12,27]. CLEVR, our diagnostic dataset, is most closely related to benchmarks for visual question answering [4, 10, 21, 26, 32, 37, 46, 49], as it involves answering natural-language
+
+questions about images. The two main differences between CLEVR and other VQA datasets are that: (1) CLEVR minimizes biases of prior VQA datasets that can be used by learning systems to answer questions correctly without visual reasoning and (2) CLEVR’s synthetic nature and detailed annotations facilitate in-depth analyses of reasoning abilities that are impossible with existing datasets.
+
+Prior work has attempted to mitigate biases in VQA datasets in simple cases such as yes/no questions [12, 47], but it is difﬁcult to apply such bias-reduction approaches to more complex questions without a high-quality semantic representation of both questions and answers. In CLEVR, this semantic representation is provided by the functional program underlying each image-question pair, and biases are largely eliminated via sampling. Winograd schemas [22] are another approach for controlling bias in question answering: these questions are carefully designed to be ambiguous based on syntax alone and require commonsense knowledge. Unfortunately this approach does not scale gracefully: the ﬁrst phase of the 2016 Winograd Schema Challenge consists of just 60 hand-designed questions. CLEVR is also related to the bAbI question answering tasks [38] in that it aims to diagnose a set of clearly deﬁned competences of a system, but CLEVR focuses on visual reasoning whereas bAbI is purely textual.
+
+We are also not the ﬁrst to consider synthetic data for studying (visual) reasoning. SHRDLU performed simple, interactive visual reasoning with the goal of moving speciﬁc objects in the visual scene [40]; this study was one of the ﬁrst to demonstrate the brittleness of manually programmed semantic understanding. The pioneering DAQUAR dataset [28] contains both synthetic and human-written questions, but they only generate 420 synthetic questions using eight text templates. VQA [4] contains 150,000 natural-language questions about abstract scenes [50], but these questions do not control for questionconditional bias and are not equipped with functional program representations. CLEVR is similar in spirit to the SHAPES dataset [3], but it is more complex and varied both intermsofvisualcontentandquestionvarietyandcomplexity: SHAPES contains 15,616 total questions with just 244 unique questions while CLEVR contains nearly a million questions of which 853,554 are unique.
+
+3. The CLEVR Diagnostic Dataset
+
+CLEVR provides a dataset that requires complex reasoning to solve and that can be used to conduct rich diagnostics to better understand the visual reasoning capabilities of VQA systems. This requires tight control over the dataset, which we achieve by using synthetic images and automatically generated questions. The images have associated ground-truth object locations and attributes, and the questions have an associated machine-readable form. These
+
+2
+
+Figure 2. A ﬁeld guide to the CLEVR universe. Left: Shapes, attributes, and spatial relationships. Center: Examples of questions and their associated functional programs. Right: Catalog of basic functions used to build questions. See Section 3 for details.
+
+ground-truth structures allow us to analyze models based on, for example: question type, question topology (chain vs. tree), question length, and various forms of relationships betweenobjects. Figure2givesabriefoverviewofthemain components of CLEVR, which we describe in detail below.
+
+Objects and relationships. The CLEVR universe contains three object shapes (cube, sphere, and cylinder) that come in two absolute sizes (small and large), two materials (shiny “metal” and matte “rubber”), and eight colors. Objects are spatially related via four relationships: “left”, “right”, “behind”, and “in front”. The semantics of these prepositions are complex and depend not only on relative object positions but also on camera viewpoint and context. We found that generating questions that invoke spatial relationships with semantic accord was difﬁcult. Instead we rely on a simple and unambiguous deﬁnition: projecting the camera viewpoint vector onto the ground plane deﬁnes the “behind” vector, and one object is behind another if its ground-plane position is further along the “behind” vector. The other relationships are similarly deﬁned. Figure 2 (left) illustrates the objects, attributes, and spatial relationships in CLEVR. The CLEVR universe also includes one non-spatial relationship type that we refer to as the sameattribute relation. Two objects are in this relationship if they have equal attribute values for a speciﬁed attribute.
+
+Scene representation. Scenes are represented as collections of objects annotated with shape, size, color, material, and position on the ground-plane. A scene can also be represented by a scene graph [17, 21], where nodes are objects annotated withattributes and edges connect spatially related
+
+objects. A scene graph contains all ground-truth information for an image and could be used to replace the vision component of a VQA system with perfect sight.
+
+Image generation. CLEVR images are generated by randomly sampling a scene graph and rendering it using Blender [6]. Every scene contains between three and ten objects with random shapes, sizes, materials, colors, and positions. When placing objects we ensure that no objects intersect, that all objects are at least partially visible, and that there are small horizontal and vertical margins between the image-plane centers of each pair of objects; this helps reduce ambiguity in spatial relationships. In each image the positions of the lights and camera are randomly jittered.
+
+Questionrepresentation. EachquestioninCLEVRisassociated with a functional program that can be executed on an image’s scene graph, yielding the answer to the question. Functional programs are built from simple basic functions that correspond to elementary operations of visual reasoning such as querying object attributes, counting sets of objects, or comparing values. As shown in Figure 2, complex questions can be represented by compositions of these simple building blocks. Full details about each basic function can be found in the supplementary material.
+
+As we will see in Section 4, representing questions as functional programs enables rich analysis that would be impossible with natural-language questions. A question’s functional program tells us exactly which reasoning abilities are required to solve it, allowing us to compare performance on questions requiring different types of reasoning.
+
+3
+
+objectsobjectsobjectsyes/nonumberobjectsobjectsobjectsobjectvalueobjectsnumbernumberCLEVR	function	catalogRelateEqualLess	/	Moreyes/noEqualyes/novaluevalueExistCountAndOrFilter	<attr>objectobjectsUniqueIn	front	vs.	behindSizes,	colors,	shapes,	and	materialsLeft	vs.	rightLarge	graymetalsphereLarge	redmetal	cubeSmall	bluemetal	cylinderSmall	greenmetal	sphereLarge	brownrubbersphereLarge	purplerubbercylinderSmall	cyanrubbercubeSmall	yellowrubbersphereBehindIn	frontLeftRightFilter	colorFilter	shapeUniqueRelateFilter	shapeUniqueQuerycoloryellowspherevaluerightcubeWhat	color	is	the	cube	to	the	right	of	the	yellow	sphere?objectQuery	<attr>valueFilter	colorUniqueRelategreenleftFilter	sizeUniqueRelatesmallin	frontAndCountHow	many	cylinders	are	in	front	of	the	small	thing	and	on	the	left	side	of	the	green	object?Sample	chain-structured	question:Sample	tree-structured	question:objectSame	<attr>objectsFilter	shapecylinderWe categorize questions by question type, deﬁned by the outermost function in the question’s program; for example the questions in Figure 2 have types query-color and exist. Figure 3 shows the number of questions of each type.
+
+Question families. We must overcome several key challenges to generate a VQA dataset using functional programs. Functional building blocks can be used to construct an inﬁnite number of possible functional programs, and we must decide which program structures to consider. We also need a method for converting functional programs to natural language in a way that minimizes question-conditional bias. We solve these problems using question families.
+
+A question family contains a template for constructing functional programs and several text templates providing multiple ways of expressing these programs in natural language. For example, the question “How many red things are there?” can be formed by instantiating the text template “How many <C> <M> things are there?”, binding the parameters <C> and <M> (with types “color” and “material”) to the values red and nil. The functional program count(ﬁlter color(red, scene())) for this question can beformedbyinstantiatingtheassociatedprogramtemplate count(ﬁlter color(<C>, ﬁlter material(<M>, scene()))) with the same values, using the convention that functions taking a nil input are removed after instantiation.
+
+CLEVR contains a total of 90 question families, each with a single program template and an average of four text templates. Text templates were generated by manually writing one or two templates per family and then crowdsourcing question rewrites. To further increase language diversity we use a set of synonyms for each shape, color, and material. With up to 19 parameters per template, a small number of families can generate a huge number of unique questions; Figure 3 shows that of the nearly one million questions in CLEVR, more than 853k are unique. CLEVR can easily be extended by adding new question families.
+
+Question generation. Generating a question for an image is conceptually simple: we choose a question family, select values for each of its template parameters, execute the resulting program on the image’s scene graph to ﬁnd the answer, and use one of the text templates from the question family to generate the ﬁnal natural-language question.
+
+However, many combinations of values give rise to questions which are either ill-posed or degenerate. The question “What color is the cube to the right of the sphere?” would be ill-posed if there were many cubes right of the sphere, or degenerateiftherewereonlyonecubeinthescenesincethe reference to the sphere would then be unnecessary. Avoiding such ill-posed and degenerate questions is critical to ensure the correctness and complexity of our questions.
+
+A na¨ıve solution is to randomly sample combinations of values and reject those which lead to ill-posed or degenerate
+
+Unique Overlap Images Questions questions with train
+
+Split Total 100,000 999,968 699,989 Train 149,991 Val Test 149,988
+
+70,000 15,000 15,000
+
+853,554 608,607 140,448 140,352
+
+- - 17,338 17,335
+
+Figure 3. Top: Statistics for CLEVR; the majority of questions are unique and few questions from the val and test sets appear in the training set. Bottom left: Comparison of question lengths for different VQA datasets; CLEVR questions are generally much longer. Bottom right: Distribution of question types in CLEVR.
+
+questions. However, the number of possible conﬁgurations for a question family is exponential in its number of parameters, and most of them are undesirable. This makes bruteforce search intractable for our complex question families. Instead, we employ a depth-ﬁrst search to ﬁnd valid values for instantiating question families. At each step of the search, we use ground-truth scene information to prune large swaths of the search space which are guaranteed to produce undesirable questions; for example we need not entertain questions of the form “What color is the <S> to the <R> of the sphere” for scenes that do not contain spheres. Finally, we use rejection sampling to produce an approximately uniform answer distribution for each question family; this helps minimize question-conditional bias since all questions from the same family share linguistic structure.
+
+4. VQA Systems on CLEVR
+
+4.1. Models
+
+VQA models typically represent images with features from pretrained CNNs and use word embeddings or recurrent networks to represent questions and/or answers. Models may train recurrent networks for answer generation [10, 28, 41], multiclass classiﬁers over common answers [4, 24, 25, 32, 48, 49], or binary classiﬁers on imagequestion-answer triples [9, 16, 33]. Many methods incorporate attention over the image [9, 33, 44, 49, 43] or question [24]. Some methods incorporate memory [42] or dynamic network architectures [2, 3].
+
+Experimenting with all methods is logistically challenging, so we reproduced a representative subset of methods: baselines that do not look at the image (Q-type mode, LSTM), a simple baseline (CNN+BoW) that performs near state-of-the-art [16, 48], and more sophisticated methods
+
+4
+
+ Ϭ ϭ Ϭ Ϯ Ϭ ϯ Ϭ ϰ Ϭ t Ž ƌ Ě Ɛ  Ɖ Ğ ƌ  Ƌ Ƶ Ğ Ɛ ƚ ŝ Ž Ŷ Ϭ й ϭ Ϭ й Ϯ Ϭ й ϯ Ϭ й Y Ƶ Ğ Ɛ ƚ ŝ Ž Ŷ  Ĩ ƌ Ă Đ ƚ ŝ Ž Ŷ > Ğ Ŷ Ő ƚ Ś  Ě ŝ Ɛ ƚ ƌ ŝ ď Ƶ ƚ ŝ Ž Ŷ   Y h  Z s Y  s ϳ t  >  s Z  ǆ ŝ Ɛ ƚ ϭ ϯ й  Ž Ƶ Ŷ ƚ Ϯ ϰ й  Ƌ Ƶ Ă ů Ϯ й > Ğ Ɛ Ɛ ϯ й ' ƌ Ğ Ă ƚ Ğ ƌ ϯ й ^ ŝ ǌ Ğ ϵ й  Ž ů Ž ƌ ϵ й D Ă ƚ ͘ ϵ й ^ Ś Ă Ɖ Ğ ϵ й ^ ŝ ǌ Ğ ϰ й  Ž ů Ž ƌ ϰ й D Ă ƚ ͘ ϰ й ^ Ś Ă Ɖ Ğ ϰ й  Ž ŵ Ɖ Ă ƌ Ğ  / Ŷ ƚ Ğ Ő Ğ ƌ Y Ƶ Ğ ƌ Ǉ  Ž ŵ Ɖ Ă ƌ ĞFigure 4. Accuracy per question type of the six VQA methods on the CLEVR dataset (higher is better). Figure best viewed in color.
+
+using recurrent networks (CNN+LSTM), sophisticated feature pooling (CNN+LSTM+MCB), and spatial attention (CNN+LSTM+SA).1 These are described in detail below.
+
+Q-type mode: Similar to the “per Q-type prior” method in [4], this baseline predicts the most frequent training-set answer for each question’s type.
+
+LSTM: Similar to “LSTM Q” in [4], the question is processed with learned word embeddings followed by a wordlevel LSTM [15]. The ﬁnal LSTM hidden state is passed to a multi-layer perceptron (MLP) that predicts a distribution over answers. This method uses no image information so it can only model question-conditional bias.
+
+CNN+BoW: Following [48], the question is encoded by averaging word vectors for each word in the question and the image is encoded using features from a convolutional network (CNN). The question and image features are concatenated and passed to a MLP which predicts a distribution over answers. We use word vectors trained on the GoogleNews corpus [29]; these are not ﬁne-tuned during training. CNN+LSTM: As above, images and questions are encoded using CNN features and ﬁnal LSTM hidden states, respectively. These features are concatenated and passed to an MLP that predicts an answer distribution.
+
+CNN+LSTM+MCB: Images and questions are encoded as above, but instead of concatenation, their features are pooled using compact multimodal pooling (MCB) [9, 11]. CNN+LSTM+SA: Again, the question and image are encoded using a CNN and LSTM, respectively. Following [44], these representations are combined using one or more rounds of soft spatial attention and the ﬁnal answer distribution is predicted with an MLP.
+
+Human: We used Mechanical Turk to collect human responses for 5500 random questions from the test set, taking a majority vote among three workers for each question.
+
+Implementation details. Our CNNs are ResNet-101 models pretrained on ImageNet [14] that are not ﬁnetuned; images are resized to 224×224 prior to feature extraction.
+
+1We performed initial experiments with dynamic module networks [2] but its parsing heuristics did not generalize to the complex questions in CLEVR so it did not work out-of-the-box; see supplementary material.
+
+CNN+LSTM+SA extracts features from the last layer of the conv4 stage, giving 14×14×1024-dimensional features. All other methods extract features from the ﬁnal average pooling layer, giving 2048-dimensional features. LSTMs use one or two layers with 512 or 1024 units per layer. MLPs use ReLU functions and dropout [34]; they have one or two hidden layers with between 1024 and 8192 units per layer. All models are trained using Adam [20].
+
+Experimental protocol. CLEVR is split into train, validation, and test sets (see Figure 3). We tuned hyperparameters (learning rate, dropout, word vector size, number and size of LSTM and MLP layers) independently per model based on the validation error. All experiments were designed on the validation set; after ﬁnalizing the design we ran each model once on the test set. All experimental ﬁndings generalized from the validation set to the test set.
+
+4.2. Analysis by Question Type
+
+We can use the program representation of questions to analyze model performance on different forms of reasoning. We ﬁrst evaluate performance on each question type, deﬁned as the outermost function in the program. Figure 4 shows results and detailed ﬁndings are discussed below.
+
+Querying attributes: Query questions ask about an attribute of a particular object (e.g. “What color is the thing right of the red sphere?”). The CLEVR world has two sizes, eight colors, two materials, and three shapes. On questions asking about these different attributes, Q-type mode and LSTM obtain accuracies close to 50%, 12.5%, 50%, and 33.3% respectively, showing that the dataset has minimal question-conditional bias for these questions. CNN+LSTM+SA substantially outperforms all other models on these questions; its attention mechanism may help it focus on the target object and identify its attributes.
+
+Comparing attributes: Attribute comparison questions ask whether two objects have the same value for some attribute(e.g.“Isthecubethesamesizeasthesphere?”). The only valid answers are “yes” and “no”. Q-Type mode and LSTM achieve accuracies close to 50%, conﬁrming there is no dataset bias for these questions. Unlike attribute-query
+
+5
+
+ Ϭ Ϯ Ϭ ϰ Ϭ ϲ Ϭ ϴ Ϭ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ ϰ ϭ ͘ ϴ ϰ ϲ ͘ ϴ ϰ ϴ ͘ ϰ ϱ Ϯ ͘ ϯ ϱ ϭ ͘ ϰ ϲ ϴ ͘ ϱ ϵ Ϯ ͘ ϲ & Ž Ž K ǀ Ğ ƌ Ă ů ů Ϭ Ϯ Ϭ ϰ Ϭ ϲ Ϭ ϴ Ϭ ϭ Ϭ Ϭ ϱ Ϭ ͘ Ϯ ϲ ϭ ͘ ϭ ϱ ϵ ͘ ϱ ϲ ϱ ͘ Ϯ ϲ ϯ ͘ ϰ ϳ ϭ ͘ ϭ ϵ ϲ ͘ ϲ & Ž Ž  ǆ ŝ Ɛ ƚ Ϭ Ϯ Ϭ ϰ Ϭ ϲ Ϭ ϴ Ϭ ϭ Ϭ Ϭ ϯ ϰ ͘ ϲ ϰ ϭ ͘ ϳ ϯ ϴ ͘ ϵ ϰ ϯ ͘ ϳ ϰ Ϯ ͘ ϭ ϱ Ϯ ͘ Ϯ ϴ ϲ ͘ ϳ & Ž Ž  Ž Ƶ Ŷ ƚ Ϭ Ϯ Ϭ ϰ Ϭ ϲ Ϭ ϴ Ϭ ϭ Ϭ Ϭ ϱ ϭ ϲ ϯ ϱ Ϭ ϱ ϳ ϱ ϳ ϲ Ϭ  Ƌ Ƶ Ă ů ϳ ϵ ϱ Ϯ ϳ ϯ ϱ ϰ ϳ Ϯ ϳ ϭ ϴ Ϯ > Ğ Ɛ Ɛ ϴ ϳ ϱ Ϭ ϳ ϭ ϰ ϵ ϲ ϵ ϲ ϴ ϳ ϰ D Ž ƌ Ğ ϵ ϭ  Ž ŵ Ɖ Ă ƌ Ğ  / Ŷ ƚ Ğ Ő Ğ ƌ Ϭ Ϯ Ϭ ϰ Ϭ ϲ Ϭ ϴ Ϭ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ ϱ Ϭ ϱ Ϭ ϱ ϲ ϱ ϵ ϱ ϵ ϴ ϳ ^ ŝ ǌ Ğ ϵ ϳ ϭ Ϯ ϭ ϯ ϯ Ϯ ϯ Ϯ ϯ Ϯ ϴ ϭ  Ž ů Ž ƌ ϵ ϱ ϰ ϵ ϱ ϭ ϱ ϴ ϱ ϴ ϱ ϳ ϴ ϴ D Ă ƚ Ğ ƌ ŝ Ă ů ϵ ϰ ϯ ϯ ϯ ϯ ϰ ϳ ϰ ϴ ϰ ϴ ϴ ϱ ^ Ś Ă Ɖ Ğ ϵ ϰ Y Ƶ Ğ ƌ Ǉ   ƚ ƚ ƌ ŝ ď Ƶ ƚ ĞWhatcoloristhe cube to the right of the sphere?
+
+What color is the cube that is the same size as the sphere?
+
+Figure 5. Accuracy on questions with a single spatial relationship vs. a single same-attribute relationship. For query and count questions, models generally perform worse on questions with sameattribute relationships. Results on exist questions are mixed.
+
+questions, attribute-comparison questions require a limited form of memory: models must identify the attributes of two objects and keep them in memory to compare them. Interestingly, none of the models are able to do so: all models have an accuracy of approximately 50%. This is also true for the CNN+LSTM+SA model, suggesting that its attention mechanism is not capable of attending to two objects at once to compare them. This illustrates how CLEVR can reveal limitations of models and motivate follow-up research, e.g., augmenting attention models with explicit memory.
+
+Existence: Existence questions ask whether a certain type of object is present (e.g., “Are there any cubes to the right of the red thing?”). The 50% accuracy of QType mode shows that both answers are a priori equally likely, but the LSTM result of 60% does suggest a questionconditional bias. There may be correlations between question length and answer: questions with more ﬁltering operations (e.g., “large red cube” vs. “red cube”) may be more likely to have “no” as the answer. Such biases may be present even with uniform answer distributions per question family, since questions from the same family may have different numbers of ﬁltering functions. CNN+LSTM(+SA) outperforms LSTM, but its performance is still quite low.
+
+Counting: Counting questions ask for the number of objects fulﬁlling some conditions (e.g. “How many red cubes are there?”); valid answers range from zero to ten. Images have three and ten objects and counting questions refer to subsets of objects, so ensuring a uniform answer distribution is very challenging; our rejection sampler therefore pushes towards a uniform distribution for these questions rather than enforcing it as a hard constraint. This results in a question-conditional bias, reﬂected in the 35% and 42% accuracies achieved by Q-type mode and LSTM. CNN+LSTM(+MCB) performs on par with LSTM, suggestingthatCNNfeaturescontainlittleinformationrelevant to counting. CNN+LSTM+SA performs slightly better, but at 52% its absolute performance is low.
+
+Integer comparison: Integer comparison questions ask which of two object sets is larger (e.g. “Are there fewer cubes than red things?”); this requires counting, memory,
+
+6
+
+How many cubes are to the right of the sphere that is to the left of the red thing?
+
+How many cubes are both to the right of the sphere and left of the red thing?
+
+Figure 6. Accuracy on questions with two spatial relationships, broken down by question topology: chain-structured questions vs. tree-structured questions joined with a logical AND operator.
+
+and comparing integer quantities. The answer distribution is unbiased (see Q-Type mode) but a set’s size may correlate with the length of its description, explaining the gap between LSTM and Q-type mode. CNN+BoW performs no better than chance: BoW mixes the words describing each set, making it impossible for the learner to discriminate between them. CNN+LSTM+SA outperforms LSTM on “less” and “more” questions, but no model outperforms LSTM on “equal” questions. Most models perform better on “less” than “more” due to asymmetric question families.
+
+4.3. Analysis by Relationship Type
+
+CLEVR questions contain two types of relationships: spatial and same-attribute (see Section 3). We can compare the relative difﬁculty of these two types by comparing model performance on questions with a single spatial relationship and questions with a single same-attribute relationship; results are shown in Figure 5. On query-attribute and counting questions we see that same-attribute questions are generally more difﬁcult; the gap between CNN+LSTM+SA on spatial and same-relate query questions is particularly large (93% vs. 78%). Same-attribute relationships may require a model to keep attributes of one object “in memory” for comparison, suggesting again that models augmented with explicit memory may perform better on these questions.
+
+4.4. Analysis by Question Topology
+
+We next evaluate model performance on different question topologies: chain-structured questions vs. treestructured questions with two branches joined by a logical AND (see Figure 2). In Figure 6, we compare performance on chain-structured questions with two spatial relationships vs. tree-structured questions with one relationship along each branch. On query questions, CNN+LSTM+SA shows alargegapbetweenchainandtreequestions(92%vs.74%); on count questions, CNN+LSTM+SA slightly outperforms LSTM on chain questions (55% vs. 49%) but no method outperforms LSTM on tree questions. Tree questions may be more difﬁcult since they require models to perform two subtasks in parallel before fusing their results.
+
+ Ϭ Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ ϯ ϲ ϯ ϲ ϯ ϳ ϯ ϳ ϱ Ϭ ϰ ϲ ϰ ϵ ϱ Ϭ ϱ Ϭ ϱ Ϭ ϵ ϯ ϳ ϴ Y Ƶ Ğ ƌ Ǉ Ϭ Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ ϰ Ϭ ϯ ϰ ϱ Ϭ ϰ Ϭ ϰ Ϯ ϰ Ϭ ϰ ϴ ϰ ϰ ϱ Ϭ ϰ Ϯ ϱ ϱ ϰ ϲ  Ž Ƶ Ŷ ƚ Ϭ Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ ϱ ϯ ϰ ϵ ϲ ϲ ϱ ϴ ϱ ϴ ϲ Ϭ ϲ ϱ ϲ ϱ ϲ Ϭ ϲ ϰ ϳ Ϯ ϲ ϵ  ǆ ŝ Ɛ ƚ Ϭ Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ ϯ ϲ ϯ ϳ ϯ ϲ ϯ ϳ ϰ ϴ ϱ ϭ ϰ ϳ ϰ ϵ ϰ ϳ ϰ ϴ ϵ Ϯ ϳ ϰ Y Ƶ Ğ ƌ Ǉ Ϭ Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ ϰ ϭ ϯ ϳ ϰ ϵ ϱ Ϭ ϰ ϰ ϰ ϭ ϰ ϴ ϰ ϱ ϰ ϱ ϰ ϱ ϱ ϱ ϰ ϴ  Ž Ƶ Ŷ ƚQuestion: There is a large object that is on the left side of the large blue cylinder in front of the rubber cylinder on the right side of the purple shiny thing; what is its shape? Effective Question: What shape is a large object left of a cylinder?
+
+Question: There is a purple cube that is in front of the yellow metal sphere; what material is it? Absolute question: There is a purple cube in the front half of the image; what material is it?
+
+Figure 7. Top: Many questions can be answered correctly without correctly solving all subtasks. For a given question and scene we can prune functions from the question’s program to generate an effective question which is shorter but gives the same answer. Bottom: Accuracy on query questions vs. actual and effective question size. Accuracy decreases with effective question size but not with actual size. Shaded area shows a 95% conﬁdence interval.
+
+4.5. Effect of Question Size
+
+Intuitively, longer questions should be harder since they involve more reasoning steps. We deﬁne a question’s size to be the number of functions in its program, and in Figure 7 (bottomleft)weshowaccuracyonquery-attributequestions as a function of question size.2 Surprisingly accuracy appears unrelated to question size.
+
+However, many questions can be correctly answered even when some subtasks are not solved correctly. For example, the question in Figure 7 (top) can be answered correctlywithoutidentifyingthecorrectlargebluecylinder, because all large objects left of a cylinder are cylinders.
+
+To quantify this effect, we deﬁne the effective question of an image-question pair: we prune functions from the question’s program to ﬁnd the smallest program that, when executed on the scene graph for the question’s image, gives the same answer as the original question.3 A question’s effective size is the size of its effective question. Questions whose effective size is smaller than their actual size need not be degenerate. The question in Figure 7 is not degenerate because the entire question is needed to resolve its object references (there are two blue cylinders and two rubber cylinders), but it has a small effective size since it can be correctly answered without resolving those references.
+
+In Figure 7 (bottom), we show accuracy on query questions as a function of effective question size. The error rate ofallmodelsincreaseswitheffectivequestionsize, suggesting that models struggle with long reasoning chains.
+
+2We exclude questions with same-attribute relations since their max size is 10, introducing unwanted correlations between size and difﬁculty. Excluded questions show the same trends (see supplementary material).
+
+3Pruned questions may be ill-posed (Section 3) so they are executed
+
+Figure 8. Top: Some questions can be correctly answered using absolute deﬁnitions for spatial relationships; for example in this image there is only one purple cube in the bottom half of the image. Bottom: Accuracy of each model on chain-structured questions as a function of the number of spatial relationships in the question, separated by question type. Top row shows all chainstructured questions; bottom row excludes questions that can be correctly answered using absolute spatial reasoning.
+
+4.6. Spatial Reasoning
+
+We expect that questions with more spatial relationships should be more challenging since they require longer chains of reasoning. The top set of plots in Figure 8 shows accuracy on chain-structured questions with different numbers of relationships.4 Across all three question types, CNN+LSTM+SA shows a signiﬁcant drop in accuracy for questions with one or more spatial relationship; other models are largely unaffected by spatial relationships.
+
+Spatial relationships force models to reason about objects’ relative positions. However, as shown in Figure 8, some questions can be answered using absolute spatial reasoning. In this question the purple cube can be found by simply looking in the bottom half of the image; reasoning aboutits positionrelativeto themetalsphereis unnecessary. Questions only requiring absolute spatial reasoning can be identiﬁed by modifying the semantics of spatial relationship functions in their programs: instead of returning sets of objects related to the input object, they ignore their input object and return the set of objects in the half of the image corresponding to the relationship. A question only requires absolute spatial reasoning if executing its program with these modiﬁed semantics does not change its answer. The bottommost plots of Figure 8 show accuracy on chain-structured questions with different number of relationships, excluding questions that can be answered
+
+4We restrict to chain-structured questions to avoid unwanted correla-
+
+with modiﬁed semantics; see supplementary material for details.
+
+tions between question topology and number of relationships.
+
+7
+
+ ϰ ϲ ϴ ϭ Ϭ ϭ Ϯ ϭ ϰ ϭ ϲ ϭ ϴ Ϯ Ϭ  Đ ƚ Ƶ Ă ů  Ƌ Ƶ Ğ Ɛ ƚ ŝ Ž Ŷ  Ɛ ŝ ǌ Ğ Ϯ Ϭ ϰ Ϭ ϲ Ϭ ϴ Ϭ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ Y Ƶ Ğ ƌ Ǉ   ƚ ƚ ƌ ŝ ď Ƶ ƚ Ğ Ϯ ϰ ϲ ϴ ϭ Ϭ ϭ Ϯ ϭ ϰ ϭ ϲ  Ĩ Ĩ Ğ Đ ƚ ŝ ǀ Ğ  Ƌ Ƶ Ğ Ɛ ƚ ŝ Ž Ŷ  Ɛ ŝ ǌ Ğ Ϯ Ϭ ϰ Ϭ ϲ Ϭ ϴ Ϭ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ Y Ƶ Ğ ƌ Ǉ   ƚ ƚ ƌ ŝ ď Ƶ ƚ Ğ Ϭ ϭ Ϯ ϯ E Ƶ ŵ ď Ğ ƌ  Ž Ĩ  Η ƌ Ğ ů Ă ƚ Ğ Η Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ Y Ƶ Ğ ƌ Ǉ Ϭ ϭ Ϯ ϯ E Ƶ ŵ ď Ğ ƌ  Ž Ĩ  Η ƌ Ğ ů Ă ƚ Ğ Η Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ  Ž Ƶ Ŷ ƚ Ϭ ϭ Ϯ ϯ E Ƶ ŵ ď Ğ ƌ  Ž Ĩ  Η ƌ Ğ ů Ă ƚ Ğ Η Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ  ǆ ŝ Ɛ ƚ Ϭ ϭ Ϯ ϯ E Ƶ ŵ ď Ğ ƌ  Ž Ĩ  Η ƌ Ğ ů Ă ƚ Ğ Η Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ Ϭ ϭ Ϯ ϯ E Ƶ ŵ ď Ğ ƌ  Ž Ĩ  Η ƌ Ğ ů Ă ƚ Ğ Η Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ Ϭ ϭ Ϯ ϯ E Ƶ ŵ ď Ğ ƌ  Ž Ĩ  Η ƌ Ğ ů Ă ƚ Ğ Η Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ ǇA→B (90% vs 81%); other models show no gap. Having seen metal cubes and red metal objects during training, models can understand the material of red metal cubes.
+
+5. Discussion and Future Work
+
+This paper has introduced CLEVR, a dataset designed to aid in diagnostic evaluation of visual question answering (VQA) systems by minimizing dataset bias and providing rich ground-truth representations for both images and questions. Our experiments demonstrate that CLEVR facilitates in-depth analysis not possible with other VQA datasets: our question representations allow us to slice the dataset along different axes (question type, relationship type, question topology, etc.), and comparing performance along these different axes allows us to better understand the reasoning capabilities of VQA systems. Our analysis has revealed several key shortcomings of current VQA systems:
+
+• Short-term memory: All systems we tested performed poorly in situations requiring short-term memory, including attribute comparison and integer equality questions (Section 4.2), same-attribute relationships (Section 4.3), and tree-structured questions (Section 4.4). Attribute comparison questions are of particular interest, since models can successfully identity attributes of objects but struggle to compare attributes. • Long reasoning chains: Systems struggle to answer questions requiring long chains of nontrivial reasoning, includingquestionswithlargeeffectivesizes(Section 4.5) and count and existence questions with many spatial relationships (Section 4.6).
+
+• Spatial Relationships: Models fail to learn the true semantics of spatial relationships, instead relying on absolute image position (Section 4.6).
+
+• Disentangled Representations: By training and testing models on different data distributions (Section 4.7) we argue that models do not learn representations that properly disentangle object attributes; they seem to learn strong biases from the training data and cannot overcome these biases when conditions change.
+
+Our study also shows cases where current VQA systems are successful. In particular, spatial attention [44] allows models to focus on objects and identify their attributes even on questions requiring multiple steps of reasoning.
+
+These observations present clear avenues for future work on VQA. We plan to use CLEVR to study models with explicit short-term memory, facilitating comparisons between values [13, 18, 39, 42]; explore approaches that encourage learning disentangled representations [5]; and investigate methods that compile custom network architectures for different patterns of reasoning [2, 3]. We hope that diagnostic datasets like CLEVR will help guide future research in VQA and enable rapid progress on this important task.
+
+In Condition A all cubes are gray, blue, brown, or yelFigure 9. low and all cylinders are red, green, purple, or cyan; in Condition B color palettes are swapped. We train models in Condition A and test in both conditions to assess their generalization performance. We show accuracy on “query color” and “query material” questions, separating questions by shape of the object being queried.
+
+with absolute spatial reasoning. On query questions, CNN+LSTM+SA performs signiﬁcantly worse when absolute spatial reasoning is excluded; on count questions no model outperforms LSTM, and on exist questions no model outperforms Q-type mode. These results suggest that models have not learned the semantics of spatial relationships.
+
+4.7. Compositional Generalization
+
+Practical VQA systems should perform well on images and questions that contain novel combinations of attributes not seen during training. To do so models might need to learn disentangled representations for attributes, for example learning separate representations for color and shape instead of memorizing all possible color/shape combinations. We can use CLEVR to test the ability of VQA models to perform such compositional generalization. We synthesize two new versions of CLEVR: in Condition A all cubes are gray, blue, brown, or yellow and all cylinders are red, green, purple, or cyan; in Condition B these shapes swap color palettes. Both conditions contain spheres of all eight colors. We retrain models on Condition A and compare their performance when testing on Condition A (A → A) and testing on Condition B (A → B). In Figure 9 we show accuracy on query-color and query-material questions, separating questions asking about spheres (which are the same in A and B) and cubes/cylinders (which change from A to B). Between A→A and A→B, all models perform about the same when asked about the color of spheres, but perform much worse when asked about the color of cubes or cylinders; CNN+LSTM+SA drops from 85% to 51%. Models seem to learn strong biases about the colors of objects and cannot overcome these biases when conditions change.
+
+When asked about the material of cubes and cylinders, CNN+LSTM+SA shows a smaller gap between A→A and
+
+8
+
+ Ϭ Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ ϭ ϯ ͘ Ϭ ϭ Ϯ ͘ ϰ Ϯ Ϭ ͘ Ϯ ϳ ͘ ϰ > ^ d D ϯ Ϯ ͘ ϭ ϯ ϰ ͘ ϱ ϰ ϱ ͘ ϵ ϭ ϳ ͘ ϭ  E E н > ^ d D Ϯ ϴ ͘ ϭ ϯ ϭ ͘ ϱ ϯ Ϯ ͘ ϳ Ϯ Ϯ ͘ Ϯ  E E н > ^ d D н D   ϴ ϯ ͘ ϴ ϴ ϯ ͘ ϱ ϴ ϱ ͘ Ϯ ϱ ϭ ͘ ϭ  E E н > ^ d D н ^  Y Ƶ Ğ ƌ Ǉ  Đ Ž ů Ž ƌ Ϭ Ϯ ϱ ϱ Ϭ ϳ ϱ ϭ Ϭ Ϭ ϰ ϵ ͘ ϱ ϱ Ϭ ͘ ϳ ϱ Ϭ ͘ ϳ ϰ ϵ ͘ ϴ > ^ d D ϲ ϰ ͘ ϳ ϲ ϰ ͘ ϱ ϲ ϭ ͘ ϭ ϲ ϭ ͘ Ϯ  E E н > ^ d D ϲ ϯ ͘ ϵ ϲ ϱ ͘ Ϭ ϱ ϵ ͘ ϱ ϲ Ϭ ͘ Ϭ  E E н > ^ d D н D   ϵ ϭ ͘ ϳ ϵ Ϭ ͘ ϰ ϵ Ϭ ͘ Ϭ ϴ Ϭ ͘ ϴ  E E н > ^ d D н ^  Y Ƶ Ğ ƌ Ǉ  ŵ Ă ƚ Ğ ƌ ŝ Ă ů  →    ; Ɛ Ɖ Ś Ğ ƌ Ğ Ϳ  →    ; Ɛ Ɖ Ś Ğ ƌ Ğ Ϳ  →    ; Đ Ƶ ď Ğ  ͬ  Đ Ǉ ů ŝ Ŷ Ě Ğ ƌ Ϳ  →    ; Đ Ƶ ď Ğ  ͬ  Đ Ǉ ů ŝ Ŷ Ě Ğ ƌ ͿSupplementary Material
+
+A. Basic Functions
+
+As described in Section 3 and shown in Figure 2, each question in CLEVR is associated with a functional program built from a set of basic functions. In this section we detail the semantics of these basic functional building blocks.
+
+Data Types. Our basic functional building blocks operate on values of the following types:
+
+• Object: A single object in the scene. • ObjectSet: A set of zero or more objects in the
+
+scene.
+
+• Integer: An integer between 0 and 10 (inclusive). • Boolean: Either yes or no. • Value types:
+
+– Size: One of large or small. – Color: One of gray, red, blue, green,
+
+brown, purple, cyan, or yellow.
+
+– Shape: One of cube, sphere, or cylinder. – Material: One of rubber or metal. • Relation: One of left, right, in front, or
+
+behind.
+
+Basic Functions. The functional program representations of questions are built from the following set of basic building blocks. Each of these functions takes the image’s scene graph as an additional implicit input.
+
+• scene (∅ → ObjectSet)
+
+Returns the set of all objects in the scene.
+
+• unique (ObjectSet → Object)
+
+If the input is a singleton set, then return it as a standalone Object; otherwise raise an exception and ﬂag the question as ill-posed (See Section 3). • relate (Object × Relation → ObjectSet)
+
+Return all objects in the scene that have the speciﬁed spatial relation to the input object. For example if the input object is a red cube and the input relation is left, then return the set of all objects in the scene that are left of the red cube. • count (ObjectSet → Integer)
+
+Returns the size of the input set.
+
+• exist (ObjectSet → Boolean)
+
+Returns yes if the input set is nonempty and no if it is empty.
+
+• Filtering functions: These functions ﬁlter the input objects by some attribute, returning the subset of input objects that match the input attribute. For example calling filter size with the ﬁrst input small will return the set of all small objects in the second input.
+
+– ﬁlter size (ObjectSet × Size → ObjectSet) – ﬁlter color (ObjectSet × Color → ObjectSet) – ﬁlter material (ObjectSet×Material → ObjectSet) – ﬁlter shape (ObjectSet × Shape → ObjectSet)
+
+• Query functions: These functions return the speciﬁed attribute of the input object; for example calling query color on a red object returns red.
+
+– query size (Object → Size) – query color (Object → Color) – query material (Object → Material) – query shape (Object → Shape)
+
+• Logical operators:
+
+– AND (ObjectSet × ObjectSet → ObjectSet) Returns the intersection of the two input sets. – OR (ObjectSet × ObjectSet → ObjectSet) Returns the union of the two input sets.
+
+• Same-attribute relations: These functions return the set of objects that have the same attribute value as the input object, not including the input object. For example calling same shape on a cube returns the set of all cubes in the scene, excluding the query cube.
+
+– same size (Object → ObjectSet) – same color (Object → ObjectSet) – same material (Object → ObjectSet) – same shape (Object → ObjectSet)
+
+• Integer comparison: Checks whether the two integer inputs are equal, or whether the ﬁrst is less than or greater than the second, returning either yes or no.
+
+– equal integer (Integer × Integer → Boolean) – less than (Integer × Integer → Boolean) – greater than (Integer × Integer → Boolean)
+
+• Attribute comparison: These functions return yes if their inputs are equal and no if they are not equal.
+
+– equal size (Size × Size → Boolean) – equal material (Material × Material → Boolean) – equal color (Color × Color → Boolean) – equal shape (Shape × Shape → Boolean)
+
+B. Effective Question Size
+
+In Section 4.5 we note that some questions can be correctly answered without correctly resolving all intermediate object references, and deﬁne a question’s effective question to quantitatively measure this effect.
+
+For any question we can compute its effective question by pruning functions from the question’s program; the effective question is the smallest such pruned program that, when executed on the scene graph for the question’s image, gives the same answer as the original question.
+
+9
+
+Figure 11. Accuracy on query questions vs. actual and effective question size, restricting to questions with a same-attribute relationship. Figure 7 shows the same plots for questions without a same-attribute relationship. For both groups of questions we see that accuracy decreases as effective question size increases.
+
+lowing sequence of pruned programs. First we prune the inner ﬁlter shape function:
+
+query color(unique(ﬁlter shape(cube,
+
+relate(behind, unique(scene())))))
+
+The relate function now returns the set of objects which are behind some object, so it returns the large cube and the cylinder (since it is behind the small cube). The ﬁlter shape function removes the cylinder, and the query color returns a singleton set containing brown.
+
+Next we prune the inner unique function:
+
+query color(unique(ﬁlter shape(cube,
+
+relate(behind, scene()))))
+
+Since unique computes the identity for pruned questions, execution is the same as above.
+
+Next we prune the relate function:
+
+query color(unique(ﬁlter shape(cube, scene())))
+
+Now the ﬁlter shape returns the set of both cubes, but since both are brown the query color still returns a singleton set containing brown.
+
+Next we prune the ﬁlter shape function:
+
+query color(unique(scene()))
+
+Now the query color receives the set of all three input objects, so it returns a set containing brown and gray, which is different from the original question. The effective question is therefore:
+
+query color(unique(ﬁlter shape(cube, scene())))
+
+B.1. Accuracy vs Question Size
+
+Figure 7 of the main paper shows model accuracy on query-attribute questions as a function of actual and effective question size, excluding questions with same-attribute relationships. Questions with same-attribute relationships have a maximum question size of 10 but questions without same-attributerelationships havea maximum size of 20; combining these questions thus leads to unwanted correla-
+
+Figure 10. For the above image and the question “What color is the cube behind the cylinder?”, the effective question is “What color is the cube?” (see text for details).
+
+Some pruned questions may be ill-posed, meaning that some object references do not refer to a unique object. For example, consider the question “What color is the cube behind the cylinder?”; its associated program is
+
+query color(unique(ﬁlter shape(cube,
+
+relate(behind, unique(ﬁlter shape(cylinder, scene()))))))
+
+Imagine executing this program on the scene shown in Figure 10. The innermost ﬁlter shape gives a set containing the cylinder, the relate returns a set containing just the large cube in the back, the outer ﬁlter shape does nothing, and the query color returns brown.
+
+This question is not ill-posed (Section 3) because the reference to “the cube” cannot be resolved without the rest of the question; however this question’s effective size is less than its actual size because the question can be correctly answered without resolving this object reference correctly. To compute the effective question, we attempt to prune functions from this program. Starting from the innermost function and working out, whenever we ﬁnd a function whose input type is Object or ObjectSet, we construct a pruned question by replacing that function’s input with a scene function and executing it. The smallest such pruned program that gives the same answer as the original program is the effective question.
+
+Pruned questions may be ill-posed, so we execute them with modiﬁed semantics. The output type of the unique function is changed from Object to ObjectSet, and it simply returns its input set. All functions taking an Object input are modiﬁed to take an ObjectSet input instead by mapping the original function over its input set and ﬂattening the resulting set; thus the relate functions return the set of objects in the scene that have the speciﬁed relationship with any of the input objects, and the query functions return sets of values rather than single values.
+
+Therefore for this example question we consider the fol-
+
+10
+
+ ϲ ϴ ϭ Ϭ  Đ ƚ Ƶ Ă ů  Ƌ Ƶ Ğ Ɛ ƚ ŝ Ž Ŷ  Ɛ ŝ ǌ Ğ Ϯ Ϭ ϰ Ϭ ϲ Ϭ ϴ Ϭ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ Y Ƶ Ğ ƌ Ǉ   ƚ ƚ ƌ ŝ ď Ƶ ƚ Ğ Ϯ ϰ ϲ ϴ ϭ Ϭ  Ĩ Ĩ Ğ Đ ƚ ŝ ǀ Ğ  Ƌ Ƶ Ğ Ɛ ƚ ŝ Ž Ŷ  Ɛ ŝ ǌ Ğ Ϯ Ϭ ϰ Ϭ ϲ Ϭ ϴ Ϭ ϭ Ϭ Ϭ  Đ Đ Ƶ ƌ Ă Đ Ǉ Y Ƶ Ğ ƌ Ǉ   ƚ ƚ ƌ ŝ ď Ƶ ƚ Ğtions between question size and difﬁculty.
+
+In Figure 11 we show model accuracy vs. actual and effective question size for questions with same-attribute relationships. Similar to Figure 7, we see that model accuracy either remains constant or increases as actual question size increases, but all models show a clear decrease in accuracy as effective question size increases.
+
+C. Dynamic Module Networks
+
+Module networks [2, 3] are a novel approach to visual question answering where a set of differentiable modules are used to assemble a custom network architecture to answer each question. Each module is responsible for performing a speciﬁc function such as ﬁnding a particular type of object, describing the current object of attention, or performing a logical and operation to merge attention masks. This approach seems like a natural ﬁt for the rich, compositional questions in CLEVR; unfortunately we found that parsing heuristics tuned for the VQA dataset did not generalize to the longer, more complex questions in CLEVR.
+
+Dynamic module networks [2] generate network architectures by performing a dependency parse of the question, using a set of heuristics to compute a set of layout fragments, combining these fragments to create candidate layouts, and ranking the candidate layouts using an MLP.
+
+For some questions, the heuristics are unable to produce any layout fragments; in this case, the system uses a simple default network architecture as a fallback for answering that question. On a random sample of 10,000 questions from the VQA dataset [4], we found that dynamic module networks resorted to default architecture for 7.8% of questions; on a random sample of 10,000 questions from CLEVR, the default network architecture was used for 28.9% of questions. This suggests that the same parsing heuristics used for VQA do not apply to the questions in CLEVR; therefore the method of [2] did not work out-of-the box on CLEVR.
+
+D. Example images and questions
+
+The remaining pages show randomly selected images and questions from CLEVR. Each question is annotated with its answer, question type, and size. Recall from Section 3 that a question’s type is the outermost function in the question’s functional program, and a question’s size is the number of functions in its program.
+
+11
+
+Q: There is a rubber cube in front of the big cylinder in front of the big brown matte thing; what is its size? A: small Q-type: query size Size: 14
+
+that
+
+Q: What color is the object is on the left side of the small rubber thing? A: gray Q-type: query color Size: 7
+
+Q: Are there fewer metallic objects that are on the left side of the large cube than cylinders to the left of the cyan shiny block? A: yes Q-type: less than Size: 16
+
+Q: There is a green rubber thing that is left of the rubber thing that is right of the rubber cylinder behind the gray shiny block; what is its size? A: large Q-type: query size Size: 17
+
+Q: There is another cube that is made of the same material as the small brown block; what is its size? A: large Q-type: query size Size: 9
+
+Q: What number of other matte objects are the same shape as the small rubber object? A: 1 Q-type: count Size: 7
+
+Q: What is the size of the matte thing that is on the left side of the large cyan object and in front of the small blue thing? A: large Q-type: query size Size: 14
+
+Q: The green matte thing that is behind the large green thing that is to the right of the big cyan metal object is what shape? A: cylinder Q-type: query shape Size: 14
+
+Q: Is the number of tiny metal objects left of the purple metallic cylinder the same as the number of small metal objects to the left of the small metal sphere? A: no Q-type: equal integer Size: 19
+
+Q: There is a small thing that is the same color as the tiny shiny ball; what is it made of? A: rubber Q-type: query material Size: 9
+
+Q: Do the large shiny object and the thing to the left of the big gray object have the same shape? A: no Q-type: equal shape Size: 13
+
+the
+
+Q: Is there anything else that is the same shape tiny as yellow matte thing? A: no Q-type: exist Size: 7
+
+Q: What color is the small shiny cube? A: brown Q-type: query color Size: 6
+
+Q: There is a tiny shiny sphere left of the cylinder in front of the large cylinder; what color is it? A: brown Q-type: query color Size: 13
+
+Q: What number of cylinders are purple metal objects or purple matte things? A: 0 Q-type: count Size: 9
+
+the
+
+Q: Does large shiny object purple have the same shape as the tiny object that is behind the matte thing? A: no Q-type: equal shape Size: 14
+
+Q: There is a big shiny object; are there any blue shiny cubes behind it? A: no Q-type: exist Size: 9
+
+the
+
+Q: There is a large brown block in front of tiny rubber cylinder that is behind the cyan block; are there any big cyan metallic cubes that are to the left of it? A: yes Q-type: exist Size: 20
+
+Is
+
+Q: there a tiny thing that has the same material as the brown cylinder? A: yes Q-type: exist Size: 7
+
+Q: What is the material of the tiny object to the right of the brown shiny ball behind the tiny shiny cylinder? A: metal Q-type: query material Size: 14
+
+of
+
+Q: There is a object that is both on the left side of the brown metal block and in large front purple shiny ball; how big is it? A: small Q-type: query size Size: 16
+
+the
+
+color
+
+have as
+
+Q: What number of the cylinders same the metal ball? A: 0 Q-type: count Size: 7
+
+Q: The cyan block that is the same material as the tiny gray thing is what size? A: large Q-type: query size Size: 9
+
+Q: There is a big purple shiny object; what shape is it? A: sphere Q-type: query shape Size: 6
+
+12
+
+that
+
+Q: How big is the gray rubber object is behind the big shiny thing behind the big metallic thing that is on the left side of the purple ball? A: small Q-type: query size Size: 17
+
+Q: There is a purple ball that is the same size as the red cylinder; what material is it? A: metal Q-type: query material Size: 9
+
+thing that
+
+Q: There is a tiny rubber is the same color as the metal cylinder; what shape is it? A: cylinder Q-type: query shape Size: 9
+
+Q: What is the shape of the tiny green thing that the is made of same material as the large cylinder? A: cylinder Q-type: query shape Size: 9
+
+that
+
+Q: There is a small ball is made of the same material as the large block; what color is it? A: blue Q-type: query color Size: 9
+
+Q: Is the size of the red rubber sphere the same as the purple metal thing? A: yes Q-type: equal size Size: 12
+
+Q: Is there another green rubber cube that has the same size as the green matte cube? A: no Q-type: exist Size: 10
+
+Q: Is the large matte thing the same shape as the big red object? A: yes Q-type: equal shape Size: 11
+
+the
+
+Q: Do blue metallic object and the green metal thing have the same shape? A: no Q-type: equal shape Size: 11
+
+Q: The big matte thing is what color? A: purple Q-type: query color Size: 5
+
+is the mathe purple
+
+Q: What terial of cylinder? A: metal Q-type: query material Size: 5
+
+Q: There is a blue ball that is the same size as the brown thing; what material is it? A: metal Q-type: query material Size: 8
+
+Q: How many small spheres are the same color as the big rubber cube? A: 0 Q-type: count Size: 9
+
+Q: Is the tiny ball same made of the material as the large purple ball? A: yes Q-type: equal material Size: 12
+
+is
+
+the
+
+that
+
+Q: There is a large cube right of red sphere; what number of large yellow things are on the right side of it? A: 0 Q-type: count Size: 12
+
+the matte the and shiny object
+
+Q: Do cylinder purple have the same size? A: no Q-type: equal size Size: 11
+
+Q: How many small are things green behind green the rubber sphere in front of the blue thing that is in front of the large purple metal cylinder? A: 1 Q-type: count Size: 18
+
+Q: What is the size of the green metal object right of the large ball that is on the left side of the big blue metal sphere? A: small Q-type: query size Size: 15
+
+Q: The cylinder that is the same size as the blue metallic sphere is what color? A: purple Q-type: query color Size: 9
+
+Q: What is the color of the matte thing that is left of the thing behind the tiny green thing behind the tiny shiny sphere? A: green Q-type: query color Size: 15
+
+Q: There is a thing in front of the tiny block; is its color the same as the matte object in front of the tiny brown rubber thing? A: yes Q-type: equal color Size: 17
+
+as
+
+the
+
+Q: There is a metallic ball that is the same color tiny cylinder; what size is it? A: large Q-type: query size Size: 9
+
+Q: The green thing behind the small green thing on the right side of the brown matte object is what shape? A: cube Q-type: query shape Size: 12
+
+Q: Is there a green matte cube that has the same size as the shiny thing? A: yes Q-type: exist Size: 8
+
+13
+
+Q: Are there more brown shiny objects large behind the rubber cylinder than gray blocks? A: yes Q-type: greater than Size: 14
+
+Q: What is color the matte object to the right of the large block? A: blue Q-type: query color Size: 8
+
+there
+
+Q: Are any other things that are the same shape as the large green thing? A: no Q-type: exist Size: 6
+
+Q: The matte thing is both in front that of the purple cube and to the left of the blue rubber cylinder is what color? A: green Q-type: query color Size: 15
+
+Q: What number of cubes are the same color as the rubber ball? A: 1 Q-type: count Size: 7
+
+Q: Is the big cyan metal thing the same shape as the brown thing? A: no Q-type: equal shape Size: 11
+
+Q: Do the blue cube and the cylinder have the same size? A: yes Q-type: equal size Size: 10
+
+Q: The ball has what size? A: small Q-type: query size Size: 4
+
+than
+
+Q: Are there fewer small rubber cylinders in front of the green purple ball cylinders? A: no Q-type: less than Size: 14
+
+Q: What number of other objects are there the of shape same the large rubber as object? A: 0 Q-type: count Size: 6
+
+shape
+
+Q: What is the tiny metal thing behind the large block the tiny in front of brown block? A: cube Q-type: query shape Size: 14
+
+Q: Is the size of the cyan cube the same as the metal cylinder that is behind the cyan cylinder? A: no Q-type: equal size Size: 15
+
+Q: There is a tiny thing; brown rubber is its shape the same as the thing that is in front of the small matte cylinder? A: no Q-type: equal shape Size: 15
+
+Q: What number of things yellow rubber are the same size as the gray thing? A: 0 Q-type: count Size: 7
+
+there things
+
+Q: Are any that rubber have the same size as the yellow metallic cylinder? A: no Q-type: exist Size: 8
+
+Q: What is the size of the brown sphere? A: small Q-type: query size Size: 5
+
+Q: What is the shape of the shiny thing that is behind the small blue rubber object and to the right of the tiny brown thing? A: cube Q-type: query shape Size: 15
+
+Q: What is the shape the blue rubber of of object front in to the brown object the right of the big metallic block? A: cylinder Q-type: query shape Size: 13
+
+that
+
+brown
+
+Q: What number of tiny rubber objects are behind the rubber object is on the right side of the cylinder on the right side of the big cyan cylinder? A: 0 Q-type: count Size: 16
+
+Q: Are there an equal number brown of matte objects that are right of the tiny brown object and gray rubber cylinders that are to the left of the large cyan shiny cylinder? A: yes Q-type: equal integer Size: 20
+
+Q: What number of yellow metal objects are the same size as the metallic cube? A: 1 Q-type: count Size: 8
+
+Q: Is the number of purple matte cylinders behind the large purple thing less than the number of tiny rubber objects in front of the big cylinder? A: yes Q-type: less than Size: 18 14
+
+Q: Does the large red object have the same shape as the large blue thing? A: no Q-type: equal shape Size: 11
+
+is
+
+Q: There is a large cylinder the that same color as the tiny cylinder; what is it made of? A: rubber Q-type: query material Size: 9
+
+Q: There is a red shiny thing right of the purple metal sphere; what is its shape? A: cylinder Q-type: query shape Size: 10
+
+Q: What number of purple shiny things are there? A: 1 Q-type: count Size: 4
+
+Q: Does the small ball have the same color as the small cylinder in front of the big sphere? A: no Q-type: equal color Size: 15
+
+the
+
+Q: How many other things are the same size green as sphere? A: 0 Q-type: count Size: 6
+
+Q: There is a object that is behind the big green metal cylinder; what is its material? A: rubber Q-type: query material Size: 9
+
+Q: How big is the gray thing? A: large Q-type: query size Size: 4
+
+Q: Are the red object cyan cube and the made of same the material? A: yes Q-type: equal material Size: 10
+
+Q: Are there more metallic objects that are right of the large red shiny cylinder than gray matte objects? A: no Q-type: greater than Size: 14
+
+Q: How many blocks are yellow rubber things or large green shiny things? A: 0 Q-type: count Size: 10
+
+Q: There is a shiny object in front of the yellow cylinder; is it the same shape as the yellow thing? A: no Q-type: equal shape Size: 13
+
+blocks
+
+Q: What number of rubber are there? A: 1 Q-type: count Size: 4
+
+the
+
+Q: Do green object behind the tiny green matte cylinder and the small purple object have the same material? A: yes Q-type: equal material Size: 16
+
+Q: How big is the yellow thing behind the brown shiny thing? A: small Q-type: query size Size: 8
+
+Q: Is the size of the the brown metal ball same as the yellow thing that is behind the yellow rubber sphere? A: no Q-type: equal size Size: 16
+
+Q: How many things are either green things or matte cubes behind the green ball? A: 2 Q-type: count Size: 11
+
+Q: There is a cyan that is to the object right cyan the of rubber sphere; is its size the same as the gray rubber cylinder? A: no Q-type: equal size Size: 16
+
+Q: What color is the in front rubber ball of the metal cube to the left of the matte cube left of the blue metallic sphere? A: gray Q-type: query color Size: 18
+
+Q: What shape is the cyan shiny thing that is the same size as the red matte object? A: cube Q-type: query shape Size: 9
+
+Q: Are there fewer small yellow things to the left of the large yellow matte ball than large brown objects? A: yes Q-type: less than Size: 15
+
+Q: What material is the other thing that is the same shape as the brown thing? A: rubber Q-type: query material Size: 6
+
+Q: There is a sphere to the right of the large yellow ball; what material is it? A: metal Q-type: query material Size: 9
+
+that
+
+there
+
+Q: Are the same number of tiny cylinders are behind the cyan metal purple and object blocks the right of gray cube? A: no Q-type: equal integer Size: 17 15
+
+Q: What is the size of the green block behind the big gray matte sphere? A: large Q-type: query size Size: 11
+
+Q: There is a green cylinder on the right side of the big gray ball; does it have the same size as the ball that the metal ball? A: no Q-type: equal size Size: 19
+
+behind
+
+is
+
+Acknowledgments We thank Deepak Pathak, Piotr Doll´ar, Ranjay Krishna, Animesh Garg, and Danfei Xu for helpful comments and discussion.
+
+References
+
+[1] A. Agrawal, D. Batra, and D. Parikh. Analyzing the behavior of visual question answering models. In EMNLP, 2016. 1 [2] J. Andreas, M. Rohrbach, T. Darrell, and D. Klein. Learning to compose neural networks for question answering. In NAACL, 2016. 1, 2, 4, 5, 8, 11
+
+[3] J. Andreas, M. Rohrbach, T. Darrell, and D. Klein. Neural
+
+module networks. In CVPR, 2016. 1, 2, 4, 8, 11
+
+[4] S. Antol, A. Agrawal, J. Lu, M. Mitchell, D. Batra, C. Zitnick, and D. Parikh. VQA: Visual question answering. In ICCV, 2015. 1, 2, 4, 5, 11
+
+[5] Y. Bengio, A. Courville, and P. Vincent.
+
+Representation learning: A review and new perspectives. TPAMI, 35(8):1798–1828, 2014. 8
+
+[6] Blender Online Community. Blender - a 3D modelling and rendering package. Blender Foundation, Blender Institute, Amsterdam, 2016. 3
+
+[7] J. Chen, P. Kuznetsova, D. Warren, and Y. Choi. Deja imagecaptions: A corpus of expressive image descriptions in repetition. In NAACL, 2015. 2
+
+[8] A. Farhadi, M. Hejrati, A. Sadeghi, P. Young, C. Rashtchian, J. Hockenmaier, and D. Forsyth. Every picture tells a story: Generating sentences for images. In ECCV, 2010. 2
+
+[9] A. Fukui, D. H. Park, D. Yang, A. Rohrbach, T. Darrell, and M. Rohrbach. Multimodal compact bilinear pooling for visual question answering and visual grounding. In arXiv:1606.01847, 2016. 1, 4, 5
+
+[10] H. Gao, J. Mao, J. Zhou, Z. Huang, L. Wang, and W. Xu. Are you talking to a machine? Dataset and methods for mulIn NIPS, 2015. 1, 2, tilingual image question answering. 4
+
+[11] Y. Gao, O. Beijbom, N. Zhang, and T. Darrell. Compact
+
+bilinear pooling. In CVPR, 2016. 5
+
+[12] D. Geman, S. Geman, N. Hallonquist, and L. Younes. Visual Turing test for computer vision systems. Proceedings of the National Academy of Sciences, 112(12):3618–3623, 2015. 2 [13] A. Graves, G. Wayne, M. Reynolds, T. Harley, I. Danihelka, A. Grabska-Barwinska, S. Colmenarejo, E. Grefenstette, T. Ramalho, J. Agapiou, A. Badia, K. Hermann, Y. Zwols, G. Ostrovski, A. Cain, H. King, C. Summerﬁeld, P. Blunsom, K. . Kavukcuoglu, and D. Hassabis. Hybrid computing using a neural network with dynamic external memory. Nature, 2016. 8
+
+[14] K. He, X. Zhang, S. Ren, and J. Sun. Deep residual learning
+
+for image recognition. In CVPR, 2016. 5
+
+[15] S. Hochreiter and J. Schmidhuber. Long short-term memory.
+
+Neural Computation, 9(8):1735–1780, 1997. 2, 5
+
+[18] A. Joulin and T. Mikolov. Inferring algorithmic patterns with
+
+stack-augmented recurrent nets. In NIPS, 2015. 8
+
+[19] S. Kazemzadeh, V. Ordonez, M. Matten, and T. Berg. Referitgame: Referring to objects in photographs of natural scenes. In EMNLP, 2014. 2
+
+[20] D. Kingma and J. Ba. Adam: A method for stochastic opti-
+
+mization. In ICLR, 2015. 5
+
+[21] R. Krishna, Y. Zhu, O. Groth, J. Johnson, K. Hata, J. Kravitz, S. Chen, Y. Kalantidis, L. Jia-Li, D. Shamma, M. Bernstein, and L. Fei-Fei. Visual genome: Connecting language and vision using crowdsourced dense image annotations. IJCV, 2016. 1, 2, 3
+
+[22] H. J. Levesque, E. Davis, and L. Morgenstern. The Winograd schema challenge. In AAAI Spring Symposium: Logical Formalizations of Commonsense Reasoning, volume 46, page 47, 2011. 2
+
+[23] T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Dollar, and C. Zitnick. Microsoft COCO: Common objects in context. In ECCV, 2014. 2
+
+[24] J. Lu, J. Yang, D. Batra, and D. Parikh. Hierarchical question-image co-attention for visual question answering. In NIPS, 2016. 1, 2, 4
+
+[25] L. Ma, Z. Lu, and H. Li. Learning to answer questions from image using convolutional neural network. In AAAI, 2016. 4 [26] M. Malinowski and M. Fritz. A multi-world approach to question answering about real-world scenes based on uncertain input. In NIPS, 2014. 1, 2
+
+[27] M. Malinowski and M. Fritz. Towards a visual Turing challenge. InNIPS2014WorkshoponLearningSemantics, 2014. 2
+
+[28] M. Malinowski, M. Rohrbach, and M. Fritz. Ask your neurons: A neural-based approach to answering questions about images. In ICCV, 2015. 2, 4
+
+[29] T. Mikolov, K. Chen, G. Corrado, and J. Dean. Efﬁcient estimation of word representations in vector space. In arXiv 1301.3781, 2013. 5
+
+[30] O. Pfungst. Clever Hans (The horse of Mr. von Osten): A contribution to experimental animal and human psychology. Henry Holt, New York, 1911. 1
+
+[31] A. Ray, G. Christie, M. Bansal, D. Batra, and D. Parikh. Question relevance in vqa: Identifying non-visual and falsepremise questions. In EMNLP, 2016. 1
+
+[32] M. Ren, R. Kiros, and R. Zemel. Exploring models and data for image question answering. In NIPS, 2015. 1, 2, 4 [33] K. Shih, S. Singh, and D. Hoiem. Where to look: Focus regions for visual question answering. In CVPR, 2016. 4 [34] N. Srivastava, G. E. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov. Dropout: a simple way to prevent neural networks from overﬁtting. JMLR, 15(1):1929–1958, 2014. 5 [35] B. Sturm. A simple method to determine if a music inforIEEE Transactions on
+
+mation retrieval system is a horse. Multimedia, 16(6):1636–1644, 2014. 1
+
+[16] A. Jabri, A. Joulin, and L. van der Maaten. Revisiting visual
+
+[36] B. Sturm. Horse taxonomy and taxidermy. HORSE2016,
+
+question answering baselines. In ECCV, 2016. 1, 4
+
+2016. 1
+
+[17] J. Johnson, R. Krishna, M. Stark, L.-J. Li, D. A. Shamma, M. S. Bernstein, and L. Fei-Fei. Image retrieval using scene graphs. In CVPR, 2015. 3
+
+[37] M. Tapaswi, Y. Zhu, R. Stiefelhagen, A. Torralba, R. Urtasun, andS.Fidler. Movieqa: Understandingstoriesinmovies through question-answering. In CVPR, 2016. 2
+
+16
+
+[38] J. Weston, A. Bordes, S. Chopra, A. Rush, B. van Merri¨enboer, A. Joulin, and T. Mikolov. Towards aicomplete question answering: A set of prerequisite toy tasks. In ICLR, 2016. 2
+
+[39] J. Weston, S. Chopra, and A. Bordes. Memory networks. In
+
+ICLR, 2015. 8
+
+[40] T. Winograd. Understanding Natural Language. Academic
+
+Press, 1972. 2
+
+[41] Q. Wu, C. Shen, A. van den Hengel, P. Wang, and A. Dick. Image captioning and visual question answering based on In arXiv attributes and their related external knowledge. 1603.02814, 2016. 4
+
+[42] C. Xiong, S. Merity, and R. Socher. Dynamic memory netICML,
+
+works for visual and textual question answering. 2016. 4, 8
+
+[43] H. Xu and K. Saenko. Ask, attend, and answer: Exploring question-guided spatial attention for visual question answering. In ECCV, 2016. 4
+
+[44] Z. Yang, X. He, J. Gao, L. Deng, and A. Smola. Stacked attention networks for image question answering. In CVPR, 2016. 1, 2, 4, 5, 8
+
+[45] P. Young, A. Lai, M. Hodosh, and J. Hockenmaier. From image descriptions to visual denotations: New similarity metrics for semantic inference over event descriptions. In TACL, pages 67–78, 2014. 2
+
+[46] L. Yu, E. Park, A. Berg, and T. Berg. Visual madlibs: Fill in the blank image generation and question answering. In ICCV, 2015. 1, 2
+
+[47] P. Zhang, Y. Goyal, D. Summers-Stay, D. Batra, and D. Parikh. Yin and yang: Balancing and answering binary visual questions. In CVPR, 2016. 1, 2
+
+[48] B. Zhou, Y. Tian, S. Sukhbataar, A. Szlam, and R. Fergus. Simple baseline for visual question answering. In arXiv:1512.02167, 2015. 1, 4, 5
+
+[49] Y. Zhu, O. Groth, M. Bernstein, and L. Fei-Fei. Visual7w: Grounded question answering in images. In CVPR, 2016. 1, 2, 4
+
+[50] C. Zitnick and D. Parikh. Bringing semantics into focus us-
+
+ing visual abstraction. In CVPR, 2013. 2
+
+17
+

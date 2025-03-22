@@ -1,0 +1,85 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319040048D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319040048R1",
+            "tail": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb2",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319040048D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319040048P1",
+            "tail": "VoxCeleb2: Deep Speaker Recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319040048D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040048T1",
+            "tail": "speaker recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040048D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040048T2",
+            "tail": "speaker verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040048D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040048T3",
+            "tail": "speaker identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040048D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040048T5",
+            "tail": "visual speech synthesis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040048D1",
+            "head": "VoxCeleb2",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319040048D2",
+            "tail": "VoxCeleb1",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319040048D4",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319040048P1",
+            "tail": "VoxCeleb2: Deep Speaker Recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319040048D5",
+            "head": "MS-Celeb-1M",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319040048P1",
+            "tail": "VoxCeleb2: Deep Speaker Recognition",
+            "tail_type": "Paper"
+        }
+    ]
+}

@@ -1,0 +1,67 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319034844D1",
+            "head": "HMDB51",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319034844R1",
+            "tail": "http://serre-lab.clps.brown.edu/resources/HMDB/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319034844D1",
+            "head": "HMDB51",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319034844P1",
+            "tail": "HMDB: A Large Video Database for Human Motion Recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319034844D1",
+            "head": "HMDB51",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034844T1",
+            "tail": "action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034844D1",
+            "head": "HMDB51",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034844T2",
+            "tail": "human motion recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034844D1",
+            "head": "HMDB51",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034844T3",
+            "tail": "video classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034844D1",
+            "head": "HMDB51",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034844T4",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034844D9",
+            "head": "UCF50",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319034844D8",
+            "tail": "UCFYouTube",
+            "tail_type": "Dataset"
+        }
+    ]
+}

@@ -1,0 +1,67 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319023144P1",
+            "tail": "LSUN: Construction of a Large-Scale Image Dataset using Deep Learning with Humans in the Loop",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023144T1",
+            "tail": "image classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023144T2",
+            "tail": "visual recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023144T3",
+            "tail": "training object detection algorithms",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023144T4",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023144T5",
+            "tail": "unsupervised image analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023144D1",
+            "head": "LSUN",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023144T6",
+            "tail": "object localization",
+            "tail_type": "Task"
+        }
+    ]
+}

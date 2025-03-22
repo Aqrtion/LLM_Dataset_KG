@@ -1,0 +1,130 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319010509D1",
+            "head": "BoolQ",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319010509R1",
+            "tail": "https://goo.gl/boolq",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319010509D1",
+            "head": "BoolQ",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319010509P1",
+            "tail": "BoolQ: Exploring the Surprising Difficulty of Natural Yes/No Questions",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319010509D1",
+            "head": "BoolQ",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010509T1",
+            "tail": "yes/no question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010509D2",
+            "head": "MultiNLI",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010509T3",
+            "tail": "entailment",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010509D3",
+            "head": "SNLI",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010509T3",
+            "tail": "entailment",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010509D4",
+            "head": "SQuAD 1.1",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319010509D5",
+            "tail": "SQuAD 2.0",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319010509D4",
+            "head": "SQuAD 1.1",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010509T5",
+            "tail": "extractive QA",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010509D5",
+            "head": "SQuAD 2.0",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010509T5",
+            "tail": "extractive QA",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010509D6",
+            "head": "RACE",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010509T6",
+            "tail": "multiple-choice QA",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010509D7",
+            "head": "QQP",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010509T4",
+            "tail": "paraphrasing",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010509D8",
+            "head": "MS Marco",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010509T1",
+            "tail": "yes/no question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010509D9",
+            "head": "QuAC",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010509T9",
+            "tail": "conversational QA",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010509D10",
+            "head": "CoQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010509T9",
+            "tail": "conversational QA",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010509D11",
+            "head": "HotPotQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010509T10",
+            "tail": "multi-step reasoning",
+            "tail_type": "Task"
+        }
+    ]
+}

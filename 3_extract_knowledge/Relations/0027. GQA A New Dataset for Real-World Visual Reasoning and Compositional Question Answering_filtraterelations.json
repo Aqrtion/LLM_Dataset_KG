@@ -1,0 +1,139 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319005543R1",
+            "tail": "visualreasoning.net",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319005543P1",
+            "tail": "GQA: A New Dataset for Real-World Visual Reasoning and Compositional Question Answering",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319005543D2",
+            "tail": "Visual Genome",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319005543D2",
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319005543D3",
+            "tail": "COCO",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319005543D2",
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319005543D4",
+            "tail": "Flickr",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T1",
+            "tail": "visual reasoning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T2",
+            "tail": "compositional question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T3",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T4",
+            "tail": "attribute recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T5",
+            "tail": "spatial reasoning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T6",
+            "tail": "logical inference",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T7",
+            "tail": "comparisons",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T9",
+            "tail": "training object detection algorithms",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T10",
+            "tail": "scene understanding",
+            "tail_type": "Task"
+        }
+    ]
+}

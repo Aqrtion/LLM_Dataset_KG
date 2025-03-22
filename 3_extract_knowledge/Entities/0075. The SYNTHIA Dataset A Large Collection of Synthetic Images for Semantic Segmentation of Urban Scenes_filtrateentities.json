@@ -1,0 +1,153 @@
+{
+    "entities": [
+        {
+            "id": "20250319032408P1",
+            "name": "The SYNTHIA Dataset: A Large Collection of Synthetic Images for Semantic Segmentation of Urban Scenes",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "German Ros",
+                    "Laura Sellart",
+                    "Joanna Materzynska",
+                    "David Vazquez",
+                    "Antonio M. Lopez"
+                ],
+                "institution": "Computer Vision Center, Universitat Autonoma de Barcelona"
+            }
+        },
+        {
+            "id": "20250319032408D1",
+            "name": "SYNTHIA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "213,400 synthetic images",
+                "classes": "13 (sky, building, road, sidewalk, fence, vegetation, lane-marking, pole, car, traffic signs, pedestrians, cyclists, miscellaneous)",
+                "resolution": "960×720",
+                "features": "multiple viewpoints, seasons, dynamic lighting, depth maps"
+            }
+        },
+        {
+            "id": "20250319032408D2",
+            "name": "SYNTHIA-Rand",
+            "type": "Dataset",
+            "attributes": {
+                "size": "13,400 frames",
+                "purpose": "training data"
+            }
+        },
+        {
+            "id": "20250319032408D3",
+            "name": "SYNTHIA-Seqs",
+            "type": "Dataset",
+            "attributes": {
+                "size": "200,000 frames",
+                "purpose": "video sequences across seasons"
+            }
+        },
+        {
+            "id": "20250319032408D4",
+            "name": "CamVid",
+            "type": "Dataset",
+            "attributes": {
+                "size": "701 images",
+                "classes": "32 categories (11 commonly used)",
+                "annotations": "pixel-level"
+            }
+        },
+        {
+            "id": "20250319032408D5",
+            "name": "KITTI",
+            "type": "Dataset",
+            "attributes": {
+                "size": "430 labeled images"
+            }
+        },
+        {
+            "id": "20250319032408D6",
+            "name": "Urban LabelMe (U-LabelMe)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1,000 annotated, 3,000 partial",
+                "annotations": "noisy"
+            }
+        },
+        {
+            "id": "20250319032408D7",
+            "name": "CBCL StreetScenes",
+            "type": "Dataset",
+            "attributes": {
+                "size": "3,547 images",
+                "annotations": "noisy"
+            }
+        },
+        {
+            "id": "20250319032408D8",
+            "name": "CityScapes",
+            "type": "Dataset",
+            "attributes": {
+                "size": "5,000 fine, 20,000 coarse annotations",
+                "classes": "30"
+            }
+        },
+        {
+            "id": "20250319032408R1",
+            "name": "adas.cvc.uab.es/synthia",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032408T1",
+            "name": "semantic segmentation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032408T2",
+            "name": "object detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032408T3",
+            "name": "traffic sign recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032408T4",
+            "name": "road segmentation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032408T5",
+            "name": "pose estimation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032408T6",
+            "name": "part models learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032408T7",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032408T8",
+            "name": "training object detection algorithms",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319032408T9",
+            "name": "scene understanding",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

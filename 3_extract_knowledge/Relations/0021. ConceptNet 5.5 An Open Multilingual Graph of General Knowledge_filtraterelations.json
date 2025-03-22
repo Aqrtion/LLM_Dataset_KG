@@ -1,0 +1,193 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319002611R1",
+            "tail": "http://conceptnet.io",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319002611R2",
+            "tail": "https://github.com/commonsense/conceptnet5",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319002611P1",
+            "tail": "ConceptNet 5.5: An Open Multilingual Graph of General Knowledge",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319002611T1",
+            "tail": "word relatedness evaluation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319002611T2",
+            "tail": "solving SAT-style analogies",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319002611T3",
+            "tail": "natural language processing",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319002611T4",
+            "tail": "machine learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319002611T5",
+            "tail": "semantic space construction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319002611T6",
+            "tail": "multilingual embedding propagation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319002611T7",
+            "tail": "training word embeddings",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319002611T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319002611D3",
+            "tail": "WordNet",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319002611D4",
+            "tail": "Open Multilingual WordNet",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319002611D5",
+            "tail": "DBPedia",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319002611D6",
+            "tail": "OpenCyc",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319002611D7",
+            "tail": "JMDict",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319002611D8",
+            "tail": "Wiktionary",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319002611D1",
+            "head": "ConceptNet 5.5",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319002611D9",
+            "tail": "Open Mind Common Sense (OMCS)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319002611D2",
+            "head": "ConceptNet 5.2",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319002611D1",
+            "tail": "ConceptNet 5.5",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319002611D10",
+            "head": "ConceptNet Numberbatch 16.09",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319002611R3",
+            "tail": "https://github.com/commonsense/conceptnet-numberbatch",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319002611D10",
+            "head": "ConceptNet Numberbatch 16.09",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319002611P1",
+            "tail": "ConceptNet 5.5: An Open Multilingual Graph of General Knowledge",
+            "tail_type": "Paper"
+        }
+    ]
+}

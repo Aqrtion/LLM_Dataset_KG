@@ -1,0 +1,191 @@
+{
+    "entities": [
+        {
+            "id": "20250319030126P1",
+            "name": "EuroSAT: A Novel Dataset and Deep Learning Benchmark for Land Use and Land Cover Classification",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Patrick Helber",
+                    "Benjamin Bischke",
+                    "Andreas Dengel",
+                    "Damian Borth"
+                ],
+                "institution": "TU Kaiserslautern, German Research Center for Artificial Intelligence (DFKI)"
+            }
+        },
+        {
+            "id": "20250319030126D1",
+            "name": "EuroSAT",
+            "type": "Dataset",
+            "attributes": {
+                "size": "27,000 images",
+                "classes": 10,
+                "resolution": "10 meters per pixel",
+                "spectral_bands": 13,
+                "image_size": "64x64 pixels",
+                "geo-referenced": "yes",
+                "source": "Sentinel-2 satellite images"
+            }
+        },
+        {
+            "id": "20250319030126R1",
+            "name": "https://github.com/phelber/eurosat",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030126T1",
+            "name": "land use and land cover classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030126T2",
+            "name": "detecting land use and land cover changes",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030126T3",
+            "name": "improving geographical maps",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030126D2",
+            "name": "UC Merced (UCM) land use dataset",
+            "type": "Dataset",
+            "attributes": {
+                "classes": 21,
+                "images_per_class": 100,
+                "resolution": "30 cm per pixel"
+            }
+        },
+        {
+            "id": "20250319030126D3",
+            "name": "PatternNet",
+            "type": "Dataset",
+            "attributes": {
+                "resolution": "30 cm per pixel"
+            }
+        },
+        {
+            "id": "20250319030126D4",
+            "name": "NWPU-RESISC45",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319030126D5",
+            "name": "AID (Aerial Image Dataset)",
+            "type": "Dataset",
+            "attributes": {
+                "classes": 30,
+                "images_per_class": "200-400",
+                "image_size": "600x600 pixels"
+            }
+        },
+        {
+            "id": "20250319030126D6",
+            "name": "SAT-6",
+            "type": "Dataset",
+            "attributes": {
+                "classes": 6,
+                "image_size": "28x28 pixels",
+                "bands": [
+                    "red",
+                    "green",
+                    "blue",
+                    "near-infrared"
+                ]
+            }
+        },
+        {
+            "id": "20250319030126D7",
+            "name": "BCS (Brazillian Coffee Scene)",
+            "type": "Dataset",
+            "attributes": {
+                "classes": 2,
+                "images_per_class": 1423,
+                "bands": [
+                    "red",
+                    "green",
+                    "near-infrared"
+                ]
+            }
+        },
+        {
+            "id": "20250319030126D8",
+            "name": "LabelMe",
+            "type": "Dataset",
+            "attributes": {
+                "segmented_images": "yes",
+                "size": "30,000 images"
+            }
+        },
+        {
+            "id": "20250319030126D9",
+            "name": "Lotus Hill dataset",
+            "type": "Dataset",
+            "attributes": {
+                "segmented_images": "yes",
+                "availability": "purchase required"
+            }
+        },
+        {
+            "id": "20250319030126D10",
+            "name": "ILSVRC-2012",
+            "type": "Dataset",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319030126D1",
+            "head": "EuroSAT",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319030126R1",
+            "tail": "https://github.com/phelber/eurosat",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319030126D1",
+            "head": "EuroSAT",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319030126P1",
+            "tail": "EuroSAT: A Novel Dataset and Deep Learning Benchmark for Land Use and Land Cover Classification",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319030126D1",
+            "head": "EuroSAT",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030126T1",
+            "tail": "land use and land cover classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030126D1",
+            "head": "EuroSAT",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030126T2",
+            "tail": "detecting land use and land cover changes",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030126D1",
+            "head": "EuroSAT",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030126T3",
+            "tail": "improving geographical maps",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

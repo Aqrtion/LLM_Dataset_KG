@@ -1,0 +1,76 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319021525D1",
+            "head": "Flickr-Faces-HQ (FFHQ)",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319021525R1",
+            "tail": "https://github.com/NVlabs/ffhq-dataset",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319021525D1",
+            "head": "Flickr-Faces-HQ (FFHQ)",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319021525P1",
+            "tail": "A Style-Based Generator Architecture for Generative Adversarial Networks",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319021525D1",
+            "head": "Flickr-Faces-HQ (FFHQ)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021525T1",
+            "tail": "image synthesis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021525D1",
+            "head": "Flickr-Faces-HQ (FFHQ)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021525T2",
+            "tail": "latent space interpolation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021525D1",
+            "head": "Flickr-Faces-HQ (FFHQ)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021525T3",
+            "tail": "disentanglement of latent factors",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021525D1",
+            "head": "Flickr-Faces-HQ (FFHQ)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021525T4",
+            "tail": "style transfer",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021525D1",
+            "head": "Flickr-Faces-HQ (FFHQ)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021525T5",
+            "tail": "generative model training",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021525D1",
+            "head": "Flickr-Faces-HQ (FFHQ)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021525T6",
+            "tail": "image quality evaluation",
+            "tail_type": "Task"
+        }
+    ]
+}

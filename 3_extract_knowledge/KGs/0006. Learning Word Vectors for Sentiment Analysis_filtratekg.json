@@ -1,0 +1,128 @@
+{
+    "entities": [
+        {
+            "name": "Learning Word Vectors for Sentiment Analysis",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Andrew L. Maas",
+                    "Raymond E. Daly",
+                    "Peter T. Pham",
+                    "Dan Huang",
+                    "Andrew Y. Ng",
+                    "Christopher Potts"
+                ],
+                "institution": "Stanford University"
+            }
+        },
+        {
+            "name": "IMDB Review Dataset",
+            "type": "Dataset",
+            "attributes": {
+                "size": "50,000 reviews",
+                "labels": "positive/negative polarity",
+                "domain": "movie reviews",
+                "availability": "publicly available"
+            }
+        },
+        {
+            "name": "Pang and Lee (2004) Movie Review Dataset v2.0",
+            "type": "Dataset",
+            "attributes": {
+                "size": "2,000 reviews",
+                "labels": "binary sentiment polarity"
+            }
+        },
+        {
+            "name": "Pang and Lee (2004) Sentence Subjectivity Dataset",
+            "type": "Dataset",
+            "attributes": {
+                "size": "10,000 sentences",
+                "labels": "subjective/objective"
+            }
+        },
+        {
+            "name": "http://www.andrew-maas.net/data/sentiment",
+            "type": "Repository"
+        },
+        {
+            "name": "http://www.cs.cornell.edu/people/pabo/movie-review-data",
+            "type": "Repository"
+        },
+        {
+            "name": "sentiment analysis",
+            "type": "Task"
+        },
+        {
+            "name": "document-level sentiment classification",
+            "type": "Task"
+        },
+        {
+            "name": "sentence-level sentiment classification",
+            "type": "Task"
+        },
+        {
+            "name": "subjectivity detection",
+            "type": "Task"
+        }
+    ],
+    "relations": [
+        {
+            "head": "IMDB Review Dataset",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail": "http://www.andrew-maas.net/data/sentiment",
+            "tail_type": "Repository"
+        },
+        {
+            "head": "Pang and Lee (2004) Movie Review Dataset v2.0",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail": "http://www.cs.cornell.edu/people/pabo/movie-review-data",
+            "tail_type": "Repository"
+        },
+        {
+            "head": "IMDB Review Dataset",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Learning Word Vectors for Sentiment Analysis",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "IMDB Review Dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "sentiment analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head": "IMDB Review Dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "document-level sentiment classification",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Pang and Lee (2004) Movie Review Dataset v2.0",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "sentiment analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Pang and Lee (2004) Sentence Subjectivity Dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "subjectivity detection",
+            "tail_type": "Task"
+        },
+        {
+            "head": "Pang and Lee (2004) Sentence Subjectivity Dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "sentence-level sentiment classification",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

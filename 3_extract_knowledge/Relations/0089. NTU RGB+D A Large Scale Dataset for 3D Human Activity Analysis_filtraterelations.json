@@ -1,0 +1,130 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319040311R1",
+            "tail": "http://rose1.ntu.edu.sg/datasets/actionrecognition.asp",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319040311P1",
+            "tail": "NTU RGB+D: A Large Scale Dataset for 3D Human Activity Analysis",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T1",
+            "tail": "3D human activity analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T2",
+            "tail": "action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T3",
+            "tail": "RGB+D human action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T4",
+            "tail": "3D action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T5",
+            "tail": "human activity analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T6",
+            "tail": "3D object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T7",
+            "tail": "3D scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T8",
+            "tail": "depth-based action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T9",
+            "tail": "RGB+D-based action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T10",
+            "tail": "3D-based action analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T11",
+            "tail": "action classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040311D1",
+            "head": "NTU RGB+D",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040311T12",
+            "tail": "human action recognition",
+            "tail_type": "Task"
+        }
+    ]
+}

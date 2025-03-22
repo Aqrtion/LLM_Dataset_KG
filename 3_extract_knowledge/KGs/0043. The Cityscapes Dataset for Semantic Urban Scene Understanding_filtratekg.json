@@ -1,0 +1,231 @@
+{
+    "entities": [
+        {
+            "id": "20250319015200P1",
+            "name": "The Cityscapes Dataset for Semantic Urban Scene Understanding",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Marius Cordts",
+                    "Mohamed Omran",
+                    "Sebastian Ramos",
+                    "Timo Rehfeld",
+                    "Markus Enzweiler",
+                    "Rodrigo Benenson",
+                    "Uwe Franke",
+                    "Stefan Roth",
+                    "Bernt Schiele"
+                ],
+                "institutions": [
+                    "Daimler AG R&D",
+                    "TU Darmstadt",
+                    "MPI Informatics",
+                    "TU Dresden"
+                ]
+            }
+        },
+        {
+            "id": "20250319015200D1",
+            "name": "Cityscapes",
+            "type": "Dataset",
+            "attributes": {
+                "size": "5000 fine, 20000 coarse images",
+                "annotations": "pixel-level, instance-level",
+                "modality": "stereo video",
+                "scene_type": "urban street scenes",
+                "cities": 50,
+                "resolution": "high-resolution"
+            }
+        },
+        {
+            "id": "20250319015200D2",
+            "name": "CamVid",
+            "type": "Dataset",
+            "attributes": {
+                "annotations": "pixel-wise",
+                "size": "700+ frames",
+                "scene_type": "street scenes"
+            }
+        },
+        {
+            "id": "20250319015200D3",
+            "name": "DUS (Daimler Urban Segmentation)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "500 annotated images",
+                "scene_type": "urban"
+            }
+        },
+        {
+            "id": "20250319015200D4",
+            "name": "KITTI Vision Benchmark Suite",
+            "type": "Dataset",
+            "attributes": {
+                "focus": "suburban traffic scenes",
+                "modality": "stereo, LiDAR"
+            }
+        },
+        {
+            "id": "20250319015200D5",
+            "name": "Microsoft COCO",
+            "type": "Dataset",
+            "attributes": {
+                "annotations": "instance-level"
+            }
+        },
+        {
+            "id": "20250319015200D6",
+            "name": "PASCAL VOC",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015200D7",
+            "name": "LabelMe",
+            "type": "Dataset",
+            "attributes": {
+                "annotation_type": "user-generated labels"
+            }
+        },
+        {
+            "id": "20250319015200D8",
+            "name": "Caltech Pedestrian Dataset",
+            "type": "Dataset",
+            "attributes": {
+                "focus": "pedestrian detection"
+            }
+        },
+        {
+            "id": "20250319015200R1",
+            "name": "www.cityscapes-dataset.net",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015200T1",
+            "name": "semantic urban scene understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015200T2",
+            "name": "pixel-level semantic labeling",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015200T3",
+            "name": "instance-level semantic labeling",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015200T4",
+            "name": "3D scene understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015200T5",
+            "name": "object detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015200T6",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319015200T7",
+            "name": "cross-dataset evaluation",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319015200R1",
+            "tail": "www.cityscapes-dataset.net",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319015200P1",
+            "tail": "The Cityscapes Dataset for Semantic Urban Scene Understanding",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T1",
+            "tail": "semantic urban scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T2",
+            "tail": "pixel-level semantic labeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T3",
+            "tail": "instance-level semantic labeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T4",
+            "tail": "3D scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T5",
+            "tail": "object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T6",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T7",
+            "tail": "cross-dataset evaluation",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

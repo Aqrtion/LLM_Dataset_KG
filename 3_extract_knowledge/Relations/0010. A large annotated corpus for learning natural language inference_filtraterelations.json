@@ -1,0 +1,94 @@
+{
+    "relations": [
+        {
+            "head_id": "20250318230205D1",
+            "head": "Stanford Natural Language Inference (SNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250318230205P1",
+            "tail": "A large annotated corpus for learning natural language inference",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250318230205D1",
+            "head": "Stanford Natural Language Inference (SNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318230205T1",
+            "tail": "natural language inference (NLI)",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318230205D1",
+            "head": "Stanford Natural Language Inference (SNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318230205T2",
+            "tail": "entailment detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318230205D1",
+            "head": "Stanford Natural Language Inference (SNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318230205T3",
+            "tail": "contradiction detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318230205D1",
+            "head": "Stanford Natural Language Inference (SNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318230205T4",
+            "tail": "semantic parsing",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318230205D1",
+            "head": "Stanford Natural Language Inference (SNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318230205T5",
+            "tail": "commonsense reasoning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318230205D1",
+            "head": "Stanford Natural Language Inference (SNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318230205T6",
+            "tail": "transfer learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318230205D1",
+            "head": "Stanford Natural Language Inference (SNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318230205T7",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318230205D1",
+            "head": "Stanford Natural Language Inference (SNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318230205T8",
+            "tail": "machine learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318230205D1",
+            "head": "Stanford Natural Language Inference (SNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318230205T9",
+            "tail": "information retrieval",
+            "tail_type": "Task"
+        }
+    ]
+}

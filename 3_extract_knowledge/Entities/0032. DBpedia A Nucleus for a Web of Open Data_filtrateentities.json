@@ -1,0 +1,113 @@
+{
+    "entities": [
+        {
+            "id": "20250319011523P1",
+            "name": "DBpedia: A Nucleus for a Web of Open Data",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Sören Auer",
+                    "Christian Bizer",
+                    "Georgi Kobilarov",
+                    "Jens Lehmann",
+                    "Richard Cyganiak",
+                    "Zachary Ives"
+                ],
+                "institutions": [
+                    "Universität Leipzig",
+                    "Freie Universität Berlin",
+                    "University of Pennsylvania"
+                ],
+                "year": 2007
+            }
+        },
+        {
+            "id": "20250319011523D1",
+            "name": "DBpedia",
+            "type": "Dataset",
+            "attributes": {
+                "size": "103 million RDF triples",
+                "coverage": "1.95 million concepts",
+                "interlinked_datasets": [
+                    "Geonames",
+                    "US Census",
+                    "MusicBrainz",
+                    "Project Gutenberg",
+                    "DBLP",
+                    "RDF Book Mashup"
+                ],
+                "access_methods": [
+                    "Linked Data",
+                    "SPARQL endpoint",
+                    "RDF dumps"
+                ]
+            }
+        },
+        {
+            "id": "20250319011523D2",
+            "name": "Geonames",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "geographical database"
+            }
+        },
+        {
+            "id": "20250319011523D3",
+            "name": "MusicBrainz",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "music metadata"
+            }
+        },
+        {
+            "id": "20250319011523D4",
+            "name": "DBLP",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "computer science bibliography"
+            }
+        },
+        {
+            "id": "20250319011523R1",
+            "name": "http://dbpedia.org/sparql",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319011523R2",
+            "name": "http://dbpedia.org/resource/",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319011523L1",
+            "name": "GNU Free Documentation License",
+            "type": "License",
+            "attributes": {}
+        },
+        {
+            "id": "20250319011523T1",
+            "name": "information extraction",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319011523T2",
+            "name": "data interlinking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319011523T3",
+            "name": "SPARQL querying",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319011523T4",
+            "name": "Semantic Web browsing",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

@@ -1,0 +1,275 @@
+{
+    "entities": [
+        {
+            "id": "20250319014613P1",
+            "name": "ImageNet: A Large-Scale Hierarchical Image Database",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Jia Deng",
+                    "Wei Dong",
+                    "Richard Socher",
+                    "Li-Jia Li",
+                    "Kai Li",
+                    "Li Fei-Fei"
+                ],
+                "institution": "Princeton University"
+            }
+        },
+        {
+            "id": "20250319014613D1",
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {
+                "size": "3.2 million images",
+                "synsets": 5247,
+                "resolution": "full resolution (average 400x350)",
+                "accuracy": "99.7% precision",
+                "structure": "WordNet hierarchy",
+                "collection_method": "Amazon Mechanical Turk"
+            }
+        },
+        {
+            "id": "20250319014613D2",
+            "name": "TinyImage",
+            "type": "Dataset",
+            "attributes": {
+                "size": "80 million images",
+                "resolution": "32x32",
+                "noise_level": "high"
+            }
+        },
+        {
+            "id": "20250319014613D3",
+            "name": "ESP dataset",
+            "type": "Dataset",
+            "attributes": {
+                "labeling_method": "online game",
+                "availability": "60,000 images public"
+            }
+        },
+        {
+            "id": "20250319014613D4",
+            "name": "LabelMe",
+            "type": "Dataset",
+            "attributes": {
+                "segmented_images": true,
+                "size": "30,000 images"
+            }
+        },
+        {
+            "id": "20250319014613D5",
+            "name": "Lotus Hill dataset",
+            "type": "Dataset",
+            "attributes": {
+                "availability": "purchase required",
+                "segmented_images": true
+            }
+        },
+        {
+            "id": "20250319014613D6",
+            "name": "Caltech101",
+            "type": "Dataset",
+            "attributes": {
+                "categories": 101
+            }
+        },
+        {
+            "id": "20250319014613D7",
+            "name": "Caltech256",
+            "type": "Dataset",
+            "attributes": {
+                "categories": 256
+            }
+        },
+        {
+            "id": "20250319014613D8",
+            "name": "MSRC",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319014613D9",
+            "name": "PASCAL",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319014613R1",
+            "name": "http://www.image-net.org",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319014613T1",
+            "name": "object recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319014613T2",
+            "name": "image classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319014613T3",
+            "name": "automatic object clustering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319014613T4",
+            "name": "object localization",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319014613T5",
+            "name": "scene understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319014613T6",
+            "name": "part models learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319014613T7",
+            "name": "training object detection algorithms",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319014613T8",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319014613T9",
+            "name": "image search",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319014613T10",
+            "name": "image understanding",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319014613D1",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319014613R1",
+            "tail": "http://www.image-net.org",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319014613D1",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319014613P1",
+            "tail": "ImageNet: A Large-Scale Hierarchical Image Database",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319014613D1",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319014613T1",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319014613D1",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319014613T2",
+            "tail": "image classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319014613D1",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319014613T3",
+            "tail": "automatic object clustering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319014613D1",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319014613T4",
+            "tail": "object localization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319014613D1",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319014613T5",
+            "tail": "scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319014613D1",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319014613T6",
+            "tail": "part models learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319014613D1",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319014613T7",
+            "tail": "training object detection algorithms",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319014613D1",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319014613T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319014613D1",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319014613T9",
+            "tail": "image search",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319014613D1",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319014613T10",
+            "tail": "image understanding",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

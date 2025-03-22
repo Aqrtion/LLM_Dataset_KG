@@ -1,0 +1,94 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319033053R1",
+            "tail": "http://www.robots.ox.ac.uk/~vgg/data/vgg_face2/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319033053P1",
+            "tail": "VGGFace2: A dataset for recognising faces across pose and age",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T1",
+            "tail": "face recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T2",
+            "tail": "face verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T3",
+            "tail": "face identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T4",
+            "tail": "age estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T5",
+            "tail": "pose estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T6",
+            "tail": "face detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T7",
+            "tail": "face clustering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033053D1",
+            "head": "VGGFace2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033053T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        }
+    ]
+}

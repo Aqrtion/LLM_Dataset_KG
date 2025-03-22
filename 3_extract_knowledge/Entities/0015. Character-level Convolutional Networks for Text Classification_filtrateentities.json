@@ -1,0 +1,109 @@
+{
+    "entities": [
+        {
+            "name": "Character-level Convolutional Networks for Text Classification",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Xiang Zhang",
+                    "Junbo Zhao",
+                    "Yann LeCun"
+                ],
+                "institution": "Courant Institute of Mathematical Sciences, New York University"
+            }
+        },
+        {
+            "name": "AG’s News",
+            "type": "Dataset",
+            "attributes": {
+                "size": "496,835 articles",
+                "classes": 4,
+                "training samples per class": 30000,
+                "testing samples per class": 1900
+            }
+        },
+        {
+            "name": "Sogou News",
+            "type": "Dataset",
+            "attributes": {
+                "size": "2,909,551 articles",
+                "classes": 5,
+                "training samples per class": 90000,
+                "testing samples per class": 12000,
+                "language": "Chinese (Pinyin processed)"
+            }
+        },
+        {
+            "name": "DBPedia",
+            "type": "Dataset",
+            "attributes": {
+                "classes": 14,
+                "training samples per class": 40000,
+                "testing samples per class": 5000,
+                "source": "Wikipedia structured data"
+            }
+        },
+        {
+            "name": "Yelp Review Polarity",
+            "type": "Dataset",
+            "attributes": {
+                "size": "280,000 training samples",
+                "testing samples per polarity": 19000,
+                "task": "sentiment analysis"
+            }
+        },
+        {
+            "name": "Yelp Review Full",
+            "type": "Dataset",
+            "attributes": {
+                "size": "130,000 training samples per star",
+                "testing samples per star": 10000
+            }
+        },
+        {
+            "name": "Yahoo! Answers",
+            "type": "Dataset",
+            "attributes": {
+                "classes": 10,
+                "training samples per class": 140000,
+                "testing samples per class": 5000
+            }
+        },
+        {
+            "name": "Amazon Review Full",
+            "type": "Dataset",
+            "attributes": {
+                "size": "600,000 training samples per class",
+                "testing samples per class": 130000
+            }
+        },
+        {
+            "name": "Amazon Review Polarity",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1,800,000 training samples per polarity",
+                "testing samples per polarity": 200000
+            }
+        },
+        {
+            "name": "WordNet",
+            "type": "Dataset",
+            "attributes": {
+                "application": "thesaurus for data augmentation",
+                "semantic ranking": "based on WordNet closeness"
+            }
+        },
+        {
+            "name": "text classification",
+            "type": "Task"
+        },
+        {
+            "name": "sentiment analysis",
+            "type": "Task"
+        },
+        {
+            "name": "topic classification",
+            "type": "Task"
+        }
+    ]
+}

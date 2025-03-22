@@ -1,0 +1,40 @@
+{
+    "relations": [
+        {
+            "head_id": "20250318233629D1",
+            "head": "MS MARCO",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250318233629P1",
+            "tail": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250318233629D1",
+            "head": "MS MARCO",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318233629T1",
+            "tail": "answerability prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318233629D1",
+            "head": "MS MARCO",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318233629T2",
+            "tail": "natural language answer generation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318233629D1",
+            "head": "MS MARCO",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318233629T3",
+            "tail": "passage ranking",
+            "tail_type": "Task"
+        }
+    ]
+}

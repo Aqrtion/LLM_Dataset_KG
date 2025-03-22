@@ -1,0 +1,80 @@
+{
+    "entities": [
+        {
+            "id": "20250319021738P1",
+            "name": "Automated flower classification over a large number of classes",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Maria-Elena Nilsback",
+                    "Andrew Zisserman"
+                ],
+                "institution": "University of Oxford"
+            }
+        },
+        {
+            "id": "20250319021738D1",
+            "name": "103 class flower dataset",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 103,
+                "number of images": 8189,
+                "image resolution": "smallest dimension 500 pixels"
+            }
+        },
+        {
+            "id": "20250319021738D2",
+            "name": "17 class flower dataset",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 17
+            }
+        },
+        {
+            "id": "20250319021738D3",
+            "name": "Caltech-256",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 256
+            }
+        },
+        {
+            "id": "20250319021738D4",
+            "name": "Caltech-101",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 101
+            }
+        },
+        {
+            "id": "20250319021738R1",
+            "name": "http://www.robots.ox.ac.uk/~vgg/data/flowers/index.html",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021738T1",
+            "name": "flower classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021738T2",
+            "name": "object recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021738T3",
+            "name": "image classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319021738T4",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

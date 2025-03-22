@@ -1,0 +1,85 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319031035D1",
+            "head": "iNat2017",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319031035R1",
+            "tail": "www.inaturalist.org",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319031035D1",
+            "head": "iNat2017",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319031035P1",
+            "tail": "The iNaturalist Species Classification and Detection Dataset",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319031035D1",
+            "head": "iNat2017",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031035T1",
+            "tail": "species classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031035D1",
+            "head": "iNat2017",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031035T2",
+            "tail": "species detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031035D1",
+            "head": "iNat2017",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031035T3",
+            "tail": "fine-grained image categorization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031035D1",
+            "head": "iNat2017",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031035T4",
+            "tail": "biodiversity monitoring",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031035D1",
+            "head": "iNat2017",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031035T5",
+            "tail": "object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031035D1",
+            "head": "iNat2017",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031035T6",
+            "tail": "low-shot learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031035D2",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031035T3",
+            "tail": "fine-grained image categorization",
+            "tail_type": "Task"
+        }
+    ]
+}

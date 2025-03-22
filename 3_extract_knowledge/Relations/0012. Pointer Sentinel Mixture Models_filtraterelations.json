@@ -1,0 +1,76 @@
+{
+    "relations": [
+        {
+            "head_id": "20250318231601D1",
+            "head": "WikiText-2",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250318231601D2",
+            "tail": "WikiText-103",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250318231601D1",
+            "head": "WikiText-2",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250318231601P1",
+            "tail": "Pointer Sentinel Mixture Models",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250318231601D2",
+            "head": "WikiText-103",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250318231601P1",
+            "tail": "Pointer Sentinel Mixture Models",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250318231601D3",
+            "head": "Penn Treebank (PTB)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318231601T1",
+            "tail": "language modeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318231601D1",
+            "head": "WikiText-2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318231601T1",
+            "tail": "language modeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318231601D2",
+            "head": "WikiText-103",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318231601T1",
+            "tail": "language modeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318231601D1",
+            "head": "WikiText-2",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250318231601R1",
+            "tail": "WikiText dataset site",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250318231601D2",
+            "head": "WikiText-103",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250318231601R1",
+            "tail": "WikiText dataset site",
+            "tail_type": "Repository"
+        }
+    ]
+}

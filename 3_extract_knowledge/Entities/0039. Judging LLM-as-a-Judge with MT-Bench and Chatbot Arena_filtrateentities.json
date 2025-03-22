@@ -1,0 +1,105 @@
+{
+    "entities": [
+        {
+            "id": "20250319013919P1",
+            "name": "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Lianmin Zheng",
+                    "Wei-Lin Chiang",
+                    "Ying Sheng",
+                    "Siyuan Zhuang",
+                    "Zhanghao Wu",
+                    "Yonghao Zhuang",
+                    "Zi Lin",
+                    "Zhuohan Li",
+                    "Dacheng Li",
+                    "Eric P. Xing",
+                    "Hao Zhang",
+                    "Joseph E. Gonzalez",
+                    "Ion Stoica"
+                ],
+                "institutions": [
+                    "UC Berkeley",
+                    "UC San Diego",
+                    "Carnegie Mellon University",
+                    "Stanford",
+                    "MBZUAI"
+                ]
+            }
+        },
+        {
+            "id": "20250319013919D1",
+            "name": "MT-bench",
+            "type": "Dataset",
+            "attributes": {
+                "description": "Multi-turn benchmark with 80 questions",
+                "categories": [
+                    "writing",
+                    "roleplay",
+                    "extraction",
+                    "reasoning",
+                    "math",
+                    "coding"
+                ],
+                "size": "3K expert votes"
+            }
+        },
+        {
+            "id": "20250319013919D2",
+            "name": "Chatbot Arena",
+            "type": "Dataset",
+            "attributes": {
+                "description": "Crowdsourced battle platform",
+                "size": "30K conversations"
+            }
+        },
+        {
+            "id": "20250319013919R1",
+            "name": "https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319013919D3",
+            "name": "MMLU",
+            "type": "Dataset",
+            "attributes": {
+                "description": "Massive Multitask Language Understanding benchmark"
+            }
+        },
+        {
+            "id": "20250319013919D4",
+            "name": "HELM",
+            "type": "Dataset",
+            "attributes": {
+                "description": "Holistic Evaluation of Language Models benchmark"
+            }
+        },
+        {
+            "id": "20250319013919T1",
+            "name": "multi-turn conversation evaluation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319013919T2",
+            "name": "instruction-following evaluation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319013919T3",
+            "name": "human preference evaluation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319013919T4",
+            "name": "benchmarking language models",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

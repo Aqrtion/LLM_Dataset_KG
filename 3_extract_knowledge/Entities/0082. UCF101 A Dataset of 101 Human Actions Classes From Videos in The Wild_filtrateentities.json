@@ -1,0 +1,132 @@
+{
+    "entities": [
+        {
+            "id": "20250319034224P1",
+            "name": "UCF101: A Dataset of 101 Human Actions Classes From Videos in The Wild",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Khurram Soomro",
+                    "Amir Roshan Zamir",
+                    "Mubarak Shah"
+                ],
+                "institution": "University of Central Florida"
+            }
+        },
+        {
+            "id": "20250319034224D1",
+            "name": "UCF101",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 101,
+                "number of clips": "over 13k",
+                "duration": "27 hours",
+                "resolution": "320x240",
+                "frame rate": "25 FPS",
+                "format": "DivX codec",
+                "source": "YouTube",
+                "challenges": [
+                    "camera motion",
+                    "cluttered background"
+                ],
+                "cross-validation": "25-fold",
+                "audio": "preserved for new 51 actions",
+                "action types": [
+                    "Human-Object Interaction",
+                    "Body-Motion Only",
+                    "Human-Human Interaction",
+                    "Playing Musical Instruments",
+                    "Sports"
+                ]
+            }
+        },
+        {
+            "id": "20250319034224D2",
+            "name": "UCF50",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 50,
+                "number of clips": 6681
+            }
+        },
+        {
+            "id": "20250319034224D3",
+            "name": "HMDB51",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 51,
+                "number of clips": 6766
+            }
+        },
+        {
+            "id": "20250319034224D4",
+            "name": "KTH",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 6
+            }
+        },
+        {
+            "id": "20250319034224D5",
+            "name": "Weizmann",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 9
+            }
+        },
+        {
+            "id": "20250319034224D6",
+            "name": "UCF Sports",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 9
+            }
+        },
+        {
+            "id": "20250319034224D7",
+            "name": "IXMAS",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 11
+            }
+        },
+        {
+            "id": "20250319034224D8",
+            "name": "UCF11",
+            "type": "Dataset",
+            "attributes": {
+                "number of classes": 11
+            }
+        },
+        {
+            "id": "20250319034224D9",
+            "name": "HOHA",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034224D10",
+            "name": "Olympic",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034224R1",
+            "name": "http://crcv.ucf.edu/data/UCF101.php",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034224T1",
+            "name": "action recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319034224T2",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

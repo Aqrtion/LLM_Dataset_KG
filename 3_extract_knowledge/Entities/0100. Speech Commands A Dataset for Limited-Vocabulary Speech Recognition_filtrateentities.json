@@ -1,0 +1,117 @@
+{
+    "entities": [
+        {
+            "id": "20250319043909P1",
+            "name": "Speech Commands: A Dataset for Limited-Vocabulary Speech Recognition",
+            "type": "Paper",
+            "attributes": {
+                "author": "Pete Warden",
+                "institution": "Google Brain"
+            }
+        },
+        {
+            "id": "20250319043909D1",
+            "name": "Speech Commands v0.02",
+            "type": "Dataset",
+            "attributes": {
+                "size": "105,829 utterances",
+                "words": 35,
+                "speakers": 2618,
+                "format": "16 KHz WAV",
+                "license": "Creative Commons BY 4.0"
+            }
+        },
+        {
+            "id": "20250319043909D2",
+            "name": "Speech Commands v0.01",
+            "type": "Dataset",
+            "attributes": {
+                "size": "64,727 utterances",
+                "speakers": 1881,
+                "license": "Creative Commons BY 4.0"
+            }
+        },
+        {
+            "id": "20250319043909D3",
+            "name": "Common Voice",
+            "type": "Dataset",
+            "attributes": {
+                "size": "500+ hours",
+                "speakers": 20000,
+                "license": "CC0"
+            }
+        },
+        {
+            "id": "20250319043909D4",
+            "name": "TIDIGITS",
+            "type": "Dataset",
+            "attributes": {
+                "content": "digit sequences",
+                "license": "commercial license"
+            }
+        },
+        {
+            "id": "20250319043909D5",
+            "name": "CHiME-5",
+            "type": "Dataset",
+            "attributes": {
+                "size": "50 hours",
+                "license": "restricted license"
+            }
+        },
+        {
+            "id": "20250319043909D6",
+            "name": "UrbanSounds",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043909R1",
+            "name": "http://download.tensorflow.org/data/speech_commands_v0.02.tar.gz",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043909R2",
+            "name": "http://download.tensorflow.org/data/speech_commands_v0.01.tar.gz",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043909L1",
+            "name": "Creative Commons BY 4.0",
+            "type": "License",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043909L2",
+            "name": "CC0",
+            "type": "License",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043909T1",
+            "name": "keyword spotting",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043909T2",
+            "name": "training object detection algorithms",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043909T3",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319043909T4",
+            "name": "model evaluation",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

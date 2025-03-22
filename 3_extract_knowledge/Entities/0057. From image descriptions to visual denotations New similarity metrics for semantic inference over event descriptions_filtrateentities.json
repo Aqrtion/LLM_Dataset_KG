@@ -1,0 +1,85 @@
+{
+    "entities": [
+        {
+            "id": "20250319023346P1",
+            "name": "From image descriptions to visual denotations: New similarity metrics for semantic inference over event descriptions",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Peter Young",
+                    "Alice Lai",
+                    "Micah Hodosh",
+                    "Julia Hockenmaier"
+                ],
+                "institution": "University of Illinois at Urbana-Champaign"
+            }
+        },
+        {
+            "id": "20250319023346D1",
+            "name": "Image Description Dataset",
+            "type": "Dataset",
+            "attributes": {
+                "size": "31,783 images",
+                "captions": "158,915 captions",
+                "collection_method": "crowdsourcing",
+                "license": "Creative Commons license"
+            }
+        },
+        {
+            "id": "20250319023346D2",
+            "name": "MSR Video Description Corpus",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023346D3",
+            "name": "SBU Captioned Photo Dataset",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1 million images"
+            }
+        },
+        {
+            "id": "20250319023346R1",
+            "name": "http://nlp.cs.illinois.edu/Denotation.html",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023346L1",
+            "name": "Creative Commons license",
+            "type": "License",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023346T1",
+            "name": "semantic textual similarity",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023346T2",
+            "name": "approximate entailment recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023346T3",
+            "name": "paraphrase detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023346T4",
+            "name": "semantic inference",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319023346T5",
+            "name": "automatic image understanding",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

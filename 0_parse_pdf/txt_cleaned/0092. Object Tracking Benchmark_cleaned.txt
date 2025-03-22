@@ -1,0 +1,528 @@
+IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE, VOL. 37, NO. 9, SEPTEMBER 2015
+
+Object Tracking Benchmark
+
+Yi Wu, Member, IEEE, Jongwoo Lim, Member, IEEE, and Ming-Hsuan Yang, Senior Member, IEEE
+
+Abstract—Object tracking has been one of the most important and active research areas in the ﬁeld of computer vision. A large number of tracking algorithms have been proposed in recent years with demonstrated success. However, the set of sequences used for evaluation is often not sufﬁcient or is sometimes biased for certain types of algorithms. Many datasets do not have common ground-truth object positions or extents, and this makes comparisons among the reported quantitative results difﬁcult. In addition, the initial conditions or parameters of the evaluated tracking algorithms are not the same, and thus, the quantitative results reported in literature are incomparable or sometimes contradictory. To address these issues, we carry out an extensive evaluation of the state-of-the-art online object-tracking algorithms with various evaluation criteria to understand how these methods perform within the same framework. In this work, we ﬁrst construct a large dataset with ground-truth object positions and extents for tracking and introduce the sequence attributes for the performance analysis. Second, we integrate most of the publicly available trackers into one code library with uniform input and output formats to facilitate large-scale performance evaluation. Third, we extensively evaluate the performance of 31 algorithms on 100 sequences with different initialization settings. By analyzing the quantitative results, we identify effective approaches for robust tracking and provide potential future research directions in this ﬁeld.
+
+Index Terms—Object tracking, benchmark dataset, performance evaluation
+
+1 INTRODUCTION
+
+OBJECT tracking is one of the most important problems in
+
+the ﬁeld of computer vision with applications ranging from surveillance and human-computer interactions to medical imaging [13], [89]. Given the initial state (e.g., position and extent) of a target object in the ﬁrst image, the goal of tracking is to estimate the states of the target in the subsequent frames. Although object tracking has been studied for several decades and considerable progress has been made in recent years [5], [17], [32], [35], [36], [54], [65], it remains a challenging problem. Numerous factors affect the performance of a tracking algorithm, including illumination variation, occlusion, and background clutters, and there exists no single approach that successfully handles all scenarios. Therefore, it is crucial to thoroughly evaluate the state-ofthe-art tracking algorithms to demonstrate their strength and weakness, thereby identifying future research directions in this ﬁeld for more robust algorithms.
+
+For a comprehensive performance evaluation, it is critical to collect a representative dataset. There exist several datasets for object tracking in surveillance scenarios, such as the VIVID [14], CAVIAR [24], and PETS [23] databases. However, in these surveillance sequences, the target objects are usually humans or small cars and the background is usually
+
+(cid:1) Y. Wu is with the Department of Computer Science, Nanjing University of
+
+(cid:1)
+
+Information Science and Technology, Nanjing, Nanjing, China. E-mail: ywu.china@gmail.com. J. Lim is with the Department of Computer Science and Engineering, Hanyang University, Seoul, Seoul, Republic of Korea. E-mail: jlim@hanyang.ac.kr.
+
+(cid:1) M.-H. Yang is with Department of Electrical Engineering and Computer
+
+Science, University of California at Merced, Merced, CA 95344. E-mail: mhyang@ucmerced.edu.
+
+Manuscript received 18 May 2014; revised 26 Sept. 2014; accepted 10 Oct. 2014. Date of publication 31 Dec. 2014; date of current version 7 Aug. 2015. Recommended for acceptance by K.M. Lee. For information on obtaining reprints of this article, please send e-mail to: reprints@ieee.org, and reference the Digital Object Identiﬁer below. Digital Object Identiﬁer no. 10.1109/TPAMI.2014.2388226
+
+static. For generic scenes with various types of tracking targets, many of the available sequences do not provide the ground-truth target locations except a few datasets [5], [43], [65]. The reported tracking results on these unlabeled datasets are not directly comparable since different groundtruth annotations are used.
+
+Recently, signiﬁcant efforts have been made to make tracking code available for evaluation, e.g., OAB [27], IVT [65], MIL [5], L1 [53], and TLD [39] algorithms. These tracking algorithms accommodate different input formats (e.g., avi videos or raw image sequences) and motion models (e.g., 2D translation, similarity or afﬁne transforms) with various output formats (e.g., position or extent). Therefore, to evaluate the performance of these algorithms on a large number of image sequences, it is necessary to integrate them in a library for evaluation on a common platform. In this work, we integrate most of the publicly available trackers in a code library with uniform input and output formats for a performance evaluation. In addition, we provide a large benchmark dataset with ground-truth annotations and attributes (e.g., occlusion, fast motion, or illumination variation) such that the performance of the evaluated tracking algorithms can be better analyzed.
+
+One common issue in assessing tracking algorithms is that the reported results are often based on a few sequences with different initializations or parameters. Inaccurate localization of the target occurs frequently as an object detector may be used for locating the object in the ﬁrst frame. In addition, an object detector may be used to recover from tracking failures by re-initializing the tracker. For a fair and comprehensive evaluation, we propose to perturb the initial object states spatially and temporally on the basis of the ground-truth target locations. With this evaluation methodology, the sensitivity of a tracking algorithm to initialization (i.e., robustness) can be better analyzed. While the robustness to initialization is a known problem in other ﬁelds, it has not been well addressed in the literature of object
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply. 0162-8828 (cid:1) 2014 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications_standards/publications/rights/index.html for more information.
+
+WU ET AL.: OBJECT TRACKING BENCHMARK
+
+tracking. To the best of our knowledge, this is the ﬁrst work to comprehensively address and analyze the initialization problem of object tracking.
+
+The contributions of this work are three-fold: Benchmark dataset. We construct a benchmark dataset with 100 fully annotated sequences1 to facilitate the performance evaluation.
+
+Code library. We integrate most of the publicly available trackers in one code library with uniﬁed input and output formats to facilitate a large-scale performance evaluation.
+
+Performance evaluation. We propose novel metrics to evaluate tracking algorithms where the initial object states are perturbed spatially and temporally for the robustness analysis. Each algorithm is extensively evaluated by analyzing more than millions of tracking outputs.
+
+This work2 mainly focuses on the performance evaluation of online3 tracking algorithms for single targets. The code library, annotated dataset, and all the tracking results are available at http://pami.visual-tracking.net.
+
+2 BRIEF REVIEW OF OBJECT TRACKING
+
+Considerable progress in the ﬁeld of object tracking has been made in the past few decades. In this section, we review some recent algorithms for object tracking in terms of target representation scheme, search mechanism, and model update. In addition, several methods that build upon combing some trackers or mining context information have been proposed. Here, we discuss the relevant performance evaluation work on object tracking and challenging factors in object tracking.
+
+2.1 Representation Scheme Object representation is one of the major components in any visual tracking algorithm, and numerous schemes have been proposed [46]. Since the early work of Lucas and Kanade (LK) [50], holistic templates (based on raw intensity values) have been widely used for tracking [2], [52]. The LK approaches [7], [50] do not take large appearance variability into account and thus, do not perform well when the visual properties of a target object change signiﬁcantly. Matthews et al. [52] developed a template update method by exploiting the information of the ﬁrst frame to correct drifts. To better account subspace-based tracking approaches [12], [30], [54], [65] have been proposed. In [30], Hager and Belhumeur proposed an efﬁcient LK algorithm and used low-dimensional representations for tracking under varying illumination conditions. For enhancing the tracking robustness, Black and Jepson [12] adopted a robust error norm and proposed an algorithm using a pre-trained view-based eigenbasis representation. In [65], a low-dimensional subspace representation was learned incrementally to account for target appearance variation for object tracking [36].
+
+for appearance changes,
+
+Recently, numerous tracking methods based on sparse representations have been proposed [38], [53], [55], [79],
+
+1. Each sequence denotes a trajectory of one target object. If one
+
+video contains two target objects, it is considered two sequences. 2. Preliminary results of this work are presented in [83]. 3. For online tracking algorithms, only the information of the previ-
+
+ous few frames is used for inference at any time instance.
+
+[94], [95]. Mei and Ling [53], [54] used a dictionary of holistic intensity templates composed of target and trivial templates, and determined the target location by solving multiple ‘1 minimization problems. To better handle occlusion and improve run-time performance, local sparse representations and collaborative representations have also been introduced for object tracking [9], [38], [94], [95]. For runtime efﬁciency, a minimal error bounding strategy was introduced [55] to reduce the number of ‘1 minimization problems to solve. Bao et al. [9] introduced the accelerated proximal gradient approach to efﬁciently solve ‘1 minimization problems. To enhance tracking robustness, a local sparse appearance model was proposed in [48] with the mean shift (MS) algorithm to locate objects. By assuming the representation of particles as jointly sparse, Zhang et al. [94] formulated object tracking as a multi-task sparse learning problem. Zhong et al. [95] proposed a collaborative tracking algorithm that combined a sparsity-based discriminative classiﬁer and a sparsity-based generative model. In [38], sparse codes of local image patches with spatial layout in an object were used for modeling the object appearance for tracking. To deal with outliers for object tracking, Wang et al. [78] proposed a least soft-threshold squares algorithm by modeling image noise with the Gaussian-Laplacian distribution other than the trivial templates used in [53].
+
+A number of tracking methods based on color histograms [17], [60] have been developed. Comaniciu et al. [17] applied the mean shift algorithm to object tracking on the basis of a color histogram. Collins [15] extended the mean shift tracking algorithm to deal with the scale variation of target objects. In [60], Perez et al. embedded a color histogram in a particle ﬁlter [36] for object tracking. Instead of relying on pixel-wise statistics, Birchﬁeld and Rangarajan [11] proposed the spatiogram to capture both the statistical properties of pixels and their spatial relationships. A locality sensitive histogram [33] was developed by considering the contribution of local regions at each pixel to better describe the visual appearance for object tracking. To exploit local directional edge information, histograms of oriented gradients (HOGs) [18] have been adopted for tracking [73] with the integral histogram [62]. To fuse different types of features, representations based on covariance region descriptors [74] were introduced for object tracking. In covariance descriptors, the spatial and statistical properties as well as their correlations are characterized within the same representation. In addition, the local binary patterns (LBP) [57] and Haar-like features [75] have also been utilized to model the object appearance for tracking [5], [27], [32], [92].
+
+Recently, discriminative models have been developed in the ﬁeld of object tracking [3], [4], where a binary classiﬁer is learned online to separate the target from the background. Numerous classiﬁers have been adapted for object tracking, such as support vector machine (SVM) [3], structured output SVM [32], ranking SVM [6], boosting [27], semi-boosting [28], and online multi-instance boosting [5]. To handle appearance changes, Avidan [3] integrated a trained SVM classiﬁer in an optical ﬂow framework for tracking. In [16], the most discriminative feature combination was learned online to build a conﬁdence map in each frame for separating a target object from the background. In [4], an ensemble
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE, VOL. 37, NO. 9, SEPTEMBER 2015
+
+of online learned weak classiﬁers was used to determine whether a pixel belonged to the target region or the background. Grabner et al. [27] proposed an online boosting method to select discriminative features for the separation of a foreground object and the background. To balance between tracking adaptivity and drifting, Stalder et al. [71] combined multiple supervised and semi-supervised classiﬁers for tracking. In [6], object tracking is posed as a weakly supervised ranking problem by capturing the relative proximity relationships between samples toward the true target samples. To alleviate the drifting problem, a semi-online boosting algorithm has been developed for tracking [28]. In [39], Kalal et al. presented a learning method guided by positive and negative constraints to distinguish a target object from the background. Multiple instance learning (MIL) has also been applied to tracking [5], where all ambiguous positive and negative samples are put into bags to learn a discriminative model. Hare et al. [32] designed a tracking algorithm based on a kernelized structured SVM, which exploits the constraints of the predicted outputs.
+
+To account for an appearance change caused by a large pose variation and heavy occlusion, an object can be represented by parts with descriptors or histograms. In [1], local histograms were used for representing a target object in a deﬁned grid structure. Kwon and Lee [42] have proposed a tracking method that updates the topology of local patches to handle large pose changes.
+
+Several approaches based on multiple representation schemes have been developed [43], [72] to better handle appearance variations. Stenger et al. [72] fused multiple observation models online in a parallel or cascaded manner. Recently, Kwon and Lee [43] have developed an objecttracking decomposition algorithm that used multiple observation and motion models to account for a relatively large appearance variation caused by drastic lighting changes and fast motion. This approach has been further extended to search for appropriate trackers by Markov Chain Monte Carlo sampling [44].
+
+2.2 Search Mechanism Deterministic and stochastic search methods have been developed to estimate the object states. When the tracking problem is posed within an optimization framework with an objective function differentiable with respect to motion parameters, gradient descent methods can be used for locating the target efﬁciently [17], [22], [50], [69]. In [50], the ﬁrstorder Taylor expansion is used to linearize the nonlinear cost function, and the motion parameters are estimated iteratively. Further, a mean shift estimation is used for searching the target locally by using the Bhattacharyya coefﬁcient as the similarity metric for kernel-regularized color histograms [17]. In [22], Fan et al. adopted a discriminative approach to identify spatial attentional regions with a gradient-based formulation to locate objects. In [69], Sevilla-Lara and Learned-Miller proposed a tracking algorithm based on distribution ﬁelds, which allow smoothing the objective function without blurring the image, and the target is located by searching for the local minimum by using a coarse-to-ﬁne strategy.
+
+However, objective functions for object tracking are usually nonlinear with many local minima. To alleviate this
+
+problem, dense sampling methods have been adopted [5], [27], [32] at the expense of a high computational load. On the other hand, stochastic search algorithms such as particle ﬁlters [36], [60] have been widely used since they are relatively insensitive to the local minimum and are computationally efﬁcient. Recent methods based on particle ﬁlters have been developed using effective observation models [38], [53], [65] with demonstrated success.
+
+2.3 Model Update It has been shown that online update of target representation to account for appearance variations plays an important role for robust object tracking [27], [32], [37], [38], [65]. Matthews et al. [52] addressed the template update problem for the LK algorithm [50], where the template was updated with the combination of the ﬁxed reference template extracted from the ﬁrst frame and the result from the most recent frame. Effective update algorithms have also been proposed in the form of the online mixture model [37], online boosting [27], and incremental subspace update [65]. For the discriminative model, recently, considerable attention has been paid to draw samples effective for training online classiﬁers [5], [28], [32], [39]. In contrast to supervised discriminative object tracking, Grabner et al. [28] formulated the update problem as a semi-supervised task where the classiﬁer was updated with both labeled and unlabeled data. To handle ambiguously labeled positive and negative samples obtained online, Babenko et al. [5] focused on the tracking problem within the multiple instance learning framework and developed an online algorithm. To exploit the underlying structure of the unlabeled data, Kalal et al. [39] developed a tracking algorithm within the semi-supervised learning framework to select positive and negative samples for model update. In [32], the proposed tracking algorithm directly predicts the target location change between frames on the basis of structured learning. Yu et al. [91] presented a tracking method based on co-training to combine generative and discriminative models. While considerable progress has been made, it is still difﬁcult to develop an adaptive appearance model without drifts.
+
+2.4 Context and Fusion of Trackers Context information facilitates object tracking by providing distinct visual properties of the immediate surroundings of the targets. Numerous approaches have been developed by mining auxiliary or local visual information surrounding the target objects to assist tracking [20], [29], [88]. In [88], auxiliary objects were automatically discovered and tracked for the veriﬁcation of the target. Dinh et al. [20] exploited distractors and supporters around a target object by using a sequential randomized forest. The context information is useful when the target objects are fully occluded or out of the camera views [29].
+
+To improve the tracking performance, some fusion methods have been developed. Santner et al. [68] proposed an approach that combines static, moderately and highly adaptive trackers to account for appearance changes. In [44], tracking modules sampled from a predeﬁned tracker space interact with each other to deal with appearance variations
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+WU ET AL.: OBJECT TRACKING BENCHMARK
+
+caused by lighting changes and fast motion. Multiple feature sets [90] were maintained and selected in a Bayesian framework to account for the appearance changes.
+
+2.5 Performance Evaluation Evaluation of tracking approaches is of critical importance, and efforts have been made to assess the performance of different tracking algorithms [80]. In [81], Wu et al. proposed an approach using a time-reversed Markov chain to evaluate tracking algorithms in the absence of annotations. Further, a number of tracking approaches based on sparse representation were compared in [93]. To evaluate the appearance model of tracking algorithms, Salti et al. [67] introduced a uniﬁed conceptual framework and presented an experimental analysis. However, the number of evaluated tracking algorithms and image sequences in the abovementioned work are quite limited.
+
+Most recently, Smeulders et al. [70] have evaluated 19 trackers on 315 videos. Although it has been noted that poor initialization of a tracker signiﬁcantly decreases the tracking accuracy, further analysis based on comprehensive experimental evaluations is necessary and important to better understand the state-of-the-art algorithms. In [59], Pang and Ling used a ranking approach to analyze the reported results of object tracking methods. The main shortcoming of this approach is that it is not appropriate to rank the recently published trackers due to a lack of sufﬁcient experimental evaluations in terms of trackers, sequences, and metrics. In [40], 27 trackers were evaluated on 16 sequences, where the ranking of trackers were obtained by averaging the performance on image sequences using different metrics. The failure rate of a tracking method was computed by counting the number of frames in which a method fails to follow a target object. A tracker was re-initialized several frames after a failure occurs (when the overlap ratio is zero). If a different overlap threshold is used, each tracker needs to be re-evaluated on the entire dataset. In this work, we propose a virtual run to compute failure rates with different overlap thresholds.
+
+2.6 Challenging Factors We discuss some main tracking challenges in this section.
+
+Occlusion. Numerous approaches including part-based local representations have been proposed in recent years to handle the appearance changes caused by heavy occlusion. By adopting a sparse representation of the target and trivial templates, Mei et al. [55] developed a method to detect object occlusion by analyzing coefﬁcients for appropriate template update in order to reduce the tracking drift. In [39], Kalal et al. developed a re-initialization module to detect whether a target object is completely occluded or missing for robust tracking.
+
+Deformation. To model non-rigid appearance changes, histogram representations of color and intensity have been used for object tracking [17], [26], [31], [42], [56]. In [56], Nejhum et al. modeled the target appearance by using a small number of rectangular blocks from which histograms were extracted. The positions of these blocks within an object were adaptively determined for object tracking. In [42], a target object was represented by a patch-based appearance model and the topology between
+
+local patches was updated online. Another effective approach to address the deformation problem is based on segmentation techniques to describe object shape. In [26], Godec et al. presented a tracking-by-detection approach based on a generalized Hough transform and used segmentation based on the GrabCut method [66] to better describe the foreground objects.
+
+Scale variation. To estimate the scale of a target object, one common approach is to search at multiple scales and use the one with the maximum likelihood for tracking [17]. Collins [15] used the scale space theory [47] to improve the mean-shift tracking method [17]. Another approach is to include object scale as one state in the motion model (e.g., similarity or afﬁne transformation). In the tracking methods based on particle ﬁlters, object states are often estimated by the average of a few particles with large weights (likelihoods) [36], [65].
+
+Fast motion. Most
+
+tracking methods operate on the implicit assumption that objects move without abrupt or sudden movements. In [63], Porikli and Tuzel extended the mean-shift tracking method by using multiple kernels centered around fast motion areas. In [41], Kwon and Lee introduced the Wang-Landau Monte Carlo sampling method to handle fast motion by alleviating motion smoothness constraints with both the likelihood functions and the density of states. To cope with abrupt motion and large appearance changes,multipletrackerswithdifferentmotionandappearance models were used where the best one was selected usingMarkovChainMonteCarlo sampling [43],[44].
+
+3 EVALUATED TRACKING ALGORITHMS
+
+We evaluated 31 representative tracking algorithms in this work (see Table 1). As all implementations inevitably involve technical details and speciﬁc parameter settings, we included the algorithms only if the original source or binary code was publicly available.4 While some algorithms are not included due to accessibility issues, the set of evaluated trackers is representative for an accurate assessment of the state-of-the-art in object tracking. For large-scale evaluations, we built a tracker library by modifying the interface of the source code with uniﬁed input and output formats. This code library provides a platform for evaluating the state-of-the-art trackers.
+
+For fair comparisons, the parameters of each tracker were ﬁxed for all the considered sequences. In most cases, we used the default parameters provided in the source code.5 It was difﬁcult, if not impossible, to tune the parameters of each tracker in this large-scale evaluation. The evaluation results in this work could be viewed as the average or lower bound of the tracking performance. While numerous diverse trackers have been proposed, the best performing approaches share similar components. Table 1 lists the main characteristics of the evaluated tracking algorithms.
+
+4. In addition, we implemented the tracking algorithms [17], [60]. We evaluated the trackers in the VIVID dataset [14], including the mean shift, template matching (TM), ratio shift (RS), and peak difference (PD) methods.
+
+5. Some trackers (e.g., IVT) provide different parameters for different sequences in the source code. In such a case, one default parameter setting was selected for all the experiments.
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE, VOL. 37, NO. 9, SEPTEMBER 2015
+
+TABLE 1 Evaluated Tracking Algorithms
+
+Representation
+
+Search
+
+ASLA [38] BSBT [71] CPF [60] CSK [34] CT [92] CXT [20] DFT [69] FOT [76] FRAG [1] IVT [65] KMS [17] L1APG [9] LOT [58] LSHT [33] LSK [48] LSS [78] MIL [5] MTT [94] OAB [27] ORIA [85] PCOM [77] SCM [95] SMS [15] SBT [28] STRUCK [32] TLD [39] VR [16] VTD [43] VTS [44]
+
+4 DATASETS
+
+Recently, numerous benchmark datasets have been developed for various vision problems, such as the Berkeley segmentation [51], FERET face recognition [61], and optical ﬂow dataset [8]. There exist a few benchmark datasets for tracking in the surveillance scenarios, such as the VIVID [14] and CAVIAR [24] databases. For generic object tracking, several sequences have been used for the evaluation [5], [43], [65]. However, most image sequences are not appropriately provided with the ground-truth annotations, and thus, the reported quantitative results in the literature are different or inconsistent since the trackers are not initialized and evaluated on the same platform. To facilitate a fair performance evaluation, we collected and annotated most of the commonly used tracking sequences. This work expands the sequences that we collected in [83] to include 100 target objects in the tracking benchmark TB-100 dataset.6 Since some of the target objects are similar or less challenging, we also selected 50 difﬁcult and representative ones in the TB-50 dataset for an in-depth analysis. Note that
+
+6. The number of videos is less than 100 since a few sequences have
+
+multiple targets in them.
+
+as humans are the most important target objects in practice, the TB-100 dataset contains more sequences of this category (36 body and 26 face/head videos) than of the other types.
+
+Attributes of a test sequence. An evaluation of tracking algorithms is challenging as many factors affect the experimental results. For a better analysis of the strength and the weakness of the tracking algorithms, we categorized the sequences according to the 11 attributes deﬁned in Table 2. Each attribute represents a speciﬁc challenging factor in object tracking. One sequence may be annotated with many attributes, and some attributes occur more frequently than others.
+
+In addition to the performance evaluation on the TB-100 dataset, we report tracking results of sequences with speciﬁc attributes. The characteristics of tracking algorithms can be better understood from the sequences with the same attributes. For example, to evaluate how well the tracker handles occlusion, one may use 49 sequences (29 in TB-50) annotated with the OCC attribute. Fig. 1 shows the ﬁrst frames of all 100 targets with ground-truth bounding boxes and attributes where the target objects of the TB-50 dataset are marked with green rectangles. The attribute distribution of the TB-100 dataset is shown in Table 3.
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+WU ET AL.: OBJECT TRACKING BENCHMARK
+
+TABLE 2 Annotated Sequence Attributes with the Threshold Values in the Performance Evaluation
+
+Description
+
+Illumination Variation—The illumination in the target region is signiﬁcantly changed. Scale Variation—The ratio of the bounding boxes of the ﬁrst frame and the current frame is out of range. 1=ts;ts ts > 1 (ts ¼ 2).
+
+(cid:4),
+
+OCC Occlusion—The target is partially or fully occluded. DEF Deformation—Non-rigid object deformation. MB Motion Blur—The target region is blurred due to the
+
+motion of the target or the camera.
+
+FM Fast Motion—The motion of the ground truth is larger
+
+than tm pixels (tm ¼ 20).
+
+IPR In-Plane Rotation—The target rotates in the image plane. OPR Out-of-Plane Rotation—The target rotates out of the
+
+image plane.
+
+OV Out-of-View—Some portion of the target leaves the view. BC
+
+Background Clutters—The background near the target has similar color or texture as the target. Low Resolution—The number of pixels inside the ground-truth bounding box is less than tr (tr ¼ 400).
+
+5 EVALUATION METHODOLOGY
+
+It is a challenging task to assess the performance of a tracking algorithm with quantitative metrics. Many factors such as position accuracy, robustness over a certain type of appearance changes, tracking speed, memory requirement, and ease of use can be considered. Even in one frame with the tracking output and ground-truth object state, there can be several metrics to measure accuracy. When an algorithm loses track of the target object, it may resume to track after failure if there exists a re-detection module, or if it fortuitously locates the target object again as the object reappears at the position where the tracking bounding box is. If we simply average the evaluated values of all frames in an image sequence, the evaluation may not be fair since a tracker may have lost the target in the beginning but could have tracked the target successfully if it were initialized in a object state or frame. We ﬁrst discuss a few performance measures that are commonly used and then, propose new metrics to evaluate whether tracking algorithms perform robustly under different conditions.
+
+Precision plot. One widely used evaluation metric for object tracking is the center location error, which computes the average euclidean distance between the center locations of the tracked targets and the manually labeled groundtruth positions of all the frames. When a tracking algorithm loses track of a target object, the output location can be random, and thus, the average error value does not measure the tracking performance correctly [5]. Instead, the percentage of frames in which the estimated locations are within a given threshold distance of the ground-truth positions is a better metric to measure tracking performance [5], [34].
+
+However, the center location error only measures the pixel difference and does not reﬂect the size and scale of the target object. For completeness, in the supplementary document, which can be found on the Computer Society Digital Library at http://doi.ieeecomputersociety.org/10.1109/
+
+TPAMI.2014.2388226, we present the representative precision plots of the trackers averaged over all sequences using the threshold of 20 pixels [5] despite the above-mentioned issues.
+
+Success plot. Another commonly used evaluation metric is the overlap score [21]. Given a tracked bounding box rt and the ground-truth bounding extent r0 of a target object, the overlap score is deﬁned as S ¼ T
+
+, where
+
+r0 j r0 j
+
+jrt jrt
+
+represent the intersection and union operators, respectively, and j (cid:3) j denotes the number of pixels in a region. The average overlap score (AOS) can be used as the performance measure. In addition, the overlap scores can be used for determining whether an algorithm successfully tracks a target object in one frame, by testing whether S is larger than a certain threshold to (e.g., to ¼ 0.5). As the threshold varies between 0 and 1, the success rate changes and the resultant curve is presented in this work. In addition, the average success rate with a ﬁxed threshold to ¼ 0:5, is often used for the performance evaluation. Another measure for ranking trackers is the area under curve (AUC) of each success plot, which is the average of the success rates corresponding to the sampled overlap thresholds.
+
+As shown in the supplementary document, available online, with sufﬁcient uniformly sampled thresholds, the AUC score of one sequence is equal to the AOS across the sequence. This can be understood as the average of the frame ratios whose overlap scores are larger than the thresholds is the same as the average of the overlap scores, if there are inﬁnitely many thresholds in the success plot. In the following sections, we interchangeably use the AOS or AUC score to summarize the performance of the tracking methods onthesamesequence.
+
+5.1 Robustness Evaluation The most common evaluation method is to initialize an algorithm with the ground-truth object state in the ﬁrst frame and report the average precision or success rate of all the results. This straightforward approach is referred to as a one-pass evaluation (OPE). While it is simple, this metric has two major drawbacks. First, a tracking algorithm may be sensitive to initialization in the ﬁrst frame, and its performance with different initial states or frames may vary signiﬁcantly. Second, most algorithms do not have reinitialization mechanisms and the tracking results after tracking failures do not provide meaningful information.
+
+We propose two metrics to analyze whether a tracking algorithm is robust to different object states by perturbing them temporally (i.e., starting at different frames) or spatially (i.e., starting with different bounding boxes), as illustrated in Fig. 2. These evaluation metrics are referred as temporal robustness evaluation (TRE) and spatial robustness evaluation (SRE) in this work.
+
+Temporal robustness evaluation. Each tracking algorithm is evaluated numerous times from different starting frames across an image sequence. In each test, an algorithm is evaluated from a particular starting frame, with the initialization of the corresponding ground-truth object state, until the end of an image sequence. The tracking results of all the tests are averaged to generate the TRE score. Unlike OPE
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE, VOL. 37, NO. 9, SEPTEMBER 2015
+
+Fig. 1. Annotated image sequences for performance evaluation. The ﬁrst frame of each sequence is shown with the initial bounding box of the target object. The 50 targets marked with green bounding boxes are selected for extensive evaluations. The newly added sequences compared to [83] are denoted by a red cross at the upper right corner of each image. Some frames are cropped for better illustration.
+
+where the earlier part of a sequence is more important since the results from the frames after one tracking failure are not informative, TRE addresses this issue.
+
+Spatial robustness evaluation. Accurate initialization of a target object is often important for tracking algorithms, but in practice, it is difﬁcult to achieve this due to errors caused by the detectors or by manual labeling. To evaluate whether a tracking method is sensitive to initialization errors, we
+
+generate the object states by slightly shifting or scaling the ground-truth bounding box of a target object. In this work, we use eight spatial shifts (four center shifts and four corner shifts), and four scale variations (see Fig. 2). The amount for shift is 10 percent of the target size, and the scale ratio varies from 80 to 120 percent of the ground truth at the increment of 10 percent. The SRE score is the average of these 12 evaluations.
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+WU ET AL.: OBJECT TRACKING BENCHMARK
+
+TABLE 3 Attribute Distribution
+
+TB-100 IV OPR SV OCC DEF MB FM IPR OV BC LR
+
+38 IV 24 OPR SV 24 OCC 20 15 DEF 12 MB 12 FM 17 IPR 5 OV 17 BC 2 LR
+
+(a) Attribute distribution for TB-100 15 24 63 29 29 45 25 38 44 29 10 16 15 24 17 42 11 5 12 19 3 7
+
+IV OPR SV OCC DEF MB FM IPR OV BC LR
+
+22 IV OPR 15 16 SV OCC 11 10 DEF 9 MB 8 FM 12 IPR 4 OV 14 BC 2 LR
+
+(b) Attribute distribution for TB-50 10 15 32 16 17 26 15 25 23 16 10 6 10 15 10 22 5 9 7 14 3 6
+
+The diagonal corresponds to the distribution over the entire dataset, and each row or column presents the distribution for the attribute subset.
+
+5.2 Robustness Evaluation with Restart For challenging sequences, a tracking algorithm may fail and lose track of the target when the appearance changes drastically or some distractors appear in the scenes. Once a method fails, it is unlikely to recover and track the target without any external input (e.g., re-detection by an object detector or manual re-initialization). While the TRE score is designed to mitigate this effect, different metrics are necessary to better measure the tracking performance.
+
+One-pass evaluation with restart (OPER). The OPER metric constantly measures how a tracking method performs and re-initializes it at the next frame with the corresponding ground-truth position throughout an image sequence. The average overlap score and the total number of failures show the accuracy and the stability of a tracking algorithm. A tracking failure is deﬁned as when the average overlap score of the frames in a moving window is lower than the given threshold, as illustrated in Fig. 2. The averaging window size v controls the sensitivity to instantaneous failure, and its effect is shown in Fig. 6.
+
+Spatial robustness evaluation with restart (SRER). As in the case of OPER, we evaluate whether a tracking method is sensitive to spatial perturbation with restarts such that the tracking performance in challenging sequences can be better analyzed (see Fig. 2 for an example).
+
+Approximation using virtual runs.
+
+Ideally, a tracking method should be restarted at the frame when a failure occurs. However, a few potential issues need to be considered. First, to analyze the behavior of a tracker, we vary the overlap threshold; consequently, the tracking failures occur
+
+Fig. 2. Evaluation methods for trackers. In each image, the green box represents the ground-truth target location, and the other colors denote the tracker outputs. Dotted boxes represent the initialization of the tracker. OPE is the simplest—initialize the tracker in the ﬁrst frame and let it track the target until the end of the sequence. In TRE, a tracker starts at different starting frames initialized with the ground-truth bounding box. In SRE, each tracker runs several times with spatially shifted and scaled initializations. The OPER and SRER metrics are used for restarting a tracker for the rest of the sequence if it fails (based on an overlap threshold) at some frame.
+
+at different frames. However, it is impractical to evaluate all possible scenarios with different thresholds and parameters (and spatial perturbations in SRER) for every image the TB-50 or TB-100 benchmark datasets. sequence of Second, numerous tracking algorithms are distributed with binary code, and it is not possible to detect a failure and restart a tracker at some particular frames. As such, we use virtual runs to approximate speciﬁc parameter settings generated from a set of actual experiments. For each spatial perturbation d, each tracker is evaluated from every tth frame to the end of a sequence with N frames, and the set of , where each run rdd results is frdd k is a sequence of tracking outputs from frame ðtk þ 1Þ to N.
+
+kgbN=tc k¼0
+
+A virtual run ^rdd
+
+v;u for the perturbation d, averaging window size v, and failure threshold u can be generated from frdd kg, as shown in Algorithm 1 in the supplementary ﬁle and Fig. 3, available online. Basically, when a failure is detected at frame t, there exists a run rd;bt=tc, which is initialized within v frames from t. Thus, we can approximate the restart by replacing the frames from t þ 1 with the corresponding frames in this run.
+
+In this work, each SRER consists of seven spatial perturbations (one ground-truth, four center shifts, and two scale variations: 0.9 and 1.1) and v ¼ 90 frames. We only evaluate on the TB-50 dataset with SRER due to the large number of experiments: for a sequence of 600 frames, one tracker requires 140 runs (7 variations (cid:5) 20 runs), processing 44,100 (7 (cid:5) ð600 þ 570 þ (cid:3)(cid:3)(cid:3) þ 30)) frames.
+
+6 EVALUATION RESULTS
+
+For each tracking algorithm, the default parameters with the source or binary code are used in all evaluations. Table 1 lists the average frame per second (FPS) of each method in OPE on a desktop computer with Intel i7 3770 CPU (3.4 GHz). For a tracking method with a re-detection module (e.g., TLD), no tracking results are returned after the algorithm determines that it loses track of a target object. In such cases, the last tracked position is used for the evaluation. Note that in this benchmark, we annotate each target object in every frame even when it is fully occluded. In the
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE, VOL. 37, NO. 9, SEPTEMBER 2015
+
+Fig. 3. An OPER virtual run is created from a set of TRE results. From the ﬁrst frame, it takes parts of the ﬁrst run in TRE until the average overlap in the test window is less than a given threshold. If a failure is detected, the last run containing the next frame is used, and this process is repeated until the end. It can also be easily extended to SRER virtual runs. Refer to the text and Algorithm 1 in the supplementary material for more details, available online. In the illustrated example, the window size v is 4 and the temporal initialization sampling interval t is 5.
+
+following, we use SRE and SRER as the most representative metrics for the performance evaluation.
+
+6.1 Overall Performance Each tracker is evaluated on 58,897 frames of the entire TB100 dataset for OPE. For SRE, each tracking algorithm is evaluated on each sequence with 12 initial object states, where more than 700,000 tracking results per tracker are generated. For TRE, each sequence is partitioned into 20 segments and each method is tested with more than 610,000 frames per tracker. In terms of SRER, more than 80 million tracking results from the TB-50 sequences are generated. To the best of our knowledge, this is the largest-scale performance evaluation of object tracking. We report the most important ﬁndings in this manuscript, and further details can be found at http://pami.visual-tracking.net.
+
+The experimental results of OPE, SRE, and TRE on the TB-100 and TB-50 datasets are shown in Fig. 4. The scores from the TB-50 dataset are lower than those from the TB-100 set as the TB-50 set consists of more challenging sequences. For the sake of presentation clarity, the plots of the top-10 performing trackers, ordered by the AUC scores, are shown in color (plots of the other trackers are shown in gray).
+
+The average TRE scores from both datasets are higher than those of OPE in that the number of frames decreases from the ﬁrst to the last segment of TRE. As tracking algorithms tend to perform well in shorter sequences, the average scores of all the results in TRE tend to be higher. On the other hand, the average SRE scores are lower than those of OPE. As a result of imprecise initial appearance models induced in SRE, tracking methods tend to drift away from target objects at a faster pace than those in OPE.
+
+The evaluation results show that OPE is not the best performance indicator as it is one trial of SRE or TRE and does not take the initialization noise into account. The OPE, SRE, and TRE results are mostly consistent in the the top few performing tracking methods sense that according to one criterion also perform well in the other evaluations. However, these tracking methods are effective in different aspects. In the success plots for evaluations based on the TB-100 dataset, the SCM method in OPE outperforms the ASLA approach (by 3.65 percent) but is slightly worse in SRE (by 0.57 percent), which suggests that one of the considered algorithms is more robust to the spatial perturbation of the initial object states. The ranking of the TLD method in TRE is lower than that in
+
+Fig. 4. Plots of OPE, SRE, and TRE on TB-100 (ﬁrst row) and TB-50 (second row). The score for each tracker is shown in the legend. The top 10 trackers are presented for the sake of clarity, and the rest are shown as gray dashed curves.
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+WU ET AL.: OBJECT TRACKING BENCHMARK
+
+OPE and SRE. This can be attributed to the fact that the TLD algorithm performs well in long sequences with a re-detection module while there are numerous short segments in TRE. The success plots of the Struck method in TRE and SRE show that its success rate is higher than those of the SCM and ALSA methods when the overlap threshold is low, but lower when the overlap threshold is higher. This is because the Struck method only estimates the object location but not scale or rotation.
+
+Sparse representations are used in the SCM, ASLA, LSK, MTT, and L1APG methods. These tracking approaches perform well in SRE and TRE, which suggests that sparse representations are effective models to account for appearance changes (e.g., occlusion). We note that the SCM, ASLA, and LSK algorithms outperform the MTT and L1APG methods. The results suggest that local sparse representations are more effective than the ones with holistic sparse templates. The AUC score of the ASLA method decreases slowly as compared to that of the other top ﬁve trackers in SRE (when compared with OPE), which indicates that the used pooling method is more robust to alignment errors and background clutters.
+
+Among the top 10 trackers, the CSK method achieves the highest frame rate where the formulation based on a circulant structure plays a key role. The VTD and VTS methods use multiple models to account for appearance changes and fast motion. Compared with the top-performing tracking methods, the performance bottleneck of these two methods may be the representations based on the sparse principal component analysis of holistic templates.
+
+6.2 Performance of SRER To evaluate how each tracking algorithm performs under spatial and temporal perturbations of initial object states, we carry out experiments using the spatial robustness evaluation with restart metric.
+
+In the SRER plot (shown in Fig. 5), the y-axis denotes the average success rate of all frames, and the x-axis represents the average number of failures (the moment at which the tracker restarts) in 1,000 frames. Each tracker is evaluated with 11 different overlap thresholds from 0.0 to 1.0, and the success rates and the number of failures are shown as solid dots in the plot. The plots can be interpreted in a way similar to the receiver operator curve (ROC). As the overlap threshold increases, the number of failures increases and the success rate increases at ﬁrst and then decreases slightly. When the overlap threshold is low, a tracker is not restarted even when it actually loses track of a target object and the model of a tracker is likely to be incorrect. The average success rate increases when the threshold values are low since re-initialization signiﬁcantly helps the object tracking. However, an SRER plot saturates around the threshold value of 0.5 or 0.6 and decreases in higher thresholds where a tracker is restarted too frequently and fails to learn effective representations to account for appearance changes. Ideal trackers should achieve high success rates and a low number of restarts, which corresponds to the top left corner of the plot. To rank the tracking performance, we use the average success rate at the overlap threshold of 0.5 (denoted by a black circle), and the values are also shown in the legend. The upper left plot of Fig. 5 shows the overall performance of
+
+the considered trackers on the TB-50 dataset. The top-ﬁve tracking methods in SRER perform signiﬁcantly better than the others in terms of both the average success rate and the average number of failures.
+
+Table 4 shows the average success rates and the average number of failures for all the trackers with respect to all attributes at the overlap threshold of 0.5. The tracking algorithms are sorted by the average success rates, and the topﬁve methods denoted by different colors. We present the effect of window size that determines the interval for testing the tracking failure in Fig. 6. The original runs are generated at every 30 frames from the beginning, and the virtual runs are constructed for the given test windows and thresholds. As the test window size increases, both the average success rate and the number of failures decrease as momentary failures have less effect in tests with longer averaging windows. Overall, the performance of the evaluated trackers is consistent over large variations of the time window, and the window size of 90 is used for all other SRER results.
+
+6.3 Performance Analysis by Attributes By annotating each sequence, we construct subsets with different dominant attributes that facilitate the analysis of the performance of trackers for each challenging factor. Fig. 5 shows the SRER plots of 11 attributes on the TB-50 dataset. These plots show the different performance characteristics of the tracking algorithms.
+
+When an object moves fast, dense sampling based trackers (e.g., Struck) perform much better than the others. This can be attributed to the fact that methods based on optimal prediction or relatively sparse samples do not perform well as the true object state is not included in the search region. However, stochastic search-based trackers with a high overall performance (e.g., SCM and ASLA) do not perform well in this subset due to the simple motion models and small search regions. If the search region is large, more particles need to be drawn. These trackers can be further improved with more effective motion models and particle ﬁlters.
+
+On the OCC subset, the Struck, SCM, and ASLA methods outperform the others. These results suggest that structured learning and local sparse representations are effective in dealing with occlusion. On the SV subset, the ASLA, SCM, and Struck methods perform well. The results show that trackers with afﬁne motion models (e.g., ASLA and SCM) often handle scale variation better than the others that are designed to account for only translational motion with a few exceptions such as the Struck method.
+
+6.4 Tracking Speed The speed of tracking methods is affected by different factors despite the different implementation platforms. These factors include the bounding box size, representation scheme, state space, number of particles, number of features, and number of iterations. For example, the L1 tracking method requires solving one ‘1 minimization problem for each drawn particle. The MIL tracking method has a lower frame rate and more robust results when the number of Haar-like features is larger. The ASLA and SCM methods solve several ‘1 minimization problems with small image patches. On the other hand, the time for Markov chains to
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE, VOL. 37, NO. 9, SEPTEMBER 2015
+
+Fig. 5. SRER plots of the overall performance (upper left) and sequences with different attributes. A curve in an SRER plot shows the average overlap scores (y-axis) and the average number of failures (x-axis) for the overlap thresholds (dots on the curve), which are varied from 0 to 1. The black circle represents the score when the overlap threshold is 0.5. The values in the legend are the average overlap scores at the threshold of 0.5.
+
+converge in the VTD and VTS algorithms is signiﬁcant. Table 1 lists the average speed of each method in OPE.7 More detailed speed statistics, such as the minimum and the maximum values, are available on the above-mentioned web page.
+
+7 CONCLUSIONS
+
+In this work, we performed large-scale experiments to evaluate the performance of recent object-tracking algorithms. Based on the benchmark experiments, we highlighted some tracking components that are essential for improving the tracking performance. First, background information is
+
+7. The average FPS of the VIVID trackers, MS, TM, RS, and PD is
+
+125, 106, 130, and 109, respectively.
+
+important for effective tracking, which can be exploited in discriminative approaches implicitly (e.g., Struck) or used as the tracking context explicitly (e.g., CXT). Second, local models are effective for object tracking as shown by the performance improvement of methods based on the local sparse representation (e.g., ASLA and SCM) than those based on holistic sparse approaches (e.g., MTT and L1APG). These models are particularly useful when the target appearance changes under partial occlusion or deformation. Third, motion models are crucial for object tracking, particularly when the target movement is large or abrupt. Effective state prediction models signiﬁcantly reduce the search range and thus improve the tracking efﬁciency and robustness. It is of great interest to develop tracking methods to take these factors into account. The evaluation results show that signiﬁcant progress in the ﬁeld of object tracking
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+WU ET AL.: OBJECT TRACKING BENCHMARK
+
+TABLE 4 SRER Evaluation Results on the TB-50 Dataset
+
+Each entry contains the average overlap in percentage and the average number of failures in 1,000 frames at the overlap threshold of 0.5. The trackers are ordered by the average overlap scores, and the top ﬁve methods in each attribute are denoted by different colors: red, green, blue, cyan, and magenta.
+
+has been made in the last decade. We propose and demonstrate evaluation metrics for an in-depth analysis of objecttracking algorithms from several perspectives.
+
+We note that considerable progress has recently been made [19], [25], [49] to improve the state-of-the-art. In [19], Danelljan et al. extended the CSK method [34] by using many color attributes/features and 41 color sequences were selected from the benchmark dataset [83] for the evaluation.
+
+On the other hand, the CSK method was extended by using multi-channel features [35]. A hierarchical and compositional and-or graph representation was used for simultaneously tracking, learning, and parsing objects [49]. A Gaussian process regressor was used for estimating the probability of target appearance, and two types of labeled samples were used for improving the tracking performance [25], and some promising results have been demonstrated
+
+Fig. 6. SRER plots with different averaging window sizes for failure detection. As the window size for failure detection increases, the average overlap scores and the number of failures decrease. However, the trends and ranks of the trackers remain similar.
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE, VOL. 37, NO. 9, SEPTEMBER 2015
+
+on the benchmark dataset [83]. These trackers will be added to the library and made available on the evaluation website. In this work, the large-scale performance evaluation facilitated a better understanding of the state-of-the-art object tracking approaches, and provided a platform for gauging new algorithms. Our future work focuses on extending the datasets and code library to include more fully annotated sequences and trackers.
+
+ACKNOWLEDGMENTS
+
+We thank the reviewers for valuable comments and suggestions. Y. Wu is supported partly by NSFC under Grants 61005027 and 61370036. J. Lim is supported partly by the ICT R&D programs of MSIP/IITP (No. 10047078 and No. 14-824-09-006) and MSIP/NIPA (CITRC program No. NIPA-2014-H0401-14-1001). M.-H. Yang is supported in part by the National Science Foundation CAREER Grant 1149783 and IIS Grant 1152576. J. Lim is the corresponding author.
+
+REFERENCES
+
+[1] A. Adam, E. Rivlin, and I. Shimshoni, “Robust fragments-based tracking using the integral histogram,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2006, pp. 798–805.
+
+[2] N. Alt, S. Hinterstoisser, and N. Navab, “Rapid selection of reliable templates for visual tracking,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2010, pp. 1355–1362. S. Avidan, “Support vector tracking,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 26, no. 8, pp. 1064–1072, Aug. 2004. S. Avidan, “Ensemble tracking,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 29, no. 2, pp. 261–271, Feb. 2007.
+
+[5] B. Babenko, M.-H. Yang, and S. Belongie, “Robust object tracking with online multiple instance learning,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 33, no. 7, pp. 1619–1632, Aug. 2011.
+
+[6] Y. Bai and M. Tang, “Robust tracking via weakly supervised ranking SVM,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2012, pp. 1854–1861. S. Baker and I. Matthews, “Lucas-Kanade 20 years on: A unifying framework,” Int. J. Comput. Vis., vol. 56, no. 3, pp. 221–255, 2004. S. Baker, S. Roth, D. Scharstein, M. J. Black, J. Lewis, and R. Szeliski, “A database and evaluation methodology for optical ﬂow,” in Proc. 11th IEEE Int. Conf. Comput. Vis., 2007, pp. 1–8.
+
+[9] C. Bao, Y. Wu, H. Ling, and H. Ji, “Real time robust l1 tracker using accelerated proximal gradient approach,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2012, pp. 1830–1837.
+
+[10] S. Birchﬁeld, “Elliptical head tracking using intensity gradients and color histograms,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 1998, pp. 232–237.
+
+[11] S. T. Birchﬁeld and S. Rangarajan, “Spatiograms versus histograms for region-based tracking,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2005, pp. 1158–1163.
+
+[12] M. J. Black and A. D. Jepson, “EigenTracking: Robust matching and tracking of articulated objects using a view-based representation,” Int. J. Comput. Vis., vol. 26, no. 1, pp. 63–84, 1998. [13] K. Cannons, “A review of visual tracking,” York Univ., Ontario,
+
+Canada, Tech. Rep. CSE-2008-07, 2008.
+
+[14] R. Collins, X. Zhou, and S. K. Teh, “An open source tracking testbed and evaluation web site,” in Proc. IEEE Int. Workshop Perform. Eval. Tracking Surveillance, 2005, pp. 17–24.
+
+[15] R. T. Collins, “Mean-shift blob tracking through scale space,” in
+
+Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2003, pp. 234–240.
+
+[16] R. T. Collins, Y. Liu, and M. Leordeanu, “Online selection of discriminative tracking features,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 27, no. 10, pp. 1631–1643, Oct. 2005.
+
+[17] D. Comaniciu, V. Ramesh, and P. Meer, “Kernel-based object tracking,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 25, no. 5, pp. 564–577, May 2003.
+
+[18] N. Dalal and B. Triggs, “Histograms of oriented gradients for human detection,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2005, pp. 886–893.
+
+[19] M. Danelljan, F. S. Khan, M. Felsberg, and J. V. D. Weijer, “Adaptive color attributes for real-time visual tracking,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2014, pp. 1090–1097. [20] T. B. Dinh, N. Vo, and G. Medioni, “Context tracker: Exploring supporters and distracters in unconstrained environments,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2011, pp. 1177– 1184.
+
+[21] M. Everingham, L. Gool, C. K. I. Williams, J. Winn, and A. Zisserman, “The Pascal Visual Object Classes (VOC) challenge,” Int. J. Comput. Vis., vol. 88, no. 2, pp. 303–338, 2010. J. Fan, Y. Wu, and S. Dai, “Discriminative spatial attention for robust tracking,” in Proc. 11th Eur. Conf. Comput. Vis., 2010, pp. 480–493. J. Ferryman and A. Shahrokni, “PETS 2009: Dataset and challenge,” in Proc. IEEE Int. Workshop Perform. Eval. Tracking Surveillance, 2009, pp. 1–6.
+
+[24] R. B. Fisher, “The PETS04 surveillance ground-truth data sets,” in Proc. IEEE Int. Workshop Perform. Eval. Tracking Surveillance, 2004, pp. 1–5. J. Gao, H. Ling, W. Hu, and J. Xing, “Transfer learning based visual tracking with Gaussian processes regression,” in Proc. 10th Eur. Conf. Comput. Vis., 2014, pp. 188–203.
+
+[26] M. Godec, P. M. Roth, and H. Bischof, “Hough-based tracking of non-rigid objects,” in Proc. IEEE Int. Conf. Comput. Vis., 2011, pp. 81–88.
+
+[27] H. Grabner, M. Grabner, and H. Bischof, “Real-time tracking via on-line boosting,” in Proc. British Mach. Vis. Conf., 2006, pp. 6.1– 6.10.
+
+[28] H. Grabner, C. Leistner, and H. Bischof, “Semi-supervised on-line boosting for robust tracking,” in Proc. 10th Eur. Conf. Comput. Vis., 2008, pp. 234–247.
+
+[29] H. Grabner, J. Matas, L. V. Gool, and P. Cattin, “Tracking the invisible: Learning where the object might be,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2010, pp. 1285–1292.
+
+[30] G. D. Hager and P. N. Belhumeur, “Efﬁcient region tracking with parametric models of geometry and illumination,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 20, no. 10, pp. 1025–1039, Oct. 1998. [31] B. Han, D. Comaniciu, Y. Zhu, and L. Davis, “Sequential kernel density approximation and its application to real-time visual tracking,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 30, no. 7, pp. 1186–1197, Jul. 2008.
+
+[32] S. Hare, A. Saffari, and P. H. S. Torr, “Struck: Structured output tracking with kernels,” in Proc. IEEE Int. Conf. Comput. Vis., 2011, pp. 263–270.
+
+[33] S. He, Q. Yang, R. W. H. Lau, J. Wang, and M.-H. Yang, “Visual tracking via locality sensitive histograms,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2013, pp. 2427–2434. J. A. F. Henriques, R. Caseiro, P. Martins, and J. Batista, “Exploiting the circulant structure of tracking-by-detection with kernels,” in Proc. 10th Eur. Conf. Comput. Vis., 2012, pp. 702–715. J. A. F. Henriques, R. Caseiro, P. Martins, and J. Batista, “Highspeedtracking with kernelized correlation ﬁlters,” IEEE Trans. PatternAnal.Mach.Intell.,2014.DOI:10.1109/TPAMI.2014.2345390 [36] M. Isard and A. Blake, “CONDENSATION-Conditional density propagation for visual tracking,” Int. J. Comput. Vis., vol. 29, no. 1, pp. 5–28, 1998.
+
+[37] A. D. Jepson, D. J. Fleet, and T. F. El-Maraghi, “Robust online appearance models for visual tracking,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 25, no. 10, pp. 1296–1311, Oct. 2003.
+
+[38] X. Jia, H. Lu, and M.-H. Yang, “Visual tracking via adaptive structural local sparse appearance model,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2012, pp. 1822–1829.
+
+[39] Z. Kalal, J. Matas, and K. Mikolajczyk, “P-N Learning: Bootstrapping binary classiﬁers by structural constraints,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2010, pp. 49–56.
+
+[40] M. Kristan, R. Pﬂugfelder, A. Leonardis, J. Matas, F. Porikli, L. Cehovin, G. Nebehay, G. Fernandez, T. Vojir, A. Gatt, A. Khajenezhad, A. Salahledin, A. Soltani-Farani, A. Zarezade, A. Petrosino, A. Milton, B. Bozorgtabar, B. Li, C. S. Chan, C. Heng, D. Ward, D. Kearney, D. Monekosso, H. C. Karaimer, H. R. Rabiee, J. Zhu, J. Gao, J. Xiao, J. Zhang, J. Xing, K. Huang, K. Lebeda, L. Cao, M. E. Maresca, M. K. Lim, M. E. Helw, M. Felsberg, P. Remagnino, R. Bowden, R. Goecke, R. Stolkin, S. Y. Lim, S. Maher, S. Poullot, S. Wong, S. Satoh, W. Chen, W. Hu, X. Zhang, Y. Li, and Z. Niu, “The Visual Object Tracking VOT2013 challenge results,” in Proc. IEEE Int. Conf. Comput. Vis. Workshops, 2013, pp. 98–111.
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+WU ET AL.: OBJECT TRACKING BENCHMARK
+
+J. Kwon and K. Lee, “Tracking of abrupt motion using Wang-Landau Monte Carlo estimation,” in Proc. 10th Eur. Conf. Comput. Vis., 2008, pp. 387–400. J. Kwon and K. M. Lee, “Tracking of a non-rigid object via patchbased dynamic appearance modeling and adaptive basin hopping Monte Carlo sampling,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2009, pp. 2427–2441. J. Kwon and K. M. Lee, “Visual tracking decomposition,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2010, pp. 1269–1276. J. Kwon and K. M. Lee, “Tracking by sampling trackers,” in Proc. IEEE Int. Conf. Comput. Vis., 2011, pp. 1195–1202. J. Kwon, K. M. Lee, and F. C. Park, “Visual tracking via geometric particle ﬁltering on the afﬁne group with optimal importance functions,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2009, pp. 991–998.
+
+[46] X. Li, W. Hu, C. Shen, Z. Zhang, A. Dick, and A. Hengel, “A survey of appearance models in visual object tracking,” ACM Trans. Intell. Syst. Technol., vol. 4, no. 4, p. 58, 2013.
+
+[47] T. Lindeberg, Scale-Space Theory in Computer Vision. New York,
+
+NY, USA: Springer, 1993.
+
+[48] B. Liu, J. Huang, L. Yang, and C. Kulikowsk, “Robust tracking using local sparse appearance model and K-selection,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2011, pp. 1313–1320. [49] Y. Lu, T. Wu, and Z. Song-Chun, “Online object tracking, learning and parsing with and-or graphs,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2014, pp. 3462–3469.
+
+[50] B. D. Lucas and T. Kanade, “An iterative image registration technique with an application to stereo vision,” in Proc. 7th Int. Joint Conf. Artif. Intell., 1981, pp. 674–679.
+
+[51] D. R. Martin, C. C. Fowlkes, and J. Malik, “Learning to detect natural image boundaries using local brightness, color, and texture cues,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 26, no. 5, pp. 530–49, May 2004. I. Matthews, T. Ishikawa, and S. Baker, “The template update problem,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 26, no. 6, pp. 810–815, Jun. 2004.
+
+[53] X. Mei and H. Ling, “Robust visual tracking using l1 minimization,” in Proc. 12th IEEE Int. Conf. Comput. Vis., 2009, pp. 1436–1443.
+
+[54] X. Mei and H. Ling, “Robust visual tracking and vehicle classiﬁcation via sparse representation,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 33, no. 11, pp. 2259–2272, Nov. 2011.
+
+[55] X. Mei, H. Ling, Y. Wu, E. Blasch, and L. Bai, “Minimum error bounded efﬁcient L1 tracker with occlusion detection,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2011, pp. 1257–1264. [56] S. M. S. Nejhum, J. Ho, and M.-H. Yang, “Visual tracking with histograms and articulating blocks,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2008, pp. 1–8.
+
+[57] T. Ojala, M. Pietik€ainen, and T. M€aenp€a€a, “Multiresolution grayscale and rotation invariant texture classiﬁcation with local binary patterns,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 24, no. 7, pp. 971–987, Jul. 2002.
+
+[58] S. Oron, A. Bar-Hillel, D. Levi, and S. Avidan, “Locally orderless tracking,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2012, pp. 1940–1947.
+
+[59] Y. Pang and H. Ling, “Finding the best from the second bestsInhibiting subjective bias in evaluation of visual tracking algorithms,” in Proc. IEEE Int. Conf. Comput. Vis., 2013, pp. 2784–2791. [60] P. P(cid:2)erez, C. Hue, J. Vermaak, and M. Gangnet, “Color-based probabilistic tracking,” in Proc. 7th Eur. Conf. Comput. Vis., 2002, pp. 661–675.
+
+[61] P. Phillips, H. Moon, S. Rizvi, and P. Rauss, “The FERET evaluation methodology for face-recognition algorithms,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 22, no. 10, pp. 1090–1104, Oct. 2000. [62] F. Porikli, “Integral histogram: A fast way to extract histograms in cartesian spaces,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2005, pp. 829–836.
+
+[63] F. Porikli and O. Tuzel, “Object tracking in low-frame-rate video,” in Proc. SPIE Image Video Commun. Process., 2005, pp. 72–79. [64] F. Porikli, O. Tuzel, and P. Meer, “Covariance tracking using model update based on Lie algebra,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2006, pp. 728–735.
+
+[65] D. Ross, J. Lim, R.-S. Lin, and M.-H. Yang, “Incremental learning for robust visual tracking,” Int. J. Comput. Vis., vol. 77, no. 1, pp. 125–141, 2008.
+
+[66] C. Rother, V. Kolmogorov, and A. Blake, “Grabcut: Interactive foreground extraction using iterated graph cuts,” in Proc. Annu. Conf. Comput. Graph. Interactive Techn., 2004, pp. 309–314.
+
+[67] S. Salti, A. Cavallaro, and L. Di Stefano, “Adaptive appearance modeling for video tracking: Survey and evaluation,” IEEE Trans. Image Process., vol. 21, no. 10, pp. 4334–4348, Oct. 2012. J. Santner, C. Leistner, A. Saffari, T. Pock, and H. Bischof, “PROST: Parallel robust online simple tracking,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2010, pp. 723–730.
+
+[69] L. Sevilla-Lara and E. Learned-Miller, “Distribution ﬁelds for tracking,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2012, pp. 1910–1917.
+
+[70] A. W. M. Smeulders, D. M. Chu, R. Cucchiara, S. Calderara, A. tracking: An experimental Dehghan, and M. Shah, “Visual survey,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 36, no. 7, pp. 1442–1468, Jul. 2014.
+
+[71] S. Stalder, H. Grabner, and L. van Gool, “Beyond semi-supervised tracking: Tracking should be as simple as detection, but not simpler than recognition,” in Proc. 12th IEEE Int. Conf. Comput. Vis. Workshop, 2009, pp. 1409–1416.
+
+[72] B. Stenger, T. Woodley, and R. Cipolla, “Learning to track with multiple observers,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2009, pp. 2647–2654.
+
+[73] F. Tang, S. Brennan, Q. Zhao, and H. Tao, “Co-Tracking using semi-supervised support vector machines,” in Proc. 11th IEEE Conf. Comput. Vis. Pattern Recognit., 2007, pp. 1–8.
+
+[74] O. Tuzel, F. Porikli, and P. Meer, “Region covariance: A fast descriptor for detection and classiﬁcation,” in Proc. 9th Eur. Conf. Comput. Vis., 2006, pp. 589–600.
+
+[75] P. Viola and M. J. Jones, “Robust real-time face detection,” Int. J.
+
+Comput. Vis., vol. 57, no. 2, pp. 137–154, 2004.
+
+[76] T. Vojir and J. Matas, “Robustifying the ﬂock of trackers,” in Proc.
+
+Comput. Vis. Winter Workshop, 2011, pp. 91–97.
+
+[77] D. Wang and H. Lu, “Visual tracking via probability continuous outlier model,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2014, pp. 3478–3485.
+
+[78] D. Wang, H. Lu, and M.-H. Yang, “Least soft-thresold squares tracking,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2013, pp. 2371–2378.
+
+[79] D. Wang, H. Lu, and M.-H. Yang, “Online object tracking with sparse prototypes,” IEEE Trans. Image Process., vol. 22, no. 1, pp. 314–325, Jan. 2013.
+
+[80] Q. Wang, F. Chen, W. Xu, and M.-H. Yang, “An experimental comparison of online object tracking algorithms,” Proc. SPIE: Image Signal Process., 2011, vol. 8138, pp. 81381A–81381A-11. [81] H. Wu, A. C. Sankaranarayanan, and R. Chellappa, “Online empirical evaluation of tracking algorithms,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 32, no. 8, pp. 1443–1458, Aug. 2010.
+
+[82] Y. Wu, J. Cheng, J. Wang, H. Lu, J. Wang, H. Ling, E. Blasch, and L. Bai, “Real-time probabilistic covariance tracking with efﬁcient model update,” IEEE Trans. Image Process., vol. 21, no. 5, pp. 2824– 2837, May 2012.
+
+[83] Y. Wu, J. Lim, and M.-H. Yang, “Online object tracking: A benchmark,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2013, pp. 2411–2418.
+
+[84] Y. Wu, H. Ling, J. Yu, F. Li, X. Mei, and E. Cheng, “Blurred target tracking by blur-driven tracker,” in Proc. Int. Conf. Comput. Vis., 2011, pp. 1100–1107.
+
+[85] Y. Wu, B. Shen, and H. Ling, “Online robust image alignment via iterative convex optimization,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2012, pp. 1808–1814.
+
+[86] Y. Wu, B. Shen, and H. Ling, “Visual tracking via online nonnegative matrix factorization,” IEEE Trans. Circuits Syst. Video Technol., vol. 24, no. 3, pp. 374–383, Mar. 2014.
+
+[87] F. Yang, H. Lu, and M.-H. Yang, “Robust superpixel tracking,” IEEE Trans. Image Process., vol. 23, no. 4, pp. 1639–1651, Apr. 2014. [88] M. Yang, Y. Wu, and G. Hua, “Context-aware visual tracking,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 31, no. 7, pp. 1195– 1209, Jul. 2009.
+
+[89] A. Yilmaz, O. Javed, and M. Shah, “Object tracking: A survey,”
+
+ACM Comput. Surv., vol. 38, no. 4, pp. 1–45, 2006. J. H. Yoon, D. Y. Kim, and K.-J. Yoon, “Visual tracking via adaptive tracker selection with multiple features,” in Proc. 12th Eur. Conf. Comput. Vis., 2012, pp. 28–41.
+
+[91] Q. Yu, T. B. Dinh, and G. Medioni, “Online tracking and reacquisition using co-trained generative and discriminative trackers,” in Proc. 10th Eur. Conf. Comput. Vis., 2008, pp. 678–691.
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+
+IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE, VOL. 37, NO. 9, SEPTEMBER 2015
+
+[92] K. Zhang, L. Zhang, and M.-H. Yang, “Real-time compressive
+
+tracking,” in Proc. 12th Eur. Conf. Comput. Vis., 2012, pp. 864–877.
+
+[93] S. Zhang, H. Yao, X. Sun, and X. Lu, “Sparse coding based visual tracking: Review and experimental comparison,” Pattern Recognit., vol. 46, no. 7, pp. 1772–1788, 2013.
+
+[94] T. Zhang, B. Ghanem, S. Liu, and N. Ahuja, “Robust visual tracking via multi-task sparse learning,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2012, pp. 2042–2049.
+
+[95] W. Zhong, H. Lu, and M.-H. Yang, “Robust object tracking via sparse collaborative appearance model,” IEEE Trans. Image Process., vol. 23, no. 5, pp. 2356–2368, May 2014.
+
+Yi Wu received the PhD degree in pattern recognition and intelligent systems from the Institute of Automation, Chinese Academy of Sciences, China, in 2009. Since Fall 2009, he has been an assistant professor at the Nanjing University of Information Science and Technology. From May 2010 to June 2012, he was a postdoctoral fellow at Temple University. From July 2012 to April 2014, he was working as a postdoctoral fellow at University of California, Merced. His research interests include computer vision, multimedia
+
+analysis, and machine learning.
+
+Jongwoo Lim received the graduation degree from Seoul National University, Seoul, Korea, in 1997, and the MS and PhD degrees from the University of Illinois at Urbana-Champaign (UIUC), in 2003 and 2005, respectively. He was at Honda Research Institute USA Inc., Mountain View, CA, as a senior scientist from 2005 to 2011, and at Google Inc., Mountain View, CA, as a software engineer from 2011 to 2012. Currently, he is an assistant professor in the Division of Computer Science & Engineering at Hanyang University. His research interests include computer vision, robotics, and machine learning.
+
+Ming-Hsuan Yang received the PhD degree in computer science from the University of Illinois at Urbana-Champaign in 2000. He is an associate professor in electrical engineering and computer science at the University of California, Merced. He served as an associate editor of the IEEE Transactions on Pattern Analysis and Machine Intelligence from 2007 to 2011, and is an associate editor of the International Journal of Computer Vision, Image and Vision Computing and Intelligence Research. He Journal of Artiﬁcial received the NSF CAREER Award in 2012, the Senate Award for Distinguished Early Career Research at UC Merced in 2011, and the Google Faculty Award in 2009. He is a senior member of the IEEE and the ACM.
+
+" For more information on this or any other computing topic, please visit our Digital Library at www.computer.org/publications/dlib.
+
+Authorized licensed use limited to: SUN YAT-SEN UNIVERSITY. Downloaded on March 14,2025 at 07:00:33 UTC from IEEE Xplore.  Restrictions apply.
+

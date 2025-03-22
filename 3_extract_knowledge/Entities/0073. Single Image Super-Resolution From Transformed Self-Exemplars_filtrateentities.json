@@ -1,0 +1,51 @@
+{
+    "entities": [
+        {
+            "id": "20250319031816P1",
+            "name": "Single Image Super-resolution from Transformed Self-Exemplars",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Jia-Bin Huang",
+                    "Abhishek Singh",
+                    "Narendra Ahuja"
+                ],
+                "institution": "University of Illinois, Urbana-Champaign"
+            }
+        },
+        {
+            "id": "20250319031816D1",
+            "name": "Urban 100",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100 HR images",
+                "content": "urban scenes"
+            }
+        },
+        {
+            "id": "20250319031816D2",
+            "name": "BSD 100",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100 test images",
+                "content": "natural scenes",
+                "source": "Berkeley Segmentation Dataset"
+            }
+        },
+        {
+            "id": "20250319031816D3",
+            "name": "Berkeley Segmentation Dataset",
+            "type": "Dataset",
+            "attributes": {
+                "segmented images": "yes",
+                "purpose": "evaluating segmentation algorithms"
+            }
+        },
+        {
+            "id": "20250319031816T1",
+            "name": "single image super-resolution",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

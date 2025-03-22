@@ -1,0 +1,139 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319020518P1",
+            "tail": "nuScenes: A multimodal dataset for autonomous driving",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319020518R1",
+            "tail": "http://www.nuscenes.org",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250319020518L1",
+            "tail": "CC BY-NC-SA 4.0",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T1",
+            "tail": "3D object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T2",
+            "tail": "object tracking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T3",
+            "tail": "behavior modeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T4",
+            "tail": "pedestrian localization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T5",
+            "tail": "moving pointcloud prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T6",
+            "tail": "sensor fusion",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T7",
+            "tail": "trajectory prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T8",
+            "tail": "scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T9",
+            "tail": "semantic segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T10",
+            "tail": "instance segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T11",
+            "tail": "depth estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T12",
+            "tail": "panoptic segmentation",
+            "tail_type": "Task"
+        }
+    ]
+}

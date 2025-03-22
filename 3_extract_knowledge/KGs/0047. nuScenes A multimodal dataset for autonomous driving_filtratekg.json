@@ -1,0 +1,370 @@
+{
+    "entities": [
+        {
+            "id": "20250319020518P1",
+            "name": "nuScenes: A multimodal dataset for autonomous driving",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Holger Caesar",
+                    "Varun Bankiti",
+                    "Alex H. Lang",
+                    "Sourabh Vora",
+                    "Venice Erin Liong",
+                    "Qiang Xu",
+                    "Anush Krishnan",
+                    "Yu Pan",
+                    "Giancarlo Baldan",
+                    "Oscar Beijbom"
+                ],
+                "institution": "nuTonomy: an APTIV company"
+            }
+        },
+        {
+            "id": "20250319020518D1",
+            "name": "nuScenes",
+            "type": "Dataset",
+            "attributes": {
+                "size": "1000 scenes, 1.4M images",
+                "sensors": "6 cameras, 5 radars, 1 lidar",
+                "classes": 23,
+                "annotation_frequency": "2Hz",
+                "locations": [
+                    "Boston",
+                    "Singapore"
+                ],
+                "weather_conditions": [
+                    "rain",
+                    "night"
+                ],
+                "license": "CC BY-NC-SA 4.0"
+            }
+        },
+        {
+            "id": "20250319020518D2",
+            "name": "KITTI",
+            "type": "Dataset",
+            "attributes": {
+                "size": "22 scenes",
+                "annotations": "200k 3D boxes"
+            }
+        },
+        {
+            "id": "20250319020518D3",
+            "name": "H3D",
+            "type": "Dataset",
+            "attributes": {
+                "size": "160 scenes",
+                "annotations": "1.1M 3D boxes"
+            }
+        },
+        {
+            "id": "20250319020518D4",
+            "name": "KAIST",
+            "type": "Dataset",
+            "attributes": {
+                "modalities": "RGB, thermal camera, lidar"
+            }
+        },
+        {
+            "id": "20250319020518D5",
+            "name": "Lyft L5",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518D6",
+            "name": "Waymo Open Dataset",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518D7",
+            "name": "A*3D",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518D8",
+            "name": "Cityscapes",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518D9",
+            "name": "BDD100K",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518D10",
+            "name": "ApolloScape",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518D11",
+            "name": "D2-City",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518D12",
+            "name": "Mapillary Vistas",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518D13",
+            "name": "CamVid",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518D14",
+            "name": "Oxford RobotCar",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518D15",
+            "name": "Málaga Urban Dataset",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518D16",
+            "name": "A2D2",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518D17",
+            "name": "Woodscape",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518R1",
+            "name": "http://www.nuscenes.org",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518L1",
+            "name": "CC BY-NC-SA 4.0",
+            "type": "License",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518T1",
+            "name": "3D object detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518T2",
+            "name": "object tracking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518T3",
+            "name": "behavior modeling",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518T4",
+            "name": "pedestrian localization",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518T5",
+            "name": "moving pointcloud prediction",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518T6",
+            "name": "sensor fusion",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518T7",
+            "name": "trajectory prediction",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518T8",
+            "name": "scene understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518T9",
+            "name": "semantic segmentation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518T10",
+            "name": "instance segmentation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518T11",
+            "name": "depth estimation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319020518T12",
+            "name": "panoptic segmentation",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319020518P1",
+            "tail": "nuScenes: A multimodal dataset for autonomous driving",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319020518R1",
+            "tail": "http://www.nuscenes.org",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250319020518L1",
+            "tail": "CC BY-NC-SA 4.0",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T1",
+            "tail": "3D object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T2",
+            "tail": "object tracking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T3",
+            "tail": "behavior modeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T4",
+            "tail": "pedestrian localization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T5",
+            "tail": "moving pointcloud prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T6",
+            "tail": "sensor fusion",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T7",
+            "tail": "trajectory prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T8",
+            "tail": "scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T9",
+            "tail": "semantic segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T10",
+            "tail": "instance segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T11",
+            "tail": "depth estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319020518D1",
+            "head": "nuScenes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319020518T12",
+            "tail": "panoptic segmentation",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

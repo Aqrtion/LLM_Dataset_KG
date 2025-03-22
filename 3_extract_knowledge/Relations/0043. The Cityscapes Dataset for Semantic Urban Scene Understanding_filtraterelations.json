@@ -1,0 +1,85 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319015200R1",
+            "tail": "www.cityscapes-dataset.net",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319015200P1",
+            "tail": "The Cityscapes Dataset for Semantic Urban Scene Understanding",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T1",
+            "tail": "semantic urban scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T2",
+            "tail": "pixel-level semantic labeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T3",
+            "tail": "instance-level semantic labeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T4",
+            "tail": "3D scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T5",
+            "tail": "object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T6",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015200D1",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015200T7",
+            "tail": "cross-dataset evaluation",
+            "tail_type": "Task"
+        }
+    ]
+}

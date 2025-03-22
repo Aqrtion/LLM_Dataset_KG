@@ -1,0 +1,94 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319043654D1",
+            "head": "Common Voice",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319043654R1",
+            "tail": "https://commonvoice.mozilla.org/en/datasets",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319043654D1",
+            "head": "Common Voice",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250319043654L1",
+            "tail": "CC0",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250319043654D1",
+            "head": "Common Voice",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319043654P1",
+            "tail": "Common Voice: A Massively-Multilingual Speech Corpus",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319043654D1",
+            "head": "Common Voice",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043654T1",
+            "tail": "Automatic Speech Recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043654D1",
+            "head": "Common Voice",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043654T2",
+            "tail": "language identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043654D1",
+            "head": "Common Voice",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043654T3",
+            "tail": "multilingual speech research",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043654D1",
+            "head": "Common Voice",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043654T4",
+            "tail": "training speech recognition models",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043654D1",
+            "head": "Common Voice",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319043654T5",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319043654D2",
+            "head": "VoxForge",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250319043654L2",
+            "tail": "GNU General Public License",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250319043654D4",
+            "head": "MAILABS",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250319043654L3",
+            "tail": "modified BSD 3-Clause License",
+            "tail_type": "License"
+        }
+    ]
+}

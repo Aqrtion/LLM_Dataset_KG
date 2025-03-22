@@ -1,0 +1,87 @@
+{
+    "entities": [
+        {
+            "name": "Recovering Accurate 3D Human Pose in The Wild Using IMUs and a Moving Camera",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Timo von Marcard",
+                    "Roberto Henschel",
+                    "Michael J. Black",
+                    "Bodo Rosenhahn",
+                    "Gerard Pons-Moll"
+                ],
+                "institutions": [
+                    "Leibniz Universität Hannover",
+                    "MPI for Intelligent Systems",
+                    "MPI for Informatics"
+                ]
+            }
+        },
+        {
+            "name": "3D Poses in the Wild (3DPW)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "51,000 frames",
+                "activities": [
+                    "walking",
+                    "shopping",
+                    "taking bus",
+                    "playing guitar"
+                ],
+                "clothing_variations": 18,
+                "subjects": 7,
+                "sensors": "17 IMUs + smartphone camera"
+            }
+        },
+        {
+            "name": "TotalCapture",
+            "type": "Dataset",
+            "attributes": {
+                "synchronized_modalities": [
+                    "video",
+                    "IMU",
+                    "ground-truth MoCap"
+                ],
+                "subjects": 5,
+                "activities": [
+                    "walking",
+                    "acting",
+                    "freestyle motions"
+                ]
+            }
+        },
+        {
+            "name": "HumanEva",
+            "type": "Dataset"
+        },
+        {
+            "name": "H3.6M",
+            "type": "Dataset"
+        },
+        {
+            "name": "http://virtualhumans.mpi-inf.mpg.de/3DPW",
+            "type": "Repository"
+        },
+        {
+            "name": "3D human pose estimation",
+            "type": "Task"
+        },
+        {
+            "name": "sensor fusion",
+            "type": "Task"
+        },
+        {
+            "name": "people tracking",
+            "type": "Task"
+        },
+        {
+            "name": "benchmarking",
+            "type": "Task"
+        },
+        {
+            "name": "motion capture in natural environments",
+            "type": "Task"
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319024604D1",
+            "head": "DomainNet",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319024604R1",
+            "tail": "http://ai.bu.edu/M3SDA/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319024604D1",
+            "head": "DomainNet",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319024604P1",
+            "tail": "Moment Matching for Multi-Source Domain Adaptation",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319024604D1",
+            "head": "DomainNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024604T1",
+            "tail": "multi-source domain adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024604D1",
+            "head": "DomainNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024604T5",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024604D2",
+            "head": "Office",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024604T2",
+            "tail": "domain adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024604D3",
+            "head": "Office-Caltech10",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024604T2",
+            "tail": "domain adaptation",
+            "tail_type": "Task"
+        }
+    ]
+}

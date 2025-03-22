@@ -1,0 +1,121 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319032408R1",
+            "tail": "adas.cvc.uab.es/synthia",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319032408P1",
+            "tail": "The SYNTHIA Dataset: A Large Collection of Synthetic Images for Semantic Segmentation of Urban Scenes",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032408T1",
+            "tail": "semantic segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032408T2",
+            "tail": "object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032408T3",
+            "tail": "traffic sign recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032408T4",
+            "tail": "road segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032408T5",
+            "tail": "pose estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032408T6",
+            "tail": "part models learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032408T7",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032408T8",
+            "tail": "training object detection algorithms",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032408T9",
+            "tail": "scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319032408D2",
+            "tail": "SYNTHIA-Rand",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319032408D1",
+            "head": "SYNTHIA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319032408D3",
+            "tail": "SYNTHIA-Seqs",
+            "tail_type": "Dataset"
+        }
+    ]
+}

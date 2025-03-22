@@ -1,0 +1,58 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319021337D1",
+            "head": "ScanNet",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319021337R1",
+            "tail": "http://www.scan-net.org",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319021337D1",
+            "head": "ScanNet",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319021337P1",
+            "tail": "ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319021337D1",
+            "head": "ScanNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021337T1",
+            "tail": "3D object classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021337D1",
+            "head": "ScanNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021337T2",
+            "tail": "semantic voxel labeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021337D1",
+            "head": "ScanNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021337T3",
+            "tail": "CAD model retrieval",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021337D1",
+            "head": "ScanNet",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021337T4",
+            "tail": "scene understanding",
+            "tail_type": "Task"
+        }
+    ]
+}

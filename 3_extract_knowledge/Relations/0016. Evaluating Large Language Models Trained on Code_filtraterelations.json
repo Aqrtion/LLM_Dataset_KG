@@ -1,0 +1,76 @@
+{
+    "relations": [
+        {
+            "head_id": "20250318235155D1",
+            "head": "HumanEval",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250318235155R1",
+            "tail": "https://www.github.com/openai/human-eval",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250318235155D1",
+            "head": "HumanEval",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250318235155P1",
+            "tail": "Evaluating Large Language Models Trained on Code",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250318235155D1",
+            "head": "HumanEval",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318235155T1",
+            "tail": "program synthesis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318235155D1",
+            "head": "HumanEval",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318235155T2",
+            "tail": "code generation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318235155D1",
+            "head": "HumanEval",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318235155T3",
+            "tail": "functional correctness evaluation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318235155D2",
+            "head": "APPS",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318235155T3",
+            "tail": "functional correctness evaluation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318235155D3",
+            "head": "The Pile",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318235155T2",
+            "tail": "code generation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318235155D5",
+            "head": "CodeXGLUE",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318235155T6",
+            "tail": "code understanding",
+            "tail_type": "Task"
+        }
+    ]
+}

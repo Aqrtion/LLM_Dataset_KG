@@ -1,0 +1,275 @@
+{
+    "entities": [
+        {
+            "id": "20250319005543P1",
+            "name": "GQA: A New Dataset for Real-World Visual Reasoning and Compositional Question Answering",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Drew A. Hudson",
+                    "Christopher D. Manning"
+                ],
+                "institution": "Stanford University"
+            }
+        },
+        {
+            "id": "20250319005543D1",
+            "name": "GQA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "22M questions",
+                "images": "113,018",
+                "composition": "Visual Genome scene graphs",
+                "features": "functional programs, balanced answer distribution",
+                "metrics": [
+                    "consistency",
+                    "validity",
+                    "plausibility",
+                    "grounding",
+                    "distribution"
+                ]
+            }
+        },
+        {
+            "id": "20250319005543D2",
+            "name": "Visual Genome",
+            "type": "Dataset",
+            "attributes": {
+                "description": "scene graph annotations",
+                "source": "COCO and Flickr images"
+            }
+        },
+        {
+            "id": "20250319005543D3",
+            "name": "COCO",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005543D4",
+            "name": "Flickr",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005543D5",
+            "name": "CLEVR",
+            "type": "Dataset",
+            "attributes": {
+                "description": "synthetic images with compositional questions"
+            }
+        },
+        {
+            "id": "20250319005543D6",
+            "name": "VQA 2.0",
+            "type": "Dataset",
+            "attributes": {
+                "description": "real-world images with unbalanced answer distribution"
+            }
+        },
+        {
+            "id": "20250319005543R1",
+            "name": "visualreasoning.net",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005543T1",
+            "name": "visual reasoning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005543T2",
+            "name": "compositional question answering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005543T3",
+            "name": "object recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005543T4",
+            "name": "attribute recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005543T5",
+            "name": "spatial reasoning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005543T6",
+            "name": "logical inference",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005543T7",
+            "name": "comparisons",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005543T8",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005543T9",
+            "name": "training object detection algorithms",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319005543T10",
+            "name": "scene understanding",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319005543R1",
+            "tail": "visualreasoning.net",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319005543P1",
+            "tail": "GQA: A New Dataset for Real-World Visual Reasoning and Compositional Question Answering",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319005543D2",
+            "tail": "Visual Genome",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319005543D2",
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319005543D3",
+            "tail": "COCO",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319005543D2",
+            "head": "Visual Genome",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319005543D4",
+            "tail": "Flickr",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T1",
+            "tail": "visual reasoning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T2",
+            "tail": "compositional question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T3",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T4",
+            "tail": "attribute recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T5",
+            "tail": "spatial reasoning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T6",
+            "tail": "logical inference",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T7",
+            "tail": "comparisons",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T9",
+            "tail": "training object detection algorithms",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319005543D1",
+            "head": "GQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319005543T10",
+            "tail": "scene understanding",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

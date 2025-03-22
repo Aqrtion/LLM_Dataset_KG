@@ -1,0 +1,103 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319011523D1",
+            "head": "DBpedia",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319011523R1",
+            "tail": "http://dbpedia.org/sparql",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319011523D1",
+            "head": "DBpedia",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319011523R2",
+            "tail": "http://dbpedia.org/resource/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319011523D1",
+            "head": "DBpedia",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250319011523L1",
+            "tail": "GNU Free Documentation License",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250319011523D1",
+            "head": "DBpedia",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011523T1",
+            "tail": "information extraction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011523D1",
+            "head": "DBpedia",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011523T2",
+            "tail": "data interlinking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011523D1",
+            "head": "DBpedia",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011523T3",
+            "tail": "SPARQL querying",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011523D1",
+            "head": "DBpedia",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011523T4",
+            "tail": "Semantic Web browsing",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011523D1",
+            "head": "DBpedia",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319011523P1",
+            "tail": "DBpedia: A Nucleus for a Web of Open Data",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319011523D1",
+            "head": "DBpedia",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319011523D2",
+            "tail": "Geonames",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319011523D1",
+            "head": "DBpedia",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319011523D3",
+            "tail": "MusicBrainz",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319011523D1",
+            "head": "DBpedia",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319011523D4",
+            "tail": "DBLP",
+            "tail_type": "Dataset"
+        }
+    ]
+}

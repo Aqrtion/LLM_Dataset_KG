@@ -1,0 +1,60 @@
+{
+    "relations": [
+        {
+            "head": "CelebA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Deep Learning Face Attributes in the Wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "LFWA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail": "Deep Learning Face Attributes in the Wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head": "CelebA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "CelebFaces",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "LFWA",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail": "LFW (Labeled Faces in the Wild)",
+            "tail_type": "Dataset"
+        },
+        {
+            "head": "ImageNet (ILSVRC 2012)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "face localization",
+            "tail_type": "Task"
+        },
+        {
+            "head": "CelebFaces",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "attribute prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head": "CelebA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "attribute prediction",
+            "tail_type": "Task"
+        },
+        {
+            "head": "LFWA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail": "attribute prediction",
+            "tail_type": "Task"
+        }
+    ]
+}

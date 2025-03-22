@@ -1,0 +1,67 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319035846D1",
+            "head": "MSR-VTT",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319035846P1",
+            "tail": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319035846D1",
+            "head": "MSR-VTT",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035846T1",
+            "tail": "video to text",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319035846D1",
+            "head": "MSR-VTT",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035846T2",
+            "tail": "video description generation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319035846D1",
+            "head": "MSR-VTT",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035846T3",
+            "tail": "video understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319035846D1",
+            "head": "MSR-VTT",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035846T4",
+            "tail": "sentence generation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319035846D1",
+            "head": "MSR-VTT",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035846T5",
+            "tail": "action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319035846D1",
+            "head": "MSR-VTT",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319035846T6",
+            "tail": "video summarization",
+            "tail_type": "Task"
+        }
+    ]
+}

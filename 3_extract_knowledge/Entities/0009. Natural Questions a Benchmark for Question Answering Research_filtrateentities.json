@@ -1,0 +1,166 @@
+{
+    "entities": [
+        {
+            "id": "20250318225612P1",
+            "name": "Natural Questions: A Benchmark for Question Answering Research",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Tom Kwiatkowski",
+                    "Jennimaria Palomaki",
+                    "Olivia Redfield",
+                    "Michael Collins",
+                    "Ankur Parikh",
+                    "Chris Alberti",
+                    "Danielle Epstein",
+                    "Illia Polosukhin",
+                    "Jacob Devlin",
+                    "Kenton Lee",
+                    "Kristina Toutanova",
+                    "Llion Jones",
+                    "Matthew Kelcey",
+                    "Ming-Wei Chang",
+                    "Andrew M. Dai",
+                    "Jakob Uszkoreit",
+                    "Quoc Le",
+                    "Slav Petrov"
+                ],
+                "institution": "Google Research"
+            }
+        },
+        {
+            "id": "20250318225612D1",
+            "name": "Natural Questions (NQ)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "307,373 training examples",
+                "annotations": "5-way annotations",
+                "components": [
+                    "7,830 development examples",
+                    "7,842 test examples"
+                ],
+                "task": "open-domain question answering"
+            }
+        },
+        {
+            "id": "20250318225612R1",
+            "name": "https://ai.google.com/research/NaturalQuestions",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250318225612T1",
+            "name": "question answering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318225612T2",
+            "name": "machine reading comprehension",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318225612T3",
+            "name": "answer extraction",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318225612T4",
+            "name": "boolean question answering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318225612T5",
+            "name": "conversational QA",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318225612T6",
+            "name": "supporting facts identification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318225612T7",
+            "name": "Cloze-style tasks",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318225612D2",
+            "name": "SQuAD",
+            "type": "Dataset",
+            "attributes": {
+                "version": "1.0"
+            }
+        },
+        {
+            "id": "20250318225612D3",
+            "name": "SQuAD 2.0",
+            "type": "Dataset",
+            "attributes": {
+                "characteristic": "unanswerable questions"
+            }
+        },
+        {
+            "id": "20250318225612D4",
+            "name": "NarrativeQA",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250318225612D5",
+            "name": "HotpotQA",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "multi-hop reasoning"
+            }
+        },
+        {
+            "id": "20250318225612D6",
+            "name": "QuAC",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250318225612D7",
+            "name": "CoQA",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250318225612D8",
+            "name": "WikiQA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "3,047 questions"
+            }
+        },
+        {
+            "id": "20250318225612D9",
+            "name": "MS Marco",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100,000 questions"
+            }
+        },
+        {
+            "id": "20250318225612D10",
+            "name": "DuReader",
+            "type": "Dataset",
+            "attributes": {
+                "language": "Chinese"
+            }
+        },
+        {
+            "id": "20250318225612D11",
+            "name": "TriviaQA",
+            "type": "Dataset",
+            "attributes": {}
+        }
+    ]
+}

@@ -1,0 +1,166 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319034533R1",
+            "tail": "http://deepmind.com/kinetics",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319034533P1",
+            "tail": "The Kinetics Human Action Video Dataset",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T1",
+            "tail": "human action classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T2",
+            "tail": "temporal localization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T3",
+            "tail": "multi-modal analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T4",
+            "tail": "action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T5",
+            "tail": "training action classification models",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T6",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T7",
+            "tail": "video modeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T8",
+            "tail": "spatio-temporal feature learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T9",
+            "tail": "temporal aggregation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T10",
+            "tail": "attention mechanisms",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T11",
+            "tail": "object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T12",
+            "tail": "image segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T13",
+            "tail": "non-visual modalities analysis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T14",
+            "tail": "pre-training",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T15",
+            "tail": "human pose estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319034533D1",
+            "head": "Kinetics",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319034533T16",
+            "tail": "object category recognition",
+            "tail_type": "Task"
+        }
+    ]
+}

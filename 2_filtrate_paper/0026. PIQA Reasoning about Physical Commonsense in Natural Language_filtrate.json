@@ -1,0 +1,8 @@
+{
+    "is_related_to_large_models": true,
+    "introduces_new_dataset": true,
+    "dataset_info": {
+        "full_name": "Physical Interaction: Question Answering",
+        "abbreviation": "PIQA"
+    }
+}

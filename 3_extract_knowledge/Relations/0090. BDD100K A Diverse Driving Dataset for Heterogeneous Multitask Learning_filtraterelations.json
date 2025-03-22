@@ -1,0 +1,157 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319040622D1",
+            "head": "BDD100K",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319040622R1",
+            "tail": "https://bdd-data.berkeley.edu",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319040622D1",
+            "head": "BDD100K",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319040622P1",
+            "tail": "BDD100K: A Diverse Driving Dataset for Heterogeneous Multitask Learning",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319040622D1",
+            "head": "BDD100K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040622T1",
+            "tail": "image tagging",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040622D1",
+            "head": "BDD100K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040622T2",
+            "tail": "lane detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040622D1",
+            "head": "BDD100K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040622T3",
+            "tail": "drivable area segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040622D1",
+            "head": "BDD100K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040622T4",
+            "tail": "road object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040622D1",
+            "head": "BDD100K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040622T5",
+            "tail": "semantic segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040622D1",
+            "head": "BDD100K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040622T6",
+            "tail": "instance segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040622D1",
+            "head": "BDD100K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040622T7",
+            "tail": "multi-object detection tracking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040622D1",
+            "head": "BDD100K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040622T8",
+            "tail": "multi-object segmentation tracking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040622D1",
+            "head": "BDD100K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040622T9",
+            "tail": "domain adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040622D1",
+            "head": "BDD100K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319040622T10",
+            "tail": "imitation learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319040622D2",
+            "head": "Cityscapes",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319040622P2",
+            "tail": "The cityscapes dataset for semantic urban scene understanding",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319040622D3",
+            "head": "KITTI",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319040622P3",
+            "tail": "Vision meets robotics: The kitti dataset",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319040622D4",
+            "head": "Mapillary Vistas",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319040622P4",
+            "tail": "The mapillary vistas dataset for semantic understanding of street scenes",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319040622D5",
+            "head": "Waymo Open Dataset",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319040622P5",
+            "tail": "Scalability in perception for autonomous driving: Waymo open dataset",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319040622D6",
+            "head": "ImageNet",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319040622P6",
+            "tail": "ImageNet: A Large-Scale Hierarchical Image Database",
+            "tail_type": "Paper"
+        }
+    ]
+}

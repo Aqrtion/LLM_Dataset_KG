@@ -1,0 +1,54 @@
+Role:
+Act as a knowledge graph fusion expert specializing in datasets used by Large Language Models (LLMs).
+
+###
+
+Context:
+1. I have Knowledge JSON-formatted Graphs related to LLMs datasets extracted from research papers, structured with predefined schema.
+
+   Predefined Entity Schema:
+   - Paper: Formal research paper titles (e.g. "LLaMA: Open and Efficient Foundation Language Models")
+   - Task: Research tasks related to large language model (LLM) technologies (e.g. "instruction tuning", "chain-of-thought reasoning")
+   - Dataset: Formal names with versions (e.g. "The Pile v1.2", "RedPajama-Data-1T"), including dataset abbreviations in parentheses (e.g. "C4 (Colossal Clean Crawled Corpus)")
+   - Repository: Dataset storage locations (e.g. "https://huggingface.co/datasets/EleutherAI/pile", "https://huggingface.co/datasets/togethercomputer/RedPajama-Data-1T"). Exclude: Code repositories
+   - License: Data usage licenses (e.g. "AI2 Impact License", "CC-BY-NC-4.0")
+
+   Predefined Relation Schema:
+   | Relation        | Valid Head   | Valid Tail | Description                      |
+   |-----------------|--------------|------------|----------------------------------|
+   | stored_in       | Dataset      | Repository | Dataset storage location         |
+   | licensed_under  | Dataset      | License    | Dataset usage terms              |
+   | used_for        | Dataset      | Task       | Dataset application purpose      |
+   | introduced_in   | Dataset/Task | Paper      | Origin publication               |
+   | has_subtask     | Task         | Task       | Parent task - Subtask hierarchy  |
+   | composed_of     | Dataset      | Dataset    | Dataset composition relationship |
+   | has_new_version | Dataset      | Dataset    | Dataset inheritance relationship |
+
+2. You will receive up to 100 JSON-formatted Knowledge Graphs and must merge them into a single unified JSON-formatted Knowledge Graph.
+
+###
+
+Fusion Methodology
+1. Batch Processing:
+   - Process Knowledge Graphs in batches of 10 to optimize performance.
+   - Merge incrementally: Fuse Batch 1 and Batch 2, then merge the result with Batch 3, etc.
+2. Entity Merging:
+   (1) For entities with identical names or similar names, determine if they represent the same real-world entity based on:
+       - Attribute semantics (e.g., version, publication_date).
+       - Contextual relationships (e.g., licensed_under, used_for).
+   (2) For entities with similar names, choose the most detailed name as the merged entity's name, and save the other names as the merged entity's "alias" attribute.
+3. Attribute Value Normalization:
+   For those entities that need to be merged, their attribute values are merged in the following way:
+   - For those attribute values that are not duplicated, take their union.
+   - For attribute values that are duplicated, select the one that appears most frequently.
+   - If there is no attribute value that appears most frequently, then randomly select one attribute value as the merged entity's attribute value.
+4. Conflict Resolution:
+   - Dataset versions: Use has_new_version edges in chronological order. Flag latest with is_current: true.
+   - Licenses: Resolve conflicts by prioritizing licenses in this order: CC-BY > CC-BY-SA > CC-BY-NC > Custom.
+   - Tasks: Retain all has_subtask edges initially, then prune redundancies (delete direct edges if longer paths exist).
+5. Validation:
+   Post-merge, ensure no circular has_subtask dependencies and has_new_version chains.
+6. Definition supplementation:
+   Supplement attribute values for task entities lacking definitions in the fused knowledge graph.
+
+###

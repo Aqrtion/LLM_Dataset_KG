@@ -1,0 +1,76 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319024401D1",
+            "head": "BMW-10",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319024401P1",
+            "tail": "3D Object Representations for Fine-Grained Categorization",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319024401D2",
+            "head": "car-197",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319024401P1",
+            "tail": "3D Object Representations for Fine-Grained Categorization",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319024401D1",
+            "head": "BMW-10",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024401T1",
+            "tail": "fine-grained categorization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024401D2",
+            "head": "car-197",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024401T1",
+            "tail": "fine-grained categorization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024401D2",
+            "head": "car-197",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024401T2",
+            "tail": "3D reconstruction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024401D3",
+            "head": "3D Object Classes dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319024401T3",
+            "tail": "ultra-wide baseline matching",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319024401D1",
+            "head": "BMW-10",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319024401R1",
+            "tail": "Amazon Mechanical Turk (AMT)",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319024401D2",
+            "head": "car-197",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319024401R1",
+            "tail": "Amazon Mechanical Turk (AMT)",
+            "tail_type": "Repository"
+        }
+    ]
+}

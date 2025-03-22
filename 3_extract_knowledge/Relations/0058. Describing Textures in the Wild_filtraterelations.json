@@ -1,0 +1,94 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319023610D1",
+            "head": "Describable Textures Dataset (DTD)",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319023610P1",
+            "tail": "Describing Textures in the Wild",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319023610D1",
+            "head": "Describable Textures Dataset (DTD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023610T1",
+            "tail": "texture description",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023610D1",
+            "head": "Describable Textures Dataset (DTD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023610T2",
+            "tail": "material recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023610D1",
+            "head": "Describable Textures Dataset (DTD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023610T3",
+            "tail": "semantic search",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023610D1",
+            "head": "Describable Textures Dataset (DTD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023610T4",
+            "tail": "learning from textual descriptions",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023610D1",
+            "head": "Describable Textures Dataset (DTD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023610T5",
+            "tail": "image understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023610D1",
+            "head": "Describable Textures Dataset (DTD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023610T6",
+            "tail": "object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023610D1",
+            "head": "Describable Textures Dataset (DTD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023610T7",
+            "tail": "texture classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023610D1",
+            "head": "Describable Textures Dataset (DTD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023610T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319023610D1",
+            "head": "Describable Textures Dataset (DTD)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319023610T9",
+            "tail": "attribute-based clustering",
+            "tail_type": "Task"
+        }
+    ]
+}

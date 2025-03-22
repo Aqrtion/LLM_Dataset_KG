@@ -1,0 +1,67 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319021738D1",
+            "head": "103 class flower dataset",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319021738R1",
+            "tail": "http://www.robots.ox.ac.uk/~vgg/data/flowers/index.html",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319021738D1",
+            "head": "103 class flower dataset",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319021738P1",
+            "tail": "Automated flower classification over a large number of classes",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319021738D1",
+            "head": "103 class flower dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021738T1",
+            "tail": "flower classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021738D1",
+            "head": "103 class flower dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021738T2",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021738D1",
+            "head": "103 class flower dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021738T3",
+            "tail": "image classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021738D1",
+            "head": "103 class flower dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021738T4",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021738D2",
+            "head": "17 class flower dataset",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319021738R1",
+            "tail": "http://www.robots.ox.ac.uk/~vgg/data/flowers/index.html",
+            "tail_type": "Repository"
+        }
+    ]
+}

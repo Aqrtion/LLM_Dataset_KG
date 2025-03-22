@@ -1,0 +1,94 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319001713D1",
+            "head": "TriviaQA",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319001713R1",
+            "tail": "http://nlp.cs.washington.edu/triviaqa/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319001713D1",
+            "head": "TriviaQA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319001713P1",
+            "tail": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319001713D1",
+            "head": "TriviaQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319001713T1",
+            "tail": "reading comprehension",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319001713D1",
+            "head": "TriviaQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319001713T2",
+            "tail": "open domain question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319001713D1",
+            "head": "TriviaQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319001713T3",
+            "tail": "answer sentence selection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319001713D1",
+            "head": "TriviaQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319001713T4",
+            "tail": "answer phrase extraction",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319001713D1",
+            "head": "TriviaQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319001713T5",
+            "tail": "knowledge base question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319001713D1",
+            "head": "TriviaQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319001713T6",
+            "tail": "IR-style question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319001713D1",
+            "head": "TriviaQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319001713T7",
+            "tail": "machine reading",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319001713D1",
+            "head": "TriviaQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319001713T8",
+            "tail": "training machine reading systems",
+            "tail_type": "Task"
+        }
+    ]
+}

@@ -1,0 +1,117 @@
+{
+    "entities": [
+        {
+            "name": "Training Verifiers to Solve Math Word Problems",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Karl Cobbe",
+                    "Vineet Kosaraju",
+                    "Mohammad Bavarian",
+                    "Mark Chen",
+                    "Heewoo Jun",
+                    "Lukasz Kaiser",
+                    "Matthias Plappert",
+                    "Jerry Tworek",
+                    "Jacob Hilton",
+                    "Reiichiro Nakano",
+                    "Christopher Hesse",
+                    "John Schulman"
+                ],
+                "institution": "OpenAI"
+            }
+        },
+        {
+            "name": "GSM8K",
+            "type": "Dataset",
+            "attributes": {
+                "size": "8.5K problems",
+                "split": "7.5K training, 1K test",
+                "steps_required": "2-8 steps",
+                "solution_format": "natural language",
+                "linguistic_diversity": "high",
+                "grade_level": "elementary school"
+            }
+        },
+        {
+            "name": "Dolphin18K",
+            "type": "Dataset",
+            "attributes": {
+                "size": "18K problems",
+                "solution_format": "equations/final answers"
+            }
+        },
+        {
+            "name": "AQuA-RAT",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100K problems",
+                "issues": "templatization, poor quality"
+            }
+        },
+        {
+            "name": "MathQA",
+            "type": "Dataset",
+            "attributes": {
+                "corrections": "subset of AQuA-RAT",
+                "data_quality": "30% inconsistencies"
+            }
+        },
+        {
+            "name": "Ape210K",
+            "type": "Dataset",
+            "attributes": {
+                "size": "210K problems",
+                "language": "Chinese",
+                "solution_format": "no natural language"
+            }
+        },
+        {
+            "name": "ASDiv",
+            "type": "Dataset",
+            "attributes": {
+                "size": "2.3K problems",
+                "diversity": "high"
+            }
+        },
+        {
+            "name": "MATH dataset",
+            "type": "Dataset",
+            "attributes": {
+                "difficulty": "high complexity"
+            }
+        },
+        {
+            "name": "https://github.com/openai/gradeschool-math",
+            "type": "Repository"
+        },
+        {
+            "name": "solving math word problems",
+            "type": "Task"
+        },
+        {
+            "name": "training verifiers",
+            "type": "Task"
+        },
+        {
+            "name": "multi-step mathematical reasoning",
+            "type": "Task"
+        },
+        {
+            "name": "natural language solutions generation",
+            "type": "Task"
+        },
+        {
+            "name": "verification of solutions",
+            "type": "Task"
+        },
+        {
+            "name": "sample-and-rank approach",
+            "type": "Task"
+        },
+        {
+            "name": "model fine-tuning",
+            "type": "Task"
+        }
+    ]
+}

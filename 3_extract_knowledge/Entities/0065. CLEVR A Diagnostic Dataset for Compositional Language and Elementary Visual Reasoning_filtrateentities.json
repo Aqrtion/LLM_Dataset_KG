@@ -1,0 +1,95 @@
+{
+    "entities": [
+        {
+            "name": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Justin Johnson",
+                    "Li Fei-Fei",
+                    "Bharath Hariharan",
+                    "C. Lawrence Zitnick",
+                    "Laurens van der Maaten",
+                    "Ross Girshick"
+                ],
+                "institutions": [
+                    "Stanford University",
+                    "Facebook AI Research"
+                ]
+            }
+        },
+        {
+            "name": "CLEVR",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100,000 images",
+                "questions": "1 million (853k unique)",
+                "content_type": "synthetic 3D shapes",
+                "attributes_tested": [
+                    "color",
+                    "size",
+                    "material",
+                    "shape",
+                    "spatial relationships"
+                ],
+                "question_generation": "automated functional programs",
+                "composition": "90 question families"
+            }
+        },
+        {
+            "name": "DAQUAR",
+            "type": "Dataset",
+            "attributes": {
+                "question_type": "synthetic and human-written",
+                "size": "420 synthetic questions"
+            }
+        },
+        {
+            "name": "SHAPES",
+            "type": "Dataset",
+            "attributes": {
+                "size": "15,616 total questions",
+                "unique_questions": 244
+            }
+        },
+        {
+            "name": "VQA",
+            "type": "Dataset",
+            "attributes": {
+                "content": "abstract scenes",
+                "size": "150,000 questions"
+            }
+        },
+        {
+            "name": "bAbI",
+            "type": "Dataset",
+            "attributes": {
+                "focus": "textual reasoning"
+            }
+        },
+        {
+            "name": "visual question answering",
+            "type": "Task"
+        },
+        {
+            "name": "compositional reasoning",
+            "type": "Task"
+        },
+        {
+            "name": "attribute comparison",
+            "type": "Task"
+        },
+        {
+            "name": "object counting",
+            "type": "Task"
+        },
+        {
+            "name": "spatial relationship analysis",
+            "type": "Task"
+        },
+        {
+            "name": "visual recognition",
+            "type": "Task"
+        }
+    ]
+}

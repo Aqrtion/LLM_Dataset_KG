@@ -1,0 +1,138 @@
+{
+    "entities": [
+        {
+            "id": "20250319012420P1",
+            "name": "Pointer Sentinel Mixture Models",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Stephen Merity",
+                    "Caiming Xiong",
+                    "James Bradbury",
+                    "Richard Socher"
+                ],
+                "institution": "MetaMind - A Salesforce Company"
+            }
+        },
+        {
+            "id": "20250319012420D1",
+            "name": "Penn Treebank (PTB)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "929k training words",
+                "vocabulary": "10k words",
+                "preprocessing": "lower-cased, numbers replaced, punctuation removed"
+            }
+        },
+        {
+            "id": "20250319012420D2",
+            "name": "WikiText-2",
+            "type": "Dataset",
+            "attributes": {
+                "size": "2x Penn Treebank",
+                "vocabulary": "larger than PTB",
+                "structure": "articles with original casing/punctuation"
+            }
+        },
+        {
+            "id": "20250319012420D3",
+            "name": "WikiText-103",
+            "type": "Dataset",
+            "attributes": {
+                "size": "103 million words",
+                "vocabulary": "full Wikipedia vocabulary",
+                "structure": "articles with long-range dependencies"
+            }
+        },
+        {
+            "id": "20250319012420R1",
+            "name": "WikiText dataset site",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012420T1",
+            "name": "language modeling",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012420T2",
+            "name": "word-level prediction",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012420T3",
+            "name": "handling rare or unseen words",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319012420D2",
+            "head": "WikiText-2",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319012420P1",
+            "tail": "Pointer Sentinel Mixture Models",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319012420D3",
+            "head": "WikiText-103",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319012420P1",
+            "tail": "Pointer Sentinel Mixture Models",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319012420D1",
+            "head": "Penn Treebank (PTB)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012420T1",
+            "tail": "language modeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319012420D2",
+            "head": "WikiText-2",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012420T1",
+            "tail": "language modeling",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319012420D3",
+            "head": "WikiText-103",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319012420D2",
+            "tail": "WikiText-2",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319012420D3",
+            "head": "WikiText-103",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319012420R1",
+            "tail": "WikiText dataset site",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319012420D1",
+            "head": "Penn Treebank (PTB)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319012420T2",
+            "tail": "word-level prediction",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

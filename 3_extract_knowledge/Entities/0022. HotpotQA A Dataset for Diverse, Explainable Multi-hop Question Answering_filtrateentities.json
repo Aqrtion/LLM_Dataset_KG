@@ -1,0 +1,122 @@
+{
+    "entities": [
+        {
+            "id": "20250319003755P1",
+            "name": "HOTPOTQA: A Dataset for Diverse, Explainable Multi-hop Question Answering",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Zhilin Yang",
+                    "Peng Qi",
+                    "Saizheng Zhang",
+                    "Yoshua Bengio",
+                    "William W. Cohen",
+                    "Ruslan Salakhutdinov",
+                    "Christopher D. Manning"
+                ],
+                "institutions": [
+                    "Carnegie Mellon University",
+                    "Stanford University",
+                    "Mila, Université de Montréal",
+                    "Google AI"
+                ]
+            }
+        },
+        {
+            "id": "20250319003755D1",
+            "name": "HOTPOTQA",
+            "type": "Dataset",
+            "attributes": {
+                "size": "113k question-answer pairs",
+                "features": [
+                    "multi-hop reasoning",
+                    "diverse question types",
+                    "sentence-level supporting facts",
+                    "factoid comparison questions"
+                ],
+                "context_source": "Wikipedia articles",
+                "answer_types": [
+                    "entities",
+                    "dates",
+                    "numbers",
+                    "adjectives",
+                    "yes/no comparisons"
+                ]
+            }
+        },
+        {
+            "id": "20250319003755R1",
+            "name": "https://HotpotQA.github.io",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319003755T1",
+            "name": "multi-hop question answering",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319003755T2",
+            "name": "explainable reasoning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319003755T3",
+            "name": "factoid comparison questions",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319003755D2",
+            "name": "SQuAD",
+            "type": "Dataset",
+            "attributes": {
+                "context_type": "single paragraph",
+                "reasoning_type": "single-hop"
+            }
+        },
+        {
+            "id": "20250319003755D3",
+            "name": "TriviaQA",
+            "type": "Dataset",
+            "attributes": {
+                "context_source": "information retrieval documents"
+            }
+        },
+        {
+            "id": "20250319003755D4",
+            "name": "SearchQA",
+            "type": "Dataset",
+            "attributes": {
+                "context_source": "Jeopardy! questions and answers"
+            }
+        },
+        {
+            "id": "20250319003755D5",
+            "name": "QAngaroo",
+            "type": "Dataset",
+            "attributes": {
+                "base": "knowledge bases",
+                "reasoning_type": "multi-hop"
+            }
+        },
+        {
+            "id": "20250319003755D6",
+            "name": "ComplexWebQuestions",
+            "type": "Dataset",
+            "attributes": {
+                "base": "knowledge bases"
+            }
+        },
+        {
+            "id": "20250319003755D7",
+            "name": "MS MARCO",
+            "type": "Dataset",
+            "attributes": {
+                "answer_type": "free-form generation"
+            }
+        }
+    ]
+}

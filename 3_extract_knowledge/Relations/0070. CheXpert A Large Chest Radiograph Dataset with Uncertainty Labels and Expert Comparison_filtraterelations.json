@@ -1,0 +1,103 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319030744R1",
+            "tail": "https://stanfordmlgroup.github.io/competitions/chexpert",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319030744P1",
+            "tail": "CheXpert: A Large Chest Radiograph Dataset with Uncertainty Labels and Expert Comparison",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T1",
+            "tail": "automated chest radiograph interpretation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T2",
+            "tail": "pathology detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T3",
+            "tail": "medical diagnosis",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T4",
+            "tail": "screening",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T5",
+            "tail": "management of diseases",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T6",
+            "tail": "training convolutional neural networks",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T7",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T8",
+            "tail": "uncertainty detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319030744D1",
+            "head": "CheXpert",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319030744T9",
+            "tail": "radiology report labeling",
+            "tail_type": "Task"
+        }
+    ]
+}

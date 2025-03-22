@@ -1,0 +1,49 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319003755D1",
+            "head": "HOTPOTQA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319003755P1",
+            "tail": "HOTPOTQA: A Dataset for Diverse, Explainable Multi-hop Question Answering",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319003755D1",
+            "head": "HOTPOTQA",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319003755R1",
+            "tail": "https://HotpotQA.github.io",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319003755D1",
+            "head": "HOTPOTQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319003755T1",
+            "tail": "multi-hop question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319003755D1",
+            "head": "HOTPOTQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319003755T2",
+            "tail": "explainable reasoning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319003755D1",
+            "head": "HOTPOTQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319003755T3",
+            "tail": "factoid comparison questions",
+            "tail_type": "Task"
+        }
+    ]
+}

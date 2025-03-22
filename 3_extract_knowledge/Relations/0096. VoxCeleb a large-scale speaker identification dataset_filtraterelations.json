@@ -1,0 +1,58 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319042506D1",
+            "head": "VoxCeleb",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319042506R1",
+            "tail": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319042506D1",
+            "head": "VoxCeleb",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319042506P1",
+            "tail": "VoxCeleb: a large-scale speaker identification dataset",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319042506D1",
+            "head": "VoxCeleb",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042506T1",
+            "tail": "speaker identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042506D1",
+            "head": "VoxCeleb",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319042506T2",
+            "tail": "speaker verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319042506D12",
+            "head": "TIMIT",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319042506D13",
+            "tail": "NTIMIT",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319042506D12",
+            "head": "TIMIT",
+            "head_type": "Dataset",
+            "relation": "has_new_version",
+            "tail_id": "20250319042506D14",
+            "tail": "CTIMIT",
+            "tail_type": "Dataset"
+        }
+    ]
+}

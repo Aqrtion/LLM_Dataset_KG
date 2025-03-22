@@ -1,0 +1,286 @@
+{
+    "entities": [
+        {
+            "id": "20250319025545P1",
+            "name": "Adapting Visual Category Models to New Domains",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Kate Saenko",
+                    "Brian Kulis",
+                    "Mario Fritz",
+                    "Trevor Darrell"
+                ],
+                "institution": "UC Berkeley EECS and ICSI"
+            }
+        },
+        {
+            "id": "20250319025545D1",
+            "name": "amazon",
+            "type": "Dataset",
+            "attributes": {
+                "source": "online merchants",
+                "categories": 31,
+                "images_per_category": "~90"
+            }
+        },
+        {
+            "id": "20250319025545D2",
+            "name": "dslr",
+            "type": "Dataset",
+            "attributes": {
+                "resolution": "4288x2848",
+                "environment": "office",
+                "objects_per_category": 5
+            }
+        },
+        {
+            "id": "20250319025545D3",
+            "name": "webcam",
+            "type": "Dataset",
+            "attributes": {
+                "resolution": "640x480",
+                "noise_level": "significant"
+            }
+        },
+        {
+            "id": "20250319025545D4",
+            "name": "amazonINS",
+            "type": "Dataset",
+            "attributes": {
+                "instances": 17,
+                "images_per_instance": 2
+            }
+        },
+        {
+            "id": "20250319025545D5",
+            "name": "dslrINS",
+            "type": "Dataset",
+            "attributes": {
+                "instances": "same as dslr"
+            }
+        },
+        {
+            "id": "20250319025545T1",
+            "name": "domain adaptation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025545T2",
+            "name": "object recognition",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025545T3",
+            "name": "k-nearest neighbor classification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025545T4",
+            "name": "metric learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319025545T5",
+            "name": "instance classification",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319025545D1",
+            "head": "amazon",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319025545P1",
+            "tail": "Adapting Visual Category Models to New Domains",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319025545D2",
+            "head": "dslr",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319025545P1",
+            "tail": "Adapting Visual Category Models to New Domains",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319025545D3",
+            "head": "webcam",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319025545P1",
+            "tail": "Adapting Visual Category Models to New Domains",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319025545D4",
+            "head": "amazonINS",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319025545P1",
+            "tail": "Adapting Visual Category Models to New Domains",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319025545D5",
+            "head": "dslrINS",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319025545P1",
+            "tail": "Adapting Visual Category Models to New Domains",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319025545D1",
+            "head": "amazon",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T1",
+            "tail": "domain adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D1",
+            "head": "amazon",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T2",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D1",
+            "head": "amazon",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T3",
+            "tail": "k-nearest neighbor classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D1",
+            "head": "amazon",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T4",
+            "tail": "metric learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D2",
+            "head": "dslr",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T1",
+            "tail": "domain adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D2",
+            "head": "dslr",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T2",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D2",
+            "head": "dslr",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T3",
+            "tail": "k-nearest neighbor classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D2",
+            "head": "dslr",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T4",
+            "tail": "metric learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D3",
+            "head": "webcam",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T1",
+            "tail": "domain adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D3",
+            "head": "webcam",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T2",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D3",
+            "head": "webcam",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T3",
+            "tail": "k-nearest neighbor classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D3",
+            "head": "webcam",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T4",
+            "tail": "metric learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D4",
+            "head": "amazonINS",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T1",
+            "tail": "domain adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D4",
+            "head": "amazonINS",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T5",
+            "tail": "instance classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D5",
+            "head": "dslrINS",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T1",
+            "tail": "domain adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319025545D5",
+            "head": "dslrINS",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319025545T5",
+            "tail": "instance classification",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

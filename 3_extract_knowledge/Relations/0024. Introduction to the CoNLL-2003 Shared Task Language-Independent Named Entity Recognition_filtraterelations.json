@@ -1,0 +1,67 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319004350D1",
+            "head": "CoNLL-2003 English Dataset",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319004350D3",
+            "tail": "Reuters Corpus",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319004350D2",
+            "head": "CoNLL-2003 German Dataset",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319004350D4",
+            "tail": "ECI Multilingual Text Corpus",
+            "tail_type": "Dataset"
+        },
+        {
+            "head_id": "20250319004350D1",
+            "head": "CoNLL-2003 English Dataset",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319004350P1",
+            "tail": "Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319004350D2",
+            "head": "CoNLL-2003 German Dataset",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319004350P1",
+            "tail": "Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319004350T1",
+            "head": "language-independent named entity recognition",
+            "head_type": "Task",
+            "relation": "introduced_in",
+            "tail_id": "20250319004350P1",
+            "tail": "Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319004350D1",
+            "head": "CoNLL-2003 English Dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319004350T1",
+            "tail": "language-independent named entity recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319004350D2",
+            "head": "CoNLL-2003 German Dataset",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319004350T1",
+            "tail": "language-independent named entity recognition",
+            "tail_type": "Task"
+        }
+    ]
+}

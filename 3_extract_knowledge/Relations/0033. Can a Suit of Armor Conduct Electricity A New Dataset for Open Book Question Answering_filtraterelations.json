@@ -1,0 +1,112 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319011829D1",
+            "head": "OpenBookQA",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319011829R1",
+            "tail": "http://data.allenai.org/OpenBookQA",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319011829D1",
+            "head": "OpenBookQA",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319011829P1",
+            "tail": "Can a Suit of Armor Conduct Electricity? A New Dataset for Open Book Question Answering",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319011829D1",
+            "head": "OpenBookQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011829T1",
+            "tail": "open book question answering",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011829D1",
+            "head": "OpenBookQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011829T2",
+            "tail": "multi-hop reasoning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011829D1",
+            "head": "OpenBookQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011829T3",
+            "tail": "reading comprehension",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011829D1",
+            "head": "OpenBookQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011829T4",
+            "tail": "textual entailment",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011829D1",
+            "head": "OpenBookQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011829T5",
+            "tail": "plausible answer detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011829D1",
+            "head": "OpenBookQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011829T6",
+            "tail": "information retrieval",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011829D1",
+            "head": "OpenBookQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011829T7",
+            "tail": "question answering over structured knowledge-bases",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011829D1",
+            "head": "OpenBookQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011829T8",
+            "tail": "answerability verification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011829D1",
+            "head": "OpenBookQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011829T9",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319011829D1",
+            "head": "OpenBookQA",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319011829T10",
+            "tail": "scientific question answering",
+            "tail_type": "Task"
+        }
+    ]
+}

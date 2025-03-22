@@ -1,0 +1,85 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319015448D1",
+            "head": "KITTI Vision Benchmark Suite",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319015448R1",
+            "tail": "www.cvlibs.net/datasets/kitti",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319015448D1",
+            "head": "KITTI Vision Benchmark Suite",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319015448P1",
+            "tail": "Are we ready for Autonomous Driving? The KITTI Vision Benchmark Suite",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319015448D1",
+            "head": "KITTI Vision Benchmark Suite",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015448T1",
+            "tail": "stereo matching",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015448D1",
+            "head": "KITTI Vision Benchmark Suite",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015448T2",
+            "tail": "optical flow estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015448D1",
+            "head": "KITTI Vision Benchmark Suite",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015448T3",
+            "tail": "visual odometry/SLAM",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015448D1",
+            "head": "KITTI Vision Benchmark Suite",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015448T4",
+            "tail": "3D object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015448D1",
+            "head": "KITTI Vision Benchmark Suite",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015448T5",
+            "tail": "3D orientation estimation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015448D1",
+            "head": "KITTI Vision Benchmark Suite",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015448T6",
+            "tail": "object tracking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319015448D1",
+            "head": "KITTI Vision Benchmark Suite",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319015448T7",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        }
+    ]
+}

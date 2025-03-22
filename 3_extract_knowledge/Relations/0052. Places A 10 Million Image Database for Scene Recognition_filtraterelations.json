@@ -1,0 +1,103 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319021948D1",
+            "head": "Places Database",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319021948P1",
+            "tail": "Places: A 10 Million Image Database for Scene Recognition",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319021948D1",
+            "head": "Places Database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021948T1",
+            "tail": "scene recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021948D1",
+            "head": "Places Database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021948T2",
+            "tail": "scene classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021948D1",
+            "head": "Places Database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021948T3",
+            "tail": "object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021948D1",
+            "head": "Places Database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021948T4",
+            "tail": "image classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021948D1",
+            "head": "Places Database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021948T5",
+            "tail": "semantic segmentation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021948D1",
+            "head": "Places Database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021948T6",
+            "tail": "scene understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021948D1",
+            "head": "Places Database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021948T7",
+            "tail": "visual recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021948D1",
+            "head": "Places Database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021948T8",
+            "tail": "object localization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021948D1",
+            "head": "Places Database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021948T9",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319021948D1",
+            "head": "Places Database",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319021948T10",
+            "tail": "transfer learning",
+            "tail_type": "Task"
+        }
+    ]
+}

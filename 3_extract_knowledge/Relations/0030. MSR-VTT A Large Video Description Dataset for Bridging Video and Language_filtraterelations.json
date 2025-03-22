@@ -1,0 +1,76 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319010919D1",
+            "head": "MSR-VTT-10K",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319010919P1",
+            "tail": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319010919D1",
+            "head": "MSR-VTT-10K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010919T1",
+            "tail": "translating video to text",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010919D1",
+            "head": "MSR-VTT-10K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010919T2",
+            "tail": "video description generation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010919D1",
+            "head": "MSR-VTT-10K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010919T3",
+            "tail": "video summarization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010919D1",
+            "head": "MSR-VTT-10K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010919T4",
+            "tail": "action recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010919D1",
+            "head": "MSR-VTT-10K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010919T5",
+            "tail": "emotion recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010919D1",
+            "head": "MSR-VTT-10K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010919T6",
+            "tail": "video to language",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319010919D1",
+            "head": "MSR-VTT-10K",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319010919T7",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        }
+    ]
+}

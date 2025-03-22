@@ -1,0 +1,103 @@
+{
+    "entities": [
+        {
+            "id": "20250318222007P1",
+            "name": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Adina Williams",
+                    "Nikita Nangia",
+                    "Samuel R. Bowman"
+                ],
+                "institution": "New York University"
+            }
+        },
+        {
+            "id": "20250318222007D1",
+            "name": "Multi-Genre Natural Language Inference (MultiNLI) corpus",
+            "type": "Dataset",
+            "attributes": {
+                "size": "433k examples",
+                "genres": "10 distinct genres",
+                "comparison": "more diverse and difficult than SNLI",
+                "license": "OANC’s license, Creative Commons licenses"
+            }
+        },
+        {
+            "id": "20250318222007D2",
+            "name": "Stanford NLI Corpus (SNLI)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "570k examples",
+                "source": "image captions"
+            }
+        },
+        {
+            "id": "20250318222007R1",
+            "name": "https://nyu.edu/projects/bowman/multinli/",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250318222007L1",
+            "name": "OANC’s license",
+            "type": "License",
+            "attributes": {
+                "type": "permissive"
+            }
+        },
+        {
+            "id": "20250318222007L2",
+            "name": "Creative Commons Attribution 3.0 Unported",
+            "type": "License",
+            "attributes": {
+                "abbreviation": "CC BY 3.0"
+            }
+        },
+        {
+            "id": "20250318222007L3",
+            "name": "Creative Commons Share-Alike 3.0 Unported",
+            "type": "License",
+            "attributes": {
+                "abbreviation": "CC SA 3.0"
+            }
+        },
+        {
+            "id": "20250318222007T1",
+            "name": "natural language inference (NLI)",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318222007T2",
+            "name": "recognizing textual entailment",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318222007T3",
+            "name": "cross-genre domain adaptation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318222007T4",
+            "name": "transfer learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318222007T5",
+            "name": "sentence understanding",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250318222007T6",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

@@ -1,0 +1,140 @@
+{
+    "entities": [
+        {
+            "id": "20250319004155P1",
+            "name": "Automatically Constructing a Corpus of Sentential Paraphrases",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "William B. Dolan",
+                    "Chris Brockett"
+                ],
+                "institution": "Microsoft Research"
+            }
+        },
+        {
+            "id": "20250319004155D1",
+            "name": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "type": "Dataset",
+            "attributes": {
+                "size": "5801 sentence pairs",
+                "labeling": "human-judged binary paraphrase judgments",
+                "collection_method": "heuristic extraction + SVM classifier",
+                "lexical_overlap": "mean 0.7"
+            }
+        },
+        {
+            "id": "20250319004155D2",
+            "name": "ATR English-Chinese paraphrase corpus",
+            "type": "Dataset",
+            "attributes": {
+                "domain": "travel phrases",
+                "content_type": "short handcrafted predicates"
+            }
+        },
+        {
+            "id": "20250319004155D3",
+            "name": "Multiple-Translation Chinese Corpus",
+            "type": "Dataset",
+            "attributes": {
+                "publisher": "Linguistic Data Consortium",
+                "quality_note": "translation quality issues"
+            }
+        },
+        {
+            "id": "20250319004155D4",
+            "name": "WordNet",
+            "type": "Dataset",
+            "attributes": {
+                "content": "314,924 word synonyms/hypernym pairs"
+            }
+        },
+        {
+            "id": "20250319004155R1",
+            "name": "http://research.microsoft.com/research/nlp/msr_paraphrase.htm",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004155T1",
+            "name": "paraphrase identification",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004155T2",
+            "name": "paraphrase generation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004155T3",
+            "name": "training machine learning models",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319004155T4",
+            "name": "evaluation",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319004155D1",
+            "head": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319004155R1",
+            "tail": "http://research.microsoft.com/research/nlp/msr_paraphrase.htm",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319004155D1",
+            "head": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319004155P1",
+            "tail": "Automatically Constructing a Corpus of Sentential Paraphrases",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319004155D1",
+            "head": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319004155T1",
+            "tail": "paraphrase identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319004155D1",
+            "head": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319004155T2",
+            "tail": "paraphrase generation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319004155D1",
+            "head": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319004155T3",
+            "tail": "training machine learning models",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319004155D1",
+            "head": "Microsoft Research Paraphrase Corpus (MSRP)",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319004155T4",
+            "tail": "evaluation",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

@@ -1,0 +1,404 @@
+{
+    "papers": [
+        {
+            "file_name": "0001. GLUE A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0002. Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0003. SQuAD 100,000+ Questions for Machine Comprehension of Text.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0004. A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0005. VQA Visual Question Answering.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0006. Learning Word Vectors for Sentiment Analysis.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0007. Measuring Massive Multitask Language Understanding.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0008. Training Verifiers to Solve Math Word Problems.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0009. Natural Questions a Benchmark for Question Answering Research.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0010. A large annotated corpus for learning natural language inference.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0011. Visual Genome Connecting Language and Vision Using Crowdsourced Dense Image Annotations.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0012. Pointer Sentinel Mixture Models.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0013. Building a large annotated corpus of English the penn treebank.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0014. MS MARCO A Human Generated MAchine Reading COmprehension Dataset.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0015. Character-level Convolutional Networks for Text Classification.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0016. Evaluating Large Language Models Trained on Code.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0017. Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0018. Measuring Mathematical Problem Solving With the MATH Dataset.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0019. TriviaQA A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0020. From image descriptions to visual denotations New similarity metrics for semantic inference over event descriptions.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0021. ConceptNet 5.5 An Open Multilingual Graph of General Knowledge.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0022. HotpotQA A Dataset for Diverse, Explainable Multi-hop Question Answering.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0023. Automatically Constructing a Corpus of Sentential Paraphrases.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0024. Introduction to the CoNLL-2003 Shared Task Language-Independent Named Entity Recognition.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0025. Neural Network Acceptability Judgments.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0026. PIQA Reasoning about Physical Commonsense in Natural Language.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0027. GQA A New Dataset for Real-World Visual Reasoning and Compositional Question Answering.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0028. CLEVR A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0029. BoolQ Exploring the Surprising Difficulty of Natural YesNo Questions.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0030. MSR-VTT A Large Video Description Dataset for Bridging Video and Language.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0031. WinoGrande An Adversarial Winograd Schema Challenge at Scale.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0032. DBpedia A Nucleus for a Web of Open Data.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0033. Can a Suit of Armor Conduct Electricity A New Dataset for Open Book Question Answering.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0034. VoxCeleb2 Deep Speaker Recognition.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0035. Pointer Sentinel Mixture Models.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0036. Abstractive Text Summarization Using Sequence-to-Sequence RNNs and Beyond.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0037. Universal Dependencies v1 A Multilingual Treebank Collection.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0038. FEVER a large-scale dataset for Fact Extraction and VERification.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0039. Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0040. The Pile An 800GB Dataset of Diverse Text for Language Modeling.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0041. ImageNet A large-scale hierarchical image database.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0042. Microsoft COCO Common Objects in Context.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0043. The Cityscapes Dataset for Semantic Urban Scene Understanding.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0044. Are we ready for autonomous driving The KITTI vision benchmark suite.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0045. Deep Learning Face Attributes in the Wild.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0046. Fashion-MNIST a Novel Image Dataset for Benchmarking Machine Learning Algorithms.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0047. nuScenes A multimodal dataset for autonomous driving.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0048. ShapeNet An Information-Rich 3D Model Repository.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0049. ScanNet Richly-annotated 3D Reconstructions of Indoor Scenes.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0050. A Style-Based Generator Architecture for Generative Adversarial Networks.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0051. Automated Flower Classification over a Large Number of Classes.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0052. Places A 10 Million Image Database for Scene Recognition.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0053. Deep Hashing Network for Unsupervised Domain Adaptation.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0054. Progressive Growing of GANs for Improved Quality, Stability, and Variation.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0055. Scalable Person Re-Identification A Benchmark.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0056. LSUN Construction of a Large-scale Image Dataset using Deep Learning with Humans in the Loop.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0057. From image descriptions to visual denotations New similarity metrics for semantic inference over event descriptions.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0058. Describing Textures in the Wild.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0059. Food-101 – Mining Discriminative Components with Random Forests.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0060. 3D Object Representations for Fine-Grained Categorization.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0061. Moment Matching for Multi-Source Domain Adaptation.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0062. A database of human segmented natural images and its application to evaluating segmentation algorithms and measuring ecological statistics.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0063. The Kinetics Human Action Video Dataset.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0064. GQA A New Dataset for Real-World Visual Reasoning and Compositional Question Answering.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0065. CLEVR A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0066. Adapting Visual Category Models to New Domains.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0067. Deeper, Broader and Artier Domain Generalization.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0068. EuroSAT A Novel Dataset and Deep Learning Benchmark for Land Use and Land Cover Classification.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0069. NTIRE 2017 Challenge on Single Image Super-Resolution Dataset and Study.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0070. CheXpert A Large Chest Radiograph Dataset with Uncertainty Labels and Expert Comparison.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0071. The iNaturalist Species Classification and Detection Dataset.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0072. Benchmarking Neural Network Robustness to Common Corruptions and Perturbations.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0073. Single Image Super-Resolution From Transformed Self-Exemplars.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0074. VoxCeleb2 Deep Speaker Recognition.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0075. The SYNTHIA Dataset A Large Collection of Synthetic Images for Semantic Segmentation of Urban Scenes.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0076. LVIS A Dataset for Large Vocabulary Instance Segmentation.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0077. Learning Deep Features for Scene Recognition using Places Database.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0078. VGGFace2 A dataset for recognising faces across pose and age.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0079. Fine-Grained Visual Classification of Aircraft.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0080. 2D Human Pose Estimation New Benchmark and State of the Art Analysis.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0081. SUN RGB-D A RGB-D Scene Understanding Benchmark Suite.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0082. UCF101 A Dataset of 101 Human Actions Classes From Videos in The Wild.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0083. The Kinetics Human Action Video Dataset.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0084. HMDB A large video database for human motion recognition.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0085. ActivityNet A Large-Scale Video Benchmark for Human Activity Understanding.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0086. A Benchmark Dataset and Evaluation Methodology for Video Object Segmentation.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0087. MSR-VTT A Large Video Description Dataset for Bridging Video and Language.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0088. VoxCeleb2 Deep Speaker Recognition.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0089. NTU RGB+D A Large Scale Dataset for 3D Human Activity Analysis.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0090. BDD100K A Diverse Driving Dataset for Heterogeneous Multitask Learning.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0091. Hollywood in Homes Crowdsourcing Data Collection for Activity Understanding.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0092. Object Tracking Benchmark.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0093. Recovering Accurate 3D Human Pose in The Wild Using IMUs and a Moving Camera.pdf",
+            "is_used": false
+        },
+        {
+            "file_name": "0094. Argoverse 3D Tracking and Forecasting with Rich Maps.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0095. Audio Set An ontology and human-labeled dataset for audio events.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0096. VoxCeleb a large-scale speaker identification dataset.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0097. VoxCeleb2 Deep Speaker Recognition.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0098. Universal Dependencies v1 A Multilingual Treebank Collection.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0099. Common Voice A Massively-Multilingual Speech Corpus.pdf",
+            "is_used": true
+        },
+        {
+            "file_name": "0100. Speech Commands A Dataset for Limited-Vocabulary Speech Recognition.pdf",
+            "is_used": true
+        }
+    ]
+}

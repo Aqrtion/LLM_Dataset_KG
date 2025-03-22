@@ -1,0 +1,103 @@
+{
+    "relations": [
+        {
+            "head_id": "20250318222007D1",
+            "head": "Multi-Genre Natural Language Inference (MultiNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250318222007R1",
+            "tail": "https://nyu.edu/projects/bowman/multinli/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250318222007D1",
+            "head": "Multi-Genre Natural Language Inference (MultiNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250318222007L1",
+            "tail": "OANC’s license",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250318222007D1",
+            "head": "Multi-Genre Natural Language Inference (MultiNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250318222007L2",
+            "tail": "Creative Commons Attribution 3.0 Unported",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250318222007D1",
+            "head": "Multi-Genre Natural Language Inference (MultiNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250318222007L3",
+            "tail": "Creative Commons Share-Alike 3.0 Unported",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250318222007D1",
+            "head": "Multi-Genre Natural Language Inference (MultiNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250318222007P1",
+            "tail": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250318222007D1",
+            "head": "Multi-Genre Natural Language Inference (MultiNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318222007T1",
+            "tail": "natural language inference (NLI)",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318222007D1",
+            "head": "Multi-Genre Natural Language Inference (MultiNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318222007T2",
+            "tail": "recognizing textual entailment",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318222007D1",
+            "head": "Multi-Genre Natural Language Inference (MultiNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318222007T3",
+            "tail": "cross-genre domain adaptation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318222007D1",
+            "head": "Multi-Genre Natural Language Inference (MultiNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318222007T4",
+            "tail": "transfer learning",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318222007D1",
+            "head": "Multi-Genre Natural Language Inference (MultiNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318222007T5",
+            "tail": "sentence understanding",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250318222007D1",
+            "head": "Multi-Genre Natural Language Inference (MultiNLI) corpus",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250318222007T6",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        }
+    ]
+}

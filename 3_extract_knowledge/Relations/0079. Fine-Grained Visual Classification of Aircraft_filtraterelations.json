@@ -1,0 +1,148 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319033447D1",
+            "head": "FGVC-Aircraft",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319033447P1",
+            "tail": "Fine-Grained Visual Classification of Aircraft",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319033447D1",
+            "head": "FGVC-Aircraft",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319033447R1",
+            "tail": "http://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319033447D1",
+            "head": "FGVC-Aircraft",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250319033447L1",
+            "tail": "Non-commercial Research Use",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250319033447D1",
+            "head": "FGVC-Aircraft",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033447T1",
+            "tail": "fine-grained visual classification (FGVC)",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033447D1",
+            "head": "FGVC-Aircraft",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033447T2",
+            "tail": "variant classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033447D1",
+            "head": "FGVC-Aircraft",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033447T3",
+            "tail": "family classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033447D1",
+            "head": "FGVC-Aircraft",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033447T4",
+            "tail": "manufacturer classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033447D1",
+            "head": "FGVC-Aircraft",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033447T5",
+            "tail": "aircraft model identification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033447D1",
+            "head": "FGVC-Aircraft",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033447T6",
+            "tail": "object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033447D1",
+            "head": "FGVC-Aircraft",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319033447T7",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033447T1",
+            "head": "fine-grained visual classification (FGVC)",
+            "head_type": "Task",
+            "relation": "has_subtask",
+            "tail_id": "20250319033447T2",
+            "tail": "variant classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033447T1",
+            "head": "fine-grained visual classification (FGVC)",
+            "head_type": "Task",
+            "relation": "has_subtask",
+            "tail_id": "20250319033447T3",
+            "tail": "family classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033447T1",
+            "head": "fine-grained visual classification (FGVC)",
+            "head_type": "Task",
+            "relation": "has_subtask",
+            "tail_id": "20250319033447T4",
+            "tail": "manufacturer classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319033447T2",
+            "head": "variant classification",
+            "head_type": "Task",
+            "relation": "introduced_in",
+            "tail_id": "20250319033447P1",
+            "tail": "Fine-Grained Visual Classification of Aircraft",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319033447T3",
+            "head": "family classification",
+            "head_type": "Task",
+            "relation": "introduced_in",
+            "tail_id": "20250319033447P1",
+            "tail": "Fine-Grained Visual Classification of Aircraft",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319033447T4",
+            "head": "manufacturer classification",
+            "head_type": "Task",
+            "relation": "introduced_in",
+            "tail_id": "20250319033447P1",
+            "tail": "Fine-Grained Visual Classification of Aircraft",
+            "tail_type": "Paper"
+        }
+    ]
+}

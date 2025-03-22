@@ -1,0 +1,94 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319041315D1",
+            "head": "TB-100",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319041315R1",
+            "tail": "http://pami.visual-tracking.net",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319041315D2",
+            "head": "TB-50",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319041315R1",
+            "tail": "http://pami.visual-tracking.net",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319041315D1",
+            "head": "TB-100",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319041315P1",
+            "tail": "Object Tracking Benchmark",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319041315D2",
+            "head": "TB-50",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319041315P1",
+            "tail": "Object Tracking Benchmark",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319041315D1",
+            "head": "TB-100",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041315T1",
+            "tail": "object tracking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041315D1",
+            "head": "TB-100",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041315T2",
+            "tail": "performance evaluation",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041315D1",
+            "head": "TB-100",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041315T3",
+            "tail": "model update",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041315D3",
+            "head": "VIVID",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041315T1",
+            "tail": "object tracking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041315D4",
+            "head": "CAVIAR",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041315T1",
+            "tail": "object tracking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041315D5",
+            "head": "PETS",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041315T1",
+            "tail": "object tracking",
+            "tail_type": "Task"
+        }
+    ]
+}

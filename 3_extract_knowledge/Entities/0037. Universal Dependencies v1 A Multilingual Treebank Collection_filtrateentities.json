@@ -1,0 +1,128 @@
+{
+    "entities": [
+        {
+            "id": "20250319012945P1",
+            "name": "Universal Dependencies v1: A Multilingual Treebank Collection",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Joakim Nivre",
+                    "Marie-Catherine de Marneffe",
+                    "Filip Ginter",
+                    "Yoav Goldberg",
+                    "Jan Hajič",
+                    "Christopher D. Manning",
+                    "Ryan McDonald",
+                    "Slav Petrov",
+                    "Sampo Pyysalo",
+                    "Natalia Silveira",
+                    "Reut Tsarfaty",
+                    "Daniel Zeman"
+                ],
+                "institutions": [
+                    "The Ohio State University",
+                    "Uppsala University",
+                    "Bar-Ilan University",
+                    "Google Inc.",
+                    "Charles University in Prague",
+                    "University of Cambridge",
+                    "University of Turku",
+                    "Stanford University",
+                    "The Open University of Israel"
+                ]
+            }
+        },
+        {
+            "id": "20250319012945D1",
+            "name": "Universal Dependencies v1.2",
+            "type": "Dataset",
+            "attributes": {
+                "languages": 33,
+                "annotation_layers": [
+                    "morphological",
+                    "syntactic"
+                ],
+                "format": "CoNLL-U",
+                "treebanks": 37,
+                "features": [
+                    "lemmas",
+                    "part-of-speech tags",
+                    "dependency relations"
+                ]
+            }
+        },
+        {
+            "id": "20250319012945D2",
+            "name": "Google Universal Dependency Treebank (UDT)",
+            "type": "Dataset",
+            "attributes": {
+                "languages": 11,
+                "versions": [
+                    "2013 release",
+                    "2014 release"
+                ]
+            }
+        },
+        {
+            "id": "20250319012945D3",
+            "name": "HamleDT",
+            "type": "Dataset",
+            "attributes": {
+                "languages": 30,
+                "version": "3.0"
+            }
+        },
+        {
+            "id": "20250319012945D4",
+            "name": "CoNLL-X",
+            "type": "Dataset",
+            "attributes": {
+                "format": "CoNLL-X"
+            }
+        },
+        {
+            "id": "20250319012945D5",
+            "name": "Stanford Dependencies",
+            "type": "Dataset",
+            "attributes": {
+                "framework": "dependency-based"
+            }
+        },
+        {
+            "id": "20250319012945R1",
+            "name": "http://universaldependencies.org",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012945T1",
+            "name": "dependency parsing",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012945T2",
+            "name": "part-of-speech tagging",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012945T3",
+            "name": "cross-lingual learning",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012945T4",
+            "name": "morphological annotation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319012945T5",
+            "name": "syntactic analysis",
+            "type": "Task",
+            "attributes": {}
+        }
+    ]
+}

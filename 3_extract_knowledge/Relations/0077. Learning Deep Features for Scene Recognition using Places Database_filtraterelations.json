@@ -1,0 +1,103 @@
+{
+    "relations": [
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319032706R1",
+            "tail": "http://places.csail.mit.edu",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319032706P1",
+            "tail": "Learning Deep Features for Scene Recognition using Places Database",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T1",
+            "tail": "scene recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T2",
+            "tail": "scene classification",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T3",
+            "tail": "object recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T4",
+            "tail": "visual recognition",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T5",
+            "tail": "training CNNs",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T6",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T7",
+            "tail": "cross-dataset generalization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T8",
+            "tail": "visualization of CNN layers",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319032706D1",
+            "head": "Places",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319032706T9",
+            "tail": "dataset comparison",
+            "tail_type": "Task"
+        }
+    ]
+}

@@ -1,0 +1,135 @@
+{
+    "entities": [
+        {
+            "name": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Pranav Rajpurkar",
+                    "Jian Zhang",
+                    "Konstantin Lopyrev",
+                    "Percy Liang"
+                ],
+                "institution": "Stanford University"
+            }
+        },
+        {
+            "name": "SQuAD",
+            "type": "Dataset",
+            "attributes": {
+                "size": "107,785 questions",
+                "articles": 536,
+                "answer_type": "text spans",
+                "version": "v1.0",
+                "evaluation_metrics": "F1, exact match"
+            }
+        },
+        {
+            "name": "MCTest",
+            "type": "Dataset",
+            "attributes": {
+                "size": "660 stories",
+                "questions_per_story": 4,
+                "answer_type": "multiple choice"
+            }
+        },
+        {
+            "name": "WikiQA",
+            "type": "Dataset",
+            "attributes": {
+                "task": "sentence selection",
+                "source": "Wikipedia"
+            }
+        },
+        {
+            "name": "TREC-QA",
+            "type": "Dataset",
+            "attributes": {
+                "source": "query logs",
+                "task": "IR, free form"
+            }
+        },
+        {
+            "name": "CNN/Daily Mail",
+            "type": "Dataset",
+            "attributes": {
+                "task": "cloze-style",
+                "answer_type": "fill in single entity"
+            }
+        },
+        {
+            "name": "CBT",
+            "type": "Dataset",
+            "attributes": {
+                "task": "cloze-style",
+                "answer_type": "fill in single word"
+            }
+        },
+        {
+            "name": "BAbI",
+            "type": "Dataset",
+            "attributes": {
+                "type": "synthetic",
+                "task": "reasoning tasks"
+            }
+        },
+        {
+            "name": "ImageNet: A large-scale hierarchical image database",
+            "type": "Paper"
+        },
+        {
+            "name": "ImageNet",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "object recognition"
+            }
+        },
+        {
+            "name": "Penn Treebank",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "syntactic parsing"
+            }
+        },
+        {
+            "name": "https://stanford-qa.com",
+            "type": "Repository"
+        },
+        {
+            "name": "reading comprehension",
+            "type": "Task"
+        },
+        {
+            "name": "machine comprehension of text",
+            "type": "Task"
+        },
+        {
+            "name": "open-domain question answering",
+            "type": "Task"
+        },
+        {
+            "name": "sentence selection",
+            "type": "Task"
+        },
+        {
+            "name": "cloze-style QA",
+            "type": "Task"
+        },
+        {
+            "name": "fill in single entity",
+            "type": "Task"
+        },
+        {
+            "name": "fill in single word",
+            "type": "Task"
+        },
+        {
+            "name": "information retrieval (IR)",
+            "type": "Task"
+        },
+        {
+            "name": "synthetic reasoning",
+            "type": "Task"
+        }
+    ]
+}

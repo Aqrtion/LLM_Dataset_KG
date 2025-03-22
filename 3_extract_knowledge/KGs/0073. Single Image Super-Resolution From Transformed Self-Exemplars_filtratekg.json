@@ -1,0 +1,90 @@
+{
+    "entities": [
+        {
+            "id": "20250319031816P1",
+            "name": "Single Image Super-resolution from Transformed Self-Exemplars",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Jia-Bin Huang",
+                    "Abhishek Singh",
+                    "Narendra Ahuja"
+                ],
+                "institution": "University of Illinois, Urbana-Champaign"
+            }
+        },
+        {
+            "id": "20250319031816D1",
+            "name": "Urban 100",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100 HR images",
+                "content": "urban scenes"
+            }
+        },
+        {
+            "id": "20250319031816D2",
+            "name": "BSD 100",
+            "type": "Dataset",
+            "attributes": {
+                "size": "100 test images",
+                "content": "natural scenes",
+                "source": "Berkeley Segmentation Dataset"
+            }
+        },
+        {
+            "id": "20250319031816D3",
+            "name": "Berkeley Segmentation Dataset",
+            "type": "Dataset",
+            "attributes": {
+                "segmented images": "yes",
+                "purpose": "evaluating segmentation algorithms"
+            }
+        },
+        {
+            "id": "20250319031816T1",
+            "name": "single image super-resolution",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319031816D1",
+            "head": "Urban 100",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319031816P1",
+            "tail": "Single Image Super-resolution from Transformed Self-Exemplars",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319031816D1",
+            "head": "Urban 100",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031816T1",
+            "tail": "single image super-resolution",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031816D2",
+            "head": "BSD 100",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319031816T1",
+            "tail": "single image super-resolution",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319031816D3",
+            "head": "Berkeley Segmentation Dataset",
+            "head_type": "Dataset",
+            "relation": "composed_of",
+            "tail_id": "20250319031816D2",
+            "tail": "BSD 100",
+            "tail_type": "Dataset"
+        }
+    ],
+    "has_been_merged": false
+}

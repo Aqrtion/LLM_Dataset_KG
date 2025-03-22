@@ -1,0 +1,346 @@
+{
+    "entities": [
+        {
+            "id": "20250319041706P1",
+            "name": "Argoverse: 3D Tracking and Forecasting with Rich Maps",
+            "type": "Paper",
+            "attributes": {
+                "authors": [
+                    "Ming-Fang Chang",
+                    "John Lambert",
+                    "Patsorn Sangkloy",
+                    "Jagjeet Singh",
+                    "Sławomir B ˛ak",
+                    "Andrew Hartnett",
+                    "De Wang",
+                    "Peter Carr",
+                    "Simon Lucey",
+                    "Deva Ramanan",
+                    "James Hays"
+                ],
+                "institutions": [
+                    "Argo AI",
+                    "Carnegie Mellon University",
+                    "Georgia Institute of Technology"
+                ]
+            }
+        },
+        {
+            "id": "20250319041706D1",
+            "name": "Argoverse 3D Tracking",
+            "type": "Dataset",
+            "attributes": {
+                "version": "v1.1",
+                "release_date": "October 2019",
+                "size": "113 logs, 11,052 tracked objects",
+                "sensors": "LiDAR, 7 cameras, stereo cameras",
+                "classes": 15,
+                "locations": [
+                    "Pittsburgh",
+                    "Miami"
+                ],
+                "annotation": "3D cuboids",
+                "frequency": "30fps (cameras), 10Hz (LiDAR)"
+            }
+        },
+        {
+            "id": "20250319041706D2",
+            "name": "Argoverse Motion Forecasting",
+            "type": "Dataset",
+            "attributes": {
+                "version": "v1.1",
+                "release_date": "October 2019",
+                "scenarios": 324557,
+                "duration": "5 seconds",
+                "focal_object": "vehicle",
+                "mined_from": "320 hours"
+            }
+        },
+        {
+            "id": "20250319041706D3",
+            "name": "KITTI",
+            "type": "Dataset",
+            "attributes": {
+                "3D_annotations": "yes",
+                "map_data": "no",
+                "camera_FOV": "frontal"
+            }
+        },
+        {
+            "id": "20250319041706D4",
+            "name": "nuScenes",
+            "type": "Dataset",
+            "attributes": {
+                "map_type": "rasterized ROI",
+                "2D_semantic_maps": "yes",
+                "3D_annotations": "yes"
+            }
+        },
+        {
+            "id": "20250319041706D5",
+            "name": "ApolloScape Tracking",
+            "type": "Dataset",
+            "attributes": {
+                "duration": "155 minutes"
+            }
+        },
+        {
+            "id": "20250319041706D6",
+            "name": "Lyft Dataset",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706D7",
+            "name": "H3D",
+            "type": "Dataset",
+            "attributes": {
+                "3D_annotations": "yes"
+            }
+        },
+        {
+            "id": "20250319041706D8",
+            "name": "TorontoCity",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "map construction",
+                "3D_annotations": "no"
+            }
+        },
+        {
+            "id": "20250319041706D9",
+            "name": "VIPER",
+            "type": "Dataset",
+            "attributes": {
+                "simulated": "yes",
+                "3D_annotations": "yes"
+            }
+        },
+        {
+            "id": "20250319041706D10",
+            "name": "Waymo Open Dataset",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706D11",
+            "name": "ApolloScape",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706D12",
+            "name": "Cityscapes",
+            "type": "Dataset",
+            "attributes": {
+                "purpose": "semantic urban scene understanding"
+            }
+        },
+        {
+            "id": "20250319041706D13",
+            "name": "Oxford RobotCar",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706D14",
+            "name": "PASCAL",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706D15",
+            "name": "PETS 2016",
+            "type": "Dataset",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706D16",
+            "name": "CARLA",
+            "type": "Dataset",
+            "attributes": {
+                "simulated": "yes"
+            }
+        },
+        {
+            "id": "20250319041706R1",
+            "name": "https://www.argoverse.org",
+            "type": "Repository",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706L1",
+            "name": "Creative Commons",
+            "type": "License",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706T1",
+            "name": "3D tracking",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706T2",
+            "name": "motion forecasting",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706T3",
+            "name": "trajectory forecasting",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706T4",
+            "name": "map automation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706T5",
+            "name": "3D object detection",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706T6",
+            "name": "object localization",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706T7",
+            "name": "automatic map creation",
+            "type": "Task",
+            "attributes": {}
+        },
+        {
+            "id": "20250319041706T8",
+            "name": "benchmarking",
+            "type": "Task",
+            "attributes": {}
+        }
+    ],
+    "relations": [
+        {
+            "head_id": "20250319041706D1",
+            "head": "Argoverse 3D Tracking",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319041706R1",
+            "tail": "https://www.argoverse.org",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319041706D2",
+            "head": "Argoverse Motion Forecasting",
+            "head_type": "Dataset",
+            "relation": "stored_in",
+            "tail_id": "20250319041706R1",
+            "tail": "https://www.argoverse.org",
+            "tail_type": "Repository"
+        },
+        {
+            "head_id": "20250319041706D1",
+            "head": "Argoverse 3D Tracking",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250319041706L1",
+            "tail": "Creative Commons",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250319041706D2",
+            "head": "Argoverse Motion Forecasting",
+            "head_type": "Dataset",
+            "relation": "licensed_under",
+            "tail_id": "20250319041706L1",
+            "tail": "Creative Commons",
+            "tail_type": "License"
+        },
+        {
+            "head_id": "20250319041706D1",
+            "head": "Argoverse 3D Tracking",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319041706P1",
+            "tail": "Argoverse: 3D Tracking and Forecasting with Rich Maps",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319041706D2",
+            "head": "Argoverse Motion Forecasting",
+            "head_type": "Dataset",
+            "relation": "introduced_in",
+            "tail_id": "20250319041706P1",
+            "tail": "Argoverse: 3D Tracking and Forecasting with Rich Maps",
+            "tail_type": "Paper"
+        },
+        {
+            "head_id": "20250319041706D1",
+            "head": "Argoverse 3D Tracking",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041706T1",
+            "tail": "3D tracking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041706D1",
+            "head": "Argoverse 3D Tracking",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041706T5",
+            "tail": "3D object detection",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041706D1",
+            "head": "Argoverse 3D Tracking",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041706T6",
+            "tail": "object localization",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041706D2",
+            "head": "Argoverse Motion Forecasting",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041706T2",
+            "tail": "motion forecasting",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041706D2",
+            "head": "Argoverse Motion Forecasting",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041706T3",
+            "tail": "trajectory forecasting",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041706D1",
+            "head": "Argoverse 3D Tracking",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041706T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        },
+        {
+            "head_id": "20250319041706D2",
+            "head": "Argoverse Motion Forecasting",
+            "head_type": "Dataset",
+            "relation": "used_for",
+            "tail_id": "20250319041706T8",
+            "tail": "benchmarking",
+            "tail_type": "Task"
+        }
+    ],
+    "has_been_merged": false
+}

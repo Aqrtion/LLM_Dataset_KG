@@ -1,0 +1,494 @@
+Single Image Super-resolution from Transformed Self-Exemplars
+
+Jia-Bin Huang, Abhishek Singh, and Narendra Ahuja University of Illinois, Urbana-Champaign {jbhuang1,asingh18,n-ahuja}@illinois.edu
+
+Abstract
+
+Self-similarity based super-resolution (SR) algorithms are able to produce visually pleasing results without extensivetrainingonexternaldatabases. Suchalgorithmsexploit the statistical prior that patches in a natural image tend to recur within and across scales of the same image. However, the internal dictionary obtained from the given image may not always be sufﬁciently expressive to cover the textural appearance variations in the scene. In this paper, we extend self-similarity based SR to overcome this drawback. We expand the internal patch search space by allowing geometric variations. We do so by explicitly localizing planes in the scene and using the detected perspective geometry to guide the patch search process. We also incorporate additional afﬁne transformations to accommodate local shape variations. We propose a compositional model to simultaneously handle both types of transformations. We extensively evaluate the performance in both urban and natural scenes. Even without using any external training databases, we achieve signiﬁcantly superior results on urban scenes, while maintaining comparable performance on natural scenes as other state-of-the-art SR algorithms.
+
+1. Introduction
+
+Most modern single image super-resolution (SR) methods rely on machine learning techniques. These methods focus on learning the relationship between low-resolution (LR) and high-resolution (HR) image patches. A popular class of such algorithms uses an external database of natural images as a source of LR-HR training patch pairs. Existing methods have employed various learning algorithms for learning this LR to HR mapping, including nearest neighbor approaches [14], manifold learning [6], dictionary learning [41], locally linear regression [38, 33, 34], and convolutional networks [9].
+
+However, methods that learn LR-HR mapping from external databases have certain shortcomings. The number and type of training images required for satisfactory levels of performance are not clear. Large scale training sets are often required to learn a sufﬁciently expressive LR-HR dic-
+
+Figure 1. Examples of self-similar patterns deformed due to local shape variation, orientation change, or perspective distortion.
+
+tionary. For every new scale factor by which the resolution has to be increased, or SR factor, these methods need to retrain the model using sophisticated learning algorithms on large external datasets.
+
+To avoid using external databases and their associated problems, several approaches exploit internal patch redundancy for SR [10, 15, 13, 28]. These methods are based on the fractal nature of images [3], which suggests that patches ofanaturalimagerecurwithinandacrossscalesofthesame image. An internal LR-HR patch database can be built using the scale-space pyramid of the given image itself. Internal dictionaries have been shown to contain more relevant training patches, as compared to external dictionaries [44]. While internal statistics have been successfully exploited for SR, in most algorithms the LR-HR patch pairs are found by searching only for “translated” versions of patches in the scaled down images. This effectively assumes that an HR version of a patch appears in the same image at the desired scale, orientation and illumination. This amounts to assuming that the patch is planar and the images of the different assumed occurences of the patch are taken by a camera translating parallel to the plane of the patch. This fronto-parallel imaging assumption is often violated due to the non-planar shape of the patch surface, common in both natural and man-made scenes, as well as perspective distortion. Fig. 1 shows three examples of such violations, where self-similarity across scales will hold better if suitable geometric transformation of patches is allowed
+
+In this paper, we propose a self-similarity driven SR algorithm that expands the internal patch search space. First, we explicitly incorporate the 3D scene geometry by localizing planes, and use the plane parameters to estimate the perspective deformation of recurring patches. Second, we expand the patch search space to include afﬁne transfor-
+
+mation to accommodate potential patch deformation due to local shape variations. We propose a compositional transformation model to simultaneously handle these two types of transformations. We modify the PatchMatch algorithm [1] to efﬁciently solve the nearest neighbor ﬁeld estimation problem. We validate our algorithm through a large number of qualitative and quantitative comparisons against state-ofthe-art SR algorithms on a variety of scenes. We achieve signiﬁcantly better results for man-made scenes containing regular structures. For natural scenes, our results are comparable with current state-of-the-art algorithms.
+
+Our Contributions:
+
+1. Our method effectively increases the size of the limited internal dictionary by allowing geometric transformation of patches. We achieve state-of-the-art results without using any external training images. 2. We propose a decomposition of the geometric patch transformation model into (i) perspective distortion for handling structured scenes and (ii) additional afﬁne transformation for modeling local shape deformation. 3. We use and make available a new dataset of urban images containing structured scenes as a benchmark for SR evaluation.
+
+2. Related Work
+
+The core of image SR algorithms has shifted from interpolation and reconstruction [22] to learning and searching for best matching existing image(s) as the HR map of the given LR image. We limit our discussion here to these more current learning-based approaches and classify the corresponding algorithms into two main categories: external and internal, depending on the source of training patches.
+
+External database driven SR: These methods use a variety of learning algorithms to learn the LR-HR mapping from a large database of LR-HR image pairs. These include nearest neighbor [14], kernel ridge regression [23], sparse coding [41, 40, 42, 36], manifold learning [6] and convolutional neural networks [9]. The main challenges lie in how to effectively model the patch space. As opposed to learning a global mapping over the entire dataset, several methods alleviate the complexity of data modeling by partitioning or pre-clustering the external training database, so that relatively simpler prediction functions could be used for performing the LR-HR mapping in each training cluster [38, 33, 34]. Instead of learning in the 2D patch domain, some methods learn how 1D edge proﬁles transform across resolutions [30, 11]. Higher-level features have also been used in [16, 31, 32] for learning the LR-HR mapping. In contrast, our algorithm has the advantage of neither requiring external training databases, nor using sophisticated learning algorithms.
+
+Internal database driven SR: Among internal database driven SR methods, Ebrahimi and Vrscay [10] combined ideas from fractal coding [3] with example-based algo-
+
+rithms such as non-local means ﬁltering [5], to propose a self-similarity based SR algorithm. Glasner et al. [15] uniﬁed the classical and example-based SR by exploiting the patch recurrence within and across image scales. Freedman and Fattal [13] showed that self-similar patches can often be found in limited spatial neighborhoods, thereby gaining computational speed-up. Yang et al. [39] reﬁned this notion further to seek self-similar patches in extermely localized neighborhoods (in-place examples), and performed ﬁrst-order regression on them. Michaeli and Irani [26] used self-similarity to jointly recover the blur kernel and the HR image. Singh et al. [29] used the self-similarity principle for super-resolving noisy images.
+
+Expanding patch search space: Since internal dictionaries are constructed using only the given LR image, they tend to contain a much smaller number of LR-HR patch pairs compared to external dictionaries which can be as large as desired. Singh and Ahuja used orientation selective sub-band energies for better matching textural patterns [27] and later reduced the self-similarity based SR into a set of problems of matching simpler sub-bands of the image, amounting to an exponential increase in the effective size of the internal dictionary [28]. Zhu et al. [43] proposed to enhance the expressiveness of the dictionary by optical ﬂow based patch deformation during searching, to match the deformed patch with images in external databases. We use projective transformation to model the deformation common in urban scenes to betterexploit internalself-similarity. Fernandez-Granda and Candes [12] super-resolved planar regions by factoring out perspective distortion and imposing group-sparse regularization over image gradients. Our method also incorporates 3D scene geometry for SR, but we can handle multiple planes and recover regular textural patterns beyond orthogonal edges through self-similarity In addition, our method is a generic SR algomatching. rithm that handles both man-made and natural scenes in one framework. In the absense of any detected planar structures, our algorithm automatically falls back to searching only afﬁne transformed self-exemplars for SR.
+
+Our work is also related to several recent approaches that solve other low-level vision problems using overparameterized (expanded) patch search spaces. Although more difﬁcult to optimize than 2D translation, such overparametrization often better utilizes the available patch samples by allowing transformations. Examples include stereo [4], depth upsampling [19], optical ﬂow [18], image completion [21, 20], and patch-based synthesis [8]. Such expansion of the search space is particularly suited for the SR problem due to the limited size of internal dictionaries.
+
+3. Overview Super-resolution scheme: Given a LR image I, we ﬁrst blur and subsample it to obtain its downsampled version ID.
+
+4. Nearest Neighbor Field Estimation 4.1. Objective function
+
+Let Ω be the set of pixel indices of the input LR image I. For each target patch P(ti) centered at position ti =(tx i )(cid:62) in I, our goal is to estimate a transformation matrix Ti that maps the target patch P(ti) to its nearest neighbor in the downsampled image ID. A dense nearest neighbor patch search forms a nearest-neighbor ﬁeld (NNF) estimation problem. In contrast to the conventional 2D translation (or offsets) ﬁeld, here we have a ﬁeld of transformations parametrized by θi for ith pixel in the input LR image. Our objective function for this NNF estimation problem takes the form {θi} ∑ min
+
+Eapp(ti,θi)+Eplane(ti,θi)+Escale(ti,θi),
+
+where θi is the unknown set of parameters for constructing the transformation matrix Ti that we need to estimate (in a way explained later). Our objective function includes three costs: (1) appearance cost, (2) plane cost, and (3) scale cost. Below we ﬁrst describe each of these costs.
+
+Appearance cost Eapp: This cost measures similarity between the sampled target and source patches. We use Gaussian-weighted sum-of-squared distance in the RGB space as our metric:
+
+Eapp(ti,θi) = ||Wi(P(ti)−Q(ti,θi))||2 2, (2) where the matrix Wi is the Gaussian weights with σ2 = 3, Q(ti,θi) denotes the sampled patch from ID using the transformation Ti with parameter θi.
+
+We now present how we design and construct the transformation matrix Ti from estimated parameter θi for sampling the source patch Q(ti,θi). The geometric transformation of a patch in general can have up to 8 degrees of freedom (i.e., a projective transformation). One way to estimate the patch geometric transformation is to explicitly search in theadditionalpatchspace(e.g., scale, rotation)[2,17,8]beyond translation. However, perspective distortion can only be approximated by scaling, rotation and shearing of afﬁne transformations. Therefore, afﬁne transformations by themselves are less effective in modeling the appearance variations in man-made, structured scenes. Huang et al. [20] addressed this problem by detecting planes (and their parameters) and using them to determine the perspective transformation between the target and source patch. In Fig. 4, we show a visualization of vanishing point detection and posterior probability map for detection of planes, as yielded by [20].
+
+In this paper, we combine the explicit search strategy of [2, 17, 8], along with the perspective deformation estimation approach of [20]. Using the algorithm of [20]1, we detect and localize planes and compute the planar parameters,
+
+1Available
+
+StructCompletion
+
+https://github.com/jbhuang0604/
+
+Figure 2. Comparison with external dictionary and internal dictionary (self-similarity) approaches. Middle row: Given LR image I. Our method allows for geometrically transforming the target patch from the input image, while searching for its nearest neighbor in the downsampled image. The HR version of the best match found is then pasted on to the HR image. This is repeated for all patches in the input image I.
+
+Using I and ID, our algorithm to obtain an HR image IH consists of the following steps: 1) For each patch P (target patch) in the LR image I, we compute a transformation matrix T (homography) that warps P to its best matching patch Q (source patch) in the downsampled image ID, as illustrated in Fig. 2 (c). To obtain the parameters of such a transformation, we estimate a nearest neighbor ﬁeld between I and ID using a modiﬁed PatchMatch algorithm [1] (details given in Section 4). 2) We then extract QH from the image I, which is the HR version of the source patch Q. 3) We use the inverse of the computed transformation matrix T to ‘unwarp’ the HR patch QH, to obtain the selfexemplar PH, which is our estimated HR version of the target patch P. We paste PH in the HR image IH at the location corresponding to the LR patch P. 4) We repeat the above steps for all target patches to obtain an estimate of the HR image IH. 5) We run the iterative backprojection algorithm [22] to ensure that the estimated IH satisﬁes the reconstruction constraint with the given LR observation I.
+
+Fig. 2 schematically illustrates the important steps in our
+
+algorithm, and compares it with other frameworks.
+
+Motivation for using transformed self-exemplars: The key step in our algorithm is the use of the transformation matrix T that allows for geometric deformation of patches, instead of simply searching for the best patches under translation. We justify the use of transformed self-exemplars with two illustrative examples in Fig. 3. Matching using the afﬁne transformation and and planar perspective transformation achieves both lower matching errors and more accurate prediction of the HR content than that from matching patches under translation.
+
+(a) External SR(b) Internal SR(c) Proposed Input image123(a) Afﬁne transformation
+
+(b) Planar perspective transformation
+
+Figure 3. Examples demonstrating the need for using transformed self-exemplars in our self-similarity based SR. Red boxes indicate a selected target patch (to be matched) in the input LR image I. We take the selected target patch, remove its mean, and ﬁnd its nearest neighbor in the downsampled image ID. We show the error found while matching patches in ID in the second column. Blue boxes indicate the nearest neighbor (best matched) patch found among only translational patches, and green boxes indicate the nearest neighbor found under the proposed (a) afﬁne transformation and (b) planar perspective transformation. In the third and fourth columns we show the matched patches Q in the downsampled images ID and their HR version QH in the input image I.
+
+Figure 4. (a) Vanishing point detection. (b) Visualization of posterior plane probability.
+
+as shown by the example in Fig. 4. We propose to parameterize Ti by θi = (si,mi), where si = (sx i ) is the 6-D afﬁne motion parameter of the source patch and mi is the index of detected plane (using [20]). We propose a factored geometric transformation model Ti(θi) of the form:
+
+Ti(θi) = H(cid:0)ti,sx
+
+(cid:1)S
+
+(cid:17)
+
+(cid:16) ss i,sθ i
+
+(cid:16)
+
+i ,sβ sα i
+
+(cid:17)
+
+where the matrix H captures the perspective deformation given the target and source patch positions and the planar parameters (as described in [20]). The matrix
+
+(cid:16) ss i,sθ i
+
+(cid:17)
+
+(cid:20)ss
+
+iR(sθ 0(cid:62)
+
+(cid:21) i ) 0 1
+
+captures the similarity transformation through a scaling parameter ss i and a 2×2 rotation matrix R(sθ i ), and the matrix  0 0  1
+
+i ,sβ sα i
+
+(cid:16)
+
+(cid:17)
+
+captures the shearing mapping in the afﬁne transformation. The proposed compositional transformation model resemblestheclassicaldecompositionofaprojectivetransformationmatrixintoaconcatenationofthreeuniquematrices: similarity, afﬁne, and pure perspective transformation [24]. Yet, our goal here is to “synthesize,” rather than“analyze” the transformation Ti for sampling source patches. The
+
+proposed formulation allows us to effectively factor out the dependency of the positions of the target ti and source i,sy patch (sx i) for estimating the perspective deformation in (cid:1) from estimating afﬁne shape deformation H(cid:0)ti,sx i,sy i,mi i ,sβ parameters using (ss i ) for matrices S and A. This is crucial because we can then exploit piecewise smoothness characteristics in natural images for efﬁcient nearest neighbor ﬁeld estimation.
+
+Plane compatibility cost Eplane: For man-made images, we can often reliably localize planes in the scene using standard vanishing point detection techniques. The detected 3D scene geometry can be used to guide the patch search space. We modify the plane localization code in [20] and add a plane compatibility cost to encourage the search over the more probable plane labels for source and target patches. Eplane = −λplanelog(cid:0)Pr[mi|(sx (6) where the Pr[mi|(x,y)] is the posterior probability of assigning label mi at pixel position (x,y) (see Fig 4 (b) for an example).
+
+i)]×Pr[mi|(tx
+
+i)](cid:1),
+
+Scale cost Escale: Since we allow continuous geometric transformations, we observed that the nearest neighbor ﬁeld often converged to the trivial solution, i.e., matching target patches to itself in the downsampled image ID. Such a match has small appearance cost. This trivial solution leads to the conventional bicubic interpolation for SR. We avoid such trivial solutions by introducing the scale cost Escale: Escale = λscalemin(0,SRF−Scale(Ti)), where SRF indicates the desired SR factor, e.g., 2x, 3x, or 4x, and the function Scale(·) indicates the scale estimation of a projective transformation matrix. We approximately
+
+estimate the scale of the source patch sampled using Ti with the ﬁrst-order Taylor expansion [7]:
+
+(cid:115)
+
+Scale(Ti) =
+
+(cid:18)(cid:20)T1,1−T1,3T3,1 T1,2−T1,3T3,2 T2,1−T2,3T3,1 T3,1−T2,3T3,2
+
+(cid:21)(cid:19) ,
+
+where Tu,v indicates the value of uth row and vth column in the transformation matrix Ti with T3,3 normalized to one. Intuitively, we penalize if the scale of the source patches is too small. Therefore, we encourage the algorithm to search for source patches that are similar to the target patch and at the same time to have larger scale in the input LR image space; and therefore we are able to provide more highfrequency details for SR. We soft-threshold the penalty to zero when the scale of the source patch is sufﬁciently large.
+
+4.2. Inference
+
+We need to estimate 7-dimensional (θi ∈ R7) nearest neighbor ﬁeld solutions over all overlapping target patches. Unlike the conventional self-exemplar based methods [15, 13], where only a 2D translation ﬁeld needs to be estimated, the solution space in our formulation is much more difﬁcult to search. We modify the PatchMatch [1] algorithm for this task with the following detailed steps.
+
+Initialization: Instead of the random initialization done in PatchMatch [1], We initialize the nearest neighbor ﬁeld with zero displacements and scales equal to the desired SR factor. This is inspired by [13, 39], suggesting that good self-exemplars can often be found in a localized neighborhood. We found that this initialization strategy provides a good start for faster convergence.
+
+Propagation: This step efﬁciently propagates good matches to neighbors. In contrast to propagating the transformation matrix Ti directly, we propagate the parameter θi = (si,mi) instead so that the afﬁne shape transformation is invariant to the source patch position.
+
+Randomization: After propagation in each iteration, we perform randomized search to reﬁne the current solution. We simultaneously draw random samples of the plane index based on the posterior probability distribution, randomly perturb the afﬁne transformation and randomly sample position (in a coarse-to-ﬁne manner) to search for the optimal geometric transformation of source patches and reduce the matching errors.
+
+5. Experiments
+
+Datasets: Yang et al. [37] recently proposed a benchmark for evaluating single image SR methods. Most images therein consist of natural scenes such as landscapes, animals, and faces. Images that contain indoor, urban, architectural scenes, etc., rarely appear in this benchmark. However, such images feature prominently in consumer photographs. We therefore have created a new dataset Urban 100 containing 100 HR images with a variety of real-world structures. We constructed this dataset using images from
+
+Flickr (under CC license) using keywords such as urban, city, architecture, and structure.
+
+In addition, we also evaluate our algorithm on the BSD 100 dataset, which consists of 100 test images of natural scenes taken from the Berkeley segmentation dataset [25]. For this dataset, we evaluate for SR factors of 2x, 3x, and 4x.
+
+Methods evaluated: We compare our results against several state-of-the-art SR algorithms. Speciﬁcally, we choose four SR algorithms trained using a large number of external LR-HR patches for training. The algorithms we use are: Kernel rigid regression (Kim) [23], sparse coding (ScSR) [41], adjusted anchored neighbor neighbor regression (A+) [34], and convolutional neural networks (SRCNN) [9].2 We also compare our results with those of the internal dictionary based approach (Glasner) [15] 3 and the sub-band self-similarity SR algorithm (Sub-Band) [28].4 All our datasets, results, and the source code will be made publicly available.
+
+Implementation details: We use 5×5 patches and perform SR in multiple steps. We achieve 2x, 3x, 4x SR factors in three, ﬁve and six upscaling steps, respectively. At the end of each step, we run 20 iterations of the backprojection algorithm [22] with a 5×5 Gaussian ﬁlter with σ2 = 1.2. The NNF solution from a coarse level is upsampled and used as an initialization for the next ﬁner level. We empirically set the parameters λplane =10−3 and λscale =10−3. The parameters are kept ﬁxed for all our experiments.
+
+Qualitative evaluation: In Figure 5, we show visual results on images from the Urban 100 dataset. We show only the cropped regions here. Full image results are available in the supplementary material. We ﬁnd that our method is capable of recovering structured details that were missing in the LR image by properly exploiting the internal similarity in the LR input. Other approaches, using external images for training, often fail to recover these structured details. Our algorithm well exploits the detected 3D scene geometry and the internal natural image statistics to super-resolve the missing high-frequency contents. In Fig. 6 and 7, we demonstrate that our algorithm is not restricted to images of a single plane scene. We are able to automatically search for multiple planes and estimate their perspective and afﬁne transformations to robustly predict the HR image.
+
+In Fig. 8 and 9, we show two results on natural images where no regular structures can be detected. In such cases, our algorithm reduces to searching for afﬁne transformations only in the nearest neighbor ﬁeld, similar to [2]. On natural images without any particular geometric regularity, our method performs as well as the recent, state-of-the-art methods such as [9, 34], although, as can be seen in both examples, our results contain slightly sharper edges and fewer
+
+2Implementations of [23, 41, 34, 9] are available on authors’ websites. 3We implement this from the paper [15]. 4Results were provided by the authors.
+
+HR (PSNR, SSIM)
+
+Kim [23] (25.1750, 0.8976)
+
+ScSR [41] (24.86, 0.8883)
+
+Glasner [15] (25.94, 0.9147)
+
+A+ [34] (25.46, 0.9024)
+
+Sub-band [28] (26.37, 0.9243)
+
+SRCNN [9] (25.10, 0.8863)
+
+Ours (27.94, 0.9430)
+
+HR (PSNR, SSIM)
+
+Kim [23] (29.45, 0.8387)
+
+ScSR [41] (29.29, 0.8331)
+
+Glasner [15] (29.60, 0.8493)
+
+A+ [34] (29.64, 0.8424)
+
+Sub-band [28] (29.60, 0.8448)
+
+SRCNN [9] (29.55, 0.8342)
+
+Ours (30.83, 0.8711)
+
+HR (PSNR, SSIM)
+
+Kim [23] (26.91, 0.7857)
+
+ScSR [41] (26.78, 0.7783)
+
+Glasner [15] (26.71, 0.7764)
+
+Figure 5. Visual comparison for 4x SR. Our method is able to explicitly identify perspective geometry to better super-resolve details of regular structures occuring in various urban scenes. Full images are provided in supplementary material.
+
+A+ [34] (27.23, 0.7967)
+
+Sub-band [28] (27.15, 0.7932)
+
+SRCNN [9] (27.02, 0.7856)
+
+Ours (27.38, 0.8010)
+
+HR (PSNR, SSIM)
+
+Kim [23] (20.07, 0.7207)
+
+ScSR [41] (19.77, 0.7027)
+
+Glasner [15] (20.11, 0.7000)
+
+A+ [34] (20.08, 0.7257)
+
+Sub-band [28] (20.34, 0.7242)
+
+SRCNN [9] (20.05, 0.7179)
+
+Ours (21.15, 0.7650)
+
+Figure 6. Visual comparison for 4x SR. Our algorithm is able to super-resolve images containing multiple planar structures.
+
+artifacts such as ringing. We present more results for both Urban 100 and BSD 100 datasets in the supplementary material.
+
+Quantitative evaluation: We also perform quantitative evaluation of our method in terms of PSNR (dB) and structural similarity (SSIM) index [35] (computed using luminance channel only). Since such quantitative metrics may not correlate well with visual perception, we invite the reader to examine the visual quality of our results for better evaluation of our method.
+
+Table 1 shows the quantitative results on Urban 100 and
+
+BSD 100 dataset. Numbers in red indicate the best performance and those in blue indicate the second best performance. Our algorithm yields the best quantitative results for this dataset, 0.2-0.3 dB PSNR better than the second best method (A+) [34] and 0.4-0.5 dB better than the recently proposed SRCNN [9]. We are able to achieve these results without any training databases, while both [34] and [9] require millions of external training patches. Our method also outperforms the self-similarity approaches of [15] and [28], validating our claim of being able to extract better internal statistics through the expanded internal search space. In
+
+HR (PSNR, SSIM)
+
+Kim [23] (19.99, 0.4437)
+
+ScSR [41] (19.94, 0.4341)
+
+Glasner [15] (19.86, 0.4258)
+
+A+ [34] (20.03, 0.4523)
+
+Sub-band [28] (20.00, 0.4573)
+
+SRCNN [9] (19.98, 0.4386)
+
+Ours (20.09, 0.4690)
+
+Figure 7. Visual comparison for 4x SR. Our algorithm is able to better exploit the regularity present in urban scenes than other methods. .
+
+HR (PSNR, SSIM)
+
+Kim [23] (27.49, 0.6948)
+
+ScSR [41] (27.42, 0.6908)
+
+Glasner [15] (27.20, 0.6825)
+
+A+ [34] (27.62, 0.7007)
+
+Sub-band [28] (27.33, 0.6916)
+
+SRCNN [9] (27.52, 0.6938)
+
+Ours (27.60, 0.6966)
+
+Figure 8. Visual comparison for 3x SR. Our result produces sharper edges than other methods. Shapes of ﬁne structures (such as the horse’s ears) are reproduced more faithfully in our result.
+
+HR (PSNR, SSIM)
+
+Kim [23] (34.22, 0.9128)
+
+ScSR [41] (33.37, 0.9052)
+
+Glasner [15] (33.47, 0.8987)
+
+A+ [34] (34.27, 0.9144)
+
+Sub-band [28] (33.55, 0.9053)
+
+SRCNN [9] (34.18, 0.9107)
+
+Ours (34.12, 0.9091)
+
+Figure 9. Visual comparison for 3x SR. Our result shows slightly sharper reconstruction of the beaks.
+
+BSD 100 dataset our results are comparable to those obtained by other approaches on this dataset, with ≈ 0.1 dB lower PSNR than the results of A+ [34]. Our quantitative results are slightly worse than the state-of-the-art in this
+
+dataset since it is difﬁcult to ﬁnd geometric regularity in such natural images, which our algorithm seeks to exploit. Also A+ [34] is trained on patches that contain natural textures quite suitable for super-resolving the BSD100 images.
+
+Table1. Quantitativeevaluation on Urban100 and BSD100 datasets. Red indicatesthe bestand blueindicatesthe secondbest performance.
+
+Metric
+
+PSNR (Urban )
+
+SSIM (Urban)
+
+PSNR (BSD)
+
+SSIM (BSD)
+
+Scale 2x 4x 2x 4x 2x 3x 4x 2x 3x 4x
+
+Bicubic 26.66 23.14 0.8408 0.6573 29.55 27.20 25.96 0.8425 0.7382 0.6672
+
+ScSR [41] Kim [23]
+
+SRCNN [9] A+ [34] 28.87 24.34 0.8957 0.7195 31.22 28.30 26.82 0.8862 0.7836 0.7089
+
+Sub-band [28] Glasner [15]
+
+Ours 29.05 24.67 0.8980 0.7314 31.12 28.20 26.80 0.8835 0.7778 0.7064
+
+HR(PSNR,SSIM)
+
+Initialization
+
+1 iteration
+
+2 iterations
+
+5 iterations
+
+Figure 10. Effect of iterations. First row: HR and the SR results on 1, 2, and 5 iterations. Second row: the visualization of the nearest neighbor ﬁeld. Third row: the patch matching cost. While we achieve slightly worse quantitative performance on BSD100, our results are often visually more pleasing than others and do not have artifacts.
+
+Convergence of NNF estimation: We investigate the effect of the number of iterations for nearest neighbor ﬁeld estimation using our algorithm in Fig. 10, for one step 2x SR. We show the intermediate results after 1, 2, and 5 iterations. The second row shows a visualization of the source patch positions in the nearest neighbor ﬁeld and the matching cost in each stage. The in-place initialization (zero iterations) already provides good matches for smooth regions. We can see a signiﬁcant reduction in the matching cost even with one iteration. We use 10 iterations for generating all our results.
+
+Effect of patch size: Patch size is an important parameter for example-based SR algorithms. Larger patches may be difﬁcult to map to HR since they may contain complex structural details. Very small patches may not contain sufﬁ- cient information to accurately predict their HR versions. In Fig. 11, we plot PSNR/SSIM for patch sizes ranging from 3×3 to 15×15. We obtain these plots by averaging over 25 images. We observe that there is a wide range of patch sizes for which our algorithm is able to perform consistently.
+
+Limitations: Ourmethodhasdifﬁcultydealingwith ﬁne details when the planes are not accurately detected. We show one such case in Fig. 12 where we fail to recover the regular structures. Another limitation of our approach is
+
+Figure 11. Quantitative performance as a function of patch size.
+
+Figure 12. A failure case with SR factor 4x.
+
+SRCNN [9]
+
+A+ [34]
+
+processing time. While external database driven SR methods require time-consuming training procedures, they run quite fast during test time [34, 33]. While our algorithm does not require an explicit training step, it is slow to superresolve a test image. This drawback is associated with all self-similarity based approaches [15, 28]. On average, our Matlab implementation takes around 40 seconds to superresolve an image in BSD 100 by 2x with a 2.8 GHz Intel i7 CPU and 12 GB memory.
+
+6. Concluding Remarks
+
+We have presented a self-similarity based image SR algorithm that uses transformed self-exemplars. Our algorithm uses a factored patch transformation representation for simultaneously accounting for both planar perspective distortion and afﬁne shape deformation of image patches. We exploit the 3D scene geometry and patch search space expansion for improving the self-examplar search. In the absense of regular structures, our algorithm reverts to searching afﬁne transformed patches. We have demonstrated that even without using external training samples, ourmethodoutperformsstate-of-the-artSRalgorithms on a variety of man-made scenes while maintaining comparable performance on natural scenes.
+
+References
+
+[1] C. Barnes, E. Shechtman, A. Finkelstein, and D. Goldman. Patchmatch: A randomized correspondence algorithm for structural image editing. ACM Trans. on Graphics, 28(3):24, 2009. 2, 3, 5
+
+[2] C. Barnes, E. Shechtman, D. B. Goldman, and A. Finkelstein. The generalized patchmatch correspondence algorithm. In ECCV, 2010. 3, 5
+
+[3] M. Barnsley. Fractals Everywhere. Academic Press Profes-
+
+sional, Inc., 1988. 1, 2
+
+[4] M. Bleyer, C. Rhemann, and C. Rother. Patchmatch stereoIn BMVC,
+
+stereo matching with slanted support windows. 2011. 2
+
+[5] A. Buades, B. Coll, and J.-M. Morel. A non-local algorithm
+
+for image denoising. In CVPR, 2005. 2
+
+[6] H. Chang, D.-Y. Yeung, and Y. Xiong. Super-resolution
+
+through neighbor embedding. In CVPR, 2004. 1, 2
+
+[7] O. Chum and J. Matas. Planar afﬁne rectiﬁcation from
+
+change of scale. In ACCV, 2010. 5
+
+[8] S. Darabi, E. Shechtman, C. Barnes, D. B. Goldman, and P. Sen. Image melding: combining inconsistent images using patch-based synthesis. ACM Trans. on Graphics, 31(4):82, 2012. 2, 3
+
+[9] C. Dong, C. C. Loy, K. He, and X. Tang. Learning a deep convolutional network for image super-resolution. In ECCV, 2014. 1, 2, 5, 6, 7, 8
+
+[10] M. Ebrahimi and E. R. Vrscay. Solving the inverse problem In Image analysis
+
+of image zooming using self-examples. and Recognition, 2007. 1, 2
+
+[11] R. Fattal.
+
+Image upsampling via imposed edge statistics.
+
+ACM Trans. on Graphics, 26(3):95, 2007. 2
+
+[12] C. Fernandez-Granda and E. J. Candes. Super-resolution via In ICCV,
+
+transform-invariant group-sparse regularization. 2013. 2
+
+[13] G. Freedman and R. Fattal. Image and video upscaling from local self-examples. ACM Trans. on Graphics, 30(2):12, 2011. 1, 2, 5
+
+[14] W. T. Freeman, T. R. Jones, and E. C. Pasztor. Examplebased super-resolution. IEEE Computer Graphics and Applications, 22(2):56–65, 2002. 1, 2
+
+[15] D. Glasner, S. Bagon, and M. Irani. Super-resolution from a
+
+single image. In ICCV, 2009. 1, 2, 5, 6, 7, 8
+
+[16] Y. HaCohen, R. Fattal, and D. Lischinski. Image upsampling
+
+via texture hallucination. In ICCP, 2010. 2
+
+[17] Y. HaCohen, E. Shechtman, D. B. Goldman, and D. Lischinski. Non-rigid dense correspondence with applications for In ACM Trans. on Graphics, volimage enhancement. ume 30, page 70, 2011. 3
+
+[18] M. Horn´aˇcek, F. Besse, J. Kautz, A. Fitzgibbon, and C. Rother. Highly overparameterized optical ﬂow using patchmatch belief propagation. In ECCV, 2014. 2
+
+[19] M. Horn´aˇcek, C. Rhemann, M. Gelautz, and C. Rother. Depth super resolution by rigid body self-similarity in 3d. In CVPR, 2013. 2
+
+[20] J.-B. Huang, S. B. Kang, N. Ahuja, and J. Kopf.
+
+Image completion using planar structure guidance. ACM Trans. on Graphics, 33(4):129, 2014. 2, 3, 4
+
+[21] J.-B. Huang, J. Kopf, N. Ahuja, and S. B. Kang. Transformation guided image completion. In IEEE International Conference on Computational Photography, 2013. 2
+
+[22] M. Irani and S. Peleg. Improving resolution by image registration. CVGIP: Graphical models and image processing, 53(3):231–239, 1991. 2, 3, 5
+
+[23] K. I. Kim and Y. Kwon. Single-image super-resolution using sparse regression and natural image prior. IEEE TPAMI, 32(6):1127–1133, 2010. 2, 5, 6, 7, 8
+
+[24] J.J.Koenderink, A. J.VanDoorn, et al. Afﬁnestructurefrom
+
+motion. JOSA A, 8(2):377–385, 1991. 4
+
+[25] D. Martin, C. Fowlkes, D. Tal, and J. Malik. A database of human segmented natural images and its application to evaluating segmentation algorithms and measuring ecological statistics. In ICCV, 2001. 5
+
+[26] T. Michaeli and M. Irani. Nonparametric blind super-
+
+resolution. In ICCV, 2013. 2
+
+[27] A. Singh and N. Ahuja. Sub-band energy constraints for self-
+
+similarity based super-resolution. In ICPR, 2014. 2
+
+[28] A. Singh and N. Ahuja. Super-resolution using sub-band
+
+self-similarity. In ACCV, 2014. 1, 2, 5, 6, 7, 8
+
+[29] A. Singh, F. Porikli, and N. Ahuja. Super-resolving noisy
+
+images. In CVPR, 2014. 2
+
+[30] J. Sun, Z. Xu, and H.-Y. Shum. Gradient proﬁle prior and its applications in image super-resolution and enhancement. IEEE TIP, 20(6):1529–1542, 2011. 2
+
+[31] J. Sun, J. Zhu, and M. Tappen. Context-constrained hallucination for image super-resolution. In CVPR, 2010. 2 [32] L. Sun and J. Hays. Super-resolution from internet-scale
+
+scene matching. In ICCP, 2012. 2
+
+[33] R. Timofte, V. De, and L. V. Gool. Anchored neighborhood regression for fast example-based super-resolution. In ICCV, 2013. 1, 2, 8
+
+[34] R. Timofte, V. De Smet, and L. Van Gool. A+: Adjusted anchored neighborhood regression for fast super-resolution. In ACCV, 2014. 1, 2, 5, 6, 7, 8
+
+[35] Z. Wang, A. C. Bovik, H. R. Sheikh, and E. P. Simoncelli. Image quality assessment: from error visibility to structural similarity. IEEE TIP, 13(4):600–612, 2004. 6
+
+[36] C.-Y. Yang, J.-B. Huang, and M.-H. Yang. Exploiting selfIn ACCV.
+
+similarities for single frame super-resolution. 2010. 2
+
+[37] C.-Y. Yang, C. Ma, and M.-H. Yang. Single-image super-
+
+resolution: A benchmark. In ECCV, 2014. 5
+
+[38] C.-Y. Yang and M.-H. Yang. Fast direct super-resolution by
+
+simple functions. In ICCV, 2013. 1, 2
+
+[39] J. Yang, Z. Lin, and S. Cohen. Fast image super-resolution based on in-place example regression. In CVPR, 2013. 2, 5 [40] J. Yang, Z. Wang, Z. Lin, S. Cohen, and T. Huang. Coupled IEEE TIP,
+
+dictionary training for image super-resolution. 21(8):3467–3478, 2012. 2
+
+[41] J. Yang, J. Wright, T. S. Huang, and Y. Ma. age super-resolution via sparse representation. 19(11):2861–2873, 2010. 1, 2, 5, 6, 7, 8
+
+ImIEEE TIP,
+
+[42] R. Zeyde, M. Elad, and M. Protter. On single image scale-up using sparse-representations. In International Conference on Curves and Surfaces, 2012. 2
+
+[43] Y. Zhu, Y. Zhang, and A. L. Yuille. Single image superresolution using deformable patches. In CVPR, 2014. 2 [44] M. Zontak and M. Irani. Internal statistics of a single natural
+
+image. In CVPR, 2011. 1
+
