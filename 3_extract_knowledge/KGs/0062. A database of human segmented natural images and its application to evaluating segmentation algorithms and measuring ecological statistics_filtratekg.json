@@ -1,167 +1,167 @@
 {
-    "entities": [
-        {
-            "id": "20250319024745P1",
-            "name": "A Database of Human Segmented Natural Images and its Application to Evaluating Segmentation Algorithms and Measuring Ecological Statistics",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Jitendra Malik",
-                    "David Martin",
-                    "Charless Fowlkes",
-                    "Doron Tal"
-                ],
-                "institution": "University of California, Berkeley"
-            }
-        },
-        {
-            "id": "20250319024745D1",
-            "name": "segmentation database",
-            "type": "Dataset",
-            "attributes": {
-                "size": "1000 images (target)",
-                "current_size": "800 images",
-                "segmentations_per_image": "3-4",
-                "image_resolution": "481x321",
-                "source": "Corel image database",
-                "content": "natural scenes with discernible objects"
-            }
-        },
-        {
-            "id": "20250319024745D2",
-            "name": "Corel image database",
-            "type": "Dataset",
-            "attributes": {
-                "size": "40,000 images",
-                "usage": "widely used in computer vision"
-            }
-        },
-        {
-            "id": "20250319024745D3",
-            "name": "MNIST handwritten digit dataset",
-            "type": "Dataset",
-            "attributes": {
-                "content": "handwritten digits",
-                "use_case": "digit recognition"
-            }
-        },
-        {
-            "id": "20250319024745D4",
-            "name": "FERET face dataset",
-            "type": "Dataset",
-            "attributes": {
-                "content": "face images",
-                "use_case": "face recognition"
-            }
-        },
-        {
-            "id": "20250319024745D5",
-            "name": "Sowerby image dataset",
-            "type": "Dataset",
-            "attributes": {
-                "size": "small",
-                "availability": "not publicly available",
-                "segmentations_per_image": "1"
-            }
-        },
-        {
-            "id": "20250319024745T1",
-            "name": "evaluating segmentation algorithms",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319024745T2",
-            "name": "measuring probability distributions associated with Gestalt grouping factors",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319024745T3",
-            "name": "measuring statistics of image region properties",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319024745T4",
-            "name": "object recognition",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319024745D1",
-            "head": "segmentation database",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319024745P1",
-            "tail": "A Database of Human Segmented Natural Images and its Application to Evaluating Segmentation Algorithms and Measuring Ecological Statistics",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319024745D1",
-            "head": "segmentation database",
-            "head_type": "Dataset",
-            "relation": "composed_of",
-            "tail_id": "20250319024745D2",
-            "tail": "Corel image database",
-            "tail_type": "Dataset"
-        },
-        {
-            "head_id": "20250319024745D1",
-            "head": "segmentation database",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319024745T1",
-            "tail": "evaluating segmentation algorithms",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319024745D1",
-            "head": "segmentation database",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319024745T2",
-            "tail": "measuring probability distributions associated with Gestalt grouping factors",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319024745D1",
-            "head": "segmentation database",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319024745T3",
-            "tail": "measuring statistics of image region properties",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319024745D3",
-            "head": "MNIST handwritten digit dataset",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319024745T4",
-            "tail": "object recognition",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319024745D4",
-            "head": "FERET face dataset",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319024745T4",
-            "tail": "object recognition",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319024745D5",
-            "head": "Sowerby image dataset",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319024745T1",
-            "tail": "evaluating segmentation algorithms",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319024745P1",
+      "name": "A Database of Human Segmented Natural Images and its Application to Evaluating Segmentation Algorithms and Measuring Ecological Statistics",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Jitendra Malik",
+          "David Martin",
+          "Charless Fowlkes",
+          "Doron Tal"
+        ],
+        "institution": "University of California, Berkeley"
+      }
+    },
+    {
+      "id": "20250319024745D1",
+      "name": "segmentation database",
+      "type": "Dataset",
+      "attributes": {
+        "size": "1000 images (target)",
+        "current_size": "800 images",
+        "segmentations_per_image": "3-4",
+        "image_resolution": "481x321",
+        "source": "Corel image database",
+        "content": "natural scenes with discernible objects"
+      }
+    },
+    {
+      "id": "20250319024745D2",
+      "name": "Corel image database",
+      "type": "Dataset",
+      "attributes": {
+        "size": "40,000 images",
+        "usage": "widely used in computer vision"
+      }
+    },
+    {
+      "id": "20250319024745D3",
+      "name": "MNIST handwritten digit dataset",
+      "type": "Dataset",
+      "attributes": {
+        "content": "handwritten digits",
+        "use_case": "digit recognition"
+      }
+    },
+    {
+      "id": "20250319024745D4",
+      "name": "FERET face dataset",
+      "type": "Dataset",
+      "attributes": {
+        "content": "face images",
+        "use_case": "face recognition"
+      }
+    },
+    {
+      "id": "20250319024745D5",
+      "name": "Sowerby image dataset",
+      "type": "Dataset",
+      "attributes": {
+        "size": "small",
+        "availability": "not publicly available",
+        "segmentations_per_image": "1"
+      }
+    },
+    {
+      "id": "20250319024745T1",
+      "name": "evaluating segmentation algorithms",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319024745T2",
+      "name": "measuring probability distributions associated with Gestalt grouping factors",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319024745T3",
+      "name": "measuring statistics of image region properties",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319024745T4",
+      "name": "object recognition",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319024745D1",
+      "head": "segmentation database",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319024745P1",
+      "tail": "A Database of Human Segmented Natural Images and its Application to Evaluating Segmentation Algorithms and Measuring Ecological Statistics",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319024745D1",
+      "head": "segmentation database",
+      "head_type": "Dataset",
+      "relation": "composed_of",
+      "tail_id": "20250319024745D2",
+      "tail": "Corel image database",
+      "tail_type": "Dataset"
+    },
+    {
+      "head_id": "20250319024745D1",
+      "head": "segmentation database",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319024745T1",
+      "tail": "evaluating segmentation algorithms",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319024745D1",
+      "head": "segmentation database",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319024745T2",
+      "tail": "measuring probability distributions associated with Gestalt grouping factors",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319024745D1",
+      "head": "segmentation database",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319024745T3",
+      "tail": "measuring statistics of image region properties",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319024745D3",
+      "head": "MNIST handwritten digit dataset",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319024745T4",
+      "tail": "object recognition",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319024745D4",
+      "head": "FERET face dataset",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319024745T4",
+      "tail": "object recognition",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319024745D5",
+      "head": "Sowerby image dataset",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319024745T1",
+      "tail": "evaluating segmentation algorithms",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

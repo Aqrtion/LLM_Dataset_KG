@@ -1,331 +1,331 @@
 {
-    "entities": [
-        {
-            "id": "20250319002031P1",
-            "name": "From Image Descriptions to Visual Denotations: New Similarity Metrics for Semantic Inference over Event Descriptions",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Peter Young",
-                    "Alice Lai",
-                    "Micah Hodosh",
-                    "Julia Hockenmaier"
-                ],
-                "institution": "University of Illinois at Urbana-Champaign"
-            }
-        },
-        {
-            "id": "20250319002031D1",
-            "name": "Image Description Corpus",
-            "type": "Dataset",
-            "attributes": {
-                "size": "31,783 images, 158,915 captions",
-                "collection_method": "crowdsourcing",
-                "license": "Creative Commons",
-                "extends": "Hodosh et al. (2013) Corpus"
-            }
-        },
-        {
-            "id": "20250319002031D2",
-            "name": "Hodosh et al. (2013) Corpus",
-            "type": "Dataset",
-            "attributes": {
-                "size": "8,092 images"
-            }
-        },
-        {
-            "id": "20250319002031D3",
-            "name": "MSR Video Description Corpus",
-            "type": "Dataset",
-            "attributes": {
-                "size": "1500 sentence pairs"
-            }
-        },
-        {
-            "id": "20250319002031D4",
-            "name": "SBU Captioned Photo Dataset",
-            "type": "Dataset",
-            "attributes": {
-                "size": "1 million images"
-            }
-        },
-        {
-            "id": "20250319002031D5",
-            "name": "IAPR TC-12 dataset",
-            "type": "Dataset",
-            "attributes": {
-                "description": "longer descriptions"
-            }
-        },
-        {
-            "id": "20250319002031R1",
-            "name": "http://nlp.cs.illinois.edu/Denotation.html",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031L1",
-            "name": "Creative Commons",
-            "type": "License",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T1",
-            "name": "semantic inference",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T2",
-            "name": "approximate entailment recognition",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T3",
-            "name": "Semantic Textual Similarity (STS)",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T4",
-            "name": "paraphrase detection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T5",
-            "name": "image understanding",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T6",
-            "name": "object recognition",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T7",
-            "name": "image classification",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T8",
-            "name": "automatic object clustering",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T9",
-            "name": "object localization",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T10",
-            "name": "scene understanding",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T11",
-            "name": "part models learning",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T12",
-            "name": "training object detection algorithms",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T13",
-            "name": "benchmarking",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319002031T14",
-            "name": "image search",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319002031P1",
-            "tail": "From Image Descriptions to Visual Denotations: New Similarity Metrics for Semantic Inference over Event Descriptions",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319002031R1",
-            "tail": "http://nlp.cs.illinois.edu/Denotation.html",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "licensed_under",
-            "tail_id": "20250319002031L1",
-            "tail": "Creative Commons",
-            "tail_type": "License"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "has_new_version",
-            "tail_id": "20250319002031D2",
-            "tail": "Hodosh et al. (2013) Corpus",
-            "tail_type": "Dataset"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T1",
-            "tail": "semantic inference",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T2",
-            "tail": "approximate entailment recognition",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T3",
-            "tail": "Semantic Textual Similarity (STS)",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T4",
-            "tail": "paraphrase detection",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T5",
-            "tail": "image understanding",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T6",
-            "tail": "object recognition",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T7",
-            "tail": "image classification",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T8",
-            "tail": "automatic object clustering",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T9",
-            "tail": "object localization",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T10",
-            "tail": "scene understanding",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T11",
-            "tail": "part models learning",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T12",
-            "tail": "training object detection algorithms",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T13",
-            "tail": "benchmarking",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D1",
-            "head": "Image Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T14",
-            "tail": "image search",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319002031D3",
-            "head": "MSR Video Description Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319002031T3",
-            "tail": "Semantic Textual Similarity (STS)",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319002031P1",
+      "name": "From Image Descriptions to Visual Denotations: New Similarity Metrics for Semantic Inference over Event Descriptions",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Peter Young",
+          "Alice Lai",
+          "Micah Hodosh",
+          "Julia Hockenmaier"
+        ],
+        "institution": "University of Illinois at Urbana-Champaign"
+      }
+    },
+    {
+      "id": "20250319002031D1",
+      "name": "Image Description Corpus",
+      "type": "Dataset",
+      "attributes": {
+        "size": "31,783 images, 158,915 captions",
+        "collection_method": "crowdsourcing",
+        "license": "Creative Commons",
+        "extends": "Hodosh et al. (2013) Corpus"
+      }
+    },
+    {
+      "id": "20250319002031D2",
+      "name": "Hodosh et al. (2013) Corpus",
+      "type": "Dataset",
+      "attributes": {
+        "size": "8,092 images"
+      }
+    },
+    {
+      "id": "20250319002031D3",
+      "name": "MSR Video Description Corpus",
+      "type": "Dataset",
+      "attributes": {
+        "size": "1500 sentence pairs"
+      }
+    },
+    {
+      "id": "20250319002031D4",
+      "name": "SBU Captioned Photo Dataset",
+      "type": "Dataset",
+      "attributes": {
+        "size": "1 million images"
+      }
+    },
+    {
+      "id": "20250319002031D5",
+      "name": "IAPR TC-12 dataset",
+      "type": "Dataset",
+      "attributes": {
+        "description": "longer descriptions"
+      }
+    },
+    {
+      "id": "20250319002031R1",
+      "name": "http://nlp.cs.illinois.edu/Denotation.html",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031L1",
+      "name": "Creative Commons",
+      "type": "License",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T1",
+      "name": "semantic inference",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T2",
+      "name": "approximate entailment recognition",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T3",
+      "name": "Semantic Textual Similarity (STS)",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T4",
+      "name": "paraphrase detection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T5",
+      "name": "image understanding",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T6",
+      "name": "object recognition",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T7",
+      "name": "image classification",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T8",
+      "name": "automatic object clustering",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T9",
+      "name": "object localization",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T10",
+      "name": "scene understanding",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T11",
+      "name": "part models learning",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T12",
+      "name": "training object detection algorithms",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T13",
+      "name": "benchmarking",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319002031T14",
+      "name": "image search",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319002031P1",
+      "tail": "From Image Descriptions to Visual Denotations: New Similarity Metrics for Semantic Inference over Event Descriptions",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319002031R1",
+      "tail": "http://nlp.cs.illinois.edu/Denotation.html",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "licensed_under",
+      "tail_id": "20250319002031L1",
+      "tail": "Creative Commons",
+      "tail_type": "License"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "has_new_version",
+      "tail_id": "20250319002031D2",
+      "tail": "Hodosh et al. (2013) Corpus",
+      "tail_type": "Dataset"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T1",
+      "tail": "semantic inference",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T2",
+      "tail": "approximate entailment recognition",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T3",
+      "tail": "Semantic Textual Similarity (STS)",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T4",
+      "tail": "paraphrase detection",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T5",
+      "tail": "image understanding",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T6",
+      "tail": "object recognition",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T7",
+      "tail": "image classification",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T8",
+      "tail": "automatic object clustering",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T9",
+      "tail": "object localization",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T10",
+      "tail": "scene understanding",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T11",
+      "tail": "part models learning",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T12",
+      "tail": "training object detection algorithms",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T13",
+      "tail": "benchmarking",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D1",
+      "head": "Image Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T14",
+      "tail": "image search",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319002031D3",
+      "head": "MSR Video Description Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319002031T3",
+      "tail": "Semantic Textual Similarity (STS)",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

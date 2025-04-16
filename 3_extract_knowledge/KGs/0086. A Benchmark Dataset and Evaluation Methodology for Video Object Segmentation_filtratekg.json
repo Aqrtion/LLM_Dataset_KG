@@ -1,212 +1,212 @@
 {
-    "entities": [
-        {
-            "id": "20250319035620P1",
-            "name": "A Benchmark Dataset and Evaluation Methodology for Video Object Segmentation",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "F. Perazzi",
-                    "J. Pont-Tuset",
-                    "B. McWilliams",
-                    "L. Van Gool",
-                    "M. Gross",
-                    "A. Sorkine-Hornung"
-                ],
-                "institution": "ETH Zurich, Disney Research"
-            }
-        },
-        {
-            "id": "20250319035620D1",
-            "name": "DAVIS (Densely Annotated VIdeo Segmentation)",
-            "type": "Dataset",
-            "attributes": {
-                "resolution": "Full HD 1080p",
-                "sequences": 50,
-                "annotated_frames": 3455,
-                "challenges": [
-                    "occlusions",
-                    "motion-blur",
-                    "appearance changes"
-                ],
-                "content_classes": [
-                    "humans",
-                    "animals",
-                    "vehicles",
-                    "objects"
-                ]
-            }
-        },
-        {
-            "id": "20250319035620D2",
-            "name": "Freiburg-Berkeley Motion Segmentation dataset (MoSeg)",
-            "type": "Dataset",
-            "attributes": {
-                "resolution": "low",
-                "annotation_type": "sparse subset of frames"
-            }
-        },
-        {
-            "id": "20250319035620D3",
-            "name": "Berkeley Video Segmentation Dataset (BVSD)",
-            "type": "Dataset",
-            "attributes": {
-                "sequences": 100,
-                "annotation_type": "fragmented segments"
-            }
-        },
-        {
-            "id": "20250319035620D4",
-            "name": "SegTrack",
-            "type": "Dataset",
-            "attributes": {
-                "sequences": 6,
-                "resolution": "low",
-                "content": [
-                    "humans",
-                    "animals"
-                ]
-            }
-        },
-        {
-            "id": "20250319035620D5",
-            "name": "VSB100",
-            "type": "Dataset",
-            "attributes": {
-                "purpose": "over-segmentation and motion-segmentation tasks"
-            }
-        },
-        {
-            "id": "20250319035620T1",
-            "name": "video object segmentation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319035620T2",
-            "name": "motion segmentation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319035620T3",
-            "name": "over-segmentation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319035620T4",
-            "name": "salient object detection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319035620T5",
-            "name": "object tracking",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319035620T6",
-            "name": "benchmarking",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319035620T7",
-            "name": "contour accuracy evaluation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319035620T8",
-            "name": "temporal coherence evaluation",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319035620D1",
-            "head": "DAVIS (Densely Annotated VIdeo Segmentation)",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319035620P1",
-            "tail": "A Benchmark Dataset and Evaluation Methodology for Video Object Segmentation",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319035620D1",
-            "head": "DAVIS (Densely Annotated VIdeo Segmentation)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035620T1",
-            "tail": "video object segmentation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319035620D1",
-            "head": "DAVIS (Densely Annotated VIdeo Segmentation)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035620T6",
-            "tail": "benchmarking",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319035620D1",
-            "head": "DAVIS (Densely Annotated VIdeo Segmentation)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035620T7",
-            "tail": "contour accuracy evaluation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319035620D1",
-            "head": "DAVIS (Densely Annotated VIdeo Segmentation)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035620T8",
-            "tail": "temporal coherence evaluation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319035620D2",
-            "head": "Freiburg-Berkeley Motion Segmentation dataset (MoSeg)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035620T2",
-            "tail": "motion segmentation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319035620D3",
-            "head": "Berkeley Video Segmentation Dataset (BVSD)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035620T3",
-            "tail": "over-segmentation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319035620D4",
-            "head": "SegTrack",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035620T1",
-            "tail": "video object segmentation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319035620T4",
-            "head": "salient object detection",
-            "head_type": "Task",
-            "relation": "has_subtask",
-            "tail_id": "20250319035620T5",
-            "tail": "object tracking",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319035620P1",
+      "name": "A Benchmark Dataset and Evaluation Methodology for Video Object Segmentation",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "F. Perazzi",
+          "J. Pont-Tuset",
+          "B. McWilliams",
+          "L. Van Gool",
+          "M. Gross",
+          "A. Sorkine-Hornung"
+        ],
+        "institution": "ETH Zurich, Disney Research"
+      }
+    },
+    {
+      "id": "20250319035620D1",
+      "name": "DAVIS (Densely Annotated VIdeo Segmentation)",
+      "type": "Dataset",
+      "attributes": {
+        "resolution": "Full HD 1080p",
+        "sequences": 50,
+        "annotated_frames": 3455,
+        "challenges": [
+          "occlusions",
+          "motion-blur",
+          "appearance changes"
+        ],
+        "content_classes": [
+          "humans",
+          "animals",
+          "vehicles",
+          "objects"
+        ]
+      }
+    },
+    {
+      "id": "20250319035620D2",
+      "name": "Freiburg-Berkeley Motion Segmentation dataset (MoSeg)",
+      "type": "Dataset",
+      "attributes": {
+        "resolution": "low",
+        "annotation_type": "sparse subset of frames"
+      }
+    },
+    {
+      "id": "20250319035620D3",
+      "name": "Berkeley Video Segmentation Dataset (BVSD)",
+      "type": "Dataset",
+      "attributes": {
+        "sequences": 100,
+        "annotation_type": "fragmented segments"
+      }
+    },
+    {
+      "id": "20250319035620D4",
+      "name": "SegTrack",
+      "type": "Dataset",
+      "attributes": {
+        "sequences": 6,
+        "resolution": "low",
+        "content": [
+          "humans",
+          "animals"
+        ]
+      }
+    },
+    {
+      "id": "20250319035620D5",
+      "name": "VSB100",
+      "type": "Dataset",
+      "attributes": {
+        "purpose": "over-segmentation and motion-segmentation tasks"
+      }
+    },
+    {
+      "id": "20250319035620T1",
+      "name": "video object segmentation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319035620T2",
+      "name": "motion segmentation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319035620T3",
+      "name": "over-segmentation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319035620T4",
+      "name": "salient object detection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319035620T5",
+      "name": "object tracking",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319035620T6",
+      "name": "benchmarking",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319035620T7",
+      "name": "contour accuracy evaluation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319035620T8",
+      "name": "temporal coherence evaluation",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319035620D1",
+      "head": "DAVIS (Densely Annotated VIdeo Segmentation)",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319035620P1",
+      "tail": "A Benchmark Dataset and Evaluation Methodology for Video Object Segmentation",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319035620D1",
+      "head": "DAVIS (Densely Annotated VIdeo Segmentation)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035620T1",
+      "tail": "video object segmentation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319035620D1",
+      "head": "DAVIS (Densely Annotated VIdeo Segmentation)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035620T6",
+      "tail": "benchmarking",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319035620D1",
+      "head": "DAVIS (Densely Annotated VIdeo Segmentation)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035620T7",
+      "tail": "contour accuracy evaluation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319035620D1",
+      "head": "DAVIS (Densely Annotated VIdeo Segmentation)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035620T8",
+      "tail": "temporal coherence evaluation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319035620D2",
+      "head": "Freiburg-Berkeley Motion Segmentation dataset (MoSeg)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035620T2",
+      "tail": "motion segmentation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319035620D3",
+      "head": "Berkeley Video Segmentation Dataset (BVSD)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035620T3",
+      "tail": "over-segmentation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319035620D4",
+      "head": "SegTrack",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035620T1",
+      "tail": "video object segmentation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319035620T4",
+      "head": "salient object detection",
+      "head_type": "Task",
+      "relation": "has_subtask",
+      "tail_id": "20250319035620T5",
+      "tail": "object tracking",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

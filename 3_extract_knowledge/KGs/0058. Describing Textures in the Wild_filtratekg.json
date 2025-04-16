@@ -1,232 +1,232 @@
 {
-    "entities": [
-        {
-            "id": "20250319023610P1",
-            "name": "Describing Textures in the Wild",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Mircea Cimpoi",
-                    "Subhransu Maji",
-                    "Iasonas Kokkinos",
-                    "Sammy Mohamed",
-                    "Andrea Vedaldi"
-                ],
-                "institutions": [
-                    "University of Oxford",
-                    "Toyota Technological Institute, Chicago (TTIC)",
-                    "Ecole Centrale Paris",
-                    "Stony Brook University"
-                ]
-            }
-        },
-        {
-            "id": "20250319023610D1",
-            "name": "Describable Textures Dataset (DTD)",
-            "type": "Dataset",
-            "attributes": {
-                "size": "5,640 images",
-                "attributes": 47,
-                "splits": "10 preset splits",
-                "collection_method": "web images",
-                "annotation_method": "crowd-sourced with co-occurrence statistics"
-            }
-        },
-        {
-            "id": "20250319023610D2",
-            "name": "Flickr Material Dataset (FMD)",
-            "type": "Dataset",
-            "attributes": {
-                "collection": "in the wild",
-                "purpose": "material recognition"
-            }
-        },
-        {
-            "id": "20250319023610D3",
-            "name": "KTH-TIPS-2b",
-            "type": "Dataset",
-            "attributes": {
-                "purpose": "material recognition under variable conditions"
-            }
-        },
-        {
-            "id": "20250319023610D4",
-            "name": "CUReT",
-            "type": "Dataset",
-            "attributes": {
-                "purpose": "material recognition"
-            }
-        },
-        {
-            "id": "20250319023610D5",
-            "name": "UIUC",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319023610D6",
-            "name": "UMD",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319023610D7",
-            "name": "Outex",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319023610D8",
-            "name": "Drexel Texture Database",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319023610T1",
-            "name": "texture description",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319023610T2",
-            "name": "material recognition",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319023610T3",
-            "name": "semantic search",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319023610T4",
-            "name": "learning from textual descriptions",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319023610T5",
-            "name": "image understanding",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319023610T6",
-            "name": "object detection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319023610T7",
-            "name": "texture classification",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319023610T8",
-            "name": "benchmarking",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319023610T9",
-            "name": "attribute-based clustering",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319023610D1",
-            "head": "Describable Textures Dataset (DTD)",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319023610P1",
-            "tail": "Describing Textures in the Wild",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319023610D1",
-            "head": "Describable Textures Dataset (DTD)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319023610T1",
-            "tail": "texture description",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319023610D1",
-            "head": "Describable Textures Dataset (DTD)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319023610T2",
-            "tail": "material recognition",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319023610D1",
-            "head": "Describable Textures Dataset (DTD)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319023610T3",
-            "tail": "semantic search",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319023610D1",
-            "head": "Describable Textures Dataset (DTD)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319023610T4",
-            "tail": "learning from textual descriptions",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319023610D1",
-            "head": "Describable Textures Dataset (DTD)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319023610T5",
-            "tail": "image understanding",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319023610D1",
-            "head": "Describable Textures Dataset (DTD)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319023610T6",
-            "tail": "object detection",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319023610D1",
-            "head": "Describable Textures Dataset (DTD)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319023610T7",
-            "tail": "texture classification",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319023610D1",
-            "head": "Describable Textures Dataset (DTD)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319023610T8",
-            "tail": "benchmarking",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319023610D1",
-            "head": "Describable Textures Dataset (DTD)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319023610T9",
-            "tail": "attribute-based clustering",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319023610P1",
+      "name": "Describing Textures in the Wild",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Mircea Cimpoi",
+          "Subhransu Maji",
+          "Iasonas Kokkinos",
+          "Sammy Mohamed",
+          "Andrea Vedaldi"
+        ],
+        "institutions": [
+          "University of Oxford",
+          "Toyota Technological Institute, Chicago (TTIC)",
+          "Ecole Centrale Paris",
+          "Stony Brook University"
+        ]
+      }
+    },
+    {
+      "id": "20250319023610D1",
+      "name": "Describable Textures Dataset (DTD)",
+      "type": "Dataset",
+      "attributes": {
+        "size": "5,640 images",
+        "attributes": 47,
+        "splits": "10 preset splits",
+        "collection_method": "web images",
+        "annotation_method": "crowd-sourced with co-occurrence statistics"
+      }
+    },
+    {
+      "id": "20250319023610D2",
+      "name": "Flickr Material Dataset (FMD)",
+      "type": "Dataset",
+      "attributes": {
+        "collection": "in the wild",
+        "purpose": "material recognition"
+      }
+    },
+    {
+      "id": "20250319023610D3",
+      "name": "KTH-TIPS-2b",
+      "type": "Dataset",
+      "attributes": {
+        "purpose": "material recognition under variable conditions"
+      }
+    },
+    {
+      "id": "20250319023610D4",
+      "name": "CUReT",
+      "type": "Dataset",
+      "attributes": {
+        "purpose": "material recognition"
+      }
+    },
+    {
+      "id": "20250319023610D5",
+      "name": "UIUC",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319023610D6",
+      "name": "UMD",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319023610D7",
+      "name": "Outex",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319023610D8",
+      "name": "Drexel Texture Database",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319023610T1",
+      "name": "texture description",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319023610T2",
+      "name": "material recognition",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319023610T3",
+      "name": "semantic search",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319023610T4",
+      "name": "learning from textual descriptions",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319023610T5",
+      "name": "image understanding",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319023610T6",
+      "name": "object detection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319023610T7",
+      "name": "texture classification",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319023610T8",
+      "name": "benchmarking",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319023610T9",
+      "name": "attribute-based clustering",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319023610D1",
+      "head": "Describable Textures Dataset (DTD)",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319023610P1",
+      "tail": "Describing Textures in the Wild",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319023610D1",
+      "head": "Describable Textures Dataset (DTD)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319023610T1",
+      "tail": "texture description",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319023610D1",
+      "head": "Describable Textures Dataset (DTD)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319023610T2",
+      "tail": "material recognition",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319023610D1",
+      "head": "Describable Textures Dataset (DTD)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319023610T3",
+      "tail": "semantic search",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319023610D1",
+      "head": "Describable Textures Dataset (DTD)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319023610T4",
+      "tail": "learning from textual descriptions",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319023610D1",
+      "head": "Describable Textures Dataset (DTD)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319023610T5",
+      "tail": "image understanding",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319023610D1",
+      "head": "Describable Textures Dataset (DTD)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319023610T6",
+      "tail": "object detection",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319023610D1",
+      "head": "Describable Textures Dataset (DTD)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319023610T7",
+      "tail": "texture classification",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319023610D1",
+      "head": "Describable Textures Dataset (DTD)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319023610T8",
+      "tail": "benchmarking",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319023610D1",
+      "head": "Describable Textures Dataset (DTD)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319023610T9",
+      "tail": "attribute-based clustering",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

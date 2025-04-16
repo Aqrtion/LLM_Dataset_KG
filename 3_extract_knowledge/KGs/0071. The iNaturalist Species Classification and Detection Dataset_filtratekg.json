@@ -1,201 +1,201 @@
 {
-    "entities": [
-        {
-            "id": "20250319031035P1",
-            "name": "The iNaturalist Species Classification and Detection Dataset",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Grant Van Horn",
-                    "Oisin Mac Aodha",
-                    "Yang Song",
-                    "Yin Cui",
-                    "Chen Sun",
-                    "Alex Shepard",
-                    "Hartwig Adam",
-                    "Pietro Perona",
-                    "Serge Belongie"
-                ],
-                "institutions": [
-                    "Caltech",
-                    "Google",
-                    "Cornell Tech",
-                    "iNaturalist"
-                ]
-            }
-        },
-        {
-            "id": "20250319031035D1",
-            "name": "iNat2017",
-            "type": "Dataset",
-            "attributes": {
-                "size": "859,000 images",
-                "species_count": "5,000+",
-                "class_imbalance": "long-tail distribution",
-                "bounding_boxes": "560,000+",
-                "verification": "citizen scientist consensus",
-                "split": "579,184 train, 95,986 validation, 182,707 test"
-            }
-        },
-        {
-            "id": "20250319031035D2",
-            "name": "ImageNet",
-            "type": "Dataset",
-            "attributes": {
-                "fine_grained_classes": "bird species, dog breeds"
-            }
-        },
-        {
-            "id": "20250319031035D3",
-            "name": "CUB 200-2011",
-            "type": "Dataset",
-            "attributes": {
-                "domain": "bird species"
-            }
-        },
-        {
-            "id": "20250319031035D4",
-            "name": "Caltech-ucsd birds-200-2011",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319031035D5",
-            "name": "MS-COCO",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319031035D6",
-            "name": "OpenImages",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319031035R1",
-            "name": "www.inaturalist.org",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319031035T1",
-            "name": "species classification",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319031035T2",
-            "name": "species detection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319031035T3",
-            "name": "fine-grained image categorization",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319031035T4",
-            "name": "biodiversity monitoring",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319031035T5",
-            "name": "object detection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319031035T6",
-            "name": "low-shot learning",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319031035D1",
-            "head": "iNat2017",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319031035R1",
-            "tail": "www.inaturalist.org",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319031035D1",
-            "head": "iNat2017",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319031035P1",
-            "tail": "The iNaturalist Species Classification and Detection Dataset",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319031035D1",
-            "head": "iNat2017",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319031035T1",
-            "tail": "species classification",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319031035D1",
-            "head": "iNat2017",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319031035T2",
-            "tail": "species detection",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319031035D1",
-            "head": "iNat2017",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319031035T3",
-            "tail": "fine-grained image categorization",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319031035D1",
-            "head": "iNat2017",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319031035T4",
-            "tail": "biodiversity monitoring",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319031035D1",
-            "head": "iNat2017",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319031035T5",
-            "tail": "object detection",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319031035D1",
-            "head": "iNat2017",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319031035T6",
-            "tail": "low-shot learning",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319031035D2",
-            "head": "ImageNet",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319031035T3",
-            "tail": "fine-grained image categorization",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319031035P1",
+      "name": "The iNaturalist Species Classification and Detection Dataset",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Grant Van Horn",
+          "Oisin Mac Aodha",
+          "Yang Song",
+          "Yin Cui",
+          "Chen Sun",
+          "Alex Shepard",
+          "Hartwig Adam",
+          "Pietro Perona",
+          "Serge Belongie"
+        ],
+        "institutions": [
+          "Caltech",
+          "Google",
+          "Cornell Tech",
+          "iNaturalist"
+        ]
+      }
+    },
+    {
+      "id": "20250319031035D1",
+      "name": "iNat2017",
+      "type": "Dataset",
+      "attributes": {
+        "size": "859,000 images",
+        "species_count": "5,000+",
+        "class_imbalance": "long-tail distribution",
+        "bounding_boxes": "560,000+",
+        "verification": "citizen scientist consensus",
+        "split": "579,184 train, 95,986 validation, 182,707 test"
+      }
+    },
+    {
+      "id": "20250319031035D2",
+      "name": "ImageNet",
+      "type": "Dataset",
+      "attributes": {
+        "fine_grained_classes": "bird species, dog breeds"
+      }
+    },
+    {
+      "id": "20250319031035D3",
+      "name": "CUB 200-2011",
+      "type": "Dataset",
+      "attributes": {
+        "domain": "bird species"
+      }
+    },
+    {
+      "id": "20250319031035D4",
+      "name": "Caltech-ucsd birds-200-2011",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319031035D5",
+      "name": "MS-COCO",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319031035D6",
+      "name": "OpenImages",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319031035R1",
+      "name": "www.inaturalist.org",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319031035T1",
+      "name": "species classification",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319031035T2",
+      "name": "species detection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319031035T3",
+      "name": "fine-grained image categorization",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319031035T4",
+      "name": "biodiversity monitoring",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319031035T5",
+      "name": "object detection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319031035T6",
+      "name": "low-shot learning",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319031035D1",
+      "head": "iNat2017",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319031035R1",
+      "tail": "www.inaturalist.org",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319031035D1",
+      "head": "iNat2017",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319031035P1",
+      "tail": "The iNaturalist Species Classification and Detection Dataset",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319031035D1",
+      "head": "iNat2017",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319031035T1",
+      "tail": "species classification",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319031035D1",
+      "head": "iNat2017",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319031035T2",
+      "tail": "species detection",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319031035D1",
+      "head": "iNat2017",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319031035T3",
+      "tail": "fine-grained image categorization",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319031035D1",
+      "head": "iNat2017",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319031035T4",
+      "tail": "biodiversity monitoring",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319031035D1",
+      "head": "iNat2017",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319031035T5",
+      "tail": "object detection",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319031035D1",
+      "head": "iNat2017",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319031035T6",
+      "tail": "low-shot learning",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319031035D2",
+      "head": "ImageNet",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319031035T3",
+      "tail": "fine-grained image categorization",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

@@ -1,178 +1,178 @@
 {
-    "entities": [
-        {
-            "id": "20250319021525P1",
-            "name": "A Style-Based Generator Architecture for Generative Adversarial Networks",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Tero Karras",
-                    "Samuli Laine",
-                    "Timo Aila"
-                ],
-                "institution": "NVIDIA"
-            }
-        },
-        {
-            "id": "20250319021525D1",
-            "name": "Flickr-Faces-HQ (FFHQ)",
-            "type": "Dataset",
-            "attributes": {
-                "size": "70,000 images",
-                "resolution": "1024x1024",
-                "variation": "age, ethnicity, background, accessories",
-                "collection_method": "Flickr crawling with Mechanical Turk pruning",
-                "alignment": "automatic"
-            }
-        },
-        {
-            "id": "20250319021525D2",
-            "name": "CELEBA-HQ",
-            "type": "Dataset",
-            "attributes": {
-                "resolution": "1024x1024"
-            }
-        },
-        {
-            "id": "20250319021525D3",
-            "name": "LSUN BEDROOM",
-            "type": "Dataset",
-            "attributes": {
-                "resolution": "256x256"
-            }
-        },
-        {
-            "id": "20250319021525D4",
-            "name": "LSUN CAR",
-            "type": "Dataset",
-            "attributes": {
-                "resolution": "512x384"
-            }
-        },
-        {
-            "id": "20250319021525D5",
-            "name": "LSUN CAT",
-            "type": "Dataset",
-            "attributes": {
-                "resolution": "256x256"
-            }
-        },
-        {
-            "id": "20250319021525R1",
-            "name": "https://github.com/NVlabs/ffhq-dataset",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319021525T1",
-            "name": "image synthesis",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319021525T2",
-            "name": "latent space interpolation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319021525T3",
-            "name": "disentanglement of latent factors",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319021525T4",
-            "name": "style transfer",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319021525T5",
-            "name": "generative model training",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319021525T6",
-            "name": "image quality evaluation",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319021525D1",
-            "head": "Flickr-Faces-HQ (FFHQ)",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319021525R1",
-            "tail": "https://github.com/NVlabs/ffhq-dataset",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319021525D1",
-            "head": "Flickr-Faces-HQ (FFHQ)",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319021525P1",
-            "tail": "A Style-Based Generator Architecture for Generative Adversarial Networks",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319021525D1",
-            "head": "Flickr-Faces-HQ (FFHQ)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319021525T1",
-            "tail": "image synthesis",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319021525D1",
-            "head": "Flickr-Faces-HQ (FFHQ)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319021525T2",
-            "tail": "latent space interpolation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319021525D1",
-            "head": "Flickr-Faces-HQ (FFHQ)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319021525T3",
-            "tail": "disentanglement of latent factors",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319021525D1",
-            "head": "Flickr-Faces-HQ (FFHQ)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319021525T4",
-            "tail": "style transfer",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319021525D1",
-            "head": "Flickr-Faces-HQ (FFHQ)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319021525T5",
-            "tail": "generative model training",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319021525D1",
-            "head": "Flickr-Faces-HQ (FFHQ)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319021525T6",
-            "tail": "image quality evaluation",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319021525P1",
+      "name": "A Style-Based Generator Architecture for Generative Adversarial Networks",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Tero Karras",
+          "Samuli Laine",
+          "Timo Aila"
+        ],
+        "institution": "NVIDIA"
+      }
+    },
+    {
+      "id": "20250319021525D1",
+      "name": "Flickr-Faces-HQ (FFHQ)",
+      "type": "Dataset",
+      "attributes": {
+        "size": "70,000 images",
+        "resolution": "1024x1024",
+        "variation": "age, ethnicity, background, accessories",
+        "collection_method": "Flickr crawling with Mechanical Turk pruning",
+        "alignment": "automatic"
+      }
+    },
+    {
+      "id": "20250319021525D2",
+      "name": "CELEBA-HQ",
+      "type": "Dataset",
+      "attributes": {
+        "resolution": "1024x1024"
+      }
+    },
+    {
+      "id": "20250319021525D3",
+      "name": "LSUN BEDROOM",
+      "type": "Dataset",
+      "attributes": {
+        "resolution": "256x256"
+      }
+    },
+    {
+      "id": "20250319021525D4",
+      "name": "LSUN CAR",
+      "type": "Dataset",
+      "attributes": {
+        "resolution": "512x384"
+      }
+    },
+    {
+      "id": "20250319021525D5",
+      "name": "LSUN CAT",
+      "type": "Dataset",
+      "attributes": {
+        "resolution": "256x256"
+      }
+    },
+    {
+      "id": "20250319021525R1",
+      "name": "https://github.com/NVlabs/ffhq-dataset",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319021525T1",
+      "name": "image synthesis",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319021525T2",
+      "name": "latent space interpolation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319021525T3",
+      "name": "disentanglement of latent factors",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319021525T4",
+      "name": "style transfer",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319021525T5",
+      "name": "generative model training",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319021525T6",
+      "name": "image quality evaluation",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319021525D1",
+      "head": "Flickr-Faces-HQ (FFHQ)",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319021525R1",
+      "tail": "https://github.com/NVlabs/ffhq-dataset",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319021525D1",
+      "head": "Flickr-Faces-HQ (FFHQ)",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319021525P1",
+      "tail": "A Style-Based Generator Architecture for Generative Adversarial Networks",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319021525D1",
+      "head": "Flickr-Faces-HQ (FFHQ)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319021525T1",
+      "tail": "image synthesis",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319021525D1",
+      "head": "Flickr-Faces-HQ (FFHQ)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319021525T2",
+      "tail": "latent space interpolation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319021525D1",
+      "head": "Flickr-Faces-HQ (FFHQ)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319021525T3",
+      "tail": "disentanglement of latent factors",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319021525D1",
+      "head": "Flickr-Faces-HQ (FFHQ)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319021525T4",
+      "tail": "style transfer",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319021525D1",
+      "head": "Flickr-Faces-HQ (FFHQ)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319021525T5",
+      "tail": "generative model training",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319021525D1",
+      "head": "Flickr-Faces-HQ (FFHQ)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319021525T6",
+      "tail": "image quality evaluation",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

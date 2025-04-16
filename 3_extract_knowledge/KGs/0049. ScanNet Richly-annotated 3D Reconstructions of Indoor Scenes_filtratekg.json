@@ -1,174 +1,174 @@
 {
-    "entities": [
-        {
-            "id": "20250319021337P1",
-            "name": "ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Angela Dai",
-                    "Angel X. Chang",
-                    "Manolis Savva",
-                    "Maciej Halber",
-                    "Thomas Funkhouser",
-                    "Matthias Nießner"
-                ],
-                "institutions": [
-                    "Stanford University",
-                    "Princeton University",
-                    "Technical University of Munich"
-                ]
-            }
-        },
-        {
-            "id": "20250319021337D1",
-            "name": "ScanNet",
-            "type": "Dataset",
-            "attributes": {
-                "size": "2.5M views in 1513 scenes",
-                "annotations": [
-                    "3D camera poses",
-                    "surface reconstructions",
-                    "semantic segmentations",
-                    "CAD model alignments"
-                ],
-                "collection_method": "Amazon Mechanical Turk",
-                "resolution": "RGB (1296×968), Depth (640×480)",
-                "sensor": "Structure Sensor (iPad-mounted)"
-            }
-        },
-        {
-            "id": "20250319021337D2",
-            "name": "NYUv2",
-            "type": "Dataset",
-            "attributes": {
-                "size": "464 scans",
-                "annotations": "2D polygons",
-                "resolution": "RGB-D"
-            }
-        },
-        {
-            "id": "20250319021337D3",
-            "name": "SUN3D",
-            "type": "Dataset",
-            "attributes": {
-                "size": "415 sequences",
-                "annotations": "Estimated camera poses"
-            }
-        },
-        {
-            "id": "20250319021337D4",
-            "name": "SUNRGB-D",
-            "type": "Dataset",
-            "attributes": {
-                "size": "10,335 frames",
-                "annotations": "2D polygons + 3D bounding boxes"
-            }
-        },
-        {
-            "id": "20250319021337D5",
-            "name": "SceneNN",
-            "type": "Dataset",
-            "attributes": {
-                "size": "100 scans",
-                "annotations": "Dense 3D expert annotations"
-            }
-        },
-        {
-            "id": "20250319021337D6",
-            "name": "ShapeNetCore",
-            "type": "Dataset",
-            "attributes": {
-                "content": "55K CAD models",
-                "use_case": "3D model retrieval"
-            }
-        },
-        {
-            "id": "20250319021337R1",
-            "name": "http://www.scan-net.org",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319021337T1",
-            "name": "3D object classification",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319021337T2",
-            "name": "semantic voxel labeling",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319021337T3",
-            "name": "CAD model retrieval",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319021337T4",
-            "name": "scene understanding",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319021337D1",
-            "head": "ScanNet",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319021337R1",
-            "tail": "http://www.scan-net.org",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319021337D1",
-            "head": "ScanNet",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319021337P1",
-            "tail": "ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319021337D1",
-            "head": "ScanNet",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319021337T1",
-            "tail": "3D object classification",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319021337D1",
-            "head": "ScanNet",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319021337T2",
-            "tail": "semantic voxel labeling",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319021337D1",
-            "head": "ScanNet",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319021337T3",
-            "tail": "CAD model retrieval",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319021337D1",
-            "head": "ScanNet",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319021337T4",
-            "tail": "scene understanding",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319021337P1",
+      "name": "ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Angela Dai",
+          "Angel X. Chang",
+          "Manolis Savva",
+          "Maciej Halber",
+          "Thomas Funkhouser",
+          "Matthias Nießner"
+        ],
+        "institutions": [
+          "Stanford University",
+          "Princeton University",
+          "Technical University of Munich"
+        ]
+      }
+    },
+    {
+      "id": "20250319021337D1",
+      "name": "ScanNet",
+      "type": "Dataset",
+      "attributes": {
+        "size": "2.5M views in 1513 scenes",
+        "annotations": [
+          "3D camera poses",
+          "surface reconstructions",
+          "semantic segmentations",
+          "CAD model alignments"
+        ],
+        "collection_method": "Amazon Mechanical Turk",
+        "resolution": "RGB (1296×968), Depth (640×480)",
+        "sensor": "Structure Sensor (iPad-mounted)"
+      }
+    },
+    {
+      "id": "20250319021337D2",
+      "name": "NYUv2",
+      "type": "Dataset",
+      "attributes": {
+        "size": "464 scans",
+        "annotations": "2D polygons",
+        "resolution": "RGB-D"
+      }
+    },
+    {
+      "id": "20250319021337D3",
+      "name": "SUN3D",
+      "type": "Dataset",
+      "attributes": {
+        "size": "415 sequences",
+        "annotations": "Estimated camera poses"
+      }
+    },
+    {
+      "id": "20250319021337D4",
+      "name": "SUNRGB-D",
+      "type": "Dataset",
+      "attributes": {
+        "size": "10,335 frames",
+        "annotations": "2D polygons + 3D bounding boxes"
+      }
+    },
+    {
+      "id": "20250319021337D5",
+      "name": "SceneNN",
+      "type": "Dataset",
+      "attributes": {
+        "size": "100 scans",
+        "annotations": "Dense 3D expert annotations"
+      }
+    },
+    {
+      "id": "20250319021337D6",
+      "name": "ShapeNetCore",
+      "type": "Dataset",
+      "attributes": {
+        "content": "55K CAD models",
+        "use_case": "3D model retrieval"
+      }
+    },
+    {
+      "id": "20250319021337R1",
+      "name": "http://www.scan-net.org",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319021337T1",
+      "name": "3D object classification",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319021337T2",
+      "name": "semantic voxel labeling",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319021337T3",
+      "name": "CAD model retrieval",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319021337T4",
+      "name": "scene understanding",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319021337D1",
+      "head": "ScanNet",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319021337R1",
+      "tail": "http://www.scan-net.org",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319021337D1",
+      "head": "ScanNet",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319021337P1",
+      "tail": "ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319021337D1",
+      "head": "ScanNet",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319021337T1",
+      "tail": "3D object classification",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319021337D1",
+      "head": "ScanNet",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319021337T2",
+      "tail": "semantic voxel labeling",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319021337D1",
+      "head": "ScanNet",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319021337T3",
+      "tail": "CAD model retrieval",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319021337D1",
+      "head": "ScanNet",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319021337T4",
+      "tail": "scene understanding",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

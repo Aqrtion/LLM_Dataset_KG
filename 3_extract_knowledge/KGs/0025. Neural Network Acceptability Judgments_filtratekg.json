@@ -1,142 +1,142 @@
 {
-    "entities": [
-        {
-            "id": "20250319004913P1",
-            "name": "Neural Network Acceptability Judgments",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Alex Warstadt",
-                    "Amanpreet Singh",
-                    "Samuel R. Bowman"
-                ],
-                "institution": "New York University"
-            }
-        },
-        {
-            "id": "20250319004913D1",
-            "name": "Corpus of Linguistic Acceptability (CoLA)",
-            "type": "Dataset",
-            "attributes": {
-                "size": "10,657 sentences",
-                "labels": "grammatical/ungrammatical",
-                "sources": "linguistics literature",
-                "splits": "in-domain, out-of-domain"
-            }
-        },
-        {
-            "id": "20250319004913D2",
-            "name": "British National Corpus (BNC)",
-            "type": "Dataset",
-            "attributes": {
-                "size": "100 million tokens",
-                "language": "English"
-            }
-        },
-        {
-            "id": "20250319004913R1",
-            "name": "https://nyu-mll.github.io/CoLA/",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319004913T1",
-            "name": "acceptability classification",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319004913T2",
-            "name": "grammatical knowledge evaluation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319004913T3",
-            "name": "unsupervised language modeling",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319004913T4",
-            "name": "transfer learning",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319004913T5",
-            "name": "syntactic and semantic phenomena analysis",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319004913T6",
-            "name": "real/fake sentence discrimination",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319004913T7",
-            "name": "language model pretraining",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319004913D1",
-            "head": "Corpus of Linguistic Acceptability (CoLA)",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319004913P1",
-            "tail": "Neural Network Acceptability Judgments",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319004913D1",
-            "head": "Corpus of Linguistic Acceptability (CoLA)",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319004913R1",
-            "tail": "https://nyu-mll.github.io/CoLA/",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319004913D1",
-            "head": "Corpus of Linguistic Acceptability (CoLA)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319004913T1",
-            "tail": "acceptability classification",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319004913D1",
-            "head": "Corpus of Linguistic Acceptability (CoLA)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319004913T2",
-            "tail": "grammatical knowledge evaluation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319004913D2",
-            "head": "British National Corpus (BNC)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319004913T3",
-            "tail": "unsupervised language modeling",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319004913D2",
-            "head": "British National Corpus (BNC)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319004913T7",
-            "tail": "language model pretraining",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319004913P1",
+      "name": "Neural Network Acceptability Judgments",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Alex Warstadt",
+          "Amanpreet Singh",
+          "Samuel R. Bowman"
+        ],
+        "institution": "New York University"
+      }
+    },
+    {
+      "id": "20250319004913D1",
+      "name": "Corpus of Linguistic Acceptability (CoLA)",
+      "type": "Dataset",
+      "attributes": {
+        "size": "10,657 sentences",
+        "labels": "grammatical/ungrammatical",
+        "sources": "linguistics literature",
+        "splits": "in-domain, out-of-domain"
+      }
+    },
+    {
+      "id": "20250319004913D2",
+      "name": "British National Corpus (BNC)",
+      "type": "Dataset",
+      "attributes": {
+        "size": "100 million tokens",
+        "language": "English"
+      }
+    },
+    {
+      "id": "20250319004913R1",
+      "name": "https://nyu-mll.github.io/CoLA/",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319004913T1",
+      "name": "acceptability classification",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319004913T2",
+      "name": "grammatical knowledge evaluation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319004913T3",
+      "name": "unsupervised language modeling",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319004913T4",
+      "name": "transfer learning",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319004913T5",
+      "name": "syntactic and semantic phenomena analysis",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319004913T6",
+      "name": "real/fake sentence discrimination",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319004913T7",
+      "name": "language model pretraining",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319004913D1",
+      "head": "Corpus of Linguistic Acceptability (CoLA)",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319004913P1",
+      "tail": "Neural Network Acceptability Judgments",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319004913D1",
+      "head": "Corpus of Linguistic Acceptability (CoLA)",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319004913R1",
+      "tail": "https://nyu-mll.github.io/CoLA/",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319004913D1",
+      "head": "Corpus of Linguistic Acceptability (CoLA)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319004913T1",
+      "tail": "acceptability classification",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319004913D1",
+      "head": "Corpus of Linguistic Acceptability (CoLA)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319004913T2",
+      "tail": "grammatical knowledge evaluation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319004913D2",
+      "head": "British National Corpus (BNC)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319004913T3",
+      "tail": "unsupervised language modeling",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319004913D2",
+      "head": "British National Corpus (BNC)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319004913T7",
+      "tail": "language model pretraining",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

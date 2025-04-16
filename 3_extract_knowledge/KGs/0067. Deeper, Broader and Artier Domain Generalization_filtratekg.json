@@ -1,241 +1,241 @@
 {
-    "entities": [
-        {
-            "id": "20250319025924P1",
-            "name": "Deeper, Broader and Artier Domain Generalization",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Da Li",
-                    "Yongxin Yang",
-                    "Yi-Zhe Song",
-                    "Timothy M. Hospedales"
-                ],
-                "institution": "Queen Mary University of London, University of Edinburgh"
-            }
-        },
-        {
-            "id": "20250319025924D1",
-            "name": "PACS",
-            "type": "Dataset",
-            "attributes": {
-                "domains": [
-                    "Photo",
-                    "Art painting",
-                    "Cartoon",
-                    "Sketch"
-                ],
-                "size": "9991 images",
-                "categories": [
-                    "dog",
-                    "guitar",
-                    "horse",
-                    "house",
-                    "person",
-                    "elephant",
-                    "giraffe"
-                ],
-                "composition": "Intersection of Caltech256, Sketchy, TU-Berlin, and Google Images"
-            }
-        },
-        {
-            "id": "20250319025924D2",
-            "name": "VLCS",
-            "type": "Dataset",
-            "attributes": {
-                "domains": [
-                    "Caltech",
-                    "LabelMe",
-                    "Pascal VOC 2007",
-                    "SUN09"
-                ],
-                "categories": [
-                    "bird",
-                    "car",
-                    "chair",
-                    "dog",
-                    "person"
-                ]
-            }
-        },
-        {
-            "id": "20250319025924D3",
-            "name": "OfficeCaltech",
-            "type": "Dataset",
-            "attributes": {
-                "domains": [
-                    "Amazon",
-                    "Webcam",
-                    "DSLR",
-                    "Caltech 101"
-                ]
-            }
-        },
-        {
-            "id": "20250319025924D4",
-            "name": "Caltech256",
-            "type": "Dataset",
-            "attributes": {
-                "number_of_categories": 256
-            }
-        },
-        {
-            "id": "20250319025924D5",
-            "name": "Sketchy",
-            "type": "Dataset",
-            "attributes": {
-                "domains": [
-                    "Photo",
-                    "Sketch"
-                ],
-                "source": "Intersection with TU-Berlin and Google Images"
-            }
-        },
-        {
-            "id": "20250319025924D6",
-            "name": "TU-Berlin",
-            "type": "Dataset",
-            "attributes": {
-                "content_type": "Sketch images"
-            }
-        },
-        {
-            "id": "20250319025924R1",
-            "name": "http://sketchx.eecs.qmul.ac.uk/",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319025924T1",
-            "name": "domain generalization",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319025924T2",
-            "name": "domain adaptation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319025924T3",
-            "name": "instance-level matching",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319025924T4",
-            "name": "transferring object recognizers",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319025924T5",
-            "name": "non-photorealistic image analysis",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319025924D1",
-            "head": "PACS",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319025924R1",
-            "tail": "http://sketchx.eecs.qmul.ac.uk/",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319025924D1",
-            "head": "PACS",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319025924P1",
-            "tail": "Deeper, Broader and Artier Domain Generalization",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319025924D1",
-            "head": "PACS",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319025924T1",
-            "tail": "domain generalization",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319025924D1",
-            "head": "PACS",
-            "head_type": "Dataset",
-            "relation": "has_new_version",
-            "tail_id": "20250319025924D2",
-            "tail": "VLCS",
-            "tail_type": "Dataset"
-        },
-        {
-            "head_id": "20250319025924D1",
-            "head": "PACS",
-            "head_type": "Dataset",
-            "relation": "has_new_version",
-            "tail_id": "20250319025924D3",
-            "tail": "OfficeCaltech",
-            "tail_type": "Dataset"
-        },
-        {
-            "head_id": "20250319025924D2",
-            "head": "VLCS",
-            "head_type": "Dataset",
-            "relation": "composed_of",
-            "tail_id": "20250319025924D4",
-            "tail": "Caltech256",
-            "tail_type": "Dataset"
-        },
-        {
-            "head_id": "20250319025924D3",
-            "head": "OfficeCaltech",
-            "head_type": "Dataset",
-            "relation": "composed_of",
-            "tail_id": "20250319025924D4",
-            "tail": "Caltech256",
-            "tail_type": "Dataset"
-        },
-        {
-            "head_id": "20250319025924D5",
-            "head": "Sketchy",
-            "head_type": "Dataset",
-            "relation": "composed_of",
-            "tail_id": "20250319025924D6",
-            "tail": "TU-Berlin",
-            "tail_type": "Dataset"
-        },
-        {
-            "head_id": "20250319025924T1",
-            "head": "domain generalization",
-            "head_type": "Task",
-            "relation": "has_subtask",
-            "tail_id": "20250319025924T2",
-            "tail": "domain adaptation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319025924T5",
-            "head": "non-photorealistic image analysis",
-            "head_type": "Task",
-            "relation": "has_subtask",
-            "tail_id": "20250319025924T3",
-            "tail": "instance-level matching",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319025924T5",
-            "head": "non-photorealistic image analysis",
-            "head_type": "Task",
-            "relation": "has_subtask",
-            "tail_id": "20250319025924T4",
-            "tail": "transferring object recognizers",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319025924P1",
+      "name": "Deeper, Broader and Artier Domain Generalization",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Da Li",
+          "Yongxin Yang",
+          "Yi-Zhe Song",
+          "Timothy M. Hospedales"
+        ],
+        "institution": "Queen Mary University of London, University of Edinburgh"
+      }
+    },
+    {
+      "id": "20250319025924D1",
+      "name": "PACS",
+      "type": "Dataset",
+      "attributes": {
+        "domains": [
+          "Photo",
+          "Art painting",
+          "Cartoon",
+          "Sketch"
+        ],
+        "size": "9991 images",
+        "categories": [
+          "dog",
+          "guitar",
+          "horse",
+          "house",
+          "person",
+          "elephant",
+          "giraffe"
+        ],
+        "composition": "Intersection of Caltech256, Sketchy, TU-Berlin, and Google Images"
+      }
+    },
+    {
+      "id": "20250319025924D2",
+      "name": "VLCS",
+      "type": "Dataset",
+      "attributes": {
+        "domains": [
+          "Caltech",
+          "LabelMe",
+          "Pascal VOC 2007",
+          "SUN09"
+        ],
+        "categories": [
+          "bird",
+          "car",
+          "chair",
+          "dog",
+          "person"
+        ]
+      }
+    },
+    {
+      "id": "20250319025924D3",
+      "name": "OfficeCaltech",
+      "type": "Dataset",
+      "attributes": {
+        "domains": [
+          "Amazon",
+          "Webcam",
+          "DSLR",
+          "Caltech 101"
+        ]
+      }
+    },
+    {
+      "id": "20250319025924D4",
+      "name": "Caltech256",
+      "type": "Dataset",
+      "attributes": {
+        "number_of_categories": 256
+      }
+    },
+    {
+      "id": "20250319025924D5",
+      "name": "Sketchy",
+      "type": "Dataset",
+      "attributes": {
+        "domains": [
+          "Photo",
+          "Sketch"
+        ],
+        "source": "Intersection with TU-Berlin and Google Images"
+      }
+    },
+    {
+      "id": "20250319025924D6",
+      "name": "TU-Berlin",
+      "type": "Dataset",
+      "attributes": {
+        "content_type": "Sketch images"
+      }
+    },
+    {
+      "id": "20250319025924R1",
+      "name": "http://sketchx.eecs.qmul.ac.uk/",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319025924T1",
+      "name": "domain generalization",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319025924T2",
+      "name": "domain adaptation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319025924T3",
+      "name": "instance-level matching",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319025924T4",
+      "name": "transferring object recognizers",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319025924T5",
+      "name": "non-photorealistic image analysis",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319025924D1",
+      "head": "PACS",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319025924R1",
+      "tail": "http://sketchx.eecs.qmul.ac.uk/",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319025924D1",
+      "head": "PACS",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319025924P1",
+      "tail": "Deeper, Broader and Artier Domain Generalization",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319025924D1",
+      "head": "PACS",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319025924T1",
+      "tail": "domain generalization",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319025924D1",
+      "head": "PACS",
+      "head_type": "Dataset",
+      "relation": "has_new_version",
+      "tail_id": "20250319025924D2",
+      "tail": "VLCS",
+      "tail_type": "Dataset"
+    },
+    {
+      "head_id": "20250319025924D1",
+      "head": "PACS",
+      "head_type": "Dataset",
+      "relation": "has_new_version",
+      "tail_id": "20250319025924D3",
+      "tail": "OfficeCaltech",
+      "tail_type": "Dataset"
+    },
+    {
+      "head_id": "20250319025924D2",
+      "head": "VLCS",
+      "head_type": "Dataset",
+      "relation": "composed_of",
+      "tail_id": "20250319025924D4",
+      "tail": "Caltech256",
+      "tail_type": "Dataset"
+    },
+    {
+      "head_id": "20250319025924D3",
+      "head": "OfficeCaltech",
+      "head_type": "Dataset",
+      "relation": "composed_of",
+      "tail_id": "20250319025924D4",
+      "tail": "Caltech256",
+      "tail_type": "Dataset"
+    },
+    {
+      "head_id": "20250319025924D5",
+      "head": "Sketchy",
+      "head_type": "Dataset",
+      "relation": "composed_of",
+      "tail_id": "20250319025924D6",
+      "tail": "TU-Berlin",
+      "tail_type": "Dataset"
+    },
+    {
+      "head_id": "20250319025924T1",
+      "head": "domain generalization",
+      "head_type": "Task",
+      "relation": "has_subtask",
+      "tail_id": "20250319025924T2",
+      "tail": "domain adaptation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319025924T5",
+      "head": "non-photorealistic image analysis",
+      "head_type": "Task",
+      "relation": "has_subtask",
+      "tail_id": "20250319025924T3",
+      "tail": "instance-level matching",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319025924T5",
+      "head": "non-photorealistic image analysis",
+      "head_type": "Task",
+      "relation": "has_subtask",
+      "tail_id": "20250319025924T4",
+      "tail": "transferring object recognizers",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

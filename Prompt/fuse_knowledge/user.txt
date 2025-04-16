@@ -1,46 +1,91 @@
-Output Format:
-1. Strictly adhere to the output JSON format provided below.
-2. Only output the JSON format result exactly as specified without any additional information.
-3. NO COMMENTS. NO ACKNOWLEDGEMENTS.
+Input Format:
+
 {
-  "entities": [
-    {
-      "name": "Entity1",
-      "type": "Predefined_Entity_Type",
-      "attributes": {
-        "Attribute1": "Value1",
-        "Attribute2": "Value2"
-      }
+    "Integrated Entities": {
+        "entities": [
+            {
+                "id": "Entity_id_1",
+                "name": "Entity1",
+                "type": "Predefined_Entity_Type",
+                "attributes": {
+                    "Attribute1": "Value1",
+                    "Attribute2": "Value2",
+                    ... ...
+                }
+            },
+            {
+                "id": "Entity_id_2",
+                "name": "Entity2",
+                "type": "Predefined_Entity_Type",
+                "attributes": {
+                    "Attribute1": "Value1",
+                    "Attribute2": "Value2",
+                    ... ...
+                }
+            },
+            ... ...
+        ]
     },
-    {
-      "name": "Entity2",
-      "type": "Predefined_Entity_Type",
-      "attributes": {
-        "Attribute1": "Value1",
-        "Attribute2": "Value2"
-      }
-    },
-    ... ...
-  ],
-  "relations": [
-    {
-      "head": "HeadEntity1",
-      "head_type": "Predefined_Entity_Type",
-      "relation": "Predefined_Relation_Type",
-      "tail": "tailEntity1",
-      "tail_type": "Predefined_Entity_Type"
-    },
-    {
-      "head": "HeadEntity2",
-      "head_type": "Predefined_Entity_Type",
-      "relation": "Predefined_Relation_Type",
-      "tail": "tailEntity2",
-      "tail_type": "Predefined_Entity_Type"
-    },
-    ... ...
-  ]
+    "Non-integrated Entities": {
+        "entities": [
+            {
+                "id": "Entity_id_1",
+                "name": "Entity1",
+                "type": "Predefined_Entity_Type",
+                "attributes": {
+                    "Attribute1": "Value1",
+                    "Attribute2": "Value2",
+                    ... ...
+                }
+            },
+            {
+                "id": "Entity_id_2",
+                "name": "Entity2",
+                "type": "Predefined_Entity_Type",
+                "attributes": {
+                    "Attribute1": "Value1",
+                    "Attribute2": "Value2",
+                    ... ...
+                }
+            },
+            ... ...
+        ]
+    }
 }
 
 ###
+
+Output Format:
+1. Output a Relations JSON.
+2. Strictly adhere to the output JSON format provided below.
+3. Only output the JSON format result exactly as specified without any additional information.
+4. Head_id and tail_id must match the corresponding entity id.
+5. NO COMMENTS. NO ACKNOWLEDGEMENTS.
+{
+    "relations": [
+        {
+            "head_id": "Head_entity_id_1",
+            "head": "HeadEntity1",
+            "head_type": "Predefined_Entity_Type",
+            "relation": "Predefined_Relation_Type",
+            "tail_id": "Tail_entity_id_1",
+            "tail": "tailEntity1",
+            "tail_type": "Predefined_Entity_Type"
+        },
+        {
+            "head_id": "Head_entity_id_2",
+            "head": "HeadEntity2",
+            "head_type": "Predefined_Entity_Type",
+            "relation": "Predefined_Relation_Type",
+            "tail_id": "Tail_entity_id_2",
+            "tail": "tailEntity2",
+            "tail_type": "Predefined_Entity_Type"
+        },
+        ... ...
+    ]
+}
+
+###
+
 Input:
 {input}

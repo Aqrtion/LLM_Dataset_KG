@@ -9,7 +9,6 @@ from extract_knowledge import extract_knowledge
 JSON_PATH = "Papers_Usage/papers_usage.json"
 PDF_DIR = "Papers"
 
-
 def load_json():
     """
     载入 JSON 文件（路径为 Papers_Usage/papers_usage.json）
@@ -78,7 +77,7 @@ def main():
                 extract_knowledge(txt_path, filtrated_json_path)
                 print(f"extract_knowledge completed for {pdf_filename}")
 
-                # 标记该 PDF 文件已处理，并立即保存 JSON 进度
+                # 标记该 PDF 文件已处理, 并立即保存 JSON 进度
                 paper["is_used"] = True
                 save_json(data)
                 print(f"Updated {pdf_filename} as processed.")

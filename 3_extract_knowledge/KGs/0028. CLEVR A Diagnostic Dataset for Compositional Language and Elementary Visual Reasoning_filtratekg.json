@@ -1,201 +1,201 @@
 {
-    "entities": [
-        {
-            "id": "20250319010018P1",
-            "name": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Justin Johnson",
-                    "Li Fei-Fei",
-                    "Bharath Hariharan",
-                    "C. Lawrence Zitnick",
-                    "Laurens van der Maaten",
-                    "Ross Girshick"
-                ],
-                "institutions": [
-                    "Stanford University",
-                    "Facebook AI Research"
-                ]
-            }
-        },
-        {
-            "id": "20250319010018D1",
-            "name": "CLEVR",
-            "type": "Dataset",
-            "attributes": {
-                "size": "100,000 images",
-                "questions": "1 million (853k unique)",
-                "content": "3D shapes (cube, sphere, cylinder)",
-                "attributes": [
-                    "size",
-                    "color",
-                    "material",
-                    "spatial relationships"
-                ],
-                "synthetic": "true",
-                "question_types": [
-                    "attribute query",
-                    "counting",
-                    "comparison",
-                    "logical operations"
-                ]
-            }
-        },
-        {
-            "id": "20250319010018D2",
-            "name": "VQA",
-            "type": "Dataset",
-            "attributes": {
-                "description": "Visual Question Answering dataset",
-                "content": "natural images",
-                "question_types": "natural language questions"
-            }
-        },
-        {
-            "id": "20250319010018D3",
-            "name": "SHAPES",
-            "type": "Dataset",
-            "attributes": {
-                "questions": "15,616 total (244 unique)",
-                "complexity": "lower than CLEVR"
-            }
-        },
-        {
-            "id": "20250319010018D4",
-            "name": "DAQUAR",
-            "type": "Dataset",
-            "attributes": {
-                "questions": "420 synthetic questions",
-                "templates": "8 text templates"
-            }
-        },
-        {
-            "id": "20250319010018D5",
-            "name": "SHRDLU",
-            "type": "Dataset",
-            "attributes": {
-                "domain": "block world manipulation"
-            }
-        },
-        {
-            "id": "20250319010018D6",
-            "name": "bAbI",
-            "type": "Dataset",
-            "attributes": {
-                "focus": "text-based question answering"
-            }
-        },
-        {
-            "id": "20250319010018T1",
-            "name": "visual question answering",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010018T2",
-            "name": "compositional reasoning",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010018T3",
-            "name": "attribute comparison",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010018T4",
-            "name": "counting",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010018T5",
-            "name": "logical reasoning",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010018T6",
-            "name": "image captioning",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010018T7",
-            "name": "referring to objects",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010018T8",
-            "name": "relational graph prediction",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010018T9",
-            "name": "visual Turing tests",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319010018D1",
-            "head": "CLEVR",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319010018P1",
-            "tail": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319010018D1",
-            "head": "CLEVR",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010018T1",
-            "tail": "visual question answering",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010018D1",
-            "head": "CLEVR",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010018T2",
-            "tail": "compositional reasoning",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010018D1",
-            "head": "CLEVR",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010018T3",
-            "tail": "attribute comparison",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010018D1",
-            "head": "CLEVR",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010018T4",
-            "tail": "counting",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010018D1",
-            "head": "CLEVR",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010018T5",
-            "tail": "logical reasoning",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319010018P1",
+      "name": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Justin Johnson",
+          "Li Fei-Fei",
+          "Bharath Hariharan",
+          "C. Lawrence Zitnick",
+          "Laurens van der Maaten",
+          "Ross Girshick"
+        ],
+        "institutions": [
+          "Stanford University",
+          "Facebook AI Research"
+        ]
+      }
+    },
+    {
+      "id": "20250319010018D1",
+      "name": "CLEVR",
+      "type": "Dataset",
+      "attributes": {
+        "size": "100,000 images",
+        "questions": "1 million (853k unique)",
+        "content": "3D shapes (cube, sphere, cylinder)",
+        "attributes": [
+          "size",
+          "color",
+          "material",
+          "spatial relationships"
+        ],
+        "synthetic": "true",
+        "question_types": [
+          "attribute query",
+          "counting",
+          "comparison",
+          "logical operations"
+        ]
+      }
+    },
+    {
+      "id": "20250319010018D2",
+      "name": "VQA",
+      "type": "Dataset",
+      "attributes": {
+        "description": "Visual Question Answering dataset",
+        "content": "natural images",
+        "question_types": "natural language questions"
+      }
+    },
+    {
+      "id": "20250319010018D3",
+      "name": "SHAPES",
+      "type": "Dataset",
+      "attributes": {
+        "questions": "15,616 total (244 unique)",
+        "complexity": "lower than CLEVR"
+      }
+    },
+    {
+      "id": "20250319010018D4",
+      "name": "DAQUAR",
+      "type": "Dataset",
+      "attributes": {
+        "questions": "420 synthetic questions",
+        "templates": "8 text templates"
+      }
+    },
+    {
+      "id": "20250319010018D5",
+      "name": "SHRDLU",
+      "type": "Dataset",
+      "attributes": {
+        "domain": "block world manipulation"
+      }
+    },
+    {
+      "id": "20250319010018D6",
+      "name": "bAbI",
+      "type": "Dataset",
+      "attributes": {
+        "focus": "text-based question answering"
+      }
+    },
+    {
+      "id": "20250319010018T1",
+      "name": "visual question answering",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010018T2",
+      "name": "compositional reasoning",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010018T3",
+      "name": "attribute comparison",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010018T4",
+      "name": "counting",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010018T5",
+      "name": "logical reasoning",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010018T6",
+      "name": "image captioning",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010018T7",
+      "name": "referring to objects",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010018T8",
+      "name": "relational graph prediction",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010018T9",
+      "name": "visual Turing tests",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319010018D1",
+      "head": "CLEVR",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319010018P1",
+      "tail": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319010018D1",
+      "head": "CLEVR",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010018T1",
+      "tail": "visual question answering",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010018D1",
+      "head": "CLEVR",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010018T2",
+      "tail": "compositional reasoning",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010018D1",
+      "head": "CLEVR",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010018T3",
+      "tail": "attribute comparison",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010018D1",
+      "head": "CLEVR",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010018T4",
+      "tail": "counting",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010018D1",
+      "head": "CLEVR",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010018T5",
+      "tail": "logical reasoning",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

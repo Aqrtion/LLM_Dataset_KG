@@ -1,177 +1,177 @@
 {
-    "entities": [
-        {
-            "id": "20250319024401P1",
-            "name": "3D Object Representations for Fine-Grained Categorization",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Jonathan Krause",
-                    "Michael Stark",
-                    "Jia Deng",
-                    "Li Fei-Fei"
-                ],
-                "institution": "Stanford University, Max Planck Institute for Informatics"
-            }
-        },
-        {
-            "id": "20250319024401D1",
-            "name": "BMW-10",
-            "type": "Dataset",
-            "attributes": {
-                "size": "512 images",
-                "number of classes": 10,
-                "granularity": "ultra-fine-grained"
-            }
-        },
-        {
-            "id": "20250319024401D2",
-            "name": "car-197",
-            "type": "Dataset",
-            "attributes": {
-                "size": "16,185 images",
-                "number of classes": 197,
-                "categories": [
-                    "sedans",
-                    "SUVs",
-                    "coupes",
-                    "convertibles",
-                    "pickups",
-                    "hatchbacks",
-                    "station wagons"
-                ]
-            }
-        },
-        {
-            "id": "20250319024401D3",
-            "name": "3D Object Classes dataset",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319024401R1",
-            "name": "Amazon Mechanical Turk (AMT)",
-            "type": "Repository",
-            "attributes": {
-                "usage": "data collection and annotation"
-            }
-        },
-        {
-            "id": "20250319024401T1",
-            "name": "fine-grained categorization",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319024401T2",
-            "name": "3D reconstruction",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319024401T3",
-            "name": "ultra-wide baseline matching",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319024401T4",
-            "name": "3D geometry estimation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319024401T5",
-            "name": "multi-view object class detection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319024401T6",
-            "name": "scene understanding",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319024401T7",
-            "name": "synthetic training data generation",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319024401D1",
-            "head": "BMW-10",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319024401P1",
-            "tail": "3D Object Representations for Fine-Grained Categorization",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319024401D2",
-            "head": "car-197",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319024401P1",
-            "tail": "3D Object Representations for Fine-Grained Categorization",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319024401D1",
-            "head": "BMW-10",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319024401T1",
-            "tail": "fine-grained categorization",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319024401D2",
-            "head": "car-197",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319024401T1",
-            "tail": "fine-grained categorization",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319024401D2",
-            "head": "car-197",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319024401T2",
-            "tail": "3D reconstruction",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319024401D3",
-            "head": "3D Object Classes dataset",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319024401T3",
-            "tail": "ultra-wide baseline matching",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319024401D1",
-            "head": "BMW-10",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319024401R1",
-            "tail": "Amazon Mechanical Turk (AMT)",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319024401D2",
-            "head": "car-197",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319024401R1",
-            "tail": "Amazon Mechanical Turk (AMT)",
-            "tail_type": "Repository"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319024401P1",
+      "name": "3D Object Representations for Fine-Grained Categorization",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Jonathan Krause",
+          "Michael Stark",
+          "Jia Deng",
+          "Li Fei-Fei"
+        ],
+        "institution": "Stanford University, Max Planck Institute for Informatics"
+      }
+    },
+    {
+      "id": "20250319024401D1",
+      "name": "BMW-10",
+      "type": "Dataset",
+      "attributes": {
+        "size": "512 images",
+        "number of classes": 10,
+        "granularity": "ultra-fine-grained"
+      }
+    },
+    {
+      "id": "20250319024401D2",
+      "name": "car-197",
+      "type": "Dataset",
+      "attributes": {
+        "size": "16,185 images",
+        "number of classes": 197,
+        "categories": [
+          "sedans",
+          "SUVs",
+          "coupes",
+          "convertibles",
+          "pickups",
+          "hatchbacks",
+          "station wagons"
+        ]
+      }
+    },
+    {
+      "id": "20250319024401D3",
+      "name": "3D Object Classes dataset",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319024401R1",
+      "name": "Amazon Mechanical Turk (AMT)",
+      "type": "Repository",
+      "attributes": {
+        "usage": "data collection and annotation"
+      }
+    },
+    {
+      "id": "20250319024401T1",
+      "name": "fine-grained categorization",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319024401T2",
+      "name": "3D reconstruction",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319024401T3",
+      "name": "ultra-wide baseline matching",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319024401T4",
+      "name": "3D geometry estimation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319024401T5",
+      "name": "multi-view object class detection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319024401T6",
+      "name": "scene understanding",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319024401T7",
+      "name": "synthetic training data generation",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319024401D1",
+      "head": "BMW-10",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319024401P1",
+      "tail": "3D Object Representations for Fine-Grained Categorization",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319024401D2",
+      "head": "car-197",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319024401P1",
+      "tail": "3D Object Representations for Fine-Grained Categorization",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319024401D1",
+      "head": "BMW-10",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319024401T1",
+      "tail": "fine-grained categorization",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319024401D2",
+      "head": "car-197",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319024401T1",
+      "tail": "fine-grained categorization",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319024401D2",
+      "head": "car-197",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319024401T2",
+      "tail": "3D reconstruction",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319024401D3",
+      "head": "3D Object Classes dataset",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319024401T3",
+      "tail": "ultra-wide baseline matching",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319024401D1",
+      "head": "BMW-10",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319024401R1",
+      "tail": "Amazon Mechanical Turk (AMT)",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319024401D2",
+      "head": "car-197",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319024401R1",
+      "tail": "Amazon Mechanical Turk (AMT)",
+      "tail_type": "Repository"
+    }
+  ],
+  "has_been_merged": true
 }

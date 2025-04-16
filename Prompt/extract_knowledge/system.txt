@@ -29,6 +29,9 @@ Task:
 3. Attribute Extraction:
    Extract relevant attributes for entities and store them as key-value pairs. Attributes should provide additional structured information about the entity.
 
+4. Definition supplementation:
+   Supplement attribute values for task entities lacking definitions in the fused knowledge graph.
+
 ###
 
 Context:

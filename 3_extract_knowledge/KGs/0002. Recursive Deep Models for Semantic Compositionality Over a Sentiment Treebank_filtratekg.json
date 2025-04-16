@@ -1,129 +1,129 @@
 {
-    "entities": [
-        {
-            "id": "20250319084652P1",
-            "name": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Richard Socher",
-                    "Alex Perelygin",
-                    "Jean Y. Wu",
-                    "Jason Chuang",
-                    "Christopher D. Manning",
-                    "Andrew Y. Ng",
-                    "Christopher Potts"
-                ],
-                "institution": "Stanford University"
-            }
-        },
-        {
-            "id": "20250319084652D1",
-            "name": "Stanford Sentiment Treebank",
-            "type": "Dataset",
-            "attributes": {
-                "size": "11,855 sentences",
-                "phrases": "215,154 phrases",
-                "annotation_method": "Amazon Mechanical Turk",
-                "granularity": "5-class sentiment labels",
-                "based_on": "Pang and Lee (2005) dataset"
-            }
-        },
-        {
-            "id": "20250319084652R1",
-            "name": "http://nlp.stanford.edu/sentiment",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319084652T1",
-            "name": "sentiment detection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319084652T2",
-            "name": "sentiment classification",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319084652T3",
-            "name": "negation detection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319084652T4",
-            "name": "contrastive conjunction analysis",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319084652D1",
-            "head": "Stanford Sentiment Treebank",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319084652R1",
-            "tail": "http://nlp.stanford.edu/sentiment",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319084652D1",
-            "head": "Stanford Sentiment Treebank",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319084652P1",
-            "tail": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319084652D1",
-            "head": "Stanford Sentiment Treebank",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319084652T1",
-            "tail": "sentiment detection",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319084652D1",
-            "head": "Stanford Sentiment Treebank",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319084652T2",
-            "tail": "sentiment classification",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319084652D1",
-            "head": "Stanford Sentiment Treebank",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319084652T3",
-            "tail": "negation detection",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319084652D1",
-            "head": "Stanford Sentiment Treebank",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319084652T4",
-            "tail": "contrastive conjunction analysis",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319084652T1",
-            "head": "sentiment detection",
-            "head_type": "Task",
-            "relation": "has_subtask",
-            "tail_id": "20250319084652T3",
-            "tail": "negation detection",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319084652P1",
+      "name": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Richard Socher",
+          "Alex Perelygin",
+          "Jean Y. Wu",
+          "Jason Chuang",
+          "Christopher D. Manning",
+          "Andrew Y. Ng",
+          "Christopher Potts"
+        ],
+        "institution": "Stanford University"
+      }
+    },
+    {
+      "id": "20250319084652D1",
+      "name": "Stanford Sentiment Treebank",
+      "type": "Dataset",
+      "attributes": {
+        "size": "11,855 sentences",
+        "phrases": "215,154 phrases",
+        "annotation_method": "Amazon Mechanical Turk",
+        "granularity": "5-class sentiment labels",
+        "based_on": "Pang and Lee (2005) dataset"
+      }
+    },
+    {
+      "id": "20250319084652R1",
+      "name": "http://nlp.stanford.edu/sentiment",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319084652T1",
+      "name": "sentiment detection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319084652T2",
+      "name": "sentiment classification",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319084652T3",
+      "name": "negation detection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319084652T4",
+      "name": "contrastive conjunction analysis",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319084652D1",
+      "head": "Stanford Sentiment Treebank",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319084652R1",
+      "tail": "http://nlp.stanford.edu/sentiment",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319084652D1",
+      "head": "Stanford Sentiment Treebank",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319084652P1",
+      "tail": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319084652D1",
+      "head": "Stanford Sentiment Treebank",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319084652T1",
+      "tail": "sentiment detection",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319084652D1",
+      "head": "Stanford Sentiment Treebank",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319084652T2",
+      "tail": "sentiment classification",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319084652D1",
+      "head": "Stanford Sentiment Treebank",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319084652T3",
+      "tail": "negation detection",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319084652D1",
+      "head": "Stanford Sentiment Treebank",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319084652T4",
+      "tail": "contrastive conjunction analysis",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319084652T1",
+      "head": "sentiment detection",
+      "head_type": "Task",
+      "relation": "has_subtask",
+      "tail_id": "20250319084652T3",
+      "tail": "negation detection",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

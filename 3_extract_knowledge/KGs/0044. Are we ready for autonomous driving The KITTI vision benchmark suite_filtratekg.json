@@ -1,270 +1,270 @@
 {
-    "entities": [
-        {
-            "id": "20250319015448P1",
-            "name": "Are we ready for Autonomous Driving? The KITTI Vision Benchmark Suite",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Andreas Geiger",
-                    "Philip Lenz",
-                    "Raquel Urtasun"
-                ],
-                "institutions": [
-                    "Karlsruhe Institute of Technology",
-                    "Toyota Technological Institute at Chicago"
-                ]
-            }
-        },
-        {
-            "id": "20250319015448D1",
-            "name": "KITTI Vision Benchmark Suite",
-            "type": "Dataset",
-            "attributes": {
-                "size": "389 stereo/optical flow pairs, 39.2 km visual odometry sequences, 200k 3D annotations",
-                "resolution": "1240×376 pixels",
-                "sensors": [
-                    "PointGrey Flea2 cameras",
-                    "Velodyne HDL-64E laser scanner",
-                    "GPS/IMU localization"
-                ],
-                "ground_truth": "semi-dense (50%)",
-                "environment": "urban, rural, highway"
-            }
-        },
-        {
-            "id": "20250319015448D2",
-            "name": "Middlebury",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D3",
-            "name": "Make3D Stereo",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D4",
-            "name": "Ladicky",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D5",
-            "name": "TUM RGB-D",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D6",
-            "name": "New College",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D7",
-            "name": "Malaga 2009",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D8",
-            "name": "Ford Campus",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D9",
-            "name": "Caltech 101",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D10",
-            "name": "MIT StreetScenes",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D11",
-            "name": "LabelMe",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D12",
-            "name": "ETHZ Pedestrian",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D13",
-            "name": "PASCAL 2011",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D14",
-            "name": "Daimler",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D15",
-            "name": "Caltech Pedestrian",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D16",
-            "name": "COIL-100",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D17",
-            "name": "EPFL Multi-View Car",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448D18",
-            "name": "Caltech 3D Objects",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448R1",
-            "name": "www.cvlibs.net/datasets/kitti",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448T1",
-            "name": "stereo matching",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448T2",
-            "name": "optical flow estimation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448T3",
-            "name": "visual odometry/SLAM",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448T4",
-            "name": "3D object detection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448T5",
-            "name": "3D orientation estimation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448T6",
-            "name": "object tracking",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319015448T7",
-            "name": "benchmarking",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319015448D1",
-            "head": "KITTI Vision Benchmark Suite",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319015448R1",
-            "tail": "www.cvlibs.net/datasets/kitti",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319015448D1",
-            "head": "KITTI Vision Benchmark Suite",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319015448P1",
-            "tail": "Are we ready for Autonomous Driving? The KITTI Vision Benchmark Suite",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319015448D1",
-            "head": "KITTI Vision Benchmark Suite",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319015448T1",
-            "tail": "stereo matching",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319015448D1",
-            "head": "KITTI Vision Benchmark Suite",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319015448T2",
-            "tail": "optical flow estimation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319015448D1",
-            "head": "KITTI Vision Benchmark Suite",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319015448T3",
-            "tail": "visual odometry/SLAM",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319015448D1",
-            "head": "KITTI Vision Benchmark Suite",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319015448T4",
-            "tail": "3D object detection",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319015448D1",
-            "head": "KITTI Vision Benchmark Suite",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319015448T5",
-            "tail": "3D orientation estimation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319015448D1",
-            "head": "KITTI Vision Benchmark Suite",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319015448T6",
-            "tail": "object tracking",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319015448D1",
-            "head": "KITTI Vision Benchmark Suite",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319015448T7",
-            "tail": "benchmarking",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319015448P1",
+      "name": "Are we ready for Autonomous Driving? The KITTI Vision Benchmark Suite",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Andreas Geiger",
+          "Philip Lenz",
+          "Raquel Urtasun"
+        ],
+        "institutions": [
+          "Karlsruhe Institute of Technology",
+          "Toyota Technological Institute at Chicago"
+        ]
+      }
+    },
+    {
+      "id": "20250319015448D1",
+      "name": "KITTI Vision Benchmark Suite",
+      "type": "Dataset",
+      "attributes": {
+        "size": "389 stereo/optical flow pairs, 39.2 km visual odometry sequences, 200k 3D annotations",
+        "resolution": "1240×376 pixels",
+        "sensors": [
+          "PointGrey Flea2 cameras",
+          "Velodyne HDL-64E laser scanner",
+          "GPS/IMU localization"
+        ],
+        "ground_truth": "semi-dense (50%)",
+        "environment": "urban, rural, highway"
+      }
+    },
+    {
+      "id": "20250319015448D2",
+      "name": "Middlebury",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D3",
+      "name": "Make3D Stereo",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D4",
+      "name": "Ladicky",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D5",
+      "name": "TUM RGB-D",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D6",
+      "name": "New College",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D7",
+      "name": "Malaga 2009",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D8",
+      "name": "Ford Campus",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D9",
+      "name": "Caltech 101",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D10",
+      "name": "MIT StreetScenes",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D11",
+      "name": "LabelMe",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D12",
+      "name": "ETHZ Pedestrian",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D13",
+      "name": "PASCAL 2011",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D14",
+      "name": "Daimler",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D15",
+      "name": "Caltech Pedestrian",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D16",
+      "name": "COIL-100",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D17",
+      "name": "EPFL Multi-View Car",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448D18",
+      "name": "Caltech 3D Objects",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448R1",
+      "name": "www.cvlibs.net/datasets/kitti",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448T1",
+      "name": "stereo matching",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448T2",
+      "name": "optical flow estimation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448T3",
+      "name": "visual odometry/SLAM",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448T4",
+      "name": "3D object detection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448T5",
+      "name": "3D orientation estimation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448T6",
+      "name": "object tracking",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319015448T7",
+      "name": "benchmarking",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319015448D1",
+      "head": "KITTI Vision Benchmark Suite",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319015448R1",
+      "tail": "www.cvlibs.net/datasets/kitti",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319015448D1",
+      "head": "KITTI Vision Benchmark Suite",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319015448P1",
+      "tail": "Are we ready for Autonomous Driving? The KITTI Vision Benchmark Suite",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319015448D1",
+      "head": "KITTI Vision Benchmark Suite",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319015448T1",
+      "tail": "stereo matching",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319015448D1",
+      "head": "KITTI Vision Benchmark Suite",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319015448T2",
+      "tail": "optical flow estimation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319015448D1",
+      "head": "KITTI Vision Benchmark Suite",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319015448T3",
+      "tail": "visual odometry/SLAM",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319015448D1",
+      "head": "KITTI Vision Benchmark Suite",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319015448T4",
+      "tail": "3D object detection",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319015448D1",
+      "head": "KITTI Vision Benchmark Suite",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319015448T5",
+      "tail": "3D orientation estimation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319015448D1",
+      "head": "KITTI Vision Benchmark Suite",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319015448T6",
+      "tail": "object tracking",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319015448D1",
+      "head": "KITTI Vision Benchmark Suite",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319015448T7",
+      "tail": "benchmarking",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

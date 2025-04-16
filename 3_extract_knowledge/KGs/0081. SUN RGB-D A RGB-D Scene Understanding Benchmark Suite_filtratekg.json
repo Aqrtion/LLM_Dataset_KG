@@ -1,218 +1,218 @@
 {
-    "entities": [
-        {
-            "id": "20250319034024P1",
-            "name": "SUN RGB-D: A RGB-D Scene Understanding Benchmark Suite",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Shuran Song",
-                    "Samuel P. Lichtenberg",
-                    "Jianxiong Xiao"
-                ],
-                "institution": "Princeton University"
-            }
-        },
-        {
-            "id": "20250319034024D1",
-            "name": "SUN RGB-D",
-            "type": "Dataset",
-            "attributes": {
-                "size": "10,335 RGB-D images",
-                "sensors": [
-                    "Intel RealSense",
-                    "Asus Xtion",
-                    "Kinect v1",
-                    "Kinect v2"
-                ],
-                "annotations": [
-                    "146,617 2D polygons",
-                    "64,595 3D bounding boxes",
-                    "3D room layout",
-                    "scene category"
-                ]
-            }
-        },
-        {
-            "id": "20250319034024D2",
-            "name": "NYU Depth v2",
-            "type": "Dataset",
-            "attributes": {
-                "size": "1,449 images",
-                "annotations": "2D semantic segmentation"
-            }
-        },
-        {
-            "id": "20250319034024D3",
-            "name": "Berkeley B3DO Dataset",
-            "type": "Dataset",
-            "attributes": {
-                "size": "554 images"
-            }
-        },
-        {
-            "id": "20250319034024D4",
-            "name": "SUN3D",
-            "type": "Dataset",
-            "attributes": {
-                "size": "3,389 frames"
-            }
-        },
-        {
-            "id": "20250319034024D5",
-            "name": "PASCAL VOC",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319034024D6",
-            "name": "ImageNet",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319034024D7",
-            "name": "Cornell RGBD dataset",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319034024R1",
-            "name": "http://rgbd.cs.princeton.edu",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319034024T1",
-            "name": "scene understanding",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319034024T2",
-            "name": "object detection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319034024T3",
-            "name": "semantic segmentation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319034024T4",
-            "name": "scene categorization",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319034024T5",
-            "name": "context reasoning",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319034024T6",
-            "name": "mid-level recognition",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319034024T7",
-            "name": "surface orientation estimation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319034024T8",
-            "name": "room layout estimation",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319034024D1",
-            "head": "SUN RGB-D",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319034024R1",
-            "tail": "http://rgbd.cs.princeton.edu",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319034024D1",
-            "head": "SUN RGB-D",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319034024P1",
-            "tail": "SUN RGB-D: A RGB-D Scene Understanding Benchmark Suite",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319034024D1",
-            "head": "SUN RGB-D",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319034024T1",
-            "tail": "scene understanding",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319034024D1",
-            "head": "SUN RGB-D",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319034024T2",
-            "tail": "object detection",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319034024D1",
-            "head": "SUN RGB-D",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319034024T3",
-            "tail": "semantic segmentation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319034024D1",
-            "head": "SUN RGB-D",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319034024T4",
-            "tail": "scene categorization",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319034024D1",
-            "head": "SUN RGB-D",
-            "head_type": "Dataset",
-            "relation": "composed_of",
-            "tail_id": "20250319034024D2",
-            "tail": "NYU Depth v2",
-            "tail_type": "Dataset"
-        },
-        {
-            "head_id": "20250319034024D1",
-            "head": "SUN RGB-D",
-            "head_type": "Dataset",
-            "relation": "composed_of",
-            "tail_id": "20250319034024D3",
-            "tail": "Berkeley B3DO Dataset",
-            "tail_type": "Dataset"
-        },
-        {
-            "head_id": "20250319034024D1",
-            "head": "SUN RGB-D",
-            "head_type": "Dataset",
-            "relation": "composed_of",
-            "tail_id": "20250319034024D4",
-            "tail": "SUN3D",
-            "tail_type": "Dataset"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319034024P1",
+      "name": "SUN RGB-D: A RGB-D Scene Understanding Benchmark Suite",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Shuran Song",
+          "Samuel P. Lichtenberg",
+          "Jianxiong Xiao"
+        ],
+        "institution": "Princeton University"
+      }
+    },
+    {
+      "id": "20250319034024D1",
+      "name": "SUN RGB-D",
+      "type": "Dataset",
+      "attributes": {
+        "size": "10,335 RGB-D images",
+        "sensors": [
+          "Intel RealSense",
+          "Asus Xtion",
+          "Kinect v1",
+          "Kinect v2"
+        ],
+        "annotations": [
+          "146,617 2D polygons",
+          "64,595 3D bounding boxes",
+          "3D room layout",
+          "scene category"
+        ]
+      }
+    },
+    {
+      "id": "20250319034024D2",
+      "name": "NYU Depth v2",
+      "type": "Dataset",
+      "attributes": {
+        "size": "1,449 images",
+        "annotations": "2D semantic segmentation"
+      }
+    },
+    {
+      "id": "20250319034024D3",
+      "name": "Berkeley B3DO Dataset",
+      "type": "Dataset",
+      "attributes": {
+        "size": "554 images"
+      }
+    },
+    {
+      "id": "20250319034024D4",
+      "name": "SUN3D",
+      "type": "Dataset",
+      "attributes": {
+        "size": "3,389 frames"
+      }
+    },
+    {
+      "id": "20250319034024D5",
+      "name": "PASCAL VOC",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319034024D6",
+      "name": "ImageNet",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319034024D7",
+      "name": "Cornell RGBD dataset",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319034024R1",
+      "name": "http://rgbd.cs.princeton.edu",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319034024T1",
+      "name": "scene understanding",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319034024T2",
+      "name": "object detection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319034024T3",
+      "name": "semantic segmentation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319034024T4",
+      "name": "scene categorization",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319034024T5",
+      "name": "context reasoning",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319034024T6",
+      "name": "mid-level recognition",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319034024T7",
+      "name": "surface orientation estimation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319034024T8",
+      "name": "room layout estimation",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319034024D1",
+      "head": "SUN RGB-D",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319034024R1",
+      "tail": "http://rgbd.cs.princeton.edu",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319034024D1",
+      "head": "SUN RGB-D",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319034024P1",
+      "tail": "SUN RGB-D: A RGB-D Scene Understanding Benchmark Suite",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319034024D1",
+      "head": "SUN RGB-D",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319034024T1",
+      "tail": "scene understanding",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319034024D1",
+      "head": "SUN RGB-D",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319034024T2",
+      "tail": "object detection",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319034024D1",
+      "head": "SUN RGB-D",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319034024T3",
+      "tail": "semantic segmentation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319034024D1",
+      "head": "SUN RGB-D",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319034024T4",
+      "tail": "scene categorization",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319034024D1",
+      "head": "SUN RGB-D",
+      "head_type": "Dataset",
+      "relation": "composed_of",
+      "tail_id": "20250319034024D2",
+      "tail": "NYU Depth v2",
+      "tail_type": "Dataset"
+    },
+    {
+      "head_id": "20250319034024D1",
+      "head": "SUN RGB-D",
+      "head_type": "Dataset",
+      "relation": "composed_of",
+      "tail_id": "20250319034024D3",
+      "tail": "Berkeley B3DO Dataset",
+      "tail_type": "Dataset"
+    },
+    {
+      "head_id": "20250319034024D1",
+      "head": "SUN RGB-D",
+      "head_type": "Dataset",
+      "relation": "composed_of",
+      "tail_id": "20250319034024D4",
+      "tail": "SUN3D",
+      "tail_type": "Dataset"
+    }
+  ],
+  "has_been_merged": true
 }

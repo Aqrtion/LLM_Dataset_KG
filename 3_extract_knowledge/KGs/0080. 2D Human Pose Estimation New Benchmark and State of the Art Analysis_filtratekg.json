@@ -1,188 +1,188 @@
 {
-    "entities": [
-        {
-            "id": "20250319033832P1",
-            "name": "2D Human Pose Estimation: New Benchmark and State of the Art Analysis",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Mykhaylo Andriluka",
-                    "Leonid Pishchulin",
-                    "Peter Gehler",
-                    "Bernt Schiele"
-                ],
-                "institutions": [
-                    "Max Planck Institute for Informatics",
-                    "Max Planck Institute for Intelligent Systems",
-                    "Stanford University"
-                ]
-            }
-        },
-        {
-            "id": "20250319033832D1",
-            "name": "MPII Human Pose",
-            "type": "Dataset",
-            "attributes": {
-                "size": "40,522 people",
-                "activities": "over 800 human activities",
-                "annotations": [
-                    "body joints",
-                    "3D torso/head orientation",
-                    "occlusion labels"
-                ],
-                "collection_method": "YouTube videos + Amazon Mechanical Turk",
-                "training_split": "28,821 images",
-                "test_split": "11,701 images"
-            }
-        },
-        {
-            "id": "20250319033832R1",
-            "name": "human-pose.mpi-inf.mpg.de",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319033832D2",
-            "name": "Parse",
-            "type": "Dataset",
-            "attributes": {
-                "size": "472 images"
-            }
-        },
-        {
-            "id": "20250319033832D3",
-            "name": "LSP",
-            "type": "Dataset",
-            "attributes": {
-                "focus": "sports scenes"
-            }
-        },
-        {
-            "id": "20250319033832D4",
-            "name": "FashionPose",
-            "type": "Dataset",
-            "attributes": {
-                "focus": "clothing variability"
-            }
-        },
-        {
-            "id": "20250319033832D5",
-            "name": "Armlets",
-            "type": "Dataset",
-            "attributes": {
-                "characteristics": "occlusions/truncations"
-            }
-        },
-        {
-            "id": "20250319033832D6",
-            "name": "Human3.6M",
-            "type": "Dataset",
-            "attributes": {
-                "modality": "3D poses",
-                "environment": "controlled indoor"
-            }
-        },
-        {
-            "id": "20250319033832T1",
-            "name": "human pose estimation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319033832T2",
-            "name": "upper body pose estimation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319033832T3",
-            "name": "multiple people pose estimation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319033832T4",
-            "name": "pose estimation in image sequences",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319033832T5",
-            "name": "3D pose estimation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319033832T6",
-            "name": "object detection",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319033832D1",
-            "head": "MPII Human Pose",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319033832R1",
-            "tail": "human-pose.mpi-inf.mpg.de",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319033832D1",
-            "head": "MPII Human Pose",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319033832P1",
-            "tail": "2D Human Pose Estimation: New Benchmark and State of the Art Analysis",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319033832D1",
-            "head": "MPII Human Pose",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319033832T1",
-            "tail": "human pose estimation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319033832D1",
-            "head": "MPII Human Pose",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319033832T2",
-            "tail": "upper body pose estimation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319033832T1",
-            "head": "human pose estimation",
-            "head_type": "Task",
-            "relation": "has_subtask",
-            "tail_id": "20250319033832T2",
-            "tail": "upper body pose estimation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319033832T1",
-            "head": "human pose estimation",
-            "head_type": "Task",
-            "relation": "has_subtask",
-            "tail_id": "20250319033832T3",
-            "tail": "multiple people pose estimation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319033832T1",
-            "head": "human pose estimation",
-            "head_type": "Task",
-            "relation": "has_subtask",
-            "tail_id": "20250319033832T4",
-            "tail": "pose estimation in image sequences",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319033832P1",
+      "name": "2D Human Pose Estimation: New Benchmark and State of the Art Analysis",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Mykhaylo Andriluka",
+          "Leonid Pishchulin",
+          "Peter Gehler",
+          "Bernt Schiele"
+        ],
+        "institutions": [
+          "Max Planck Institute for Informatics",
+          "Max Planck Institute for Intelligent Systems",
+          "Stanford University"
+        ]
+      }
+    },
+    {
+      "id": "20250319033832D1",
+      "name": "MPII Human Pose",
+      "type": "Dataset",
+      "attributes": {
+        "size": "40,522 people",
+        "activities": "over 800 human activities",
+        "annotations": [
+          "body joints",
+          "3D torso/head orientation",
+          "occlusion labels"
+        ],
+        "collection_method": "YouTube videos + Amazon Mechanical Turk",
+        "training_split": "28,821 images",
+        "test_split": "11,701 images"
+      }
+    },
+    {
+      "id": "20250319033832R1",
+      "name": "human-pose.mpi-inf.mpg.de",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319033832D2",
+      "name": "Parse",
+      "type": "Dataset",
+      "attributes": {
+        "size": "472 images"
+      }
+    },
+    {
+      "id": "20250319033832D3",
+      "name": "LSP",
+      "type": "Dataset",
+      "attributes": {
+        "focus": "sports scenes"
+      }
+    },
+    {
+      "id": "20250319033832D4",
+      "name": "FashionPose",
+      "type": "Dataset",
+      "attributes": {
+        "focus": "clothing variability"
+      }
+    },
+    {
+      "id": "20250319033832D5",
+      "name": "Armlets",
+      "type": "Dataset",
+      "attributes": {
+        "characteristics": "occlusions/truncations"
+      }
+    },
+    {
+      "id": "20250319033832D6",
+      "name": "Human3.6M",
+      "type": "Dataset",
+      "attributes": {
+        "modality": "3D poses",
+        "environment": "controlled indoor"
+      }
+    },
+    {
+      "id": "20250319033832T1",
+      "name": "human pose estimation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319033832T2",
+      "name": "upper body pose estimation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319033832T3",
+      "name": "multiple people pose estimation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319033832T4",
+      "name": "pose estimation in image sequences",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319033832T5",
+      "name": "3D pose estimation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319033832T6",
+      "name": "object detection",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319033832D1",
+      "head": "MPII Human Pose",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319033832R1",
+      "tail": "human-pose.mpi-inf.mpg.de",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319033832D1",
+      "head": "MPII Human Pose",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319033832P1",
+      "tail": "2D Human Pose Estimation: New Benchmark and State of the Art Analysis",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319033832D1",
+      "head": "MPII Human Pose",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319033832T1",
+      "tail": "human pose estimation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319033832D1",
+      "head": "MPII Human Pose",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319033832T2",
+      "tail": "upper body pose estimation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319033832T1",
+      "head": "human pose estimation",
+      "head_type": "Task",
+      "relation": "has_subtask",
+      "tail_id": "20250319033832T2",
+      "tail": "upper body pose estimation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319033832T1",
+      "head": "human pose estimation",
+      "head_type": "Task",
+      "relation": "has_subtask",
+      "tail_id": "20250319033832T3",
+      "tail": "multiple people pose estimation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319033832T1",
+      "head": "human pose estimation",
+      "head_type": "Task",
+      "relation": "has_subtask",
+      "tail_id": "20250319033832T4",
+      "tail": "pose estimation in image sequences",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

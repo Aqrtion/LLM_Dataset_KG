@@ -1,183 +1,183 @@
 {
-    "entities": [
-        {
-            "id": "20250319035846P1",
-            "name": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Jun Xu",
-                    "Tao Mei",
-                    "Ting Yao",
-                    "Yong Rui"
-                ],
-                "institution": "Microsoft Research"
-            }
-        },
-        {
-            "id": "20250319035846D1",
-            "name": "MSR-VTT",
-            "type": "Dataset",
-            "attributes": {
-                "size": "10K video clips",
-                "duration": "41.2 hours",
-                "clip-sentence_pairs": "200K",
-                "categories": 20,
-                "annotation": "20 sentences per clip via AMT",
-                "modalities": "video + audio"
-            }
-        },
-        {
-            "id": "20250319035846D2",
-            "name": "MSVD",
-            "type": "Dataset",
-            "attributes": {
-                "size": "1,970 videos",
-                "annotation_method": "AMT workers"
-            }
-        },
-        {
-            "id": "20250319035846D3",
-            "name": "YouCook",
-            "type": "Dataset",
-            "attributes": {
-                "domain": "cooking"
-            }
-        },
-        {
-            "id": "20250319035846D4",
-            "name": "TACoS",
-            "type": "Dataset",
-            "attributes": {
-                "domain": "cooking"
-            }
-        },
-        {
-            "id": "20250319035846D5",
-            "name": "M-VAD",
-            "type": "Dataset",
-            "attributes": {
-                "domain": "movie",
-                "annotation_source": "Audio Description (AD)"
-            }
-        },
-        {
-            "id": "20250319035846D6",
-            "name": "MPII-MD",
-            "type": "Dataset",
-            "attributes": {
-                "domain": "movie"
-            }
-        },
-        {
-            "id": "20250319035846D7",
-            "name": "ImageNet",
-            "type": "Dataset",
-            "attributes": {
-                "usage": "pre-training visual models"
-            }
-        },
-        {
-            "id": "20250319035846T1",
-            "name": "video to text",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319035846T2",
-            "name": "video description generation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319035846T3",
-            "name": "video understanding",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319035846T4",
-            "name": "sentence generation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319035846T5",
-            "name": "action recognition",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319035846T6",
-            "name": "video summarization",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319035846D1",
-            "head": "MSR-VTT",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319035846P1",
-            "tail": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319035846D1",
-            "head": "MSR-VTT",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035846T1",
-            "tail": "video to text",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319035846D1",
-            "head": "MSR-VTT",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035846T2",
-            "tail": "video description generation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319035846D1",
-            "head": "MSR-VTT",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035846T3",
-            "tail": "video understanding",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319035846D1",
-            "head": "MSR-VTT",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035846T4",
-            "tail": "sentence generation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319035846D1",
-            "head": "MSR-VTT",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035846T5",
-            "tail": "action recognition",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319035846D1",
-            "head": "MSR-VTT",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319035846T6",
-            "tail": "video summarization",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319035846P1",
+      "name": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Jun Xu",
+          "Tao Mei",
+          "Ting Yao",
+          "Yong Rui"
+        ],
+        "institution": "Microsoft Research"
+      }
+    },
+    {
+      "id": "20250319035846D1",
+      "name": "MSR-VTT",
+      "type": "Dataset",
+      "attributes": {
+        "size": "10K video clips",
+        "duration": "41.2 hours",
+        "clip-sentence_pairs": "200K",
+        "categories": 20,
+        "annotation": "20 sentences per clip via AMT",
+        "modalities": "video + audio"
+      }
+    },
+    {
+      "id": "20250319035846D2",
+      "name": "MSVD",
+      "type": "Dataset",
+      "attributes": {
+        "size": "1,970 videos",
+        "annotation_method": "AMT workers"
+      }
+    },
+    {
+      "id": "20250319035846D3",
+      "name": "YouCook",
+      "type": "Dataset",
+      "attributes": {
+        "domain": "cooking"
+      }
+    },
+    {
+      "id": "20250319035846D4",
+      "name": "TACoS",
+      "type": "Dataset",
+      "attributes": {
+        "domain": "cooking"
+      }
+    },
+    {
+      "id": "20250319035846D5",
+      "name": "M-VAD",
+      "type": "Dataset",
+      "attributes": {
+        "domain": "movie",
+        "annotation_source": "Audio Description (AD)"
+      }
+    },
+    {
+      "id": "20250319035846D6",
+      "name": "MPII-MD",
+      "type": "Dataset",
+      "attributes": {
+        "domain": "movie"
+      }
+    },
+    {
+      "id": "20250319035846D7",
+      "name": "ImageNet",
+      "type": "Dataset",
+      "attributes": {
+        "usage": "pre-training visual models"
+      }
+    },
+    {
+      "id": "20250319035846T1",
+      "name": "video to text",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319035846T2",
+      "name": "video description generation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319035846T3",
+      "name": "video understanding",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319035846T4",
+      "name": "sentence generation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319035846T5",
+      "name": "action recognition",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319035846T6",
+      "name": "video summarization",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319035846D1",
+      "head": "MSR-VTT",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319035846P1",
+      "tail": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319035846D1",
+      "head": "MSR-VTT",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035846T1",
+      "tail": "video to text",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319035846D1",
+      "head": "MSR-VTT",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035846T2",
+      "tail": "video description generation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319035846D1",
+      "head": "MSR-VTT",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035846T3",
+      "tail": "video understanding",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319035846D1",
+      "head": "MSR-VTT",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035846T4",
+      "tail": "sentence generation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319035846D1",
+      "head": "MSR-VTT",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035846T5",
+      "tail": "action recognition",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319035846D1",
+      "head": "MSR-VTT",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319035846T6",
+      "tail": "video summarization",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

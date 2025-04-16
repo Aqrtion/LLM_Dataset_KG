@@ -49,12 +49,12 @@ ImageNet is an ambitious project. Thus far, we have constructed 12 subtrees cont
 
 Output:
 {
-  "is_related_to_large_models": true,
-  "introduces_new_dataset": true,
-  "dataset_info": {
-      "full_name": null,
-      "abbreviation": "ImageNet"
-  }
+    "is_related_to_large_models": true,
+    "introduces_new_dataset": true,
+    "dataset_info": {
+        "full_name": null,
+        "abbreviation": "ImageNet"
+    }
 }
 
 ###

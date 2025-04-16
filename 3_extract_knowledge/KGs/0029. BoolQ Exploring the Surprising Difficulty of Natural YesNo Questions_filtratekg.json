@@ -1,314 +1,314 @@
 {
-    "entities": [
-        {
-            "id": "20250319010509P1",
-            "name": "BoolQ: Exploring the Surprising Difficulty of Natural Yes/No Questions",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Christopher Clark",
-                    "Kenton Lee",
-                    "Ming-Wei Chang",
-                    "Tom Kwiatkowski",
-                    "Michael Collins",
-                    "Kristina Toutanova"
-                ],
-                "institution": "Google AI Language, University of Washington"
-            }
-        },
-        {
-            "id": "20250319010509D1",
-            "name": "BoolQ",
-            "type": "Dataset",
-            "attributes": {
-                "size": "16,000 questions",
-                "source": "Wikipedia",
-                "annotation_method": "Amazon Mechanical Turk",
-                "answer_accuracy": "90% human accuracy"
-            }
-        },
-        {
-            "id": "20250319010509D2",
-            "name": "MultiNLI",
-            "type": "Dataset",
-            "attributes": {
-                "purpose": "natural language inference"
-            }
-        },
-        {
-            "id": "20250319010509D3",
-            "name": "SNLI",
-            "type": "Dataset",
-            "attributes": {
-                "purpose": "natural language inference"
-            }
-        },
-        {
-            "id": "20250319010509D4",
-            "name": "SQuAD 1.1",
-            "type": "Dataset",
-            "attributes": {
-                "type": "extractive QA"
-            }
-        },
-        {
-            "id": "20250319010509D5",
-            "name": "SQuAD 2.0",
-            "type": "Dataset",
-            "attributes": {
-                "type": "adversarial extractive QA"
-            }
-        },
-        {
-            "id": "20250319010509D6",
-            "name": "RACE",
-            "type": "Dataset",
-            "attributes": {
-                "type": "multiple-choice QA"
-            }
-        },
-        {
-            "id": "20250319010509D7",
-            "name": "QQP",
-            "type": "Dataset",
-            "attributes": {
-                "purpose": "paraphrase detection"
-            }
-        },
-        {
-            "id": "20250319010509D8",
-            "name": "MS Marco",
-            "type": "Dataset",
-            "attributes": {
-                "class_balance": "80% yes answers"
-            }
-        },
-        {
-            "id": "20250319010509D9",
-            "name": "QuAC",
-            "type": "Dataset",
-            "attributes": {
-                "focus": "conversational QA"
-            }
-        },
-        {
-            "id": "20250319010509D10",
-            "name": "CoQA",
-            "type": "Dataset",
-            "attributes": {
-                "focus": "conversational QA"
-            }
-        },
-        {
-            "id": "20250319010509D11",
-            "name": "HotPotQA",
-            "type": "Dataset",
-            "attributes": {
-                "focus": "multi-step reasoning"
-            }
-        },
-        {
-            "id": "20250319010509D12",
-            "name": "ShARC",
-            "type": "Dataset",
-            "attributes": {
-                "focus": "conversational QA"
-            }
-        },
-        {
-            "id": "20250319010509R1",
-            "name": "https://goo.gl/boolq",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010509T1",
-            "name": "yes/no question answering",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010509T2",
-            "name": "natural language inference",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010509T3",
-            "name": "entailment",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010509T4",
-            "name": "paraphrasing",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010509T5",
-            "name": "extractive QA",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010509T6",
-            "name": "multiple-choice QA",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010509T7",
-            "name": "adversarial question answering",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010509T8",
-            "name": "reading comprehension",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010509T9",
-            "name": "conversational QA",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010509T10",
-            "name": "multi-step reasoning",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319010509D1",
-            "head": "BoolQ",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319010509R1",
-            "tail": "https://goo.gl/boolq",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319010509D1",
-            "head": "BoolQ",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319010509P1",
-            "tail": "BoolQ: Exploring the Surprising Difficulty of Natural Yes/No Questions",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319010509D1",
-            "head": "BoolQ",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010509T1",
-            "tail": "yes/no question answering",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010509D2",
-            "head": "MultiNLI",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010509T3",
-            "tail": "entailment",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010509D3",
-            "head": "SNLI",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010509T3",
-            "tail": "entailment",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010509D4",
-            "head": "SQuAD 1.1",
-            "head_type": "Dataset",
-            "relation": "has_new_version",
-            "tail_id": "20250319010509D5",
-            "tail": "SQuAD 2.0",
-            "tail_type": "Dataset"
-        },
-        {
-            "head_id": "20250319010509D4",
-            "head": "SQuAD 1.1",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010509T5",
-            "tail": "extractive QA",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010509D5",
-            "head": "SQuAD 2.0",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010509T5",
-            "tail": "extractive QA",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010509D6",
-            "head": "RACE",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010509T6",
-            "tail": "multiple-choice QA",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010509D7",
-            "head": "QQP",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010509T4",
-            "tail": "paraphrasing",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010509D8",
-            "head": "MS Marco",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010509T1",
-            "tail": "yes/no question answering",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010509D9",
-            "head": "QuAC",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010509T9",
-            "tail": "conversational QA",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010509D10",
-            "head": "CoQA",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010509T9",
-            "tail": "conversational QA",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010509D11",
-            "head": "HotPotQA",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010509T10",
-            "tail": "multi-step reasoning",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319010509P1",
+      "name": "BoolQ: Exploring the Surprising Difficulty of Natural Yes/No Questions",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Christopher Clark",
+          "Kenton Lee",
+          "Ming-Wei Chang",
+          "Tom Kwiatkowski",
+          "Michael Collins",
+          "Kristina Toutanova"
+        ],
+        "institution": "Google AI Language, University of Washington"
+      }
+    },
+    {
+      "id": "20250319010509D1",
+      "name": "BoolQ",
+      "type": "Dataset",
+      "attributes": {
+        "size": "16,000 questions",
+        "source": "Wikipedia",
+        "annotation_method": "Amazon Mechanical Turk",
+        "answer_accuracy": "90% human accuracy"
+      }
+    },
+    {
+      "id": "20250319010509D2",
+      "name": "MultiNLI",
+      "type": "Dataset",
+      "attributes": {
+        "purpose": "natural language inference"
+      }
+    },
+    {
+      "id": "20250319010509D3",
+      "name": "SNLI",
+      "type": "Dataset",
+      "attributes": {
+        "purpose": "natural language inference"
+      }
+    },
+    {
+      "id": "20250319010509D4",
+      "name": "SQuAD 1.1",
+      "type": "Dataset",
+      "attributes": {
+        "type": "extractive QA"
+      }
+    },
+    {
+      "id": "20250319010509D5",
+      "name": "SQuAD 2.0",
+      "type": "Dataset",
+      "attributes": {
+        "type": "adversarial extractive QA"
+      }
+    },
+    {
+      "id": "20250319010509D6",
+      "name": "RACE",
+      "type": "Dataset",
+      "attributes": {
+        "type": "multiple-choice QA"
+      }
+    },
+    {
+      "id": "20250319010509D7",
+      "name": "QQP",
+      "type": "Dataset",
+      "attributes": {
+        "purpose": "paraphrase detection"
+      }
+    },
+    {
+      "id": "20250319010509D8",
+      "name": "MS Marco",
+      "type": "Dataset",
+      "attributes": {
+        "class_balance": "80% yes answers"
+      }
+    },
+    {
+      "id": "20250319010509D9",
+      "name": "QuAC",
+      "type": "Dataset",
+      "attributes": {
+        "focus": "conversational QA"
+      }
+    },
+    {
+      "id": "20250319010509D10",
+      "name": "CoQA",
+      "type": "Dataset",
+      "attributes": {
+        "focus": "conversational QA"
+      }
+    },
+    {
+      "id": "20250319010509D11",
+      "name": "HotPotQA",
+      "type": "Dataset",
+      "attributes": {
+        "focus": "multi-step reasoning"
+      }
+    },
+    {
+      "id": "20250319010509D12",
+      "name": "ShARC",
+      "type": "Dataset",
+      "attributes": {
+        "focus": "conversational QA"
+      }
+    },
+    {
+      "id": "20250319010509R1",
+      "name": "https://goo.gl/boolq",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010509T1",
+      "name": "yes/no question answering",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010509T2",
+      "name": "natural language inference",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010509T3",
+      "name": "entailment",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010509T4",
+      "name": "paraphrasing",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010509T5",
+      "name": "extractive QA",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010509T6",
+      "name": "multiple-choice QA",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010509T7",
+      "name": "adversarial question answering",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010509T8",
+      "name": "reading comprehension",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010509T9",
+      "name": "conversational QA",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010509T10",
+      "name": "multi-step reasoning",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319010509D1",
+      "head": "BoolQ",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319010509R1",
+      "tail": "https://goo.gl/boolq",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319010509D1",
+      "head": "BoolQ",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319010509P1",
+      "tail": "BoolQ: Exploring the Surprising Difficulty of Natural Yes/No Questions",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319010509D1",
+      "head": "BoolQ",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010509T1",
+      "tail": "yes/no question answering",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010509D2",
+      "head": "MultiNLI",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010509T3",
+      "tail": "entailment",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010509D3",
+      "head": "SNLI",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010509T3",
+      "tail": "entailment",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010509D4",
+      "head": "SQuAD 1.1",
+      "head_type": "Dataset",
+      "relation": "has_new_version",
+      "tail_id": "20250319010509D5",
+      "tail": "SQuAD 2.0",
+      "tail_type": "Dataset"
+    },
+    {
+      "head_id": "20250319010509D4",
+      "head": "SQuAD 1.1",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010509T5",
+      "tail": "extractive QA",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010509D5",
+      "head": "SQuAD 2.0",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010509T5",
+      "tail": "extractive QA",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010509D6",
+      "head": "RACE",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010509T6",
+      "tail": "multiple-choice QA",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010509D7",
+      "head": "QQP",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010509T4",
+      "tail": "paraphrasing",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010509D8",
+      "head": "MS Marco",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010509T1",
+      "tail": "yes/no question answering",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010509D9",
+      "head": "QuAC",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010509T9",
+      "tail": "conversational QA",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010509D10",
+      "head": "CoQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010509T9",
+      "tail": "conversational QA",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010509D11",
+      "head": "HotPotQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010509T10",
+      "tail": "multi-step reasoning",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

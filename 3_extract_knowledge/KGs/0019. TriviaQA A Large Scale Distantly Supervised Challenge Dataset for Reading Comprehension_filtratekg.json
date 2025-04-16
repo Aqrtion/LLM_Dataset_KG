@@ -1,232 +1,232 @@
 {
-    "entities": [
-        {
-            "id": "20250319001713P1",
-            "name": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Mandar Joshi",
-                    "Eunsol Choi",
-                    "Daniel S. Weld",
-                    "Luke Zettlemoyer"
-                ],
-                "institution": "University of Washington, Allen Institute for Artificial Intelligence"
-            }
-        },
-        {
-            "id": "20250319001713D1",
-            "name": "TriviaQA",
-            "type": "Dataset",
-            "attributes": {
-                "size": "650K question-answer-evidence triples",
-                "questions": "95K question-answer pairs",
-                "evidence_documents_per_question": 6,
-                "answer_types": [
-                    "Wikipedia titles",
-                    "numerical expressions",
-                    "noun phrases",
-                    "verb phrases"
-                ],
-                "coverage": "diverse topics via WordNet synsets"
-            }
-        },
-        {
-            "id": "20250319001713D2",
-            "name": "SQuAD (Rajpurkar et al., 2016)",
-            "type": "Dataset",
-            "attributes": {
-                "size": "100K questions"
-            }
-        },
-        {
-            "id": "20250319001713D3",
-            "name": "MS Marco (Nguyen et al., 2016)",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713D4",
-            "name": "NewsQA (Trischler et al., 2016)",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713D5",
-            "name": "WikiQA (Yang et al., 2015)",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713D6",
-            "name": "TREC (Voorhees and Tice, 2000)",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713D7",
-            "name": "SearchQA",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713D8",
-            "name": "WebQA",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713D9",
-            "name": "MCTest",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713R1",
-            "name": "http://nlp.cs.washington.edu/triviaqa/",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713T1",
-            "name": "reading comprehension",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713T2",
-            "name": "open domain question answering",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713T3",
-            "name": "answer sentence selection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713T4",
-            "name": "answer phrase extraction",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713T5",
-            "name": "knowledge base question answering",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713T6",
-            "name": "IR-style question answering",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713T7",
-            "name": "machine reading",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319001713T8",
-            "name": "training machine reading systems",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319001713D1",
-            "head": "TriviaQA",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319001713R1",
-            "tail": "http://nlp.cs.washington.edu/triviaqa/",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319001713D1",
-            "head": "TriviaQA",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319001713P1",
-            "tail": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319001713D1",
-            "head": "TriviaQA",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319001713T1",
-            "tail": "reading comprehension",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319001713D1",
-            "head": "TriviaQA",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319001713T2",
-            "tail": "open domain question answering",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319001713D1",
-            "head": "TriviaQA",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319001713T3",
-            "tail": "answer sentence selection",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319001713D1",
-            "head": "TriviaQA",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319001713T4",
-            "tail": "answer phrase extraction",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319001713D1",
-            "head": "TriviaQA",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319001713T5",
-            "tail": "knowledge base question answering",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319001713D1",
-            "head": "TriviaQA",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319001713T6",
-            "tail": "IR-style question answering",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319001713D1",
-            "head": "TriviaQA",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319001713T7",
-            "tail": "machine reading",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319001713D1",
-            "head": "TriviaQA",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319001713T8",
-            "tail": "training machine reading systems",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319001713P1",
+      "name": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Mandar Joshi",
+          "Eunsol Choi",
+          "Daniel S. Weld",
+          "Luke Zettlemoyer"
+        ],
+        "institution": "University of Washington, Allen Institute for Artificial Intelligence"
+      }
+    },
+    {
+      "id": "20250319001713D1",
+      "name": "TriviaQA",
+      "type": "Dataset",
+      "attributes": {
+        "size": "650K question-answer-evidence triples",
+        "questions": "95K question-answer pairs",
+        "evidence_documents_per_question": 6,
+        "answer_types": [
+          "Wikipedia titles",
+          "numerical expressions",
+          "noun phrases",
+          "verb phrases"
+        ],
+        "coverage": "diverse topics via WordNet synsets"
+      }
+    },
+    {
+      "id": "20250319001713D2",
+      "name": "SQuAD (Rajpurkar et al., 2016)",
+      "type": "Dataset",
+      "attributes": {
+        "size": "100K questions"
+      }
+    },
+    {
+      "id": "20250319001713D3",
+      "name": "MS Marco (Nguyen et al., 2016)",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713D4",
+      "name": "NewsQA (Trischler et al., 2016)",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713D5",
+      "name": "WikiQA (Yang et al., 2015)",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713D6",
+      "name": "TREC (Voorhees and Tice, 2000)",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713D7",
+      "name": "SearchQA",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713D8",
+      "name": "WebQA",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713D9",
+      "name": "MCTest",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713R1",
+      "name": "http://nlp.cs.washington.edu/triviaqa/",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713T1",
+      "name": "reading comprehension",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713T2",
+      "name": "open domain question answering",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713T3",
+      "name": "answer sentence selection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713T4",
+      "name": "answer phrase extraction",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713T5",
+      "name": "knowledge base question answering",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713T6",
+      "name": "IR-style question answering",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713T7",
+      "name": "machine reading",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319001713T8",
+      "name": "training machine reading systems",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319001713D1",
+      "head": "TriviaQA",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319001713R1",
+      "tail": "http://nlp.cs.washington.edu/triviaqa/",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319001713D1",
+      "head": "TriviaQA",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319001713P1",
+      "tail": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319001713D1",
+      "head": "TriviaQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319001713T1",
+      "tail": "reading comprehension",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319001713D1",
+      "head": "TriviaQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319001713T2",
+      "tail": "open domain question answering",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319001713D1",
+      "head": "TriviaQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319001713T3",
+      "tail": "answer sentence selection",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319001713D1",
+      "head": "TriviaQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319001713T4",
+      "tail": "answer phrase extraction",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319001713D1",
+      "head": "TriviaQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319001713T5",
+      "tail": "knowledge base question answering",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319001713D1",
+      "head": "TriviaQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319001713T6",
+      "tail": "IR-style question answering",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319001713D1",
+      "head": "TriviaQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319001713T7",
+      "tail": "machine reading",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319001713D1",
+      "head": "TriviaQA",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319001713T8",
+      "tail": "training machine reading systems",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

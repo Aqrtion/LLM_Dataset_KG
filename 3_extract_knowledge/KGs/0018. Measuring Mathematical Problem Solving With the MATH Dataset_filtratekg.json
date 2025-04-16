@@ -1,239 +1,239 @@
 {
-    "entities": [
-        {
-            "id": "20250318235921P1",
-            "name": "Measuring Mathematical Problem Solving With the MATH Dataset",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Dan Hendrycks",
-                    "Collin Burns",
-                    "Saurav Kadavath",
-                    "Akul Arora",
-                    "Steven Basart",
-                    "Eric Tang",
-                    "Dawn Song",
-                    "Jacob Steinhardt"
-                ],
-                "institutions": [
-                    "UC Berkeley",
-                    "UChicago"
-                ],
-                "conference": "NeurIPS 2021"
-            }
-        },
-        {
-            "id": "20250318235921D1",
-            "name": "MATH",
-            "type": "Dataset",
-            "attributes": {
-                "size": "12,500 problems",
-                "subjects": [
-                    "geometry",
-                    "algebra",
-                    "number theory",
-                    "counting & probability",
-                    "intermediate algebra",
-                    "precalculus",
-                    "prealgebra"
-                ],
-                "difficulty_levels": 5,
-                "answer_normalization": "unique after normalization",
-                "step-by-step_solutions": "included"
-            }
-        },
-        {
-            "id": "20250318235921D2",
-            "name": "AMPS (Auxiliary Mathematics Problems and Solutions)",
-            "type": "Dataset",
-            "attributes": {
-                "size": "23GB",
-                "sources": [
-                    "Khan Academy",
-                    "Mathematica scripts"
-                ],
-                "problems": "over 5 million",
-                "step-by-step_solutions": "included"
-            }
-        },
-        {
-            "id": "20250318235921D3",
-            "name": "DeepMind Mathematics Dataset",
-            "type": "Dataset",
-            "attributes": {
-                "content": "algorithmically generated plug-and-chug problems"
-            }
-        },
-        {
-            "id": "20250318235921R1",
-            "name": "https://github.com/hendrycks/apps",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250318235921L1",
-            "name": "MIT License",
-            "type": "License",
-            "attributes": {}
-        },
-        {
-            "id": "20250318235921T1",
-            "name": "mathematical problem solving",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250318235921T2",
-            "name": "theorem proving",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250318235921T3",
-            "name": "answer generation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250318235921T4",
-            "name": "pretraining models",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250318235921T5",
-            "name": "automatic answer assessment",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250318235921T6",
-            "name": "step-by-step solution generation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250318235921T7",
-            "name": "benchmarking",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250318235921T8",
-            "name": "plug-and-chug calculations",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250318235921D1",
-            "head": "MATH",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250318235921R1",
-            "tail": "https://github.com/hendrycks/apps",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250318235921D1",
-            "head": "MATH",
-            "head_type": "Dataset",
-            "relation": "licensed_under",
-            "tail_id": "20250318235921L1",
-            "tail": "MIT License",
-            "tail_type": "License"
-        },
-        {
-            "head_id": "20250318235921D1",
-            "head": "MATH",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250318235921P1",
-            "tail": "Measuring Mathematical Problem Solving With the MATH Dataset",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250318235921D1",
-            "head": "MATH",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250318235921T1",
-            "tail": "mathematical problem solving",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250318235921D1",
-            "head": "MATH",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250318235921T2",
-            "tail": "theorem proving",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250318235921D1",
-            "head": "MATH",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250318235921T3",
-            "tail": "answer generation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250318235921D1",
-            "head": "MATH",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250318235921T5",
-            "tail": "automatic answer assessment",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250318235921D1",
-            "head": "MATH",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250318235921T6",
-            "tail": "step-by-step solution generation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250318235921D1",
-            "head": "MATH",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250318235921T7",
-            "tail": "benchmarking",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250318235921D2",
-            "head": "AMPS (Auxiliary Mathematics Problems and Solutions)",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250318235921P1",
-            "tail": "Measuring Mathematical Problem Solving With the MATH Dataset",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250318235921D2",
-            "head": "AMPS (Auxiliary Mathematics Problems and Solutions)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250318235921T4",
-            "tail": "pretraining models",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250318235921D3",
-            "head": "DeepMind Mathematics Dataset",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250318235921T8",
-            "tail": "plug-and-chug calculations",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250318235921P1",
+      "name": "Measuring Mathematical Problem Solving With the MATH Dataset",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Dan Hendrycks",
+          "Collin Burns",
+          "Saurav Kadavath",
+          "Akul Arora",
+          "Steven Basart",
+          "Eric Tang",
+          "Dawn Song",
+          "Jacob Steinhardt"
+        ],
+        "institutions": [
+          "UC Berkeley",
+          "UChicago"
+        ],
+        "conference": "NeurIPS 2021"
+      }
+    },
+    {
+      "id": "20250318235921D1",
+      "name": "MATH",
+      "type": "Dataset",
+      "attributes": {
+        "size": "12,500 problems",
+        "subjects": [
+          "geometry",
+          "algebra",
+          "number theory",
+          "counting & probability",
+          "intermediate algebra",
+          "precalculus",
+          "prealgebra"
+        ],
+        "difficulty_levels": 5,
+        "answer_normalization": "unique after normalization",
+        "step-by-step_solutions": "included"
+      }
+    },
+    {
+      "id": "20250318235921D2",
+      "name": "AMPS (Auxiliary Mathematics Problems and Solutions)",
+      "type": "Dataset",
+      "attributes": {
+        "size": "23GB",
+        "sources": [
+          "Khan Academy",
+          "Mathematica scripts"
+        ],
+        "problems": "over 5 million",
+        "step-by-step_solutions": "included"
+      }
+    },
+    {
+      "id": "20250318235921D3",
+      "name": "DeepMind Mathematics Dataset",
+      "type": "Dataset",
+      "attributes": {
+        "content": "algorithmically generated plug-and-chug problems"
+      }
+    },
+    {
+      "id": "20250318235921R1",
+      "name": "https://github.com/hendrycks/apps",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250318235921L1",
+      "name": "MIT License",
+      "type": "License",
+      "attributes": {}
+    },
+    {
+      "id": "20250318235921T1",
+      "name": "mathematical problem solving",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250318235921T2",
+      "name": "theorem proving",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250318235921T3",
+      "name": "answer generation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250318235921T4",
+      "name": "pretraining models",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250318235921T5",
+      "name": "automatic answer assessment",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250318235921T6",
+      "name": "step-by-step solution generation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250318235921T7",
+      "name": "benchmarking",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250318235921T8",
+      "name": "plug-and-chug calculations",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250318235921D1",
+      "head": "MATH",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250318235921R1",
+      "tail": "https://github.com/hendrycks/apps",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250318235921D1",
+      "head": "MATH",
+      "head_type": "Dataset",
+      "relation": "licensed_under",
+      "tail_id": "20250318235921L1",
+      "tail": "MIT License",
+      "tail_type": "License"
+    },
+    {
+      "head_id": "20250318235921D1",
+      "head": "MATH",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250318235921P1",
+      "tail": "Measuring Mathematical Problem Solving With the MATH Dataset",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250318235921D1",
+      "head": "MATH",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250318235921T1",
+      "tail": "mathematical problem solving",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250318235921D1",
+      "head": "MATH",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250318235921T2",
+      "tail": "theorem proving",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250318235921D1",
+      "head": "MATH",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250318235921T3",
+      "tail": "answer generation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250318235921D1",
+      "head": "MATH",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250318235921T5",
+      "tail": "automatic answer assessment",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250318235921D1",
+      "head": "MATH",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250318235921T6",
+      "tail": "step-by-step solution generation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250318235921D1",
+      "head": "MATH",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250318235921T7",
+      "tail": "benchmarking",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250318235921D2",
+      "head": "AMPS (Auxiliary Mathematics Problems and Solutions)",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250318235921P1",
+      "tail": "Measuring Mathematical Problem Solving With the MATH Dataset",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250318235921D2",
+      "head": "AMPS (Auxiliary Mathematics Problems and Solutions)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250318235921T4",
+      "tail": "pretraining models",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250318235921D3",
+      "head": "DeepMind Mathematics Dataset",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250318235921T8",
+      "tail": "plug-and-chug calculations",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

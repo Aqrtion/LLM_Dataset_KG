@@ -1,216 +1,216 @@
 {
-    "entities": [
-        {
-            "id": "20250319043654P1",
-            "name": "Common Voice: A Massively-Multilingual Speech Corpus",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Rosana Ardila",
-                    "Megan Branson",
-                    "Kelly Davis",
-                    "Michael Henretty",
-                    "Michael Kohler",
-                    "Josh Meyer",
-                    "Reuben Morais",
-                    "Lindsay Saunders",
-                    "Francis M. Tyers",
-                    "Gregor Weber"
-                ],
-                "institutions": [
-                    "Mozilla",
-                    "Indiana University",
-                    "Artie, Inc."
-                ]
-            }
-        },
-        {
-            "id": "20250319043654D1",
-            "name": "Common Voice",
-            "type": "Dataset",
-            "attributes": {
-                "size": "2,500 hours",
-                "languages": "29 released, 38 collecting",
-                "participants": "50,000+",
-                "format": "MPEG-3, 48kHz",
-                "validation": "crowdsourced voting",
-                "license": "CC0"
-            }
-        },
-        {
-            "id": "20250319043654D2",
-            "name": "VoxForge",
-            "type": "Dataset",
-            "attributes": {
-                "languages": 17,
-                "license": "GNU General Public License",
-                "validation": "none"
-            }
-        },
-        {
-            "id": "20250319043654D3",
-            "name": "Babel",
-            "type": "Dataset",
-            "attributes": {
-                "languages": 22,
-                "license": "not open"
-            }
-        },
-        {
-            "id": "20250319043654D4",
-            "name": "MAILABS",
-            "type": "Dataset",
-            "attributes": {
-                "languages": 9,
-                "license": "modified BSD 3-Clause License"
-            }
-        },
-        {
-            "id": "20250319043654R1",
-            "name": "https://commonvoice.mozilla.org/en/datasets",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319043654L1",
-            "name": "CC0",
-            "type": "License",
-            "attributes": {}
-        },
-        {
-            "id": "20250319043654L2",
-            "name": "GNU General Public License",
-            "type": "License",
-            "attributes": {}
-        },
-        {
-            "id": "20250319043654L3",
-            "name": "modified BSD 3-Clause License",
-            "type": "License",
-            "attributes": {}
-        },
-        {
-            "id": "20250319043654T1",
-            "name": "Automatic Speech Recognition",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319043654T2",
-            "name": "language identification",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319043654T3",
-            "name": "multilingual speech research",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319043654T4",
-            "name": "training speech recognition models",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319043654T5",
-            "name": "benchmarking",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319043654D1",
-            "head": "Common Voice",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319043654R1",
-            "tail": "https://commonvoice.mozilla.org/en/datasets",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319043654D1",
-            "head": "Common Voice",
-            "head_type": "Dataset",
-            "relation": "licensed_under",
-            "tail_id": "20250319043654L1",
-            "tail": "CC0",
-            "tail_type": "License"
-        },
-        {
-            "head_id": "20250319043654D1",
-            "head": "Common Voice",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319043654P1",
-            "tail": "Common Voice: A Massively-Multilingual Speech Corpus",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319043654D1",
-            "head": "Common Voice",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319043654T1",
-            "tail": "Automatic Speech Recognition",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319043654D1",
-            "head": "Common Voice",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319043654T2",
-            "tail": "language identification",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319043654D1",
-            "head": "Common Voice",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319043654T3",
-            "tail": "multilingual speech research",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319043654D1",
-            "head": "Common Voice",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319043654T4",
-            "tail": "training speech recognition models",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319043654D1",
-            "head": "Common Voice",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319043654T5",
-            "tail": "benchmarking",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319043654D2",
-            "head": "VoxForge",
-            "head_type": "Dataset",
-            "relation": "licensed_under",
-            "tail_id": "20250319043654L2",
-            "tail": "GNU General Public License",
-            "tail_type": "License"
-        },
-        {
-            "head_id": "20250319043654D4",
-            "head": "MAILABS",
-            "head_type": "Dataset",
-            "relation": "licensed_under",
-            "tail_id": "20250319043654L3",
-            "tail": "modified BSD 3-Clause License",
-            "tail_type": "License"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319043654P1",
+      "name": "Common Voice: A Massively-Multilingual Speech Corpus",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Rosana Ardila",
+          "Megan Branson",
+          "Kelly Davis",
+          "Michael Henretty",
+          "Michael Kohler",
+          "Josh Meyer",
+          "Reuben Morais",
+          "Lindsay Saunders",
+          "Francis M. Tyers",
+          "Gregor Weber"
+        ],
+        "institutions": [
+          "Mozilla",
+          "Indiana University",
+          "Artie, Inc."
+        ]
+      }
+    },
+    {
+      "id": "20250319043654D1",
+      "name": "Common Voice",
+      "type": "Dataset",
+      "attributes": {
+        "size": "2,500 hours",
+        "languages": "29 released, 38 collecting",
+        "participants": "50,000+",
+        "format": "MPEG-3, 48kHz",
+        "validation": "crowdsourced voting",
+        "license": "CC0"
+      }
+    },
+    {
+      "id": "20250319043654D2",
+      "name": "VoxForge",
+      "type": "Dataset",
+      "attributes": {
+        "languages": 17,
+        "license": "GNU General Public License",
+        "validation": "none"
+      }
+    },
+    {
+      "id": "20250319043654D3",
+      "name": "Babel",
+      "type": "Dataset",
+      "attributes": {
+        "languages": 22,
+        "license": "not open"
+      }
+    },
+    {
+      "id": "20250319043654D4",
+      "name": "MAILABS",
+      "type": "Dataset",
+      "attributes": {
+        "languages": 9,
+        "license": "modified BSD 3-Clause License"
+      }
+    },
+    {
+      "id": "20250319043654R1",
+      "name": "https://commonvoice.mozilla.org/en/datasets",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319043654L1",
+      "name": "CC0",
+      "type": "License",
+      "attributes": {}
+    },
+    {
+      "id": "20250319043654L2",
+      "name": "GNU General Public License",
+      "type": "License",
+      "attributes": {}
+    },
+    {
+      "id": "20250319043654L3",
+      "name": "modified BSD 3-Clause License",
+      "type": "License",
+      "attributes": {}
+    },
+    {
+      "id": "20250319043654T1",
+      "name": "Automatic Speech Recognition",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319043654T2",
+      "name": "language identification",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319043654T3",
+      "name": "multilingual speech research",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319043654T4",
+      "name": "training speech recognition models",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319043654T5",
+      "name": "benchmarking",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319043654D1",
+      "head": "Common Voice",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319043654R1",
+      "tail": "https://commonvoice.mozilla.org/en/datasets",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319043654D1",
+      "head": "Common Voice",
+      "head_type": "Dataset",
+      "relation": "licensed_under",
+      "tail_id": "20250319043654L1",
+      "tail": "CC0",
+      "tail_type": "License"
+    },
+    {
+      "head_id": "20250319043654D1",
+      "head": "Common Voice",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319043654P1",
+      "tail": "Common Voice: A Massively-Multilingual Speech Corpus",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319043654D1",
+      "head": "Common Voice",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319043654T1",
+      "tail": "Automatic Speech Recognition",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319043654D1",
+      "head": "Common Voice",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319043654T2",
+      "tail": "language identification",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319043654D1",
+      "head": "Common Voice",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319043654T3",
+      "tail": "multilingual speech research",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319043654D1",
+      "head": "Common Voice",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319043654T4",
+      "tail": "training speech recognition models",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319043654D1",
+      "head": "Common Voice",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319043654T5",
+      "tail": "benchmarking",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319043654D2",
+      "head": "VoxForge",
+      "head_type": "Dataset",
+      "relation": "licensed_under",
+      "tail_id": "20250319043654L2",
+      "tail": "GNU General Public License",
+      "tail_type": "License"
+    },
+    {
+      "head_id": "20250319043654D4",
+      "head": "MAILABS",
+      "head_type": "Dataset",
+      "relation": "licensed_under",
+      "tail_id": "20250319043654L3",
+      "tail": "modified BSD 3-Clause License",
+      "tail_type": "License"
+    }
+  ],
+  "has_been_merged": true
 }

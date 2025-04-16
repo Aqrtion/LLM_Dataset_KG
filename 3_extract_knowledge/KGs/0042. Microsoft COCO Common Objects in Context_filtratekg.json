@@ -1,259 +1,259 @@
 {
-    "entities": [
-        {
-            "id": "20250319014853P1",
-            "name": "Microsoft COCO: Common Objects in Context",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Tsung-Yi Lin",
-                    "Michael Maire",
-                    "Serge Belongie",
-                    "Lubomir Bourdev",
-                    "Ross Girshick",
-                    "James Hays",
-                    "Pietro Perona",
-                    "Deva Ramanan",
-                    "C. Lawrence Zitnick",
-                    "Piotr Doll´ar"
-                ],
-                "institution": "Multiple institutions including Cornell, Facebook AI Research, Microsoft Research"
-            }
-        },
-        {
-            "id": "20250319014853D1",
-            "name": "Microsoft COCO (MS COCO)",
-            "type": "Dataset",
-            "attributes": {
-                "size": "328k images",
-                "instances": "2.5 million",
-                "categories": 91,
-                "annotation type": "per-instance segmentations",
-                "context": "non-iconic views, natural context",
-                "average instances per image": 7.7
-            }
-        },
-        {
-            "id": "20250319014853D2",
-            "name": "PASCAL VOC 2012",
-            "type": "Dataset",
-            "attributes": {
-                "size": "11,000 images",
-                "instances": "27,000",
-                "categories": 20
-            }
-        },
-        {
-            "id": "20250319014853D3",
-            "name": "ImageNet",
-            "type": "Dataset",
-            "attributes": {
-                "size": "14 million images",
-                "categories": "22k"
-            }
-        },
-        {
-            "id": "20250319014853D4",
-            "name": "SUN dataset",
-            "type": "Dataset",
-            "attributes": {
-                "scene categories": 908,
-                "object categories": 3819
-            }
-        },
-        {
-            "id": "20250319014853D5",
-            "name": "Caltech 101",
-            "type": "Dataset",
-            "attributes": {
-                "categories": 101
-            }
-        },
-        {
-            "id": "20250319014853D6",
-            "name": "Caltech 256",
-            "type": "Dataset",
-            "attributes": {
-                "categories": 256
-            }
-        },
-        {
-            "id": "20250319014853D7",
-            "name": "CIFAR-10",
-            "type": "Dataset",
-            "attributes": {
-                "size": "60,000 images",
-                "resolution": "32x32",
-                "categories": 10
-            }
-        },
-        {
-            "id": "20250319014853D8",
-            "name": "CIFAR-100",
-            "type": "Dataset",
-            "attributes": {
-                "size": "60,000 images",
-                "resolution": "32x32",
-                "categories": 100
-            }
-        },
-        {
-            "id": "20250319014853D9",
-            "name": "LabelMe",
-            "type": "Dataset",
-            "attributes": {
-                "segmented images": "yes",
-                "size": "30,000 images"
-            }
-        },
-        {
-            "id": "20250319014853D10",
-            "name": "Caltech Pedestrian Dataset",
-            "type": "Dataset",
-            "attributes": {
-                "instances": "350,000"
-            }
-        },
-        {
-            "id": "20250319014853T1",
-            "name": "object detection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319014853T2",
-            "name": "semantic scene labeling",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319014853T3",
-            "name": "instance segmentation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319014853T4",
-            "name": "bounding box detection",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319014853T5",
-            "name": "contextual reasoning",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319014853T6",
-            "name": "precise 2D localization",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319014853T7",
-            "name": "object classification",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319014853T8",
-            "name": "scene understanding",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319014853D1",
-            "head": "Microsoft COCO (MS COCO)",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319014853P1",
-            "tail": "Microsoft COCO: Common Objects in Context",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319014853D1",
-            "head": "Microsoft COCO (MS COCO)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319014853T1",
-            "tail": "object detection",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319014853D1",
-            "head": "Microsoft COCO (MS COCO)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319014853T2",
-            "tail": "semantic scene labeling",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319014853D1",
-            "head": "Microsoft COCO (MS COCO)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319014853T3",
-            "tail": "instance segmentation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319014853D1",
-            "head": "Microsoft COCO (MS COCO)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319014853T4",
-            "tail": "bounding box detection",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319014853D1",
-            "head": "Microsoft COCO (MS COCO)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319014853T5",
-            "tail": "contextual reasoning",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319014853D1",
-            "head": "Microsoft COCO (MS COCO)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319014853T6",
-            "tail": "precise 2D localization",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319014853D1",
-            "head": "Microsoft COCO (MS COCO)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319014853T8",
-            "tail": "scene understanding",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319014853D3",
-            "head": "ImageNet",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319014853T7",
-            "tail": "object classification",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319014853D2",
-            "head": "PASCAL VOC 2012",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319014853T1",
-            "tail": "object detection",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319014853P1",
+      "name": "Microsoft COCO: Common Objects in Context",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Tsung-Yi Lin",
+          "Michael Maire",
+          "Serge Belongie",
+          "Lubomir Bourdev",
+          "Ross Girshick",
+          "James Hays",
+          "Pietro Perona",
+          "Deva Ramanan",
+          "C. Lawrence Zitnick",
+          "Piotr Doll´ar"
+        ],
+        "institution": "Multiple institutions including Cornell, Facebook AI Research, Microsoft Research"
+      }
+    },
+    {
+      "id": "20250319014853D1",
+      "name": "Microsoft COCO (MS COCO)",
+      "type": "Dataset",
+      "attributes": {
+        "size": "328k images",
+        "instances": "2.5 million",
+        "categories": 91,
+        "annotation type": "per-instance segmentations",
+        "context": "non-iconic views, natural context",
+        "average instances per image": 7.7
+      }
+    },
+    {
+      "id": "20250319014853D2",
+      "name": "PASCAL VOC 2012",
+      "type": "Dataset",
+      "attributes": {
+        "size": "11,000 images",
+        "instances": "27,000",
+        "categories": 20
+      }
+    },
+    {
+      "id": "20250319014853D3",
+      "name": "ImageNet",
+      "type": "Dataset",
+      "attributes": {
+        "size": "14 million images",
+        "categories": "22k"
+      }
+    },
+    {
+      "id": "20250319014853D4",
+      "name": "SUN dataset",
+      "type": "Dataset",
+      "attributes": {
+        "scene categories": 908,
+        "object categories": 3819
+      }
+    },
+    {
+      "id": "20250319014853D5",
+      "name": "Caltech 101",
+      "type": "Dataset",
+      "attributes": {
+        "categories": 101
+      }
+    },
+    {
+      "id": "20250319014853D6",
+      "name": "Caltech 256",
+      "type": "Dataset",
+      "attributes": {
+        "categories": 256
+      }
+    },
+    {
+      "id": "20250319014853D7",
+      "name": "CIFAR-10",
+      "type": "Dataset",
+      "attributes": {
+        "size": "60,000 images",
+        "resolution": "32x32",
+        "categories": 10
+      }
+    },
+    {
+      "id": "20250319014853D8",
+      "name": "CIFAR-100",
+      "type": "Dataset",
+      "attributes": {
+        "size": "60,000 images",
+        "resolution": "32x32",
+        "categories": 100
+      }
+    },
+    {
+      "id": "20250319014853D9",
+      "name": "LabelMe",
+      "type": "Dataset",
+      "attributes": {
+        "segmented images": "yes",
+        "size": "30,000 images"
+      }
+    },
+    {
+      "id": "20250319014853D10",
+      "name": "Caltech Pedestrian Dataset",
+      "type": "Dataset",
+      "attributes": {
+        "instances": "350,000"
+      }
+    },
+    {
+      "id": "20250319014853T1",
+      "name": "object detection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319014853T2",
+      "name": "semantic scene labeling",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319014853T3",
+      "name": "instance segmentation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319014853T4",
+      "name": "bounding box detection",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319014853T5",
+      "name": "contextual reasoning",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319014853T6",
+      "name": "precise 2D localization",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319014853T7",
+      "name": "object classification",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319014853T8",
+      "name": "scene understanding",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319014853D1",
+      "head": "Microsoft COCO (MS COCO)",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319014853P1",
+      "tail": "Microsoft COCO: Common Objects in Context",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319014853D1",
+      "head": "Microsoft COCO (MS COCO)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319014853T1",
+      "tail": "object detection",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319014853D1",
+      "head": "Microsoft COCO (MS COCO)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319014853T2",
+      "tail": "semantic scene labeling",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319014853D1",
+      "head": "Microsoft COCO (MS COCO)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319014853T3",
+      "tail": "instance segmentation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319014853D1",
+      "head": "Microsoft COCO (MS COCO)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319014853T4",
+      "tail": "bounding box detection",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319014853D1",
+      "head": "Microsoft COCO (MS COCO)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319014853T5",
+      "tail": "contextual reasoning",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319014853D1",
+      "head": "Microsoft COCO (MS COCO)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319014853T6",
+      "tail": "precise 2D localization",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319014853D1",
+      "head": "Microsoft COCO (MS COCO)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319014853T8",
+      "tail": "scene understanding",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319014853D3",
+      "head": "ImageNet",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319014853T7",
+      "tail": "object classification",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319014853D2",
+      "head": "PASCAL VOC 2012",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319014853T1",
+      "tail": "object detection",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

@@ -1,89 +1,119 @@
+import json
 import os
-import time
-import socket
-import subprocess
+import re
+
 from dotenv import load_dotenv
 from neo4j import GraphDatabase
 
-# **加载 .env 文件**
+# 加载 .env 文件中的环境变量
 load_dotenv()
 
-# **从 .env 读取 Neo4j 安装路径**
-# 读取 Neo4j 配置
+# 从环境变量中读取 Neo4j 的连接信息
 NEO4J_URI = os.getenv("NEO4J_URI")
 NEO4J_USER = os.getenv("NEO4J_USER")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
-NEO4J_HOME = os.getenv("NEO4J_HOME")
 
-def is_neo4j_running(host="localhost", port=7687):
-    """ 检查 Neo4j 是否在运行 """
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        return s.connect_ex((host, port)) == 0
+# 创建 Neo4j 驱动，建立与数据库的连接
+driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
 
 
-def start_neo4j():
-    """ 如果 Neo4j 未运行，则启动 """
-    if is_neo4j_running():
-        print("Neo4j is already running.")
-        return
-
-    print("Starting Neo4j...")
-
-    try:
-        # **Windows 环境下使用 subprocess 启动 Neo4j**
-        subprocess.Popen(
-            [f"{NEO4J_HOME}\\bin\\neo4j.bat", "start"],  # Windows 使用 .bat 文件启动
-            creationflags=subprocess.CREATE_NEW_CONSOLE,  # 以新窗口运行
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-        )
-
-        # **等待最多 30 秒，检查是否启动**
-        for _ in range(30):
-            if is_neo4j_running():
-                print("Neo4j started successfully!")
-                return
-            time.sleep(1)
-
-        print("Failed to start Neo4j within timeout.")
-    except Exception as e:
-        print(f"Error starting Neo4j: {e}")
+def safe_label(label_str):
+    """
+    将传入的字符串转换为合法的 Neo4j 标签:
+      - 移除非字母数字字符 (用下划线替代)
+      - 标签需以字母开头, 如果不是则加上前缀
+    :param label_str: 要进行处理的 Neo4j 标签字符串
+    :return: 合法的 Neo4j 标签
+    """
+    # 将非字母数字字符替换为下划线
+    safe = re.sub(r'\W+', '_', label_str)
+    # 如果标签不是以字母开头, 则添加前缀
+    if not safe[0].isalpha():
+        safe = "L_" + safe
+    return safe
 
 
-# **自动检测并启动 Neo4j**
-start_neo4j()
+def create_entity(tx, entity):
+    """
+    根据传入的实体信息, 在 Neo4j 中创建或合并节点, 并设置节点的属性, 同时根据实体类型添加标签
+    :param tx: Neo4j 的事务对象, 用于执行数据库操作
+    :param entity: 字典, 包含实体的详细信息, 如 id, name, type 和 attributes
+    :return: None
+    """
+    # 构造基础属性字典 (固定属性)
+    properties = {
+        "id": entity["id"],
+        "name": entity["name"],
+        "type": entity["type"]
+    }
+    # 如果存在额外的 attributes, 则展开添加
+    attributes = entity.get("attributes", {})
+    for key, value in attributes.items():
+        properties[key] = value
 
-# **Neo4j 连接类**
-class KnowledgeGraph:
-    def __init__(self, uri, user, password):
-        self.driver = GraphDatabase.driver(uri, auth=(user, password))
+    # 构造新的字典 safe_properties 用于存放转换后的参数, 避免参数名中包含非法字符
+    safe_properties = {}
+    set_clauses = []
+    for key, value in properties.items():
+        # 使用正则表达式将所有非字母数字和下划线的字符转换为下划线
+        safe_key = re.sub(r'\W+', '_', key)
+        safe_properties[safe_key] = value
+        # 构造 SET 子句时, 节点属性名仍然保持原始格式, 用反引号包裹
+        set_clauses.append(f"n.`{key}` = ${safe_key}")
 
-    def close(self):
-        self.driver.close()
+    # 根据实体类型添加标签, 确保标签合法
+    entity_label = safe_label(entity["type"])
 
-    def create_relationship(self, head, head_type, relation, tail, tail_type):
-        query = (
-            f"MERGE (h:{head_type} {{name: $head}}) "
-            f"MERGE (t:{tail_type} {{name: $tail}}) "
-            f"MERGE (h)-[:{relation.upper()}]->(t)"
-        )
-        with self.driver.session() as session:
-            session.execute_write(lambda tx: tx.run(query, head=head, tail=tail))
+    # 构造完整的 Cypher 查询语句, 动态添加标签
+    # MERGE (n:Label {id: $id}) 能确保同一 id 的节点只创建一次且带有对应的标签
+    query = f"MERGE (n:{entity_label} {{id: $id}}) SET " + ", ".join(set_clauses)
+    tx.run(query, **safe_properties)
 
-    def load_json_and_create_graph(self, json_file):
-        import json
-        with open(json_file, "r", encoding="utf-8") as f:
-            data = json.load(f)
 
-        for entry in data:
-            self.create_relationship(
-                entry["head"], entry["head_type"],
-                entry["relation"], entry["tail"], entry["tail_type"]
-            )
-        print("Knowledge graph has been successfully imported into Neo4j!")
+def create_relation(tx, relation):
+    """
+    根据传入的关系信息, 在 Neo4j 中创建节点间的关系
+    :param tx: Neo4j 的事务对象, 用于执行数据库操作
+    :param relation: 字典, 包含关系的详细信息
+    :return: None
+    """
+    # 转换关系类型，确保符合 Neo4j 命名规范
+    rel_type = relation["relation"].upper().replace(" ", "_")
+    query = f"""
+    MATCH (a {{id: $head_id}}), (b {{id: $tail_id}})
+    MERGE (a)-[r:{rel_type}]->(b)
+    RETURN type(r) AS relType
+    """
+    tx.run(query, head_id=relation["head_id"], tail_id=relation["tail_id"])
 
-# **运行程序**
+
+def import_graph(json_path):
+    """
+    从指定的 JSON 文件中读取知识图谱数据, 并将实体节点与关系导入到 Neo4j 数据库中
+    :param json_path: 保存知识图谱数据的 JSON 文件的路径
+    :return: None
+    """
+    # 打开并读取 JSON 文件，加载知识图谱数据
+    with open(json_path, "r", encoding="utf-8") as f:
+        graph_data = json.load(f)
+
+    # print(graph_data)
+
+    # 使用 Neo4j 驱动建立 session, 进行写入操作
+    with driver.session() as session:
+        # 导入实体节点
+        for entity in graph_data.get("entities", []):
+            session.execute_write(create_entity, entity)
+        # 导入关系数据
+        for relation in graph_data.get("relations", []):
+            session.execute_write(create_relation, relation)
+
+
 if __name__ == "__main__":
-    kg = KnowledgeGraph(NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD)
-    kg.load_json_and_create_graph("extracted_relations.json")  # 替换为你的 JSON 文件路径
-    kg.close()
+    try:
+        # 调用导入函数, 将指定 JSON 文件中的数据导入到 Neo4j 中
+        import_graph("4_fuse_knowledge/KG_fused.json")
+        print("The knowledge graph data has been successfully imported into Neo4j!")
+    finally:
+        # 关闭 Neo4j 驱动连接
+        driver.close()

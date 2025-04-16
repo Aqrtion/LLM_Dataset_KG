@@ -1,198 +1,198 @@
 {
-    "entities": [
-        {
-            "id": "20250319042506P1",
-            "name": "VoxCeleb: a large-scale speaker identification dataset",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Arsha Nagrani",
-                    "Joon Son Chung",
-                    "Andrew Zisserman"
-                ],
-                "institution": "University of Oxford"
-            }
-        },
-        {
-            "id": "20250319042506D1",
-            "name": "VoxCeleb",
-            "type": "Dataset",
-            "attributes": {
-                "size": "over 100,000 utterances",
-                "number of speakers": 1251,
-                "gender balance": "55% male",
-                "conditions": "real-world noise",
-                "collection method": "automated pipeline from YouTube",
-                "input features": "16kHz spectrograms"
-            }
-        },
-        {
-            "id": "20250319042506D2",
-            "name": "SITW (Speakers in the Wild)",
-            "type": "Dataset",
-            "attributes": {
-                "number of speakers": 299,
-                "conditions": "unconstrained",
-                "labeling method": "hand-annotated"
-            }
-        },
-        {
-            "id": "20250319042506D3",
-            "name": "NIST SRE",
-            "type": "Dataset",
-            "attributes": {
-                "availability": "not freely available"
-            }
-        },
-        {
-            "id": "20250319042506D4",
-            "name": "VGG Face dataset",
-            "type": "Dataset",
-            "attributes": {
-                "number of identities": 2622,
-                "source": "Freebase and IMDB"
-            }
-        },
-        {
-            "id": "20250319042506D5",
-            "name": "ELSDSR",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506D6",
-            "name": "MIT Mobile",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506D7",
-            "name": "SWB (Switchboard)",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506D8",
-            "name": "POLYCOST",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506D9",
-            "name": "ICSI Meeting Corpus",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506D10",
-            "name": "Forensic Comparison",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506D11",
-            "name": "ANDOSL",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506D12",
-            "name": "TIMIT",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506D13",
-            "name": "NTIMIT",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506D14",
-            "name": "CTIMIT",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506D15",
-            "name": "ImageNet",
-            "type": "Dataset",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506R1",
-            "name": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb",
-            "type": "Repository",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506T1",
-            "name": "speaker identification",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319042506T2",
-            "name": "speaker verification",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319042506D1",
-            "head": "VoxCeleb",
-            "head_type": "Dataset",
-            "relation": "stored_in",
-            "tail_id": "20250319042506R1",
-            "tail": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb",
-            "tail_type": "Repository"
-        },
-        {
-            "head_id": "20250319042506D1",
-            "head": "VoxCeleb",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319042506P1",
-            "tail": "VoxCeleb: a large-scale speaker identification dataset",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319042506D1",
-            "head": "VoxCeleb",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319042506T1",
-            "tail": "speaker identification",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319042506D1",
-            "head": "VoxCeleb",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319042506T2",
-            "tail": "speaker verification",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319042506D12",
-            "head": "TIMIT",
-            "head_type": "Dataset",
-            "relation": "has_new_version",
-            "tail_id": "20250319042506D13",
-            "tail": "NTIMIT",
-            "tail_type": "Dataset"
-        },
-        {
-            "head_id": "20250319042506D12",
-            "head": "TIMIT",
-            "head_type": "Dataset",
-            "relation": "has_new_version",
-            "tail_id": "20250319042506D14",
-            "tail": "CTIMIT",
-            "tail_type": "Dataset"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319042506P1",
+      "name": "VoxCeleb: a large-scale speaker identification dataset",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Arsha Nagrani",
+          "Joon Son Chung",
+          "Andrew Zisserman"
+        ],
+        "institution": "University of Oxford"
+      }
+    },
+    {
+      "id": "20250319042506D1",
+      "name": "VoxCeleb",
+      "type": "Dataset",
+      "attributes": {
+        "size": "over 100,000 utterances",
+        "number of speakers": 1251,
+        "gender balance": "55% male",
+        "conditions": "real-world noise",
+        "collection method": "automated pipeline from YouTube",
+        "input features": "16kHz spectrograms"
+      }
+    },
+    {
+      "id": "20250319042506D2",
+      "name": "SITW (Speakers in the Wild)",
+      "type": "Dataset",
+      "attributes": {
+        "number of speakers": 299,
+        "conditions": "unconstrained",
+        "labeling method": "hand-annotated"
+      }
+    },
+    {
+      "id": "20250319042506D3",
+      "name": "NIST SRE",
+      "type": "Dataset",
+      "attributes": {
+        "availability": "not freely available"
+      }
+    },
+    {
+      "id": "20250319042506D4",
+      "name": "VGG Face dataset",
+      "type": "Dataset",
+      "attributes": {
+        "number of identities": 2622,
+        "source": "Freebase and IMDB"
+      }
+    },
+    {
+      "id": "20250319042506D5",
+      "name": "ELSDSR",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506D6",
+      "name": "MIT Mobile",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506D7",
+      "name": "SWB (Switchboard)",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506D8",
+      "name": "POLYCOST",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506D9",
+      "name": "ICSI Meeting Corpus",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506D10",
+      "name": "Forensic Comparison",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506D11",
+      "name": "ANDOSL",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506D12",
+      "name": "TIMIT",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506D13",
+      "name": "NTIMIT",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506D14",
+      "name": "CTIMIT",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506D15",
+      "name": "ImageNet",
+      "type": "Dataset",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506R1",
+      "name": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb",
+      "type": "Repository",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506T1",
+      "name": "speaker identification",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319042506T2",
+      "name": "speaker verification",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319042506D1",
+      "head": "VoxCeleb",
+      "head_type": "Dataset",
+      "relation": "stored_in",
+      "tail_id": "20250319042506R1",
+      "tail": "http://www.robots.ox.ac.uk/~vgg/data/voxceleb",
+      "tail_type": "Repository"
+    },
+    {
+      "head_id": "20250319042506D1",
+      "head": "VoxCeleb",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319042506P1",
+      "tail": "VoxCeleb: a large-scale speaker identification dataset",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319042506D1",
+      "head": "VoxCeleb",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319042506T1",
+      "tail": "speaker identification",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319042506D1",
+      "head": "VoxCeleb",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319042506T2",
+      "tail": "speaker verification",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319042506D12",
+      "head": "TIMIT",
+      "head_type": "Dataset",
+      "relation": "has_new_version",
+      "tail_id": "20250319042506D13",
+      "tail": "NTIMIT",
+      "tail_type": "Dataset"
+    },
+    {
+      "head_id": "20250319042506D12",
+      "head": "TIMIT",
+      "head_type": "Dataset",
+      "relation": "has_new_version",
+      "tail_id": "20250319042506D14",
+      "tail": "CTIMIT",
+      "tail_type": "Dataset"
+    }
+  ],
+  "has_been_merged": true
 }

@@ -1,207 +1,207 @@
 {
-    "entities": [
-        {
-            "id": "20250319010919P1",
-            "name": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Jun Xu",
-                    "Tao Mei",
-                    "Ting Yao",
-                    "Yong Rui"
-                ],
-                "institution": "Microsoft Research"
-            }
-        },
-        {
-            "id": "20250319010919D1",
-            "name": "MSR-VTT-10K",
-            "type": "Dataset",
-            "attributes": {
-                "size": "10K web video clips",
-                "duration": "41.2 hours",
-                "clip-sentence pairs": "200K",
-                "categories": 20,
-                "sentences per clip": "~20",
-                "annotation method": "Amazon Mechanical Turk (1,327 workers)",
-                "content": "diverse video content from 20 categories",
-                "audio": "includes audio channel"
-            }
-        },
-        {
-            "id": "20250319010919D2",
-            "name": "YouCook",
-            "type": "Dataset",
-            "attributes": {
-                "domain": "cooking",
-                "annotation": "human-annotated descriptions"
-            }
-        },
-        {
-            "id": "20250319010919D3",
-            "name": "TACoS",
-            "type": "Dataset",
-            "attributes": {
-                "domain": "cooking",
-                "features": "temporal alignment"
-            }
-        },
-        {
-            "id": "20250319010919D4",
-            "name": "TACoS Multi-Level",
-            "type": "Dataset",
-            "attributes": {
-                "domain": "cooking",
-                "features": "multi-level descriptions"
-            }
-        },
-        {
-            "id": "20250319010919D5",
-            "name": "M-VAD",
-            "type": "Dataset",
-            "attributes": {
-                "domain": "movie",
-                "annotation": "Audio Descriptions (AD)",
-                "availability": "public"
-            }
-        },
-        {
-            "id": "20250319010919D6",
-            "name": "MPII-MD",
-            "type": "Dataset",
-            "attributes": {
-                "domain": "movie",
-                "annotation": "scripts and AD",
-                "availability": "public"
-            }
-        },
-        {
-            "id": "20250319010919D7",
-            "name": "MSVD",
-            "type": "Dataset",
-            "attributes": {
-                "size": "1,970 videos",
-                "annotation": "AMT workers",
-                "categories": "multiple"
-            }
-        },
-        {
-            "id": "20250319010919T1",
-            "name": "translating video to text",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010919T2",
-            "name": "video description generation",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010919T3",
-            "name": "video summarization",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010919T4",
-            "name": "action recognition",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010919T5",
-            "name": "emotion recognition",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010919T6",
-            "name": "video to language",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319010919T7",
-            "name": "benchmarking",
-            "type": "Task",
-            "attributes": {}
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319010919D1",
-            "head": "MSR-VTT-10K",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319010919P1",
-            "tail": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319010919D1",
-            "head": "MSR-VTT-10K",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010919T1",
-            "tail": "translating video to text",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010919D1",
-            "head": "MSR-VTT-10K",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010919T2",
-            "tail": "video description generation",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010919D1",
-            "head": "MSR-VTT-10K",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010919T3",
-            "tail": "video summarization",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010919D1",
-            "head": "MSR-VTT-10K",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010919T4",
-            "tail": "action recognition",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010919D1",
-            "head": "MSR-VTT-10K",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010919T5",
-            "tail": "emotion recognition",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010919D1",
-            "head": "MSR-VTT-10K",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010919T6",
-            "tail": "video to language",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319010919D1",
-            "head": "MSR-VTT-10K",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319010919T7",
-            "tail": "benchmarking",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319010919P1",
+      "name": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Jun Xu",
+          "Tao Mei",
+          "Ting Yao",
+          "Yong Rui"
+        ],
+        "institution": "Microsoft Research"
+      }
+    },
+    {
+      "id": "20250319010919D1",
+      "name": "MSR-VTT-10K",
+      "type": "Dataset",
+      "attributes": {
+        "size": "10K web video clips",
+        "duration": "41.2 hours",
+        "clip-sentence pairs": "200K",
+        "categories": 20,
+        "sentences per clip": "~20",
+        "annotation method": "Amazon Mechanical Turk (1,327 workers)",
+        "content": "diverse video content from 20 categories",
+        "audio": "includes audio channel"
+      }
+    },
+    {
+      "id": "20250319010919D2",
+      "name": "YouCook",
+      "type": "Dataset",
+      "attributes": {
+        "domain": "cooking",
+        "annotation": "human-annotated descriptions"
+      }
+    },
+    {
+      "id": "20250319010919D3",
+      "name": "TACoS",
+      "type": "Dataset",
+      "attributes": {
+        "domain": "cooking",
+        "features": "temporal alignment"
+      }
+    },
+    {
+      "id": "20250319010919D4",
+      "name": "TACoS Multi-Level",
+      "type": "Dataset",
+      "attributes": {
+        "domain": "cooking",
+        "features": "multi-level descriptions"
+      }
+    },
+    {
+      "id": "20250319010919D5",
+      "name": "M-VAD",
+      "type": "Dataset",
+      "attributes": {
+        "domain": "movie",
+        "annotation": "Audio Descriptions (AD)",
+        "availability": "public"
+      }
+    },
+    {
+      "id": "20250319010919D6",
+      "name": "MPII-MD",
+      "type": "Dataset",
+      "attributes": {
+        "domain": "movie",
+        "annotation": "scripts and AD",
+        "availability": "public"
+      }
+    },
+    {
+      "id": "20250319010919D7",
+      "name": "MSVD",
+      "type": "Dataset",
+      "attributes": {
+        "size": "1,970 videos",
+        "annotation": "AMT workers",
+        "categories": "multiple"
+      }
+    },
+    {
+      "id": "20250319010919T1",
+      "name": "translating video to text",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010919T2",
+      "name": "video description generation",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010919T3",
+      "name": "video summarization",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010919T4",
+      "name": "action recognition",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010919T5",
+      "name": "emotion recognition",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010919T6",
+      "name": "video to language",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319010919T7",
+      "name": "benchmarking",
+      "type": "Task",
+      "attributes": {}
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319010919D1",
+      "head": "MSR-VTT-10K",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319010919P1",
+      "tail": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319010919D1",
+      "head": "MSR-VTT-10K",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010919T1",
+      "tail": "translating video to text",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010919D1",
+      "head": "MSR-VTT-10K",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010919T2",
+      "tail": "video description generation",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010919D1",
+      "head": "MSR-VTT-10K",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010919T3",
+      "tail": "video summarization",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010919D1",
+      "head": "MSR-VTT-10K",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010919T4",
+      "tail": "action recognition",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010919D1",
+      "head": "MSR-VTT-10K",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010919T5",
+      "tail": "emotion recognition",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010919D1",
+      "head": "MSR-VTT-10K",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010919T6",
+      "tail": "video to language",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319010919D1",
+      "head": "MSR-VTT-10K",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319010919T7",
+      "tail": "benchmarking",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }

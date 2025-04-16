@@ -14,41 +14,37 @@ Context:
    - License: Data usage licenses (e.g. "AI2 Impact License", "CC-BY-NC-4.0")
 
    Predefined Relation Schema:
-   | Relation        | Valid Head   | Valid Tail | Description                      |
-   |-----------------|--------------|------------|----------------------------------|
-   | stored_in       | Dataset      | Repository | Dataset storage location         |
-   | licensed_under  | Dataset      | License    | Dataset usage terms              |
-   | used_for        | Dataset      | Task       | Dataset application purpose      |
-   | introduced_in   | Dataset/Task | Paper      | Origin publication               |
-   | has_subtask     | Task         | Task       | Parent task - Subtask hierarchy  |
-   | composed_of     | Dataset      | Dataset    | Dataset composition relationship |
-   | has_new_version | Dataset      | Dataset    | Dataset inheritance relationship |
-
-2. You will receive up to 100 JSON-formatted Knowledge Graphs and must merge them into a single unified JSON-formatted Knowledge Graph.
+   | Relation         | Valid Head   | Valid Tail   | Description                              |
+   |------------------|--------------|--------------|------------------------------------------|
+   | is_equivalent_to | Paper A      | Paper B      | Same name equivalence                    |
+   | is_equivalent_to | Task A       | Task B       | Same or non-same name equivalence        |
+   | is_equivalent_to | Dataset A    | Dataset B    | Same or non-same name equivalence        |
+   | is_equivalent_to | Repository A | Repository B | Same name equivalence                    |
+   | is_equivalent_to | License A    | License B    | Same name equivalence                    |
+   | has_subtask      | Task A       | Task B       | Task A includes Task B as a subtask      |
+   | has_new_version  | Dataset A    | Dataset B    | Dataset A has a new version of dataset B |
 
 ###
 
-Fusion Methodology
-1. Batch Processing:
-   - Process Knowledge Graphs in batches of 10 to optimize performance.
-   - Merge incrementally: Fuse Batch 1 and Batch 2, then merge the result with Batch 3, etc.
-2. Entity Merging:
-   (1) For entities with identical names or similar names, determine if they represent the same real-world entity based on:
-       - Attribute semantics (e.g., version, publication_date).
-       - Contextual relationships (e.g., licensed_under, used_for).
-   (2) For entities with similar names, choose the most detailed name as the merged entity's name, and save the other names as the merged entity's "alias" attribute.
-3. Attribute Value Normalization:
-   For those entities that need to be merged, their attribute values are merged in the following way:
-   - For those attribute values that are not duplicated, take their union.
-   - For attribute values that are duplicated, select the one that appears most frequently.
-   - If there is no attribute value that appears most frequently, then randomly select one attribute value as the merged entity's attribute value.
-4. Conflict Resolution:
-   - Dataset versions: Use has_new_version edges in chronological order. Flag latest with is_current: true.
-   - Licenses: Resolve conflicts by prioritizing licenses in this order: CC-BY > CC-BY-SA > CC-BY-NC > Custom.
-   - Tasks: Retain all has_subtask edges initially, then prune redundancies (delete direct edges if longer paths exist).
-5. Validation:
-   Post-merge, ensure no circular has_subtask dependencies and has_new_version chains.
-6. Definition supplementation:
-   Supplement attribute values for task entities lacking definitions in the fused knowledge graph.
+Task Description:
+1. You will receive two sets of entities of the same type: one set consists of integrated entities, and the other set consists of non-integrated entities.
+2. For any pair of entities, where Entity A comes from the integrated entities set and Entity B comes from the non-integrated entities set, identify the relationship between Entity A and Entity B.
+3. For any given pair of entities, where both Entity A and Entity B come from the non-integrated entity set, identify the relationship between Entity A and Entity B.
+
+###
+
+Fusion Rules:
+1. Paper Entities Fusion:
+   Same name equivalence: Paper entity A and paper entity B have an "is_equivalent_to" relationship if their names and author attribute values are exactly the same.
+2. Task Entities Fusion:
+   (1) Same name equivalence: Task entity A and task entity B have an "is_equivalent_to" relationship if their names are exactly the same.
+   (2) Non-same name equivalence: Task entity A and task entity B have an "is_equivalent_to" relation if their names are similar and the semantics of their definition attributes are similar.
+   (3) Task A includes Task B as a subtask: Infer whether task A includes task B, if so, then there is A "has_subtask" relationship between task entity A and task entity B, where task entity A is the head entity and task entity B is the tail entity.
+3. Dataset Entities Fusion:
+   (1) Same name equivalence: Data set entity A and data set entity B have an "is_equivalent_to" relationship if their names are exactly the same, and they have similar attributes (There is no "is_equivalent_to" relationship between data set entity A and data set entity B if their version attribute values are different).
+   (2) Non-same name equivalence: Data set entity A and data set entity B have an "is_equivalent_to" relationship if one of their names is a full name and the other is an abbreviation corresponding to that full name, and they have similar attributes.
+   (3) Dataset A has a new version of dataset B: If dataset entity A and dataset entity B have exactly the same name but different version attribute values, they have a "has_new_version" relationship between them, where dataset entity A is the head entity and dataset entity B is the tail entity.
+4. Repository Entities Fusion:
+   Same name equivalence: Repository entity A and repository entity B have an "is_equivalent_to" relationship if their names are exactly the same.
 
 ###

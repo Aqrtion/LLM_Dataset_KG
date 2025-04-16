@@ -1,129 +1,129 @@
 {
-    "entities": [
-        {
-            "id": "20250319012630P1",
-            "name": "Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond",
-            "type": "Paper",
-            "attributes": {
-                "authors": [
-                    "Ramesh Nallapati",
-                    "Bowen Zhou",
-                    "Cicero dos Santos",
-                    "Çağlar Gülçehre",
-                    "Bing Xiang"
-                ],
-                "institutions": [
-                    "IBM Watson",
-                    "Université de Montréal"
-                ]
-            }
-        },
-        {
-            "id": "20250319012630T1",
-            "name": "abstractive text summarization",
-            "type": "Task",
-            "attributes": {}
-        },
-        {
-            "id": "20250319012630D1",
-            "name": "DUC-2003",
-            "type": "Dataset",
-            "attributes": {
-                "description": "competition data with human reference summaries"
-            }
-        },
-        {
-            "id": "20250319012630D2",
-            "name": "DUC-2004",
-            "type": "Dataset",
-            "attributes": {
-                "description": "competition data with human reference summaries"
-            }
-        },
-        {
-            "id": "20250319012630D3",
-            "name": "Gigaword Corpus",
-            "type": "Dataset",
-            "attributes": {
-                "size": "3.8M training examples",
-                "preprocessing": "scripts from Rush et al. (2015)"
-            }
-        },
-        {
-            "id": "20250319012630D4",
-            "name": "CNN/Daily Mail dataset (anonymized)",
-            "type": "Dataset",
-            "attributes": {
-                "size": "286,817 training pairs",
-                "content": "multi-sentence summaries",
-                "anonymization": "entity IDs replaced"
-            }
-        },
-        {
-            "id": "20250319012630D5",
-            "name": "LCSTS (Large Scale Chinese Short Text Summarization dataset)",
-            "type": "Dataset",
-            "attributes": {
-                "language": "Chinese",
-                "scale": "large"
-            }
-        }
-    ],
-    "relations": [
-        {
-            "head_id": "20250319012630D1",
-            "head": "DUC-2003",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319012630T1",
-            "tail": "abstractive text summarization",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319012630D2",
-            "head": "DUC-2004",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319012630T1",
-            "tail": "abstractive text summarization",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319012630D3",
-            "head": "Gigaword Corpus",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319012630T1",
-            "tail": "abstractive text summarization",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319012630D4",
-            "head": "CNN/Daily Mail dataset (anonymized)",
-            "head_type": "Dataset",
-            "relation": "introduced_in",
-            "tail_id": "20250319012630P1",
-            "tail": "Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond",
-            "tail_type": "Paper"
-        },
-        {
-            "head_id": "20250319012630D4",
-            "head": "CNN/Daily Mail dataset (anonymized)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319012630T1",
-            "tail": "abstractive text summarization",
-            "tail_type": "Task"
-        },
-        {
-            "head_id": "20250319012630D5",
-            "head": "LCSTS (Large Scale Chinese Short Text Summarization dataset)",
-            "head_type": "Dataset",
-            "relation": "used_for",
-            "tail_id": "20250319012630T1",
-            "tail": "abstractive text summarization",
-            "tail_type": "Task"
-        }
-    ],
-    "has_been_merged": false
+  "entities": [
+    {
+      "id": "20250319012630P1",
+      "name": "Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond",
+      "type": "Paper",
+      "attributes": {
+        "authors": [
+          "Ramesh Nallapati",
+          "Bowen Zhou",
+          "Cicero dos Santos",
+          "Çağlar Gülçehre",
+          "Bing Xiang"
+        ],
+        "institutions": [
+          "IBM Watson",
+          "Université de Montréal"
+        ]
+      }
+    },
+    {
+      "id": "20250319012630T1",
+      "name": "abstractive text summarization",
+      "type": "Task",
+      "attributes": {}
+    },
+    {
+      "id": "20250319012630D1",
+      "name": "DUC-2003",
+      "type": "Dataset",
+      "attributes": {
+        "description": "competition data with human reference summaries"
+      }
+    },
+    {
+      "id": "20250319012630D2",
+      "name": "DUC-2004",
+      "type": "Dataset",
+      "attributes": {
+        "description": "competition data with human reference summaries"
+      }
+    },
+    {
+      "id": "20250319012630D3",
+      "name": "Gigaword Corpus",
+      "type": "Dataset",
+      "attributes": {
+        "size": "3.8M training examples",
+        "preprocessing": "scripts from Rush et al. (2015)"
+      }
+    },
+    {
+      "id": "20250319012630D4",
+      "name": "CNN/Daily Mail dataset (anonymized)",
+      "type": "Dataset",
+      "attributes": {
+        "size": "286,817 training pairs",
+        "content": "multi-sentence summaries",
+        "anonymization": "entity IDs replaced"
+      }
+    },
+    {
+      "id": "20250319012630D5",
+      "name": "LCSTS (Large Scale Chinese Short Text Summarization dataset)",
+      "type": "Dataset",
+      "attributes": {
+        "language": "Chinese",
+        "scale": "large"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "head_id": "20250319012630D1",
+      "head": "DUC-2003",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319012630T1",
+      "tail": "abstractive text summarization",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319012630D2",
+      "head": "DUC-2004",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319012630T1",
+      "tail": "abstractive text summarization",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319012630D3",
+      "head": "Gigaword Corpus",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319012630T1",
+      "tail": "abstractive text summarization",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319012630D4",
+      "head": "CNN/Daily Mail dataset (anonymized)",
+      "head_type": "Dataset",
+      "relation": "introduced_in",
+      "tail_id": "20250319012630P1",
+      "tail": "Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond",
+      "tail_type": "Paper"
+    },
+    {
+      "head_id": "20250319012630D4",
+      "head": "CNN/Daily Mail dataset (anonymized)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319012630T1",
+      "tail": "abstractive text summarization",
+      "tail_type": "Task"
+    },
+    {
+      "head_id": "20250319012630D5",
+      "head": "LCSTS (Large Scale Chinese Short Text Summarization dataset)",
+      "head_type": "Dataset",
+      "relation": "used_for",
+      "tail_id": "20250319012630T1",
+      "tail": "abstractive text summarization",
+      "tail_type": "Task"
+    }
+  ],
+  "has_been_merged": true
 }
